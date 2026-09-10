@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @keyframes wzAiIn { from { opacity:0; transform:translateY(16px) scale(0.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+  @keyframes wzBlink { 0%,80%,100% { opacity:0.25; } 40% { opacity:1; } }
+  @keyframes wzBreathe { 0%,100% { transform:translateY(0) scaleY(1); } 50% { transform:translateY(-3px) scaleY(1.015); } }
+  @keyframes wzSway { 0%,100% { transform:translateX(-9px) rotate(-1.4deg); } 50% { transform:translateX(9px) rotate(1.4deg); } }
+  @keyframes wzWave { 0%,52%,100% { transform:rotate(0deg); } 60% { transform:rotate(-8deg); } 67% { transform:rotate(3deg); } 74% { transform:rotate(-8deg); } 81% { transform:rotate(3deg); } 90% { transform:rotate(0deg); } }
+  .wz-mascot-bob { animation:wzBreathe 3.4s ease-in-out infinite; transform-origin:50% 100%; }
+  .wz-mascot-slide { animation:wzSway 5.5s ease-in-out infinite; transform-origin:50% 100%; }
+  .wz-mascot-wave { animation:wzWave 4.6s ease-in-out infinite; transform-origin:54% 42%; }
+  .wz-ai-scroll::-webkit-scrollbar { width:7px; }
+  .wz-ai-scroll::-webkit-scrollbar-thumb { background:#CBD6DC; border-radius:6px; }
+  .wz-ai-launch { position:fixed; left:16px; bottom:86px; width:224px; pointer-events:auto; display:flex; align-items:center; gap:12px; height:50px; padding:0 16px; border:none; border-radius:13px; background:linear-gradient(135deg,#14A0AE,#0E7C88); color:#fff; cursor:pointer; box-shadow:0 8px 22px rgba(20,160,174,0.32); font-family:'Manrope',system-ui,sans-serif; transition:width .2s ease, left .2s ease, padding .2s ease; z-index:9001; }
+  .wz-ai-launch:hover { box-shadow:0 12px 28px rgba(20,160,174,0.45); }
+  html.nav-collapsed .wz-ai-launch { left:12px; width:52px; padding:0; justify-content:center; }
+  html.nav-collapsed .wz-ai-launch .wz-ai-label { display:none; }
+</style>
+<script src="i18n.js" data-i18n-skip></script>
+<script src="theme.js" data-i18n-skip></script>
+</helmet>
+
+<div style="position:fixed; inset:0; pointer-events:none; z-index:9000; font-family:'Manrope',system-ui,sans-serif;">
+
+  <!-- launcher moved to header (theme.js injects the AI pill) -->
+
+  <!-- FULL-SCREEN ASSISTANT -->
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; inset:0; pointer-events:auto; z-index:9000; background:#fff; display:flex; font-family:'Manrope',system-ui,sans-serif; animation:wzAiIn 0.22s ease;">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <div style="width:284px; flex-shrink:0; border-right:1px solid #EDEFF2; display:flex; flex-direction:column; background:#FBFCFD;">
+      <div style="display:flex; align-items:center; gap:11px; padding:18px 16px 16px;">
+        <button onClick="{{ toggle }}" title="Orqaga" style="width:30px; height:30px; border:none; background:transparent; color:#5A6675; cursor:pointer; display:flex; align-items:center; justify-content:center; border-radius:8px;" style-hover="background:#EEF1F4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <span style="width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg,#14A0AE,#0E7C88); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.2l1.9 5.1a4 4 0 0 0 2.4 2.4l5.1 1.9-5.1 1.9a4 4 0 0 0-2.4 2.4L12 21l-1.9-5.1a4 4 0 0 0-2.4-2.4L2.6 11.6l5.1-1.9a4 4 0 0 0 2.4-2.4z"/></svg></span>
+        <span style="font-size:16px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">AI Konsultant</span>
+      </div>
+
+      <div style="padding:6px 16px 12px;">
+        <button onClick="{{ clear }}" style="width:100%; display:flex; align-items:center; justify-content:center; gap:9px; background:linear-gradient(135deg,#14A0AE,#0E7C88); color:#fff; border:none; border-radius:12px; padding:13px; font-family:inherit; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 4px 12px rgba(20,160,174,0.24);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>Yangi suhbat</button>
+      </div>
+
+      <div style="padding:8px 20px 6px; font-size:11.5px; font-weight:800; letter-spacing:0.08em; color:#AEB6C0;">TARIX</div>
+      <div class="wz-ai-scroll" style="flex:1; overflow-y:auto; padding:6px 12px 12px;">
+        <sc-if value="{{ noHistory }}" hint-placeholder-val="{{ true }}">
+          <div style="text-align:center; color:#AEB6C0; font-size:13px; font-weight:600; padding:22px 0;">Hozircha suhbatlar yo'q</div>
+        </sc-if>
+        <sc-for list="{{ history }}" as="h" hint-placeholder-count="0">
+          <button onClick="{{ h.pick }}" style="{{ h.rowStyle }}">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span style="flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:left;">{{ h.title }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ===================== MAIN ===================== -->
+    <div style="flex:1; min-width:0; display:flex; flex-direction:column; background:#fff;">
+      <div ref="{{ setListRef }}" class="wz-ai-scroll" style="flex:1; overflow-y:auto; display:flex; flex-direction:column;">
+
+        <!-- empty state -->
+        <sc-if value="{{ showIntro }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 24px; width:100%; max-width:940px; margin:0 auto;">
+          <span style="width:66px; height:66px; border-radius:18px; background:linear-gradient(135deg,#14A0AE,#0E7C88); display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px rgba(20,160,174,0.32); margin-bottom:22px;"><svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.2l1.9 5.1a4 4 0 0 0 2.4 2.4l5.1 1.9-5.1 1.9a4 4 0 0 0-2.4 2.4L12 21l-1.9-5.1a4 4 0 0 0-2.4-2.4L2.6 11.6l5.1-1.9a4 4 0 0 0 2.4-2.4z"/></svg></span>
+          <div style="font-size:28px; font-weight:800; color:#16313A; letter-spacing:-0.02em; margin-bottom:12px; text-align:center;">Sizga qanday yordam bera olaman?</div>
+          <div style="font-size:15px; color:#8A94A0; font-weight:600; line-height:1.55; text-align:center; max-width:520px; margin-bottom:34px;">Biznesingiz haqida savol bering: savdo, kassalar, qarzlar, ombor, xodimlar va boshqa ko'p narsalar</div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%;">
+            <sc-for list="{{ suggestions }}" as="s" hint-placeholder-count="8">
+              <button onClick="{{ s.send }}" style="display:flex; align-items:center; gap:14px; text-align:left; background:#fff; border:1px solid #E7EBEF; border-radius:14px; padding:17px 18px; cursor:pointer; font-family:inherit; transition:border-color .15s, box-shadow .15s;" style-hover="border-color:#14A0AE; box-shadow:0 4px 14px rgba(20,160,174,0.12);">
+                <span style="width:38px; height:38px; border-radius:10px; background:#E3F3F5; color:#0E7C88; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="{{ s.icon }}"/></svg></span>
+                <span style="flex:1; min-width:0; font-size:14.5px; font-weight:700; color:#16313A;">{{ s.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- messages -->
+        <sc-if value="{{ hasMessages }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%; max-width:820px; margin:0 auto; padding:28px 24px; display:flex; flex-direction:column; gap:16px;">
+          <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="0">
+            <div style="{{ m.rowStyle }}">
+              <sc-if value="{{ m.isAi }}" hint-placeholder-val="{{ false }}">
+                <span style="width:34px; height:34px; border-radius:10px; background:#E3F3F5; color:#0E7C88; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="#0E7C88"><path d="M12 2.2l1.9 5.1a4 4 0 0 0 2.4 2.4l5.1 1.9-5.1 1.9a4 4 0 0 0-2.4 2.4L12 21l-1.9-5.1a4 4 0 0 0-2.4-2.4L2.6 11.6l5.1-1.9a4 4 0 0 0 2.4-2.4z"/></svg></span>
+              </sc-if>
+              <div style="{{ m.bubbleStyle }}">{{ m.content }}</div>
+            </div>
+          </sc-for>
+
+          <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; gap:10px;">
+            <span style="width:34px; height:34px; border-radius:10px; background:#E3F3F5; color:#0E7C88; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="#0E7C88"><path d="M12 2.2l1.9 5.1a4 4 0 0 0 2.4 2.4l5.1 1.9-5.1 1.9a4 4 0 0 0-2.4 2.4L12 21l-1.9-5.1a4 4 0 0 0-2.4-2.4L2.6 11.6l5.1-1.9a4 4 0 0 0 2.4-2.4z"/></svg></span>
+            <div style="background:#F4F7F8; border:1px solid #E7EDEF; border-radius:4px 16px 16px 16px; padding:15px 17px; display:flex; gap:5px; align-items:center;">
+              <span style="width:7px; height:7px; border-radius:50%; background:#14A0AE; animation:wzBlink 1.2s infinite 0s;"></span>
+              <span style="width:7px; height:7px; border-radius:50%; background:#14A0AE; animation:wzBlink 1.2s infinite 0.2s;"></span>
+              <span style="width:7px; height:7px; border-radius:50%; background:#14A0AE; animation:wzBlink 1.2s infinite 0.4s;"></span>
+            </div>
+          </div>
+          </sc-if>
+        </div>
+        </sc-if>
+      </div>
+
+      <!-- input bar -->
+      <div style="flex-shrink:0; padding:16px 24px 14px; background:#fff;">
+        <div style="width:100%; max-width:820px; margin:0 auto;">
+          <div style="display:flex; align-items:center; gap:9px; background:#fff; border:1.5px solid #CDE1E4; border-radius:16px; padding:8px 8px 8px 18px; box-shadow:0 2px 10px rgba(16,24,40,0.05);">
+            <input value="{{ draft }}" onInput="{{ setDraft }}" onKeyDown="{{ onKey }}" placeholder="Savol yozing..." style="flex:1; min-width:0; border:none; background:transparent; outline:none; font-family:inherit; font-size:14.5px; color:#16313A; padding:9px 0;" />
+            <button onClick="{{ sendCurrent }}" style="{{ sendStyle }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></button>
+          </div>
+          <div style="text-align:center; font-size:11.5px; color:#AEB6C0; font-weight:500; margin-top:9px;">AI xatolar qilishi mumkin. Muhim ma'lumotlarni tekshiring.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 460, &quot;height&quot;: 660}}">
+class Component extends DCLogic {
+  state = { open: false, draft: '', messages: [], loading: false, view: 'faq', faqCat: 0, openQ: null, chats: [], activeChatId: null };
+
+  _loadChats() {
+    try { return JSON.parse(localStorage.getItem('wasyt-ai-chats') || '[]'); } catch (e) { return []; }
+  }
+  _saveChats(chats) {
+    try { localStorage.setItem('wasyt-ai-chats', JSON.stringify(chats)); } catch (e) {}
+  }
+
+  componentDidMount() {
+    const self = this;
+    this.setState({ chats: this._loadChats() });
+    window.wasytToggleAI = () => self.setState(s => ({ open: !s.open }));
+    this._aiEvt = () => self.setState(s => ({ open: !s.open }));
+    window.addEventListener('wasyt-ai-toggle', this._aiEvt);
+  }
+  componentWillUnmount() {
+    if (this._aiEvt) window.removeEventListener('wasyt-ai-toggle', this._aiEvt);
+  }
+  componentDidUpdate() {
+    if (this._list) this._list.scrollTop = this._list.scrollHeight;
+  }
+
+  _faqCats() {
+    return [
+      { key: 'savdo', label: "Savdo va tushum", icon: "M3 3v18h18M7 14l3-3 3 2 5-6",
+        subtitle: "Bugungi va oylik savdo, eng yaxshi mahsulot va kategoriyalar",
+        qa: [
+          { q: "Bugun savdo qanday ketyapti?", a: "Bugun jami 115 070 800 so'm savdo bo'ldi — 7 ta chek, o'rtacha chek 16 438 686 so'm.\n\nO'rtacha chek juda yuqori, demak qimmat tovarlar (smartfonlar) yaxshi ketyapti. Bu ijobiy ko'rsatkich." },
+          { q: "Bu oy umumiy aylanma (oborot) qancha?", a: "Bu oy kirim 681 544 880 so'm, chiqim 432 944 880 so'm.\nSof foyda — 248 600 000 so'm, marja 36.5%. Jami 21 ta yirik chek rasmiylashtirilgan.\n\nAylanma barqaror o'syapti — asosiy hissa smartfonlardan." },
+          { q: "Eng ko'p daromad keltirgan mahsulotlar qaysi?", a: "1) iPhone 17 Pro Max 256 — 1.89 mlrd so'm (142 dona)\n2) Redmi 14 Pro 8/128 — 924 mln so'm (318 dona)\n3) Xolodilnik Artel — 612 mln so'm (86 dona)\n\nSmartfonlar — asosiy daromad manbaingiz. Ularning zaxirasini doim to'liq saqlang." },
+          { q: "Qaysi kategoriya eng yaxshi sotilyapti?", a: "Smartfonlar — 108.4 mln so'm (yetakchi).\nMaishiy texnika — 52.6 mln, Televizorlar — 38.2 mln, Aksessuarlar — 24.8 mln.\n\nMaslahat: aksessuar savdosini oshiring — ular har bir telefon savdosiga qo'shimcha daromad va yuqori marja beradi." },
+        ] },
+      { key: 'foyda', label: "Foyda va marja", icon: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+        subtitle: "Sof foyda hisobi, marja va foydani oshirish yo'llari",
+        qa: [
+          { q: "Sof foydam qancha?", a: "Bu oygi sof foyda — 52 320 000 so'm.\n\nHisob:\nUmumiy daromad 248.5 mln − tovar tannarxi 158.2 mln = yalpi foyda 90.3 mln.\nUndan operatsion xarajat 32.8 mln va soliq 5.18 mln chegirilib, 52.32 mln sof foyda qoladi." },
+          { q: "Marjam yaxshimi?", a: "Yalpi marja — 36.5%. Elektronika do'koni uchun bu yaxshi ko'rsatkich (odatda 20–35%).\n\nSmartfonlarda marja pastroq, aksessuarlarda yuqori — shuning uchun aksessuar savdosi umumiy marjani ko'taradi." },
+          { q: "Foydani qanday oshiraman?", a: "3 ta amaliy yo'l:\n\n1) Har bir telefonga aksessuar (chexol, himoya oynasi, quloqchin) qo'shib sotish — yuqori marja.\n2) Sekin sotiladigan tovarlarni aksiya bilan pulga aylantirish.\n3) Operatsion xarajatni (32.8 mln) qayta ko'rib chiqish — ortiqcha xarajatni qisqartirish." },
+        ] },
+      { key: 'ombor', label: "Ombor va qoldiq", icon: "M3 21V8l9-5 9 5v13M3 21h18M8 13h8v8H8z",
+        subtitle: "Ombor qiymati, tugayotgan va sekin sotiladigan tovarlar",
+        qa: [
+          { q: "Omborda nima tugayapti?", a: "Kritik darajada kam qolganlar:\n• Skuter Yadea — 3 dona\n• Редми будс 4 про — 6 dona\n• LG Smart TV 55 — 9 dona\n\nJami 18 ta pozitsiya kam qolgan. Bularni tezda buyurtma qiling — ayniqsa yaxshi sotiladigan buds va televizorni." },
+          { q: "Ombor qiymati qancha?", a: "Joriy ombor qiymati — 1 842 600 000 so'm, 1284 xil mahsulot (SKU).\n\nBu katta mablag'. Ortiqcha zaxira pulni 'qotirib' qo'yadi — sekin sotiladiganlarni kamaytirib, pulni aylanishga qaytaring." },
+          { q: "Qaysi mahsulot sekin sotilyapti?", a: "Eng sekin sotiladiganlar:\n• Smart soat Amazfit — oyiga 2 dona\n• Notebook stend — 3 dona\n• Powerbank 20000 — 6 dona\n\nBularga aksiya yoki to'plam (komplekt) qiling — masalan telefon + powerbank chegirma bilan." },
+        ] },
+      { key: 'qarz', label: "Qarzlar", icon: "M16 8 2 22M17.5 15H9a4 4 0 0 1 0-8h6a4 4 0 0 0 0-8",
+        subtitle: "Mijozlar qarzi, undirish tartibi va ta'minotchi qarzlari",
+        qa: [
+          { q: "Mijozlar menga qancha qarz?", a: "Mijozlardan jami 84 320 000 so'm qarz bor.\n\nEng kattalari:\n• Tohirov Sardor — 24.6 mln\n• Aliyeva Malika — 18.2 mln\n• Qodirov Bahrom — 15.84 mln (muddati o'tgan!)" },
+          { q: "Kimning qarzini birinchi undiray?", a: "1-navbat: Qodirov Bahrom (15 840 000 so'm) — muddati o'tgan.\n2-navbat: Tohirov Sardor (24.6 mln) — eng katta summa.\n\nMuddati o'tgan qarzlar bo'yicha eslatma yuboring — buni Telegram bot orqali avtomatik qilib qo'yish mumkin." },
+          { q: "Men ta'minotchilarga qancha qarzman?", a: "Ta'minotchilarga jami 58 600 000 so'm qarzingiz bor.\n\nMijozlardan keladigan 84.32 mln bilan solishtirsangiz, balans ijobiy. Lekin to'lov muddatlarini nazorat qiling — jarima yoki ishonchni yo'qotmaslik uchun." },
+        ] },
+      { key: 'xodim', label: "Sotuvchilar", icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87",
+        subtitle: "Sotuvchilar samaradorligi va rag'batlantirish",
+        qa: [
+          { q: "Eng yaxshi sotuvchi kim?", a: "Ahmedov Bekzod — 68 400 000 so'm savdo, rejani 114% bajargan.\n\nUni rag'batlantiring (bonus yoki foiz) — bu boshqalarga ham namuna bo'ladi va musobaqa muhitini yaratadi." },
+          { q: "Kim rejani bajarmayapti?", a: "• Tursunov Aziz — 35.5 mln, reja 71% (eng past)\n• Yusupov Jasur — 48.6 mln, reja 88%\n\nAziz bilan suhbatlashing: muammoni aniqlang — bilim yetishmasligimi yoki motivatsiya. Kerak bo'lsa, Bekzodga uni o'rgatishni topshiring." },
+          { q: "Sotuvchilarni qanday rag'batlantiraman?", a: "• Savdodan foiz (masalan 1–2%) yoki rejani oshganga bonus.\n• Yuqori marjali tovar (aksessuar) sotganga qo'shimcha mukofot — bu foydani ham oshiradi.\n• Oylik 'eng yaxshi sotuvchi' tan olinishi — nopul motivatsiya ham kuchli ishlaydi." },
+        ] },
+      { key: 'moliya', label: "Moliya va kassa", icon: "M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M21 11h-5a2 2 0 0 0 0 4h5z",
+        subtitle: "Naqd, bank, terminal va pul oqimi holati",
+        qa: [
+          { q: "Hozir qancha pulim bor?", a: "Jami balans — 312 480 000 so'm:\n• Naqd kassa — 142.6 mln\n• Bank — 128.88 mln\n• Plastik terminal — 41 mln\n\nNaqd ulushi yuqori — xavfsizlik uchun ortiqcha naqdni vaqti-vaqti bilan bankka o'tkazib turing." },
+          { q: "Pul oqimi (cash flow) sog'lommi?", a: "Ha — bu oy kirim (681.5 mln) chiqimdan (432.9 mln) ancha yuqori.\n\nLekin 84.3 mln mijoz qarzi 'muzlatilgan' pul. Uni undirsangiz, naqd oqim yanada yaxshilanadi va yangi tovar olishga mablag' bo'ladi." },
+        ] },
+      { key: 'osish', label: "O'sish maslahatlari", icon: "M3 17l6-6 4 4 8-8M21 7h-6M21 7v6",
+        subtitle: "Savdoni oshirish, aksiya va narx belgilash bo'yicha tavsiyalar",
+        qa: [
+          { q: "Savdoni qanday oshiraman?", a: "1) Har bir telefonga aksessuar taklif qiling (chexol, himoya oynasi, quloqchin).\n2) Eng yaxshi sotuvchi (Bekzod) usulini boshqalarga o'rgating.\n3) Sekin tovarlarga aksiya qiling.\n4) Doimiy mijozlarga bonus/sodiqlik dasturi joriy eting." },
+          { q: "Qaysi tovarga aksiya qilsam bo'ladi?", a: "Sekin sotiladiganlarga: Amazfit soat, Notebook stend, Powerbank 20000.\n\nBularni mashhur tovar bilan to'plamga qo'shing — masalan 'telefon + powerbank' chegirma bilan. Shunda muzlab qolgan zaxirani pulga aylantirasiz." },
+          { q: "Narxni qanday to'g'ri belgilash kerak?", a: "Tan narxga ustama (markup) qo'shing:\n• Smartfonlarda — 8–15%\n• Aksessuarlarda — 40–100%\n\nWasyt'da 'Mahsulotni kirim qilish' bo'limida umumiy ustama foizini bir marta kiritib, barcha mahsulotlarga birdek qo'llashingiz mumkin." },
+        ] },
+    ];
+  }
+
+  _context() {
+    const data = {
+      valyuta: "so'm (UZS)",
+      sana: "19.06.2026",
+      bugun: { savdo: 115070800, cheklar: 7, ortacha_chek: 16438686 },
+      oy: { kirim: 681544880, chiqim: 432944880, sof_foyda: 248600000, marja: "36.5%", cheklar: 21 },
+      pl: { umumiy_daromad: 248500000, tovar_tannarxi: 158200000, yalpi_foyda: 90300000, operatsion_xarajat: 32800000, soliq: 5180000, sof_foyda: 52320000 },
+      hisoblar: { naqd_kassa: 142600000, bank: 128880000, plastik_terminal: 41000000, jami_balans: 312480000 },
+      ombor: { qiymat: 1842600000, sku: 1284, kam_qolgan: 18,
+        kritik: [{ nom: "Skuter Yadea", qoldiq: 3 }, { nom: "редми будс 4 про", qoldiq: 6 }, { nom: "Lg Smart TV 55", qoldiq: 9 }] },
+      qarz: { mijozlar_bizdan: 84320000, biz_taminotchiga: 58600000,
+        top_mijoz_qarz: [{ nom: "Tohirov Sardor", summa: 24600000 }, { nom: "Aliyeva Malika", summa: 18200000 }, { nom: "Qodirov Bahrom (muddati o'tgan)", summa: 15840000 }] },
+      sotuvchilar: [
+        { nom: "Ahmedov Bekzod", savdo: 68400000, reja: "114%" },
+        { nom: "Karimova Dilnoza", savdo: 54200000, reja: "96%" },
+        { nom: "Yusupov Jasur", savdo: 48600000, reja: "88%" },
+        { nom: "Tursunov Aziz", savdo: 35500000, reja: "71%" },
+      ],
+      top_mahsulot: [
+        { nom: "Iphone 17 pro max 256", tushum: 1891000000, sotilgan: 142 },
+        { nom: "Redmi 14 Pro 8/128", tushum: 924000000, sotilgan: 318 },
+        { nom: "Xolodilnik Artel", tushum: 612000000, sotilgan: 86 },
+      ],
+      kam_sotilgan: ["Smart soat Amazfit (2)", "Notebook stend (3)", "Powerbank 20000 (6)"],
+      kategoriyalar: [
+        { nom: "Smartfonlar", savdo: 108400000 }, { nom: "Maishiy texnika", savdo: 52600000 },
+        { nom: "Televizorlar", savdo: 38200000 }, { nom: "Aksessuarlar", savdo: 24800000 },
+      ],
+    };
+    return [
+      "Sen Wasyt savdo va hisob-kitob dasturining AI biznes konsultantisan. Do'kon egasi bilan suhbatlashasan.",
+      "QOIDALAR:",
+      "- O'zbek tilida (lotin alifbosi) javob ber, kerak bo'lganda rus tilidagi biznes atamalarni aralash ishlat (masalan: marja, oborot, ostatka).",
+      "- Qisqa, aniq va amaliy bo'l. Ko'p matn yozma — eng muhimini ayt.",
+      "- Javoblarda quyidagi REAL ma'lumotlardagi raqamlarga tayan. Raqamlarni o'qishga oson ko'rinishda yoz (masalan 681 544 880 so'm).",
+      "- Maslahat berganda konkret bo'l: qaysi mahsulotni ko'paytirish, qaysi qarzni undirish, qaysi sotuvchini rag'batlantirish va h.k.",
+      "- Hisobot yoki atama so'ralsa, sodda tilda tushuntir.",
+      "- Ma'lumotda yo'q narsa so'ralsa, taxmin qilma — yo'qligini ayt.",
+      "",
+      "DASTURDAGI REAL MA'LUMOTLAR (JSON):",
+      JSON.stringify(data),
+    ].join("\n");
+  }
+
+  async _ask(question) {
+    const q = (question || '').trim();
+    if (!q || this.state.loading) return;
+    const history = this.state.messages.concat([{ role: 'user', content: q }]);
+    let chatId = this.state.activeChatId;
+    let chats = this.state.chats;
+    if (!chatId) {
+      chatId = 'c' + Date.now();
+      const title = q.length > 46 ? q.slice(0, 46) + '…' : q;
+      chats = [{ id: chatId, title, messages: history }].concat(chats);
+    } else {
+      chats = chats.map(c => c.id === chatId ? Object.assign({}, c, { messages: history }) : c);
+    }
+    this._saveChats(chats);
+    this.setState({ messages: history, draft: '', loading: true, activeChatId: chatId, chats });
+    const convo = [
+      { role: 'user', content: this._context() },
+      { role: 'assistant', content: "Tushundim. Wasyt ma'lumotlari menda. Savolingizni bering." },
+    ].concat(history.map(m => ({ role: m.role, content: m.content })));
+    const self = this;
+    const finish = (assistantMsg) => {
+      self.setState(s => {
+        const messages = s.messages.concat([assistantMsg]);
+        const chats2 = s.chats.map(c => c.id === chatId ? Object.assign({}, c, { messages }) : c);
+        self._saveChats(chats2);
+        return { messages, loading: false, chats: chats2 };
+      });
+    };
+    try {
+      if (!window.claude || !window.claude.complete) throw new Error('no-api');
+      const text = await window.claude.complete({ messages: convo });
+      finish({ role: 'assistant', content: (text || '').trim() || "Javob bo'sh keldi." });
+    } catch (e) {
+      const msg = e && e.message === 'no-api'
+        ? "AI xizmati faqat ulangan muhitda ishlaydi. Iltimos dasturni to'liq rejimda oching."
+        : "Kechirasiz, hozir javob berolmadim. Biroz kutib qayta urinib ko'ring.";
+      finish({ role: 'assistant', content: msg });
+    }
+  }
+
+  renderVals() {
+    const st = this.state;
+    const self = this;
+
+    const suggestions = [
+      { label: "Bugun nechta savdo va qancha summaga bo'ldi?", icon: "M3 3v18h18M8 17V9M13 17V6M18 17v-4" },
+      { label: "Kassalardagi qoldiqni ko'rsat", icon: "M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M21 11h-5a2 2 0 0 0 0 4h5z" },
+      { label: "Qaysi mijozlar menga qarzdor?", icon: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" },
+      { label: "Bu oyning Top-10 sotilgan mahsuloti", icon: "M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3" },
+      { label: "Omborda qaysi tovarlar tugayapti?", icon: "M21 8l-9-5-9 5m18 0l-9 5-9-5m18 0v8l-9 5-9-5V8" },
+      { label: "Ta'minotchilar bo'yicha balans", icon: "M1 3h13v10H1zM14 7h4l3 3v3h-7M5.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M16.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" },
+      { label: "Xodimlarim ro'yxati", icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87" },
+      { label: "Wasyt obunam haqida ma'lumot", icon: "M2 5h20v14H2zM2 10h20" },
+    ].map(s => ({ label: s.label, icon: s.icon, send: () => { self.setState({ view: 'chat' }); self._ask(s.label); } }));
+
+    const clean = (t) => (t || '')
+      .replace(/\*\*(.+?)\*\*/g, '$1')
+      .replace(/(^|\n)\s*#{1,6}\s*/g, '$1')
+      .replace(/(^|\n)\s*[-*]\s+/g, '$1•  ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+
+    const msgs = st.messages.map(m => {
+      const isAi = m.role === 'assistant';
+      return {
+        isAi,
+        content: isAi ? clean(m.content) : m.content,
+        rowStyle: isAi
+          ? 'display:flex; gap:10px; align-items:flex-start;'
+          : 'display:flex; justify-content:flex-end;',
+        bubbleStyle: isAi
+          ? 'background:#F4F7F8; border:1px solid #E7EDEF; border-radius:4px 16px 16px 16px; padding:14px 17px; font-size:14.5px; line-height:1.65; color:#16313A; max-width:620px; white-space:pre-wrap; word-wrap:break-word;'
+          : 'background:linear-gradient(135deg,#14A0AE,#0E7C88); color:#fff; border-radius:16px 16px 4px 16px; padding:13px 16px; font-size:14.5px; line-height:1.55; max-width:520px; white-space:pre-wrap; word-wrap:break-word; box-shadow:0 4px 12px rgba(20,160,174,0.22);',
+      };
+    });
+
+    const canSend = st.draft.trim().length > 0 && !st.loading;
+
+    // ---- FAQ ----
+    const cats = this._faqCats();
+    const catIdx = Math.min(st.faqCat || 0, cats.length - 1);
+    const cat = cats[catIdx];
+    const catIcons = {
+      savdo: "M3 3v18h18M7 14l3-3 3 2 5-6", foyda: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+      ombor: "M3 21V8l9-5 9 5v13M3 21h18M8 13h8v8H8z", qarz: "M16 8 2 22M17.5 15H9a4 4 0 0 1 0-8h6a4 4 0 0 0 0-8",
+      xodim: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87",
+      moliya: "M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M21 11h-5a2 2 0 0 0 0 4h5z",
+      osish: "M3 17l6-6 4 4 8-8M21 7h-6M21 7v6",
+    };
+    const catTabs = cats.map((c, i) => {
+      const on = i === catIdx;
+      return {
+        label: c.label, icon: c.icon, count: c.qa.length,
+        pick: () => self.setState({ faqCat: i, openQ: null }),
+        style: 'width:100%; display:flex; align-items:center; gap:11px; padding:11px 12px; margin-bottom:3px; border:none; border-radius:11px; cursor:pointer; font-family:inherit; font-size:13.5px; font-weight:' + (on ? '700' : '600') + '; background:' + (on ? '#E3F3F5' : 'transparent') + '; color:' + (on ? '#0E7C88' : '#5A6675') + ';',
+        iconWrap: 'width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:' + (on ? '#fff' : '#EEF1F4') + '; color:' + (on ? '#14A0AE' : '#9AA3AE') + ';',
+        countStyle: 'flex-shrink:0; min-width:20px; height:20px; padding:0 6px; border-radius:7px; font-size:11.5px; font-weight:700; display:flex; align-items:center; justify-content:center; background:' + (on ? '#14A0AE' : '#E4E8EC') + '; color:' + (on ? '#fff' : '#9AA3AE') + ';',
+      };
+    });
+    const faqItems = cat.qa.map((item, i) => {
+      const id = catIdx + '-' + i;
+      const open = st.openQ === id;
+      return {
+        q: item.q, a: item.a, open,
+        chevron: open ? 'rotate(180deg)' : 'rotate(0deg)',
+        toggle: () => self.setState(s => ({ openQ: s.openQ === id ? null : id })),
+      };
+    });
+
+    return {
+      open: st.open,
+      closed: !st.open,
+      toggle: () => self.setState({ open: !st.open }),
+      stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      suggestions,
+      noHistory: st.chats.length === 0,
+      history: st.chats.map(c => ({
+        title: c.title,
+        pick: () => self.setState({ messages: c.messages, activeChatId: c.id, view: 'chat', draft: '' }),
+        rowStyle: 'width:100%; display:flex; align-items:center; gap:9px; padding:10px 11px; border-radius:10px; font-size:13px; font-weight:600; border:none; cursor:pointer; font-family:inherit; text-align:left; background:' + (c.id === st.activeChatId ? '#E3F3F5' : 'transparent') + '; color:' + (c.id === st.activeChatId ? '#0E7C88' : '#46535F') + ';',
+      })),
+      clear: () => self.setState({ messages: [], view: 'faq', draft: '', activeChatId: null }),
+      draft: st.draft,
+      setDraft: (e) => self.setState({ draft: e.target.value }),
+      onKey: (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); self.setState({ view: 'chat' }); self._ask(self.state.draft); } },
+      sendCurrent: () => { self.setState({ view: 'chat' }); self._ask(self.state.draft); },
+      setListRef: (el) => { self._list = el; },
+      msgs,
+      loading: st.loading,
+      hasMessages: st.messages.length > 0 || st.loading,
+      showIntro: st.messages.length === 0 && !st.loading,
+      sendStyle: 'width:42px; height:42px; flex-shrink:0; border:none; border-radius:12px; display:flex; align-items:center; justify-content:center; cursor:' + (canSend ? 'pointer' : 'not-allowed') + '; background:' + (canSend ? 'linear-gradient(135deg,#14A0AE,#0E7C88)' : '#CBD6DC') + ';',
+    };
+  }
+}
+</script>
+</body>
+</html>

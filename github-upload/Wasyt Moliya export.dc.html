@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body { background: #EEF1F4; font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #16313A; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: #D4D8DD; border-radius: 6px; border: 2px solid transparent; background-clip: content-box; }
+  button { font-family: inherit; }
+  input { font-family: inherit; }
+  .navbar { transition: width .2s ease; }
+  html.nav-collapsed .navbar { width: 76px !important; min-width: 76px !important; padding-left: 12px !important; padding-right: 12px !important; overflow-x: hidden !important; }
+  html.nav-collapsed .navbar .navscroll a, html.nav-collapsed .navbar .navscroll button { font-size: 0 !important; justify-content: center !important; gap: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+  html.nav-collapsed .navbar .navscroll svg ~ svg, html.nav-collapsed .navbar .navscroll span ~ svg, html.nav-collapsed .navbar .navchev { display: none !important; }
+  html.nav-collapsed .navbar .navscroll > div { display: none !important; }
+  html.nav-collapsed .navbar .navlogo { display: none !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) { justify-content: center !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) > div { display: none !important; }
+  html.nav-collapsed .navbar .navlogo-row { justify-content: center !important; }
+  .navtoggle svg { transition: transform .2s ease; }
+  html.nav-collapsed .navtoggle svg { transform: rotate(180deg); }
+</style>
+<script src="i18n.js" data-i18n-skip></script>
+<script src="theme.js" data-i18n-skip></script>
+<script src="nav-collapse.js" data-i18n-skip></script>
+<script src="support-widget.js" data-i18n-skip></script>
+<script src="col-toggle.js" data-i18n-skip></script>
+</helmet>
+
+<div style="display: flex; height: 100vh; overflow: hidden; background: #EEF1F4;">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="navbar" style="width: 256px; flex-shrink: 0; background: #FFFFFF; border-right: 1px solid #E7EAEE; display: flex; flex-direction: column; padding: 22px 16px 16px;">
+    <div class="navlogo-row" style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding: 4px 6px 24px;">
+      <img class="navlogo" src="assets/wasyt-logo-new.png" alt="WASYT" style="height: 28px; width: auto; display: block;" />
+      <button class="navtoggle" type="button" title="Menyuni yig'ish" style="width:30px; height:30px; flex-shrink:0; border:none; border-radius:9px; background:#F2F4F6; color:#7C8794; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m13 6-6 6 6 6M19 6l-6 6 6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="navscroll" style="overflow-y: auto; flex: 1; margin: 0 -6px; padding: 0 6px;">
+      <a href="Wasyt - Bosh sahifa.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        Bosh sahifa
+      </a>
+      <a href="Wasyt - Savdo.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+        Savdo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a href="Wasyt - Mahsulotlar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        Mahsulotlar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a href="Wasyt - Mijozlar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+        Mijozlar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a href="Wasyt - Ta'minotchilar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M1 3h12v11H1zM13 7h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        Ta'minotchilar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <button onClick="{{ toggleMolMenu }}" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:#E3F3F5;color:#0E7C88;font-size:14.5px;font-weight:700;cursor:pointer;text-align:left;">
+        <span style="width:30px;height:30px;border-radius:9px;background:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M21 11h-5a2 2 0 0 0 0 4h5z"/></svg>
+        </span>
+        Moliya
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7C88" stroke-width="2.4" style="margin-left:auto; transform:{{ molChevron }}; transition:transform .15s;"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <sc-if value="{{ molMenuOpen }}" hint-placeholder-val="{{ true }}">
+      <div style="margin:0 0 6px 13px; padding-left:16px; border-left:2px solid #E3F3F5; display:flex; flex-direction:column; gap:2px;">
+        <button onClick="{{ showDash }}" style="{{ subDashStyle }}">Moliya paneli</button>
+        <button onClick="{{ showCats }}" style="{{ subCatsStyle }}">Moliyaviy kategoriyalar</button>
+        <button onClick="{{ showTxns }}" style="{{ subTxnsStyle }}">Moliyaviy tranzaksiyalar</button>
+        <button onClick="{{ showAccounts }}" style="{{ subAccStyle }}">Hisoblar holati</button>
+      </div>
+      </sc-if>
+      <a href="Wasyt - Hisobotlar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></svg>
+        Hisobotlar
+      </a>
+      <a href="Wasyt - Video darslik.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="m15.5 10 6-3.5v11l-6-3.5"/></svg>
+        Video darslik
+      </a>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:13px; padding: 14px 8px 4px; border-top: 1px solid #EEF1F4; margin-top: 8px;">
+      <span style="width:42px;height:42px;border-radius:50%;background:#E3F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#14A0AE"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z"/></svg>
+      </span>
+      <div>
+        <div style="font-size:11.5px;color:#9AA3AE;">Call Center</div>
+        <div style="font-size:15px;font-weight:700;color:#16313A;">+998 (55) 055-51-00</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <header style="height: 76px; flex-shrink: 0; background: #FFFFFF; border-bottom: 1px solid #E7EAEE; display: flex; align-items: center; padding: 0 26px; gap: 16px;">
+      <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">Moliya</div>
+      <div style="font-size:13px; color:#9AA3AE; font-weight:600; background:#EEF1F4; padding:5px 11px; border-radius:8px; white-space:nowrap;">{{ molSub }}</div>
+      <div style="flex: 1;"></div>
+    </header>
+
+    <div style="flex: 1; overflow-y: auto; padding: 22px 26px 36px;">
+
+      <!-- ============ MOLIYA PANELI (dashboard) ============ -->
+      <sc-if value="{{ isDash }}" hint-placeholder-val="{{ true }}">
+
+      <!-- KPI row -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:18px; margin-bottom:18px;">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:13px; margin-bottom:16px;"><span style="width:46px; height:46px; border-radius:14px; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span><span style="font-size:14px; color:#7C8794; font-weight:700;">Oylik kirim</span></div>
+          <div style="font-size:25px; font-weight:800; color:#16313A; letter-spacing:-0.02em; white-space:nowrap;">681 544 880 <span style="font-size:13px; color:#AEB6C0; font-weight:700;">uzs</span></div>
+          <div style="font-size:12.5px; color:#1AA565; font-weight:700; margin-top:8px;">+4% may oyiga nisbatan</div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:13px; margin-bottom:16px;"><span style="width:46px; height:46px; border-radius:14px; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span><span style="font-size:14px; color:#7C8794; font-weight:700;">Oylik chiqim</span></div>
+          <div style="font-size:25px; font-weight:800; color:#16313A; letter-spacing:-0.02em; white-space:nowrap;">432 944 880 <span style="font-size:13px; color:#AEB6C0; font-weight:700;">uzs</span></div>
+          <div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-top:8px;">Kirimning 64%</div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:13px; margin-bottom:16px;"><span style="width:46px; height:46px; border-radius:14px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></svg></span><span style="font-size:14px; color:#7C8794; font-weight:700;">Sof natija</span></div>
+          <div style="font-size:25px; font-weight:800; color:#1AA565; letter-spacing:-0.02em; white-space:nowrap;">+248 600 000 <span style="font-size:13px; color:#AEB6C0; font-weight:700;">uzs</span></div>
+          <div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-top:8px;">Iyun oyi bo'yicha</div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:13px; margin-bottom:16px;"><span style="width:46px; height:46px; border-radius:14px; background:#FBF4EC; color:#EC8A3C; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></span><span style="font-size:14px; color:#7C8794; font-weight:700;">Umumiy qarzdorlik</span></div>
+          <div style="font-size:25px; font-weight:800; color:#E5544E; letter-spacing:-0.02em; white-space:nowrap;">210 510 000 <span style="font-size:13px; color:#AEB6C0; font-weight:700;">uzs</span></div>
+          <div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-top:8px;">Mijozlar + ta'minotchilar</div>
+        </div>
+      </div>
+
+      <!-- CASHFLOW CHART -->
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03); margin-bottom:18px;">
+        <div style="display:flex; align-items:center; gap:13px; margin-bottom:6px;">
+          <span style="width:44px;height:44px;border-radius:13px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="13" y="7" width="3" height="10"/></svg></span>
+          <span style="font-size:17.5px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Kassa harakati</span>
+          <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">So'nggi 6 oy · mln so'm</span>
+          <div style="flex:1;"></div>
+          <span style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#46535F;"><span style="width:10px; height:10px; border-radius:3px; background:#14A0AE;"></span>Kirim</span>
+          <span style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#46535F; margin-left:12px;"><span style="width:10px; height:10px; border-radius:3px; background:#F0B7B9;"></span>Chiqim</span>
+        </div>
+        <div style="display:flex; align-items:flex-end; gap:26px; height:240px; padding-top:20px;">
+          <sc-for list="{{ cashflow }}" as="m" hint-placeholder-count="6">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:8px;">
+              <div style="display:flex; align-items:flex-end; gap:5px; width:100%; justify-content:center;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:5px;"><span style="font-size:10.5px; font-weight:700; color:#0E7C88;">{{ m.inT }}</span><div style="width:26px; height:{{ m.inH }}; background:#14A0AE; border-radius:7px 7px 0 0;"></div></div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:5px;"><span style="font-size:10.5px; font-weight:700; color:#C56D6F;">{{ m.outT }}</span><div style="width:26px; height:{{ m.outH }}; background:#F0B7B9; border-radius:7px 7px 0 0;"></div></div>
+              </div>
+              <div style="font-size:12px; color:#9AA3AE; font-weight:700;">{{ m.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- EXPENSES + DEBT -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:18px; margin-bottom:18px; align-items:start;">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:11px; margin-bottom:18px;">
+            <span style="width:44px;height:44px;border-radius:13px;background:#FCEEED;color:#E5544E;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+            <span style="font-size:17.5px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Xarajatlar tahlili</span>
+            <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Iyun oyi</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:15px;">
+            <sc-for list="{{ expenseCats }}" as="x" hint-placeholder-count="6">
+              <div style="display:flex; align-items:center; gap:14px;">
+                <div style="width:118px; flex-shrink:0; font-size:13px; font-weight:700; color:#16313A;">{{ x.label }}</div>
+                <div style="flex:1; height:11px; border-radius:6px; background:#EEF1F4; overflow:hidden;"><div style="height:100%; width:{{ x.w }}; background:{{ x.color }}; border-radius:6px;"></div></div>
+                <div style="width:106px; flex-shrink:0; text-align:right; font-size:13px; font-weight:800; color:#16313A; white-space:nowrap;">{{ x.amount }}</div>
+                <div style="width:38px; flex-shrink:0; text-align:right; font-size:12.5px; font-weight:700; color:#9AA3AE;">{{ x.pct }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid #F2F4F6;">
+            <span style="font-size:13px; font-weight:700; color:#9AA3AE;">Jami chiqim</span>
+            <span style="font-size:14px; font-weight:900; color:#16313A;">432 944 880 <span style="font-size:11px; color:#AEB6C0;">uzs</span></span>
+          </div>
+        </div>
+
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:11px; margin-bottom:18px;">
+            <span style="width:44px;height:44px;border-radius:13px;background:#FBF4EC;color:#EC8A3C;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <span style="font-size:17.5px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Qarzdorlik xulosasi</span>
+          </div>
+          <div style="border:1px solid #EEF1F4; border-radius:14px; padding:15px 17px; margin-bottom:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+              <div><div style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Mijozlar bizga qarzdor</div><div style="font-size:19px; font-weight:900; color:#1AA565; margin-top:4px; white-space:nowrap;">+9 260 000 <span style="font-size:11px; color:#AEB6C0;">uzs</span></div></div>
+              <a href="Wasyt - Mijozlar.dc.html" style="font-size:12px; font-weight:700; color:#0E7C88; text-decoration:none; white-space:nowrap;">4 mijoz →</a>
+            </div>
+            <div style="font-size:11.5px; color:#E5544E; font-weight:700; margin-top:7px;">2 tasida muddat o'tgan</div>
+          </div>
+          <div style="border:1px solid #EEF1F4; border-radius:14px; padding:15px 17px; margin-bottom:14px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+              <div><div style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Biz ta'minotchilarga qarzdormiz</div><div style="font-size:19px; font-weight:900; color:#E5544E; margin-top:4px; white-space:nowrap;">−201 250 000 <span style="font-size:11px; color:#AEB6C0;">uzs</span></div></div>
+              <a href="Wasyt - Ta'minotchilar.dc.html" style="font-size:12px; font-weight:700; color:#0E7C88; text-decoration:none; white-space:nowrap;">3 ta'minotchi →</a>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding-top:13px; border-top:1px solid #F2F4F6;">
+            <span style="font-size:13px; font-weight:700; color:#9AA3AE;">Sof qarzdorlik</span>
+            <span style="font-size:14px; font-weight:900; color:#E5544E; white-space:nowrap;">−191 990 000 <span style="font-size:11px; color:#AEB6C0;">uzs</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCOUNTS: summary cards -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:22px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px dashed #E7EBEF;">
+            <span style="font-size:17px; font-weight:800; color:#16313A;">Naqd summasi</span>
+            <span style="width:44px; height:44px; border-radius:13px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span>
+          </div>
+          <div style="padding-top:16px; font-size:22px; font-weight:800; letter-spacing:-0.01em; white-space:nowrap;"><span style="color:#0E7C88;">546 000 000</span> <span style="color:#16313A; font-size:15px;">UZS</span> <span style="color:#C7CDD4;">/</span> <span style="color:#0E7C88;">10</span> <span style="color:#16313A; font-size:15px;">USD</span></div>
+          <div style="display:flex; flex-direction:column; gap:6px; margin-top:9px;">
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Asosiy kassa: <b style="color:#46535F;">425 618 536 UZS / 0 USD</b></span>
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Sotuv kassalari: <b style="color:#46535F;">120 381 464 UZS / 10 USD</b></span>
+          </div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:22px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px dashed #E7EBEF;">
+            <span style="font-size:17px; font-weight:800; color:#16313A;">Naqdsiz summasi</span>
+            <span style="width:44px; height:44px; border-radius:13px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span>
+          </div>
+          <div style="padding-top:16px; font-size:22px; font-weight:800; letter-spacing:-0.01em; white-space:nowrap;"><span style="color:#0E7C88;">120 000 000</span> <span style="color:#16313A; font-size:15px;">UZS</span> <span style="color:#C7CDD4;">/</span> <span style="color:#0E7C88;">0</span> <span style="color:#16313A; font-size:15px;">USD</span></div>
+          <div style="display:flex; flex-direction:column; gap:6px; margin-top:9px;">
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Asosiy kassa: <b style="color:#46535F;">87 602 860 UZS / 0 USD</b></span>
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Sotuv kassalari: <b style="color:#46535F;">32 397 140 UZS / 0 USD</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ASOSIY KASSA banner -->
+      <div style="background:linear-gradient(135deg,#0E7C88,#14A0AE); border-radius:18px; padding:22px 26px; color:#fff; box-shadow:0 10px 28px rgba(20,160,174,0.26); margin-bottom:18px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;">
+        <span style="width:52px; height:52px; border-radius:14px; background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 8h16v11H4zM4 12h16M8 16h3M2 8l2-4h16l2 4"/></svg></span>
+        <div style="min-width:0;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="font-size:17px; font-weight:800; white-space:nowrap;">Asosiy kassa</span>
+            <span style="font-size:10.5px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; background:rgba(255,255,255,0.2); border-radius:6px; padding:3px 9px; white-space:nowrap;">Markaziy</span>
+          </div>
+          <div style="font-size:12px; font-weight:600; opacity:0.85; margin-top:4px;">Barcha filial va sotuv kassalaridan tushumlar shu yerga o'tkaziladi</div>
+        </div>
+        <div style="flex:1;"></div>
+        <div style="display:flex; gap:26px; flex-wrap:wrap;">
+          <div><div style="font-size:10.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; opacity:0.8;">Naqd</div><div style="font-size:21px; font-weight:800; white-space:nowrap; margin-top:3px;">425 618 536 <span style="font-size:12px; opacity:0.75;">UZS</span></div></div>
+          <div><div style="font-size:10.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; opacity:0.8;">Naqdsiz</div><div style="font-size:21px; font-weight:800; white-space:nowrap; margin-top:3px;">87 602 860 <span style="font-size:12px; opacity:0.75;">UZS</span></div></div>
+          <div><div style="font-size:10.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; opacity:0.8;">Bugun filiallardan</div><div style="font-size:21px; font-weight:800; white-space:nowrap; margin-top:3px; color:#B8F0D9;">+48 200 000 <span style="font-size:12px; opacity:0.75;">UZS</span></div></div>
+        </div>
+      </div>
+
+      <!-- BRANCH BALANCES -->
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:10px; padding:20px 26px 0;">
+          <span style="font-size:16px; font-weight:800; color:#16313A;">Sotuv kassalari</span>
+          <span style="font-size:12px; font-weight:600; color:#9AA3AE;">Filiallar · smena yopilganda qoldiq asosiy kassaga o'tkaziladi</span>
+          <div style="flex:1;"></div>
+          <button onClick="{{ showAccounts }}" style="background:none; border:none; font-size:13.5px; font-weight:700; color:#0E7C88; cursor:pointer;">Batafsil →</button>
+        </div>
+        <div style="display:grid; grid-template-columns:2.2fr 1.6fr 1.6fr; gap:18px; padding:14px 26px; border-bottom:1px solid #F2F4F6; font-size:12px; color:#9AA3AE; font-weight:700;">
+          <div>Do'kon</div><div>Balans</div><div>Muzlatilgan</div>
+        </div>
+        <sc-for list="{{ storeBalances }}" as="s" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:2.2fr 1.6fr 1.6fr; gap:18px; padding:16px 26px; border-bottom:1px solid #F4F6F8; align-items:center;" style-hover="background:#FAFCFC;">
+            <div style="font-size:14.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.name }}</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.cashColor }}; white-space:nowrap;">{{ s.cashUZS }} UZS / {{ s.cashUSD }} USD</span></div>
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#EEEBFE; color:#7A5AF8; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.cardColor }}; white-space:nowrap;">{{ s.cardUZS }} UZS / {{ s.cardUSD }} USD</span></div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.frColor }}; white-space:nowrap;">{{ s.frCashUZS }} UZS / {{ s.frCashUSD }} USD</span></div>
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#EEEBFE; color:#7A5AF8; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.frColor }}; white-space:nowrap;">{{ s.frCardUZS }} UZS / {{ s.frCardUSD }} USD</span></div>
+            </div>
+          </div>
+        </sc-for>
+        <div style="display:grid; grid-template-columns:2.2fr 1.6fr 1.6fr; gap:18px; padding:16px 26px; background:linear-gradient(135deg,#0E7C88,#14A0AE); align-items:center;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="width:26px; height:26px; border-radius:8px; background:rgba(255,255,255,0.18); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 5h16M4 5l6 7-6 7h16"/></svg></span>
+            <span style="font-size:13.5px; font-weight:900; color:#fff; text-transform:uppercase; letter-spacing:0.04em;">Barcha sotuv kassalari jami</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:13.5px; font-weight:900; color:#fff; white-space:nowrap;">120 381 464 UZS / 10 USD</span>
+            <span style="font-size:13.5px; font-weight:900; color:#fff; white-space:nowrap;">32 397 140 UZS / 0 USD</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:13.5px; font-weight:900; color:#CFE8FF; white-space:nowrap;">306 391 050 UZS / 100 USD</span>
+            <span style="font-size:13.5px; font-weight:900; color:#CFE8FF; white-space:nowrap;">20 454 958 UZS / 0 USD</span>
+          </div>
+        </div>
+      </div>
+
+      </sc-if>
+
+      <sc-if value="{{ isAccounts }}" hint-placeholder-val="{{ false }}">
+      <!-- title + hide-stats -->
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px;">
+        <span style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Hisoblar holati</span>
+        <div style="flex:1;"></div>
+        <button onClick="{{ toggleAccStats }}" style="display:flex; align-items:center; gap:7px; background:none; border:none; color:#14A0AE; font-size:13px; font-weight:700; cursor:pointer;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="transform:{{ accStatsChevron }}; transition:transform .15s;"><path d="m18 15-6-6-6 6"/></svg>{{ accStatsToggleLabel }}
+        </button>
+      </div>
+
+      <!-- summary cards -->
+      <sc-if value="{{ accStatsOpen }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:20px;">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:22px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px dashed #E7EBEF;">
+            <span style="font-size:17px; font-weight:800; color:#16313A;">Naqd summasi</span>
+            <span style="width:44px; height:44px; border-radius:13px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span>
+          </div>
+          <div style="padding-top:16px; font-size:22px; font-weight:800; letter-spacing:-0.01em; white-space:nowrap;"><span style="color:#0E7C88;">546 000 000</span> <span style="color:#16313A; font-size:15px;">UZS</span> <span style="color:#C7CDD4;">/</span> <span style="color:#0E7C88;">10</span> <span style="color:#16313A; font-size:15px;">USD</span></div>
+          <div style="display:flex; flex-direction:column; gap:6px; margin-top:9px;">
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Asosiy kassa: <b style="color:#46535F;">425 618 536 UZS / 0 USD</b></span>
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Sotuv kassalari: <b style="color:#46535F;">120 381 464 UZS / 10 USD</b></span>
+          </div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:22px 26px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px dashed #E7EBEF;">
+            <span style="font-size:17px; font-weight:800; color:#16313A;">Naqdsiz summasi</span>
+            <span style="width:44px; height:44px; border-radius:13px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span>
+          </div>
+          <div style="padding-top:16px; font-size:22px; font-weight:800; letter-spacing:-0.01em; white-space:nowrap;"><span style="color:#0E7C88;">120 000 000</span> <span style="color:#16313A; font-size:15px;">UZS</span> <span style="color:#C7CDD4;">/</span> <span style="color:#0E7C88;">0</span> <span style="color:#16313A; font-size:15px;">USD</span></div>
+          <div style="display:flex; flex-direction:column; gap:6px; margin-top:9px;">
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Asosiy kassa: <b style="color:#46535F;">87 602 860 UZS / 0 USD</b></span>
+            <span style="font-size:12px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Sotuv kassalari: <b style="color:#46535F;">32 397 140 UZS / 0 USD</b></span>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ASOSIY KASSA (markaziy) -->
+      <div style="background:linear-gradient(135deg,#0E7C88,#14A0AE); border-radius:18px; padding:22px 26px; color:#fff; box-shadow:0 10px 28px rgba(20,160,174,0.26); margin-bottom:20px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;">
+        <span style="width:52px; height:52px; border-radius:14px; background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 8h16v11H4zM4 12h16M8 16h3M2 8l2-4h16l2 4"/></svg></span>
+        <div style="min-width:0;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="font-size:17px; font-weight:800; white-space:nowrap;">Asosiy kassa</span>
+            <span style="font-size:10.5px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; background:rgba(255,255,255,0.2); border-radius:6px; padding:3px 9px; white-space:nowrap;">Markaziy</span>
+          </div>
+          <div style="font-size:12px; font-weight:600; opacity:0.85; margin-top:4px;">Barcha filial va sotuv kassalaridan tushumlar shu yerga o'tkaziladi</div>
+        </div>
+        <div style="flex:1;"></div>
+        <div style="display:flex; gap:26px; flex-wrap:wrap;">
+          <div><div style="font-size:10.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; opacity:0.8;">Naqd</div><div style="font-size:21px; font-weight:800; white-space:nowrap; margin-top:3px;">425 618 536 <span style="font-size:12px; opacity:0.75;">UZS</span></div></div>
+          <div><div style="font-size:10.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; opacity:0.8;">Naqdsiz</div><div style="font-size:21px; font-weight:800; white-space:nowrap; margin-top:3px;">87 602 860 <span style="font-size:12px; opacity:0.75;">UZS</span></div></div>
+          <div><div style="font-size:10.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; opacity:0.8;">Bugun filiallardan</div><div style="font-size:21px; font-weight:800; white-space:nowrap; margin-top:3px; color:#B8F0D9;">+48 200 000 <span style="font-size:12px; opacity:0.75;">UZS</span></div></div>
+        </div>
+        <button onClick="{{ showTxns }}" style="border:none; background:rgba(255,255,255,0.18); color:#fff; border-radius:11px; padding:12px 18px; font-size:12.5px; font-weight:800; cursor:pointer; white-space:nowrap; flex-shrink:0;" style-hover="background:rgba(255,255,255,0.3);">O'tkazmalar tarixi →</button>
+      </div>
+
+      <!-- search + filter -->
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div style="flex:1; display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #EDEFF2; border-radius:13px; padding:12px 16px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          <input placeholder="Do'kon, kassa" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:14px; color:#16313A;" />
+        </div>
+        <button style="display:flex; align-items:center; gap:9px; background:#fff; border:1px solid #EDEFF2; border-radius:13px; padding:12px 18px; font-size:14px; font-weight:700; color:#46535F; cursor:pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg>Filtrlar
+        </button>
+      </div>
+
+      <!-- STORE BALANCES TABLE -->
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:10px; padding:17px 24px 0;">
+          <span style="font-size:16px; font-weight:800; color:#16313A;">Sotuv kassalari</span>
+          <span style="font-size:12px; font-weight:600; color:#9AA3AE;">Filiallar · smena yopilganda qoldiq asosiy kassaga o'tkaziladi</span>
+        </div>
+        <div style="display:grid; grid-template-columns:2.2fr 1.6fr 1.6fr; gap:18px; padding:14px 24px; border-bottom:1px solid #F2F4F6; font-size:12px; color:#9AA3AE; font-weight:700;">
+          <div>Do'kon</div><div>Balans</div><div>Muzlatilgan</div>
+        </div>
+        <sc-for list="{{ storeBalances }}" as="s" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:2.2fr 1.6fr 1.6fr; gap:18px; padding:18px 24px; border-bottom:1px solid #F4F6F8; align-items:center;" style-hover="background:#FAFCFC;">
+            <div style="display:flex; align-items:center; gap:11px; min-width:0;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="flex-shrink:0;"><path d="m9 6 6 6-6 6"/></svg>
+              <span style="font-size:14.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.name }}</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.cashColor }}; white-space:nowrap;">{{ s.cashUZS }} UZS / {{ s.cashUSD }} USD</span></div>
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#EEEBFE; color:#7A5AF8; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.cardColor }}; white-space:nowrap;">{{ s.cardUZS }} UZS / {{ s.cardUSD }} USD</span></div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.frColor }}; white-space:nowrap;">{{ s.frCashUZS }} UZS / {{ s.frCashUSD }} USD</span></div>
+              <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:#EEEBFE; color:#7A5AF8; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><span style="font-size:13.5px; font-weight:700; color:{{ s.frColor }}; white-space:nowrap;">{{ s.frCardUZS }} UZS / {{ s.frCardUSD }} USD</span></div>
+            </div>
+          </div>
+        </sc-for>
+
+        <!-- JAMI row -->
+        <div style="display:grid; grid-template-columns:2.2fr 1.6fr 1.6fr; gap:18px; padding:17px 24px; background:linear-gradient(135deg,#0E7C88,#14A0AE); align-items:center;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="width:26px; height:26px; border-radius:8px; background:rgba(255,255,255,0.18); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 5h16M4 5l6 7-6 7h16"/></svg></span>
+            <span style="font-size:14px; font-weight:900; color:#fff; text-transform:uppercase; letter-spacing:0.04em;">Barcha sotuv kassalari jami</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:7px;">
+            <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:rgba(255,255,255,0.18); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span><span style="font-size:13.5px; font-weight:900; color:#fff; white-space:nowrap;">120 381 464 UZS / 10 USD</span></div>
+            <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:rgba(255,255,255,0.18); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><span style="font-size:13.5px; font-weight:900; color:#fff; white-space:nowrap;">32 397 140 UZS / 0 USD</span></div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:7px;">
+            <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:rgba(255,255,255,0.18); color:#CFE8FF; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2.5" y="7" width="19" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/></svg></span><span style="font-size:13.5px; font-weight:900; color:#CFE8FF; white-space:nowrap;">306 391 050 UZS / 100 USD</span></div>
+            <div style="display:flex; align-items:center; gap:8px;"><span style="width:22px; height:22px; border-radius:7px; background:rgba(255,255,255,0.18); color:#CFE8FF; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><span style="font-size:13.5px; font-weight:900; color:#CFE8FF; white-space:nowrap;">20 454 958 UZS / 0 USD</span></div>
+          </div>
+        </div>
+
+        <!-- footer -->
+        <div style="display:flex; align-items:center; gap:14px; padding:16px 24px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button style="width:34px; height:34px; border-radius:9px; border:none; background:#14A0AE; color:#fff; font-size:13.5px; font-weight:800; cursor:pointer;">1</button>
+            <button style="width:34px; height:34px; border-radius:9px; border:1px solid #EDEFF2; background:#fff; color:#46535F; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div>
+          <div style="flex:1;"></div>
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:11px; padding:9px 16px; font-size:13.5px; font-weight:700; color:#46535F; cursor:pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Yuklab olish</button>
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:11px; padding:9px 16px; font-size:13.5px; font-weight:700; color:#46535F; cursor:pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>5 tadan ko'rsatish</button>
+        </div>
+      </div>
+
+      </sc-if>
+      <sc-if value="{{ isTxns }}" hint-placeholder-val="{{ false }}">
+        <!-- title + date + hide-stats -->
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px;">
+          <span style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Moliyaviy tranzaksiyalar</span>
+          <div style="flex:1;"></div>
+          <button onClick="{{ toggleTxnStats }}" style="display:flex; align-items:center; gap:7px; background:none; border:none; color:#14A0AE; font-size:13px; font-weight:700; cursor:pointer;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="transform:{{ txnStatsChevron }}; transition:transform .15s;"><path d="m18 15-6-6-6 6"/></svg>{{ txnStatsToggleLabel }}
+          </button>
+          <div style="display:flex; align-items:center; gap:9px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:8px 13px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+            <div style="line-height:1.15;"><div style="font-size:10.5px; color:#9AA3AE; font-weight:600;">Bugun</div><div style="font-size:13px; font-weight:800; color:#16313A;">03.07.2026</div></div>
+          </div>
+        </div>
+
+        <!-- stat cards -->
+        <sc-if value="{{ txnStatsOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; display:flex; align-items:center; gap:14px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <span style="width:44px; height:44px; border-radius:50%; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+            <div style="font-size:15px; font-weight:800; color:#16313A; line-height:1.35; max-width:120px;">Daromad summasi</div>
+            <div style="flex:1;"></div>
+            <div style="display:grid; grid-template-columns:auto auto; gap:5px 8px; align-items:baseline; text-align:right;">
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqd</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">123 500 000 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqdsiz</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">46 400 000 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; display:flex; align-items:center; gap:14px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <span style="width:44px; height:44px; border-radius:50%; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+            <div style="font-size:15px; font-weight:800; color:#16313A; line-height:1.35; max-width:120px;">Xarajat summasi</div>
+            <div style="flex:1;"></div>
+            <div style="display:grid; grid-template-columns:auto auto; gap:5px 8px; align-items:baseline; text-align:right;">
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqd</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">85 840 000 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqdsiz</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">52 340 000 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; display:flex; align-items:center; gap:14px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <span style="width:44px; height:44px; border-radius:50%; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4 3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/></svg></span>
+            <div style="font-size:15px; font-weight:800; color:#16313A; line-height:1.35; max-width:120px;">Ko'chirish summasi</div>
+            <div style="flex:1;"></div>
+            <div style="display:grid; grid-template-columns:auto auto; gap:5px 8px; align-items:baseline; text-align:right;">
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqd</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqdsiz</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; display:flex; align-items:center; gap:14px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <span style="width:44px; height:44px; border-radius:50%; background:#FBF3DE; color:#B58A1B; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <div style="font-size:15px; font-weight:800; color:#16313A; line-height:1.35; max-width:140px;">Konvertatsiya summasi</div>
+            <div style="flex:1;"></div>
+            <div style="display:grid; grid-template-columns:auto auto; gap:5px 8px; align-items:baseline; text-align:right;">
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqd</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+              <span style="font-size:12.5px; color:#9AA3AE; font-weight:600;">Naqdsiz</span><span style="font-size:14.5px; font-weight:800; color:#0E7C88; white-space:nowrap;">0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">UZS</span> / 0 <span style="font-size:11px; color:#9AA3AE; font-weight:700;">USD</span></span>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- tabs -->
+        <div style="display:flex; align-items:center; gap:4px; margin-bottom:16px; overflow-x:auto;">
+          <sc-for list="{{ txnTabs }}" as="t" hint-placeholder-count="4">
+            <button onClick="{{ t.pick }}" style="{{ t.style }}"><sc-if value="{{ t.dot }}" hint-placeholder-val="{{ false }}"><span style="width:16px; height:16px; border-radius:50%; background:#7A5AF8; color:#fff; font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center;">!</span></sc-if>{{ t.label }}</button>
+          </sc-for>
+        </div>
+
+        <!-- search + filter + add -->
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="flex:1; display:flex; align-items:center; gap:11px; background:#fff; border:1px solid #EDEFF2; border-radius:13px; padding:12px 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input placeholder="ID, tranzaksiya, foydalanuvchi" style="border:none; outline:none; flex:1; min-width:0; font-size:13.5px; color:#16313A; background:transparent;" />
+          </div>
+          <button onClick="{{ txFiltToggle }}" style="display:flex; align-items:center; gap:9px; background:#fff; border:1px solid #EDEFF2; border-radius:13px; padding:12px 18px; font-size:13.5px; font-weight:700; color:#46535F; cursor:pointer;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="transform:{{ txFiltChevron }}; transition:transform .15s;"><path d="m6 9 6 6 6-6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>Filtrlar
+          </button>
+          <div style="position:relative;">
+            <button onClick="{{ txAddToggle }}" style="display:flex; align-items:center; gap:8px; background:#14A0AE; border:none; border-radius:13px; padding:12px 20px; font-size:13.5px; font-weight:800; color:#fff; cursor:pointer; box-shadow:0 6px 16px rgba(20,160,174,0.24);">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>Qo'shish
+            </button>
+            <sc-if value="{{ txAddOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:calc(100% + 8px); right:0; width:240px; background:#fff; border:1px solid #EDEFF2; border-radius:16px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:8px; z-index:60;">
+              <button onClick="{{ txOpenIn }}" style="display:flex; align-items:center; gap:12px; width:100%; border:none; background:transparent; padding:11px 13px; border-radius:11px; cursor:pointer; text-align:left;" style-hover="background:#F4F6F8;">
+                <span style="width:32px; height:32px; border-radius:50%; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+                <span style="font-size:14px; font-weight:700; color:#16313A;">Daromad</span>
+              </button>
+              <button onClick="{{ txOpenOut }}" style="display:flex; align-items:center; gap:12px; width:100%; border:none; background:transparent; padding:11px 13px; border-radius:11px; cursor:pointer; text-align:left;" style-hover="background:#F4F6F8;">
+                <span style="width:32px; height:32px; border-radius:50%; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+                <span style="font-size:14px; font-weight:700; color:#16313A;">Xarajat</span>
+              </button>
+              <button onClick="{{ txOpenMove }}" style="display:flex; align-items:center; gap:12px; width:100%; border:none; background:transparent; padding:11px 13px; border-radius:11px; cursor:pointer; text-align:left;" style-hover="background:#F4F6F8;">
+                <span style="width:32px; height:32px; border-radius:50%; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 4 3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/></svg></span>
+                <span style="font-size:14px; font-weight:700; color:#16313A;">Ko'chirish</span>
+              </button>
+              <button onClick="{{ txOpenConv }}" style="display:flex; align-items:center; gap:12px; width:100%; border:none; background:transparent; padding:11px 13px; border-radius:11px; cursor:pointer; text-align:left;" style-hover="background:#F4F6F8;">
+                <span style="width:32px; height:32px; border-radius:50%; background:#FBF3DE; color:#B58A1B; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+                <span style="font-size:14px; font-weight:700; color:#16313A;">Konvertatsiya</span>
+              </button>
+            </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <!-- filter panel -->
+        <sc-if value="{{ txFiltOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:24px; margin-bottom:16px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 26px;">
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Kategoriya</div>
+              <input placeholder="Kategoriyani kiriting" style="width:100%; box-sizing:border-box; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" />
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Summa</div>
+              <div style="display:flex; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; overflow:hidden;">
+                <input placeholder="dan" style="flex:1; min-width:0; border:none; background:transparent; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" />
+                <input placeholder="gacha" style="flex:1; min-width:0; border:none; border-left:1px solid #EDEFF2; background:transparent; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" />
+              </div>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Foydalanuvchi</div>
+              <div style="position:relative;">
+                <select style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                  <option value="">Foydalanuvchini tanlang</option><option>Aziz Karimov</option><option>Nodira Yusupova</option><option>Sardor Aliyev</option>
+                </select>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Operatsiya</div>
+              <div style="position:relative;">
+                <select style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                  <option value="">Operatsiya turini tanlang</option><option>Kirim</option><option>Chiqim</option><option>Ko'chirish</option><option>Konvertatsiya</option>
+                </select>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Hisob</div>
+              <div style="position:relative;">
+                <select style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                  <option value="">Hisobni kiriting</option><option>Asosiy kassa</option><option>Bank hisobi</option><option>Plastik terminal</option>
+                </select>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Tip</div>
+              <div style="position:relative;">
+                <select style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                  <option value="">Tipni tanlang</option><option>Naqd</option><option>Naqdsiz</option>
+                </select>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:22px;">
+            <button onClick="{{ txFiltReset }}" style="height:50px; border:none; border-radius:13px; background:#F0F2F5; color:#46535F; font-size:14px; font-weight:700; cursor:pointer;" style-hover="background:#E6E9ED;">Filtrlarni tozalash</button>
+            <button onClick="{{ txFiltApply }}" style="height:50px; border:none; border-radius:13px; background:#14A0AE; color:#fff; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.24);">Filtrlarni qo'llash</button>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ txnDrActive }}" hint-placeholder-val="{{ true }}">
+        <!-- table -->
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+          <div style="overflow-x:auto;">
+            <div style="min-width:1080px;">
+              <div style="display:grid; grid-template-columns:0.9fr 0.9fr 0.9fr 1.2fr 1.2fr 1.5fr 1.3fr 1.5fr 80px; gap:12px; padding:14px 22px; background:#FAFBFC; border-bottom:1px solid #EEF0F2; font-size:11.5px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;">
+                <div>Tranzaksiya</div><div>Sana</div><div>Tip</div><div>Summa</div><div>Hisob</div><div>Kategoriya</div><div>Foydalanuvchi</div><div>Izoh</div><div style="text-align:right;">Amallar</div>
+              </div>
+              <sc-for list="{{ txnTable }}" as="t" hint-placeholder-count="7">
+                <div style="display:grid; grid-template-columns:0.9fr 0.9fr 0.9fr 1.2fr 1.2fr 1.5fr 1.3fr 1.5fr 80px; gap:12px; padding:15px 22px; border-bottom:1px solid #F4F6F8; align-items:center;">
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:#14A0AE;">#{{ t.id }}</div>
+                  <div style="font-size:12.5px; font-weight:600; color:#46535F; white-space:nowrap;">{{ t.date }}</div>
+                  <div style="font-size:13px; font-weight:700; color:{{ t.typeColor }};">{{ t.type }}</div>
+                  <div><span style="{{ t.amtStyle }}">{{ t.amt }} {{ t.cur }}</span></div>
+                  <div><div style="font-size:13px; font-weight:700; color:#16313A;">{{ t.acc }}</div><div style="font-size:11.5px; color:#9AA3AE; font-weight:500;">{{ t.accSub }}</div></div>
+                  <div style="font-size:13px; font-weight:600; color:#46535F;">{{ t.cat }}</div>
+                  <div style="font-size:13px; font-weight:600; color:#46535F; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ t.user }}</div>
+                  <div style="font-size:12.5px; color:#9AA3AE; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ t.note }}</div>
+                  <div style="display:flex; gap:7px; justify-content:flex-end;">
+                    <button title="Tahrirlash" style="width:32px; height:32px; border-radius:9px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#14A0AE;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
+                    <button title="O'chirish" style="width:32px; height:32px; border-radius:9px; border:1px solid #FAD9D6; background:#FBEDEC; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#E5544E;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+        <!-- SMENA YOPILISHI table -->
+        <sc-if value="{{ txnSmenaActive }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+          <div style="overflow-x:auto;">
+            <div style="min-width:1080px;">
+              <div style="display:grid; grid-template-columns:0.9fr 0.9fr 1.2fr 1.3fr 1.2fr 1.1fr 1.2fr 1.2fr; gap:12px; padding:14px 22px; background:#FAFBFC; border-bottom:1px solid #EEF0F2; font-size:11.5px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;">
+                <div>ID</div><div>Sana</div><div>Tranzaksiya</div><div>Jo'natish hisobi</div><div>Summa</div><div>Status</div><div>Yubordi</div><div>Qabul qildi</div>
+              </div>
+              <sc-for list="{{ smenaRows }}" as="s" hint-placeholder-count="2">
+                <div onClick="{{ s.open }}" style="display:grid; grid-template-columns:0.9fr 0.9fr 1.2fr 1.3fr 1.2fr 1.1fr 1.2fr 1.2fr; gap:12px; padding:15px 22px; border-bottom:1px solid #F4F6F8; align-items:center; cursor:pointer;" style-hover="background:#FAFBFC;">
+                  <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:#14A0AE;">#{{ s.id }}</div>
+                  <div style="font-size:12.5px; font-weight:600; color:#46535F; white-space:nowrap;">{{ s.date }}</div>
+                  <div style="font-size:13px; font-weight:700; color:#14A0AE;">Smena yopilishi</div>
+                  <div><div style="font-size:13px; font-weight:700; color:#16313A;">{{ s.acc }}</div><div style="font-size:11.5px; color:#9AA3AE; font-weight:500;">{{ s.accSub }}</div></div>
+                  <div style="font-size:13px; font-weight:800; color:#16313A; white-space:nowrap;">{{ s.amt }} <span style="font-size:10.5px; color:#9AA3AE; font-weight:700;">UZS</span></div>
+                  <div><span style="{{ s.stStyle }}">{{ s.status }}</span></div>
+                  <div style="font-size:13px; font-weight:600; color:#46535F; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.from }}</div>
+                  <div style="font-size:13px; font-weight:600; color:#46535F; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.to }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- KO'CHIRISHLAR table -->
+        <sc-if value="{{ txnMoveActive }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+          <div style="overflow-x:auto;">
+            <div style="min-width:1180px;">
+              <div style="display:grid; grid-template-columns:0.8fr 0.9fr 1.1fr 1.2fr 1.2fr 1fr 1fr 1.1fr 1.1fr 1.2fr 76px; gap:12px; padding:14px 22px; background:#FAFBFC; border-bottom:1px solid #EEF0F2; font-size:11.5px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;">
+                <div>ID</div><div>Sana</div><div>Tranzaksiya</div><div>Jo'natish hisobi</div><div>Qabul qilish hisobi</div><div>Summa</div><div>Status</div><div>Yubordi</div><div>Qabul qildi</div><div>Izoh</div><div style="text-align:right;">Amallar</div>
+              </div>
+              <div style="padding:52px 20px; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                <div style="font-size:15px; font-weight:800; color:#46535F;">Moliyaviy tranzaksiyalar topilmadi</div>
+                <div style="font-size:13px; color:#9AA3AE; font-weight:600; text-align:center;">Yangi tranzaksiya qo'shish uchun «Qo'shish» tugmasini bosing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- KONVERTATSIYALAR table -->
+        <sc-if value="{{ txnConvActive }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+          <div style="overflow-x:auto;">
+            <div style="min-width:1180px;">
+              <div style="display:grid; grid-template-columns:0.8fr 0.9fr 1.1fr 1.1fr 1.1fr 0.9fr 1.1fr 1.2fr 1.2fr 76px; gap:12px; padding:14px 22px; background:#FAFBFC; border-bottom:1px solid #EEF0F2; font-size:11.5px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;">
+                <div>ID</div><div>Sana</div><div>Tranzaksiya</div><div>Qayerdan</div><div>Qayerga</div><div>Kurs</div><div>Hisob</div><div>Foydalanuvchi</div><div>Izoh</div><div style="text-align:right;">Amallar</div>
+              </div>
+              <div style="padding:52px 20px; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                <div style="font-size:15px; font-weight:800; color:#46535F;">Moliyaviy tranzaksiyalar topilmadi</div>
+                <div style="font-size:13px; color:#9AA3AE; font-weight:600; text-align:center;">Yangi tranzaksiya qo'shish uchun «Qo'shish» tugmasini bosing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- ===== SMENA YOPILISHI BATAFSIL (drawer) ===== -->
+        <sc-if value="{{ smOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ smClose }}" style="position:fixed; inset:0; z-index:140; background:rgba(16,24,40,0.32);"></div>
+        <div style="position:fixed; top:0; right:0; bottom:0; z-index:141; width:min(720px, 95vw); background:#fff; border-radius:26px 0 0 26px; box-shadow:-24px 0 60px rgba(16,24,40,0.2); display:flex; flex-direction:column;">
+          <div style="display:flex; align-items:center; gap:15px; padding:26px 32px 18px;">
+            <button onClick="{{ smClose }}" style="width:42px; height:42px; border-radius:50%; border:none; background:#F0F2F5; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;" style-hover="background:#E6E9ED;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#46535F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"/></svg></button>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:23px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Smena yopilishi #{{ smId }}</div>
+              <div style="font-size:13px; font-weight:600; color:#9AA3AE; margin-top:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ smSub }}</div>
+            </div>
+            <sc-if value="{{ smPending }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ smReject }}" title="Rad etish" style="width:46px; height:46px; border-radius:14px; border:1px solid #FAD9D6; background:#FBEDEC; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#E5544E; flex-shrink:0;" style-hover="background:#F8E1DF;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <button onClick="{{ smAccept }}" title="Qabul qilish" style="width:46px; height:46px; border-radius:14px; border:none; background:#14A0AE; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#fff; flex-shrink:0; box-shadow:0 8px 18px rgba(20,160,174,0.26);" style-hover="background:#0E8E9B;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></button>
+            </sc-if>
+            <sc-if value="{{ smDone }}" hint-placeholder-val="{{ false }}">
+              <span style="{{ smStBadge }}">{{ smStLabel }}</span>
+            </sc-if>
+          </div>
+          <div style="flex:1; overflow:auto; padding:0 32px 34px;">
+            <div style="border-top:1.5px dashed #D7DEE4;"></div>
+            <sc-for list="{{ smSections }}" as="p" hint-placeholder-count="3">
+              <div style="padding:22px 0 24px; border-bottom:1.5px dashed #D7DEE4;">
+                <div style="display:flex; align-items:center; gap:11px; margin-bottom:15px;">
+                  <span style="width:36px; height:36px; border-radius:11px; background:#E3F3F5; display:flex; align-items:center; justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0E7C88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.icon }}"/></svg></span>
+                  <span style="font-size:16.5px; font-weight:800; color:#16313A;">{{ p.label }}</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                  <div>
+                    <div style="font-size:13px; font-weight:700; color:#46535F; margin-bottom:8px;">Jo'natilgan summa</div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 15px;">
+                      <span style="font-size:14.5px; font-weight:800; color:#16313A;">{{ p.sent }}</span>
+                      <span style="font-size:12.5px; font-weight:700; color:#9AA3AE;">UZS</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div style="font-size:13px; font-weight:700; color:#46535F; margin-bottom:8px;">Qabul qilingan summa</div>
+                    <sc-if value="{{ smPending }}" hint-placeholder-val="{{ true }}">
+                      <div style="display:flex; align-items:stretch; border:1px solid #CBE6E9; border-radius:12px; background:#fff; overflow:hidden;">
+                        <input value="{{ p.recv }}" onInput="{{ p.setRecv }}" style="flex:1; min-width:0; border:none; background:transparent; padding:13px 15px; font-size:14.5px; font-weight:800; color:#16313A; outline:none;" />
+                        <span style="display:flex; align-items:center; padding:0 13px; border-left:1px solid #EDEFF2; background:#F7F9FA; font-size:12.5px; font-weight:700; color:#46535F;">UZS</span>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ smDone }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex; align-items:center; justify-content:space-between; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 15px;">
+                        <span style="font-size:14.5px; font-weight:800; color:#16313A;">{{ p.recv }}</span>
+                        <span style="font-size:12.5px; font-weight:700; color:#9AA3AE;">UZS</span>
+                      </div>
+                    </sc-if>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+            <div style="margin-top:20px; background:#F7F9FA; border-radius:13px; padding:15px 18px; display:flex; align-items:center; gap:22px;">
+              <span style="font-size:14px; font-weight:800; color:#16313A;">Jami</span>
+              <div style="flex:1;"></div>
+              <div style="text-align:right;">
+                <div style="font-size:11px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;">Jo'natildi</div>
+                <div style="font-size:14.5px; font-weight:800; color:#16313A;">{{ smTotSent }} <span style="font-size:11px; color:#9AA3AE;">UZS</span></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:11px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;">Qabul qilindi</div>
+                <div style="font-size:14.5px; font-weight:800; color:#0E7C88;">{{ smTotRecv }} <span style="font-size:11px; color:#9AA3AE;">UZS</span></div>
+              </div>
+            </div>
+            <sc-if value="{{ smHasDiff }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:12px; display:flex; align-items:center; gap:10px; background:#FBEDEC; border:1px solid #FAD9D6; border-radius:13px; padding:12px 16px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2413C" stroke-width="2.2" stroke-linecap="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+                <span style="font-size:13px; font-weight:700; color:#C2413C;">Farq: {{ smDiff }} UZS — qabul qilinganda «Kassa farqi» kategoriyasiga yoziladi</span>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- ===== TRANZAKSIYA PANELI (drawer) ===== -->
+        <sc-if value="{{ txDrawerOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ txClose }}" style="position:fixed; inset:0; z-index:140; background:rgba(16,24,40,0.32);"></div>
+        <div style="position:fixed; top:0; right:0; bottom:0; z-index:141; width:min(720px, 95vw); background:#fff; border-radius:26px 0 0 26px; box-shadow:-24px 0 60px rgba(16,24,40,0.2); display:flex; flex-direction:column;">
+          <div style="display:flex; align-items:center; gap:15px; padding:26px 32px 18px;">
+            <button onClick="{{ txClose }}" style="width:42px; height:42px; border-radius:50%; border:none; background:#F0F2F5; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;" style-hover="background:#E6E9ED;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#46535F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"/></svg></button>
+            <div style="flex:1; font-size:23px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">{{ txTitle }}</div>
+            <button onClick="{{ txSubmit }}" style="{{ txSubmitStyle }}">{{ txSubmitLabel }}</button>
+          </div>
+
+          <div style="flex:1; overflow:auto; padding:0 32px 34px;">
+            <div style="border-top:1.5px dashed #D7DEE4;"></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0;">
+              <div style="background:#F7F9FA; border-radius:13px; padding:13px 16px;">
+                <div style="font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:5px;">Hozir tanlangan hisobda</div>
+                <div style="font-size:14px; font-weight:800; color:#0E7C88;">{{ txBalNow }}</div>
+              </div>
+              <div style="background:#F7F9FA; border-radius:13px; padding:13px 16px;">
+                <div style="font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:5px;">Muzlatilgan summa</div>
+                <div style="font-size:14px; font-weight:800; color:#0E7C88;">{{ txBalFrozen }}</div>
+              </div>
+            </div>
+            <div style="border-top:1.5px dashed #D7DEE4; margin-bottom:20px;"></div>
+
+            <!-- KIRIM / CHIQIM -->
+            <sc-if value="{{ txIsInOut }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 20px;">
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Hisob</div>
+                <div style="position:relative;">
+                  <select value="{{ txAccVal }}" onChange="{{ txSetAcc }}" style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                    <option value="">Hisobni tanlang</option>
+                    <option value="0">Asosiy kassa</option>
+                    <option value="1">Bank hisobi</option>
+                    <option value="2">Plastik terminal</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:transparent; margin-bottom:8px;">.</div>
+                <div style="display:flex; background:#F0F2F5; border-radius:12px; padding:4px; gap:4px;">
+                  <button onClick="{{ txPayCash }}" style="{{ txPayCashStyle }}">Naqd</button>
+                  <button onClick="{{ txPayCard }}" style="{{ txPayCardStyle }}">Naqdsiz</button>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Summa</div>
+                <div style="display:flex; align-items:stretch; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; overflow:hidden;">
+                  <input value="{{ txAmt }}" onInput="{{ txSetAmt }}" placeholder="Summani kiriting" style="flex:1; min-width:0; border:none; background:transparent; padding:13px 15px; font-size:14.5px; font-weight:700; color:#16313A; outline:none;" />
+                  <select value="{{ txCurVal }}" onChange="{{ txSetCur }}" style="border:none; border-left:1px solid #EDEFF2; background:#F0F3F5; padding:0 12px; font-size:13px; font-weight:700; color:#46535F; outline:none; cursor:pointer;"><option>UZS</option><option>USD</option></select>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">{{ txKindLabel }}</div>
+                <div style="display:flex; background:#F0F2F5; border-radius:12px; padding:4px; gap:4px;">
+                  <button onClick="{{ txKindDds }}" title="Pul mablag'lari harakatida aks etadi, foyda-zarar hisobotida aks etmaydi" style="{{ txKindDdsStyle }}">Pul oqimi</button>
+                  <button onClick="{{ txKindPiu }}" title="Foyda-zarar hisobotida aks etadi, hisobdan pul yechilmaydi" style="{{ txKindPiuStyle }}">F/Z</button>
+                  <button onClick="{{ txKindSkv }}" title="Ikkala hisobotda ham aks etadi va hisobdan yechiladi" style="{{ txKindSkvStyle }}">O'tuvchi</button>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Foydalanuvchi</div>
+                <div style="position:relative;">
+                  <select value="{{ txUserVal }}" onChange="{{ txSetUser }}" style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                    <option value="0">Aziz Karimov</option>
+                    <option value="1">Nodira Yusupova</option>
+                    <option value="2">Sardor Aliyev</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size:13px; font-weight:700; color:#16313A; margin:20px 0 8px;">Kategoriya</div>
+            <div style="border:1px solid #EDEFF2; border-radius:16px; padding:14px; max-height:280px; overflow:auto;">
+              <div style="display:flex; align-items:center; gap:10px; background:#F4F6F8; border-radius:11px; padding:0 14px; margin-bottom:8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                <input value="{{ txCatQ }}" onInput="{{ txSetCatQ }}" placeholder="Kategoriya nomlanishi" style="flex:1; min-width:0; border:none; background:transparent; padding:12px 0; font-size:13.5px; color:#16313A; outline:none;" />
+              </div>
+              <sc-for list="{{ txCatRows }}" as="c" hint-placeholder-count="3">
+                <div onClick="{{ c.toggle }}" style="display:flex; align-items:center; gap:10px; padding:11px 10px 11px {{ c.indent }}; border-radius:10px; cursor:pointer;" style-hover="background:#F7F9FA;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="{{ c.chevStyle }}"><path d="m9 6 6 6-6 6"/></svg>
+                  <span onClick="{{ c.pick }}" style="{{ c.cbStyle }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <span style="font-size:13.5px; font-weight:700; color:#16313A;">{{ c.name }}</span>
+                </div>
+              </sc-for>
+            </div>
+            </sc-if>
+
+            <!-- KO'CHIRISH -->
+            <sc-if value="{{ txIsMove }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 20px;">
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Jo'natish hisobi</div>
+                <div style="position:relative;">
+                  <select value="{{ txAccVal }}" onChange="{{ txSetAcc }}" style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                    <option value="">Hisobni tanlang</option>
+                    <option value="0">Asosiy kassa</option>
+                    <option value="1">Bank hisobi</option>
+                    <option value="2">Plastik terminal</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">To'lov turi</div>
+                <div style="display:flex; background:#F0F2F5; border-radius:12px; padding:4px; gap:4px;">
+                  <button onClick="{{ txPayCash }}" style="{{ txPayCashStyle }}">Naqd</button>
+                  <button onClick="{{ txPayCard }}" style="{{ txPayCardStyle }}">Naqdsiz</button>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Summa</div>
+                <div style="display:flex; align-items:stretch; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; overflow:hidden;">
+                  <input value="{{ txAmt }}" onInput="{{ txSetAmt }}" placeholder="Summani kiriting" style="flex:1; min-width:0; border:none; background:transparent; padding:13px 15px; font-size:14.5px; font-weight:700; color:#16313A; outline:none;" />
+                  <select value="{{ txCurVal }}" onChange="{{ txSetCur }}" style="border:none; border-left:1px solid #EDEFF2; background:#F0F3F5; padding:0 12px; font-size:13px; font-weight:700; color:#46535F; outline:none; cursor:pointer;"><option>UZS</option><option>USD</option></select>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Foydalanuvchi</div>
+                <div style="position:relative;">
+                  <select value="{{ txUserVal }}" onChange="{{ txSetUser }}" style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                    <option value="0">Aziz Karimov</option>
+                    <option value="1">Nodira Yusupova</option>
+                    <option value="2">Sardor Aliyev</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Qabul qilish hisobi</div>
+                <div style="position:relative;">
+                  <select value="{{ txAcc2Val }}" onChange="{{ txSetAcc2 }}" style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                    <option value="">Kassani tanlang</option>
+                    <option value="0">Asosiy kassa</option>
+                    <option value="1">Bank hisobi</option>
+                    <option value="2">Plastik terminal</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">To'lov turi</div>
+                <div style="display:flex; background:#F0F2F5; border-radius:12px; padding:4px; gap:4px;">
+                  <button onClick="{{ txPay2Cash }}" style="{{ txPay2CashStyle }}">Naqd</button>
+                  <button onClick="{{ txPay2Card }}" style="{{ txPay2CardStyle }}">Naqdsiz</button>
+                </div>
+              </div>
+            </div>
+            </sc-if>
+
+            <!-- KONVERTATSIYA -->
+            <sc-if value="{{ txIsConv }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 20px;">
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Hisob</div>
+                <div style="position:relative;">
+                  <select value="{{ txAccVal }}" onChange="{{ txSetAcc }}" style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                    <option value="">Hisobni tanlang</option>
+                    <option value="0">Asosiy kassa</option>
+                    <option value="1">Bank hisobi</option>
+                    <option value="2">Plastik terminal</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:transparent; margin-bottom:8px;">.</div>
+                <div style="display:flex; background:#F0F2F5; border-radius:12px; padding:4px; gap:4px;">
+                  <button onClick="{{ txPayCash }}" style="{{ txPayCashStyle }}">Naqd</button>
+                  <button onClick="{{ txPayCard }}" style="{{ txPayCardStyle }}">Naqdsiz</button>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Summa</div>
+                <div style="display:flex; align-items:stretch; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; overflow:hidden;">
+                  <input value="{{ txAmt }}" onInput="{{ txSetAmt }}" placeholder="Summani kiriting" style="flex:1; min-width:0; border:none; background:transparent; padding:13px 15px; font-size:14.5px; font-weight:700; color:#16313A; outline:none;" />
+                  <select value="{{ txDirVal }}" onChange="{{ txSetDir }}" style="border:none; border-left:1px solid #EDEFF2; background:#F0F3F5; padding:0 12px; font-size:13px; font-weight:700; color:#46535F; outline:none; cursor:pointer;">
+                    <option value="uzs">UZS → USD</option>
+                    <option value="usd">USD → UZS</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Yakuniy summa</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; border:1px solid #EDEFF2; border-radius:12px; background:#F0F3F5; padding:13px 15px;">
+                  <span style="font-size:14.5px; font-weight:800; color:#16313A;">{{ txFinal }}</span>
+                  <span style="font-size:13px; font-weight:700; color:#9AA3AE;">{{ txFinalCur }}</span>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Kurs</div>
+                <div style="display:flex; align-items:stretch; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; overflow:hidden;">
+                  <input value="{{ txRateVal }}" onInput="{{ txSetRate }}" style="flex:1; min-width:0; border:none; background:transparent; padding:13px 15px; font-size:14.5px; font-weight:700; color:#16313A; outline:none;" />
+                  <span style="display:flex; align-items:center; padding:0 12px; border-left:1px solid #EDEFF2; background:#F0F3F5; font-size:13px; font-weight:700; color:#46535F;">UZS</span>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Foydalanuvchi</div>
+                <div style="position:relative;">
+                  <select value="{{ txUserVal }}" onChange="{{ txSetUser }}" style="width:100%; appearance:none; border:1px solid #EDEFF2; border-radius:12px; background:#F7F9FA; padding:13px 40px 13px 15px; font-size:14px; font-weight:600; color:#16313A; outline:none; cursor:pointer;">
+                    <option value="0">Aziz Karimov</option>
+                    <option value="1">Nodira Yusupova</option>
+                    <option value="2">Sardor Aliyev</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.4" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); pointer-events:none;"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+            </sc-if>
+
+            <div style="font-size:13px; font-weight:700; color:#16313A; margin:20px 0 8px;">Izoh</div>
+            <textarea value="{{ txNote }}" onInput="{{ txSetNote }}" placeholder="Izoh kiriting" style="width:100%; box-sizing:border-box; border:1px solid #EDEFF2; border-radius:14px; background:#F7F9FA; padding:14px 16px; font-size:14px; color:#16313A; outline:none; min-height:110px; resize:vertical; font-family:inherit;"></textarea>
+          </div>
+        </div>
+        </sc-if>
+      </sc-if>
+
+      <!-- ============ MOLIYAVIY KATEGORIYALAR ============ -->
+      <sc-if value="{{ isCats }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ catListView }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+
+          <!-- title + tabs -->
+          <sc-if value="{{ mergeOff }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:22px 24px 0;">
+            <div style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em; margin-bottom:16px;">Moliyaviy kategoriyalar</div>
+            <div style="display:flex; gap:4px;">
+              <sc-for list="{{ catTabs }}" as="t" hint-placeholder-count="4">
+                <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }} <span style="{{ t.badge }}">{{ t.count }}</span></button>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- merge header -->
+          <sc-if value="{{ mergeOn }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:center; gap:12px; padding:22px 24px 0;">
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Kategoriyalarni birlashtirish</div>
+              <div style="font-size:13px; font-weight:700; color:#0E7C88; margin-top:4px;">Tanlandi: {{ mergeCount }}</div>
+            </div>
+            <button onClick="{{ mergeCancel }}" style="height:48px; padding:0 24px; border:none; border-radius:13px; background:#F0F2F5; color:#46535F; font-size:14px; font-weight:700; cursor:pointer;" style-hover="background:#E6E9ED;">Bekor qilish</button>
+            <button onClick="{{ mergeApply }}" style="{{ mergeApplyStyle }}">Birlashtirish</button>
+          </div>
+          </sc-if>
+
+          <!-- search + add -->
+          <div style="display:flex; gap:12px; padding:18px 24px;">
+            <div style="flex:1; display:flex; align-items:center; gap:11px; background:#F4F6F8; border-radius:13px; padding:0 16px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input value="{{ catSearch }}" onInput="{{ setCatSearch }}" placeholder="Kategoriya nomlanishi" style="flex:1; min-width:0; border:none; background:transparent; padding:14px 0; font-size:14px; color:#16313A; outline:none;" />
+            </div>
+            <sc-if value="{{ mergeOff }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ openAddCat }}" style="display:flex; align-items:center; gap:9px; background:#14A0AE; color:#fff; border:none; border-radius:13px; padding:0 24px; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 8px 18px rgba(42,111,219,0.24); white-space:nowrap;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M12 5v14M5 12h14"/></svg> Yangi kategoriya</button>
+            </sc-if>
+          </div>
+
+          <!-- table head -->
+          <div style="display:grid; grid-template-columns:2.2fr 1fr 1.1fr 150px; gap:14px; padding:13px 24px; border-top:1px solid #F2F4F6; border-bottom:1px solid #F2F4F6; background:#FAFBFC; font-size:12px; color:#9AA3AE; font-weight:700; text-transform:uppercase; letter-spacing:0.3px;">
+            <div>Nomlanish</div><div>ID</div><div>Tip</div><div style="text-align:right;">Amal</div>
+          </div>
+
+          <!-- rows (daraxt) -->
+          <sc-for list="{{ catRows }}" as="c" hint-placeholder-count="7">
+            <div onClick="{{ c.toggle }}" style="display:grid; grid-template-columns:2.2fr 1fr 1.1fr 150px; gap:14px; padding:9px 24px; border-bottom:1px solid #F4F6F8; align-items:center; min-height:58px; box-sizing:border-box; background:{{ c.bg }}; cursor:{{ c.cursor }};" style-hover="background:#F7F9FA;">
+              <div style="display:flex; align-items:center; gap:9px; padding-left:{{ c.indent }};">
+                <span style="{{ c.cbStyle }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="{{ c.chevStyle }}"><path d="m9 6 6 6-6 6"/></svg>
+                <span style="{{ c.nameStyle }}">{{ c.name }}</span>
+              </div>
+              <div style="font-size:13.5px; color:#9AA3AE; font-weight:600; font-variant-numeric:tabular-nums;">{{ c.id }}</div>
+              <div><span style="{{ c.badge }}">{{ c.typeLabel }}</span></div>
+              <div style="display:flex; gap:8px; justify-content:flex-end;">
+                <sc-if value="{{ c.canEdit }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ c.edit }}" title="Tahrirlash" style="width:38px; height:38px; border:none; border-radius:11px; background:#E3F3F5; color:#0E7C88; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .15s;" style-hover="background:#14A0AE; color:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
+                </sc-if>
+                <sc-if value="{{ c.active }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ c.link }}" title="Birlashtirish" style="width:38px; height:38px; border:none; border-radius:11px; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .15s;" style-hover="background:#1AA565; color:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 15l6-6M10.5 6.5 12 5a4 4 0 1 1 6 6l-1.5 1.5M13.5 17.5 12 19a4 4 0 1 1-6-6l1.5-1.5"/></svg></button>
+                  <button onClick="{{ c.remove }}" title="O'chirish" style="width:38px; height:38px; border:none; border-radius:11px; background:#FCEEED; color:#C7473F; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .15s;" style-hover="background:#E5544E; color:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+                </sc-if>
+                <sc-if value="{{ c.deleted }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ c.remove }}" style="display:flex; align-items:center; gap:7px; padding:0 15px; height:38px; border:1px solid #BFE6CF; border-radius:11px; background:#fff; color:#1AA565; font-size:13px; font-weight:700; cursor:pointer;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8m0-5v5h5"/></svg> Tiklash</button>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+
+          <sc-if value="{{ catEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:9px; padding:44px 20px; color:#9AA3AE;">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#CBD3DB" stroke-width="1.7"><path d="M3 7h18M3 7l1.5 12a2 2 0 0 0 2 1.8h11a2 2 0 0 0 2-1.8L21 7M8 7V4h8v3"/></svg>
+              <div style="font-size:14px; font-weight:600;">Kategoriya topilmadi</div>
+            </div>
+          </sc-if>
+
+          <div style="height:8px;"></div>
+        </div>
+        </sc-if>
+
+        <!-- ===== YANGI KATEGORIYA (forma) ===== -->
+        <sc-if value="{{ catFormView }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); padding:26px 30px 40px;">
+          <div style="display:flex; align-items:center; gap:15px;">
+            <button onClick="{{ ncBack }}" style="width:42px; height:42px; border-radius:50%; border:none; background:#F0F2F5; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;" style-hover="background:#E6E9ED;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#46535F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6"/></svg></button>
+            <div style="flex:1; font-size:23px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">{{ ncTitle }}</div>
+            <button onClick="{{ ncCreate }}" style="{{ ncCreateStyle }}">{{ ncCreateLabel }}</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1.25fr; gap:40px; margin-top:26px;">
+            <div>
+              <div style="display:flex; align-items:center; gap:11px; padding:15px 0; border-top:1px solid #EDEFF2; border-bottom:1px solid #EDEFF2;">
+                <span style="width:28px; height:28px; border-radius:50%; background:#14A0AE; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; flex-shrink:0;">1</span>
+                <span style="font-size:14.5px; font-weight:700; color:#16313A;">Kategoriya tipini tanlang</span>
+              </div>
+              <div style="display:flex; background:#F0F2F5; border-radius:14px; padding:4px; gap:4px; margin-top:22px;">
+                <button onClick="{{ ncKindInPick }}" style="{{ ncKindInStyle }}">Kirim</button>
+                <button onClick="{{ ncKindOutPick }}" style="{{ ncKindOutStyle }}">Chiqim</button>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; align-items:center; gap:11px; padding:15px 0; border-top:1px solid #EDEFF2; border-bottom:1px solid #EDEFF2;">
+                <span style="width:28px; height:28px; border-radius:50%; background:#14A0AE; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; flex-shrink:0;">2</span>
+                <span style="font-size:14.5px; font-weight:700; color:#16313A;">Kategoriya ma'lumotlarini kiriting</span>
+              </div>
+              <div style="margin-top:22px;">
+                <div style="display:flex; align-items:center; gap:10px; background:#F4F6F8; border-radius:13px; padding:0 14px 0 16px;">
+                  <input value="{{ ncName }}" onInput="{{ ncSetName }}" placeholder="Kategoriya nomini kiriting" style="flex:1; min-width:0; border:none; background:transparent; padding:16px 0; font-size:14.5px; font-weight:600; color:#16313A; outline:none;" />
+                  <button onClick="{{ ncClearName }}" style="{{ ncClearStyle }}"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E5544E"/><path d="M8.6 8.6l6.8 6.8M15.4 8.6l-6.8 6.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button>
+                </div>
+                <div style="margin:12px 0 0 16px; padding-left:22px; border-left:1.5px dashed #D7DEE4; display:flex; flex-direction:column; gap:12px;">
+                  <sc-for list="{{ ncSubRows }}" as="s" hint-placeholder-count="1">
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                      <div style="display:flex; align-items:center; gap:10px; background:#F4F6F8; border-radius:13px; padding:0 14px 0 16px;">
+                        <input value="{{ s.name }}" onInput="{{ s.setName }}" placeholder="Podkategoriya nomini kiriting" style="flex:1; min-width:0; border:none; background:transparent; padding:15px 0; font-size:14px; font-weight:600; color:#16313A; outline:none;" />
+                        <button onClick="{{ s.remove }}" style="border:none; background:transparent; cursor:pointer; display:flex; padding:0;"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E5544E"/><path d="M8.6 8.6l6.8 6.8M15.4 8.6l-6.8 6.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button>
+                      </div>
+                      <div style="margin-left:16px; padding-left:22px; border-left:1.5px dashed #D7DEE4; display:flex; flex-direction:column; gap:12px;">
+                        <sc-for list="{{ s.children }}" as="ss" hint-placeholder-count="1">
+                          <div style="display:flex; align-items:center; gap:10px; background:#F4F6F8; border-radius:13px; padding:0 14px 0 16px;">
+                            <input value="{{ ss.name }}" onInput="{{ ss.setName }}" placeholder="Podkategoriya nomini kiriting" style="flex:1; min-width:0; border:none; background:transparent; padding:15px 0; font-size:14px; font-weight:600; color:#16313A; outline:none;" />
+                            <button onClick="{{ ss.remove }}" style="border:none; background:transparent; cursor:pointer; display:flex; padding:0;"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E5544E"/><path d="M8.6 8.6l6.8 6.8M15.4 8.6l-6.8 6.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button>
+                          </div>
+                        </sc-for>
+                        <button onClick="{{ s.addChild }}" style="border:none; background:#F4F6F8; border-radius:13px; padding:15px; font-size:13.5px; font-weight:700; color:#0E7C88; cursor:pointer;" style-hover="background:#E9EEF2;">Podkategoriya qo'shish</button>
+                      </div>
+                    </div>
+                  </sc-for>
+                  <button onClick="{{ ncAddSub }}" style="border:none; background:#F4F6F8; border-radius:13px; padding:16px; font-size:13.5px; font-weight:700; color:#0E7C88; cursor:pointer;" style-hover="background:#E9EEF2;">Podkategoriya qo'shish</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+      </sc-if>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADD TRANSACTION MODAL ============ -->
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeModal }}" style="position:fixed; inset:0; z-index:120; background:rgba(16,24,40,0.42); display:flex; align-items:center; justify-content:center; padding:28px;">
+  <div onClick="{{ stopProp }}" style="width:480px; max-width:96vw; background:#fff; border-radius:22px; box-shadow:0 30px 70px rgba(16,24,40,0.3); overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px; padding:22px 26px; border-bottom:1px solid #F2F4F6;">
+      <span style="width:44px; height:44px; border-radius:13px; background:{{ modalBg }}; color:{{ modalColor }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="{{ modalIcon }}"/></svg></span>
+      <div style="flex:1;"><div style="font-size:18px; font-weight:800; color:#16313A;">{{ modalTitle }}</div><div style="font-size:13px; color:#9AA3AE; font-weight:600;">Moliyaviy operatsiya qo'shish</div></div>
+      <button onClick="{{ closeModal }}" style="width:40px; height:40px; border-radius:11px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+
+    <div style="padding:24px 26px;">
+      <label style="display:block; font-size:13px; font-weight:700; color:#16313A; margin-bottom:9px;">Summa</label>
+      <div style="display:flex; align-items:stretch; border:1px solid #E1E6EB; border-radius:13px; overflow:hidden; margin-bottom:18px;">
+        <input value="{{ amountFmt }}" onInput="{{ setAmount }}" placeholder="0" style="flex:1; min-width:0; border:none; padding:15px 16px; font-size:18px; font-weight:800; color:#16313A; outline:none; font-variant-numeric:tabular-nums;" style-focus="background:#FAFEFE;" />
+        <span style="display:flex; align-items:center; padding:0 16px; background:#FAFBFC; border-left:1px solid #EDEFF2; font-size:13px; color:#9AA3AE; font-weight:700;">uzs</span>
+      </div>
+
+      <label style="display:block; font-size:13px; font-weight:700; color:#16313A; margin-bottom:9px;">Kategoriya</label>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+        <sc-for list="{{ catOpts }}" as="c" hint-placeholder-count="6">
+          <button onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+
+      <label style="display:block; font-size:13px; font-weight:700; color:#16313A; margin-bottom:9px;">Hisob</label>
+      <div style="display:flex; gap:8px; margin-bottom:18px;">
+        <sc-for list="{{ accOpts }}" as="a" hint-placeholder-count="3">
+          <button onClick="{{ a.pick }}" style="{{ a.style }}">{{ a.label }}</button>
+        </sc-for>
+      </div>
+
+      <label style="display:block; font-size:13px; font-weight:700; color:#16313A; margin-bottom:9px;">Izoh <span style="font-size:12px; color:#9AA3AE; font-weight:600;">— ixtiyoriy</span></label>
+      <input value="{{ note }}" onInput="{{ setNote }}" placeholder="Izoh kiriting" style="width:100%; border:1px solid #E1E6EB; border-radius:12px; padding:13px 16px; font-size:14px; color:#16313A; outline:none;" style-focus="border-color:#14A0AE; box-shadow:0 0 0 3px rgba(20,160,174,0.12);" />
+    </div>
+
+    <div style="display:flex; gap:12px; padding:18px 26px; border-top:1px solid #F2F4F6; background:#FAFBFC;">
+      <button onClick="{{ closeModal }}" style="flex:1; background:#EEF1F4; color:#5A6675; border:none; border-radius:13px; padding:15px; font-size:15px; font-weight:700; cursor:pointer;">Bekor qilish</button>
+      <button onClick="{{ saveTxn }}" style="{{ saveStyle }}">Saqlash</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<dc-import name="AI Konsultant" hint-size="0,0"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { period: 'oy', modal: null, amount: '', cat: 0, acc: 0, note: '', extra: [], molView: 'dash', molMenuOpen: true,
+    inTypes: [
+      { id: '000089', name: 'Daromad', color: '#7A5AF8' },
+      { id: '000083', name: 'Kassa yopilishidagi ortiqcha (avto)', color: '#7A5AF8' },
+      { id: '000080', name: 'Buyurtma qaytishi', color: '#7A5AF8' },
+      { id: '000069', name: 'Savdodan tushum', color: '#7A5AF8' },
+    ],
+    outTypes: [
+      { id: '000082', name: 'Kassa yopilishidagi kamomad (avto)', color: '#EC8A3C' },
+      { id: '000068', name: 'Tovar xaridi', color: '#EC8A3C' },
+      { id: '000048', name: 'Boshqa xarajatlar', color: '#EC8A3C' },
+      { id: '000010', name: 'Operatsion xarajatlar', color: '#EC8A3C' },
+      { id: '000005', name: 'Oylik maosh', color: '#EC8A3C' },
+    ],
+    deletedCats: [
+      { id: '000034', name: 'Vaqtinchalik kirim', kind: 'in' },
+      { id: '000021', name: 'Eski xarajat', kind: 'out' },
+      { id: '000007', name: 'Test kategoriya', kind: 'out' },
+    ],
+    addKind: null, newTypeName: '' };
+
+  _pill(active) {
+    return active
+      ? "padding:8px 16px;border:none;border-radius:9px;background:#14A0AE;color:#fff;font-size:13px;font-weight:600;cursor:pointer;"
+      : "padding:8px 16px;border:none;border-radius:9px;background:transparent;color:#5A6675;font-size:13px;font-weight:500;cursor:pointer;";
+  }
+  _fmt(n) { return Math.round(n).toLocaleString('ru-RU').replace(/\u00A0/g, ' '); }
+
+  _defaultCatTree() {
+    const C = (id, name, children) => ({ id, name, kind: 'out', children: children || [] });
+    return [
+      C('000006', 'BOSHQA XARAJATLAR', [
+        C('000007', 'Patent'), C('000008', 'Amortizatsiya'), C('000009', "Foyda solig'i"), C('000010', 'Kredit foizlari'),
+      ]),
+      C('000011', 'OPERATSION XARAJATLAR', [
+        C('000012', "Ma'muriy xarajatlar", [
+          C('000013', 'Bank komissiyasi'), C('000014', "To'lov tizimlari komissiyasi"), C('000015', 'Konsultant xizmatlari'), C('000016', 'Ofis xarajatlari'), C('000017', "Litsenziyalar to'lovi"), C('000018', "Sug'urta to'lovlari"), C('000019', "Boshqa ma'muriy xarajatlar"),
+        ]),
+        C('000020', 'Xodimlar xarajatlari', [
+          C('000021', 'Oyliklar'), C('000022', 'Bonus va mukofotlar'), C('000023', "Xodimlar sug'urtasi"), C('000024', 'Yollash xarajatlari'), C('000025', 'Boshqa xodim xarajatlari'),
+        ]),
+        C('000026', 'Marketing va reklama', [
+          C('000027', 'Internet reklama'), C('000028', 'Oflayn reklama'), C('000029', 'Reklama materiallari'), C('000030', 'Boshqa reklama xarajatlari'),
+        ]),
+        C('000031', 'Transport, ovqat va boshqalar', [
+          C('000032', 'Transport (taksi)'), C('000033', 'Korporativ tadbirlar'), C('000034', 'Ovqatlanish'), C('000035', 'Komandirovka'), C('000037', 'Tozalash xizmatlari'), C('000038', 'Uskunalar xarajati'), C('000039', 'Boshqa xarajatlar'),
+        ]),
+        C('000040', 'Kommunal xizmatlar', [
+          C('000041', 'Elektr / gaz'), C('000042', 'Telefoniya'), C('000043', "Mulk sug'urtasi"), C('000044', 'Ijara'), C('000045', "Ta'mirlash va xizmat"), C('000046', 'Chiqindi olib ketish'), C('000047', 'Suv'),
+        ]),
+      ]),
+      C('000049', 'UMUMIY ISHLAB CHIQARISH XARAJATLARI', [
+        C('000050', 'Ijara'), C('000051', 'Terminal bank komissiyasi'), C('000052', 'Uskuna va mebel'), C('000053', "Qo'riqlash"), C('000054', 'Tozalash'), C('000055', 'Internet / telefoniya'), C('000056', 'Orgtexnika'),
+      ]),
+    ];
+  }
+
+  _ncOpenEdit(n) {
+    const map = (cs) => (cs || []).map(c => ({ name: c.name, children: map(c.children) }));
+    this.setState({ catView: 'form', ncEditId: n.id, ncKind: n.kind === 'in' ? 'in' : 'out', ncName: n.name, ncSubs: map(n.children) });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const setP = (p) => () => this.setState({ period: p });
+
+    const cf = [
+      { label: 'Yan', in: 548, out: 372 },
+      { label: 'Fev', in: 602, out: 418 },
+      { label: 'Mar', in: 640, out: 445 },
+      { label: 'Apr', in: 588, out: 402 },
+      { label: 'May', in: 655, out: 451 },
+      { label: 'Iyun', in: 681, out: 433 },
+    ];
+    const cfMax = 681, CH = 200;
+    const cashflow = cf.map(m => ({ label: m.label, inH: Math.round(m.in / cfMax * CH) + 'px', outH: Math.round(m.out / cfMax * CH) + 'px', inT: m.in + 'M', outT: m.out + 'M' }));
+
+    const accounts = [
+      { name: 'Asosiy kassa', sub: 'Markaziy · naqd', balance: '425 618 536', num: 425618536, mIn: '48 200 000', mOut: '31 400 000', share: 63.9, bg: '#E7F6EE', color: '#1AA565', icon: 'M4 8h16v11H4zM4 12h16M8 16h3M2 8l2-4h16l2 4' },
+      { name: 'Bank hisobi', sub: 'Asosiy · naqdsiz', balance: '87 602 860', num: 87602860, mIn: '46 400 000', mOut: '52 340 000', share: 13.2, bg: '#E3F3F5', color: '#14A0AE', icon: 'M3 10 12 4l9 6M4 10v9h16v-9M3 21h18' },
+      { name: 'Sotuv kassalari', sub: '3 filial · naqd + naqdsiz', balance: '152 778 604', num: 152778604, mIn: '115 070 800', mOut: '48 200 000', share: 22.9, bg: '#EEEBFE', color: '#7A5AF8', icon: 'M2.5 5h19v14h-19zM2.5 9.5h19M6 14h4' },
+    ];
+    const accountCards = accounts.map(a => ({
+      name: a.name, sub: a.sub, balance: a.balance, mIn: a.mIn, mOut: a.mOut,
+      bg: a.bg, color: a.color, icon: a.icon,
+      shareTxt: a.share.toFixed(1) + '%', shareW: a.share + '%',
+    }));
+    const acctDonut = 'conic-gradient(#1AA565 0 ' + accounts[0].share + '%, #14A0AE ' + accounts[0].share + '% ' + (accounts[0].share + accounts[1].share) + '%, #7A5AF8 ' + (accounts[0].share + accounts[1].share) + '% 100%)';
+    const acctLegend = accounts.map(a => ({ name: a.name, balance: a.balance, dot: a.color, shareTxt: a.share.toFixed(1) + '%' }));
+    const storeRaw = [
+      { name: "Ayollar kiyimlari do'koni", cashUZS: '4 865 764', cashUSD: '0', cardUZS: '16 248 140', cardUSD: '0', frCashUZS: '0', frCashUSD: '0', frCardUZS: '0', frCardUSD: '0', frozen: false },
+      { name: "Erkaklar kiyimlari do'koni", cashUZS: '117 985 700', cashUSD: '0', cardUZS: '16 234 000', cardUSD: '0', frCashUZS: '306 391 050', frCashUSD: '100', frCardUZS: '20 454 958', frCardUSD: '0', frozen: true },
+      { name: "Poyabzal do'koni", cashUZS: '−2 470 000', cashUSD: '10', cardUZS: '−85 000', cardUSD: '0', frCashUZS: '0', frCashUSD: '0', frCardUZS: '0', frCardUSD: '0', frozen: false, neg: true },
+    ];
+    const negRe = /−/;
+    const storeBalances = storeRaw.map(s => ({
+      ...s,
+      cashColor: negRe.test(s.cashUZS) ? '#E5544E' : '#16313A',
+      cardColor: negRe.test(s.cardUZS) ? '#E5544E' : '#16313A',
+      frColor: (s.frCashUZS !== '0' || s.frCardUZS !== '0') ? '#3B82C4' : '#C7CDD4',
+    }));
+    const storeCount = storeBalances.length;
+    const storeTotalCash = '120 381 464';
+    const storeTotalCard = '32 397 140';
+    const storeTotalFrozen = '326 846 008';
+
+    const ACCS = ['Naqd kassa', 'Bank hisobi', 'Plastik terminal'];
+    const baseTxns = [
+      { type: 'in', title: 'Savdodan tushum', category: 'Sotuv', account: 'Naqd kassa', num: 19656000, date: '19.06.2026' },
+      { type: 'out', title: 'Tovar xaridi', category: "Ta'minotchi", account: 'Bank hisobi', num: 42000000, date: '19.06.2026' },
+      { type: 'in', title: 'Savdodan tushum', category: 'Sotuv', account: 'Plastik terminal', num: 5418000, date: '18.06.2026' },
+      { type: 'out', title: 'Oylik maosh', category: 'Xodimlar', account: 'Naqd kassa', num: 12400000, date: '18.06.2026' },
+      { type: 'out', title: "Ijara to'lovi", category: 'Ofis', account: 'Bank hisobi', num: 8000000, date: '17.06.2026' },
+      { type: 'in', title: 'Savdodan tushum', category: 'Sotuv', account: 'Naqd kassa', num: 6048000, date: '17.06.2026' },
+      { type: 'out', title: "Kommunal to'lov", category: 'Kommunal', account: 'Bank hisobi', num: 2340000, date: '16.06.2026' },
+    ];
+    const allTxns = (st.extra || []).concat(baseTxns);
+    const txns = allTxns.map(t => ({
+      title: t.title, category: t.category, account: t.account, date: t.date,
+      amount: (t.type === 'in' ? '+' : '−') + ' ' + this._fmt(t.num),
+      color: t.type === 'in' ? '#1AA565' : '#E5544E',
+      bg: t.type === 'in' ? '#E7F6EE' : '#FCEEED',
+      arrow: t.type === 'in' ? 'M12 19V5M5 12l7-7 7 7' : 'M12 5v14M5 12l7 7 7-7',
+    }));
+
+    // ---- Moliyaviy tranzaksiyalar (batafsil jadval) ----
+    const txnTab = st.txnTab || 'dr';
+    const txnStatsOpen = st.txnStatsOpen !== false;
+    const accStatsOpen = st.accStatsOpen !== false;
+    const mkTxnTab = (key, label, dot) => ({
+      label, dot: !!dot,
+      pick: () => this.setState({ txnTab: key }),
+      style: txnTab === key
+        ? "display:flex; align-items:center; gap:7px; padding:9px 16px; border:none; border-radius:11px; background:#EEF1F4; color:#16313A; font-size:13.5px; font-weight:800; cursor:pointer; white-space:nowrap;"
+        : "display:flex; align-items:center; gap:7px; padding:9px 16px; border:none; border-radius:11px; background:transparent; color:#9AA3AE; font-size:13.5px; font-weight:700; cursor:pointer; white-space:nowrap;",
+    });
+    const txnTabs = [
+      mkTxnTab('dr', 'Daromad / Xarajat'),
+      mkTxnTab('smena', 'Smena yopilishi', true),
+      mkTxnTab('move', "Ko'chirishlar"),
+      mkTxnTab('conv', 'Konvertatsiyalar'),
+    ];
+    const txnTableRaw = [
+      { id: '006025', date: '03.07.2026', type: 'Chiqim', out: true, amt: '250 000', cur: 'UZS', acc: 'Asosiy kassa', accSub: 'Naqd', cat: 'Kassa yopilishidagi farq', user: 'Aziz Karimov', note: 'Maydalik qolib ketdi, +3k' },
+      { id: '006023', date: '03.07.2026', type: 'Kirim', out: false, amt: '20', cur: 'USD', acc: 'Asosiy kassa', accSub: 'Naqd', cat: 'Avtodaromad farqi', user: 'Aziz Karimov', note: 'Kassa yopilishida' },
+      { id: '006020', date: '02.07.2026', type: 'Kirim', out: false, amt: '19 656 000', cur: 'UZS', acc: 'Asosiy kassa', accSub: 'Naqd', cat: 'Sotuvdan tushum', user: 'Nodira Yusupova', note: '—' },
+      { id: '006018', date: '02.07.2026', type: 'Chiqim', out: true, amt: '42 000 000', cur: 'UZS', acc: 'Bank hisobi', accSub: 'Naqdsiz', cat: "Ta'minotchiga to'lov", user: 'Sardor Aliyev', note: 'Tovar xaridi' },
+      { id: '006015', date: '01.07.2026', type: 'Chiqim', out: true, amt: '12 400 000', cur: 'UZS', acc: 'Asosiy kassa', accSub: 'Naqd', cat: 'Oylik maosh', user: 'Aziz Karimov', note: 'Iyun oyi' },
+      { id: '006012', date: '30.06.2026', type: 'Kirim', out: false, amt: '5 418 000', cur: 'UZS', acc: 'Plastik terminal', accSub: 'Naqdsiz', cat: 'Sotuvdan tushum', user: 'Nodira Yusupova', note: '—' },
+      { id: '006008', date: '29.06.2026', type: 'Chiqim', out: true, amt: '8 000 000', cur: 'UZS', acc: 'Bank hisobi', accSub: 'Naqdsiz', cat: 'Ijara', user: 'Sardor Aliyev', note: 'Iyun ijara' },
+    ];
+    const txnTable = (st.txnRows || txnTableRaw).map(t => ({
+      id: t.id, date: t.date, type: t.type, cat: t.cat, user: t.user, note: t.note,
+      acc: t.acc, accSub: t.accSub,
+      amt: (t.out ? '− ' : '+ ') + t.amt, cur: t.cur,
+      amtStyle: 'display:inline-block; font-size:13px; font-weight:800; border-radius:20px; padding:5px 13px; white-space:nowrap;' + (t.out ? 'color:#C7473F; background:#FCEEED;' : 'color:#1AA565; background:#E7F6EE;'),
+      typeColor: t.out ? '#E5544E' : '#1AA565',
+    }));
+
+    const expenseCats = [
+      { label: 'Tovar xaridi', amount: '286 000 000', pct: '66%', w: '66%', color: '#14A0AE' },
+      { label: 'Oylik maosh', amount: '78 000 000', pct: '18%', w: '18%', color: '#2A6FDB' },
+      { label: 'Ijara', amount: '32 000 000', pct: '7%', w: '7%', color: '#7A5AF8' },
+      { label: 'Kommunal', amount: '18 944 880', pct: '5%', w: '5%', color: '#EC8A3C' },
+      { label: 'Reklama', amount: '12 000 000', pct: '3%', w: '3%', color: '#E5544E' },
+      { label: 'Boshqa', amount: '6 000 000', pct: '1%', w: '2%', color: '#9AA8B5' },
+    ];
+
+    // ---- modal ----
+    const type = st.modal;
+    const catList = type === 'in'
+      ? ['Savdodan tushum', 'Qarz qaytdi', 'Boshqa kirim']
+      : ['Tovar xaridi', 'Oylik maosh', 'Ijara', 'Kommunal', 'Reklama', 'Boshqa'];
+    const catOpts = catList.map((label, i) => ({
+      label,
+      pick: () => this.setState({ cat: i }),
+      style: (st.cat === i)
+        ? "padding:9px 14px;border:1px solid #14A0AE;border-radius:11px;background:#E3F3F5;color:#0E7C88;font-size:13px;font-weight:700;cursor:pointer;"
+        : "padding:9px 14px;border:1px solid #E1E6EB;border-radius:11px;background:#fff;color:#46535F;font-size:13px;font-weight:600;cursor:pointer;",
+    }));
+    const accOpts = ACCS.map((label, i) => ({
+      label,
+      pick: () => this.setState({ acc: i }),
+      style: (st.acc === i)
+        ? "flex:1;padding:11px 8px;border:1px solid #14A0AE;border-radius:11px;background:#E3F3F5;color:#0E7C88;font-size:12.5px;font-weight:700;cursor:pointer;"
+        : "flex:1;padding:11px 8px;border:1px solid #E1E6EB;border-radius:11px;background:#fff;color:#46535F;font-size:12.5px;font-weight:600;cursor:pointer;",
+    }));
+    const amtNum = parseInt(String(st.amount || '').replace(/[^\d]/g, ''), 10) || 0;
+    const canSave = amtNum > 0;
+
+    // ---- Tranzaksiya drawer ----
+    const TX_ACCS = ['Asosiy kassa', 'Bank hisobi', 'Plastik terminal'];
+    const TX_USERS = ['Aziz Karimov', 'Nodira Yusupova', 'Sardor Aliyev'];
+    const TX_BAL = ['1 000 000', '42 000 000', '5 400 000'];
+    const txType = st.txDrawer || null;
+    const txSeg = (on) => on
+      ? "flex:1; height:46px; border:none; border-radius:10px; background:#fff; color:#16313A; font-size:13.5px; font-weight:800; cursor:pointer; box-shadow:0 1px 4px rgba(16,24,40,0.10); white-space:nowrap;"
+      : "flex:1; height:46px; border:none; border-radius:10px; background:transparent; color:#7A8593; font-size:13.5px; font-weight:700; cursor:pointer; white-space:nowrap;";
+    const txFmt = (n) => (n || 0).toLocaleString('ru-RU').replace(/,/g, ' ');
+    const txAmtNum = parseInt(String(st.txAmt || '').replace(/\D/g, ''), 10) || 0;
+    const txRateNum = parseInt(String(st.txRate == null ? '12200' : st.txRate).replace(/\D/g, ''), 10) || 0;
+    const txDirUzs = (st.txDir || 'uzs') === 'uzs';
+    const txFinalNum = txDirUzs ? (txRateNum ? Math.floor(txAmtNum / txRateNum) : 0) : txAmtNum * txRateNum;
+    const txCatQl = (st.txCatQ || '').toLowerCase();
+    const txCatExp = st.txCatExp || {};
+    const txCatRows = [];
+    if (txType === 'in' || txType === 'out') {
+      const txMatch = (x) => (x.name || '').toLowerCase().includes(txCatQl) || (x.children || []).some(txMatch);
+      const txWalk = (nodes, level) => nodes.forEach(n => {
+        if (txCatQl && !txMatch(n)) return;
+        const kids = (n.children || []).length > 0;
+        txCatRows.push({
+          name: n.name, indent: (10 + level * 24) + 'px',
+          chevStyle: 'flex-shrink:0; transition:transform .15s;' + ((txCatQl || txCatExp[n.id]) ? 'transform:rotate(90deg);' : '') + (kids ? '' : 'visibility:hidden;'),
+          cbStyle: 'width:19px; height:19px; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; box-sizing:border-box; cursor:pointer;' + (st.txCat === n.name ? 'background:#14A0AE;' : 'border:1.5px solid #C7D0D8; background:#fff;'),
+          toggle: kids ? () => this.setState(s => { const ex = Object.assign({}, s.txCatExp || {}); ex[n.id] = !ex[n.id]; return { txCatExp: ex }; }) : null,
+          pick: (e) => { if (e) e.stopPropagation(); this.setState(s => ({ txCat: s.txCat === n.name ? null : n.name })); },
+        });
+        if (kids && (txCatQl || txCatExp[n.id])) txWalk(n.children, level + 1);
+      });
+      txWalk((st.catTree || this._defaultCatTree()).filter(n => n.kind === (txType === 'in' ? 'in' : 'out')), 0);
+    }
+    const txOpenDrawer = (kind) => () => this.setState({
+      txDrawer: kind, txAddOpen: false, txAmt: '', txNote: '', txCat: null, txCatQ: '', txCatExp: {},
+      txAccI: null, txAcc2I: null, txUserI: 0, txPay: 'cash', txPay2: 'cash', txKind: 'dds', txDir: 'uzs', txRate: '12 200', txCur: 'UZS',
+    });
+    const txSubmit = () => {
+      if (!txAmtNum) return;
+      const tt = txType;
+      if (tt === 'in' || tt === 'out') {
+        this.setState(s => {
+          const rows = (s.txnRows || txnTableRaw).slice();
+          rows.unshift({
+            id: '00' + (6030 + Math.floor(Math.random() * 60)), date: '13.07.2026',
+            type: tt === 'out' ? 'Chiqim' : 'Kirim', out: tt === 'out',
+            amt: txFmt(txAmtNum), cur: s.txCur || 'UZS',
+            acc: TX_ACCS[s.txAccI || 0], accSub: s.txPay === 'card' ? 'Naqdsiz' : 'Naqd',
+            cat: s.txCat || '—', user: TX_USERS[s.txUserI || 0], note: (s.txNote || '').trim() || '—',
+          });
+          return { txnRows: rows, txDrawer: null, txnTab: 'dr' };
+        });
+      } else this.setState({ txDrawer: null });
+    };
+
+    // ---- Moliya views ----
+    const molView = st.molView || 'dash';
+    const isDash = molView === 'dash';
+    const isCats = molView === 'cats';
+    const isTxns = molView === 'txns';
+    const isAccounts = molView === 'accounts';
+    const subStyle = (active) => active
+      ? "text-align:left;padding:9px 13px;border:none;border-radius:10px;background:#E3F3F5;color:#0E7C88;font-size:13.5px;font-weight:700;cursor:pointer;"
+      : "text-align:left;padding:9px 13px;border:none;border-radius:10px;background:transparent;color:#5A6675;font-size:13.5px;font-weight:600;cursor:pointer;";
+    // ---- Smena yopilishi (batafsil panel) ----
+    const smFmt = (n) => String(n || 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    const SM_ST = {
+      ok:   { label: 'Qabul qilindi', style: 'display:inline-block; font-size:12px; font-weight:800; color:#1AA565; background:#E7F6EE; border-radius:20px; padding:4px 12px; white-space:nowrap;' },
+      wait: { label: 'Kutilmoqda',    style: 'display:inline-block; font-size:12px; font-weight:800; color:#B58A1B; background:#FBF3DE; border-radius:20px; padding:4px 12px; white-space:nowrap;' },
+      rej:  { label: 'Rad etildi',    style: 'display:inline-block; font-size:12px; font-weight:800; color:#C2413C; background:#FBEDEC; border-radius:20px; padding:4px 12px; white-space:nowrap;' },
+    };
+    const SM_DEF = [
+      { id: 'S-0148', date: '03.07.2026', acc: 'Asosiy kassa', accSub: 'Naqd', st: 'ok', from: 'Nodira Yusupova', to: 'Aziz Karimov', cash: 600000, card: 500000, debt: 150000 },
+      { id: 'S-0147', date: '02.07.2026', acc: 'Asosiy kassa', accSub: 'Naqd', st: 'wait', from: 'Sardor Aliyev', to: '\u2014', cash: 450000, card: 380000, debt: 150000 },
+    ];
+    const smRaw = st.smRows || SM_DEF;
+    const smenaRows = smRaw.map((r, i) => ({
+      id: r.id, date: r.date, acc: r.acc, accSub: r.accSub,
+      amt: smFmt(r.cash + r.card + r.debt),
+      status: SM_ST[r.st].label, stStyle: SM_ST[r.st].style,
+      from: r.from, to: r.to,
+      open: () => this.setState({ smSel: i, smEdit: {} }),
+    }));
+    const smSel = st.smSel;
+    const smOpen = smSel != null && !!smRaw[smSel];
+    const smR = smOpen ? smRaw[smSel] : SM_DEF[0];
+    const smEdit = st.smEdit || {};
+    const smPending = smR.st === 'wait';
+    const smSub = smR.acc + ' \u00b7 ' + smR.accSub + ' \u00b7 Yubordi: ' + smR.from + ' \u00b7 ' + smR.date;
+    const smRecvN = (k) => smEdit[k] != null ? smEdit[k] : smR[k];
+    const smSections = [
+      { key: 'cash', label: 'Naqd', icon: 'M2 7h20v10H2Z M14.5 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z' },
+      { key: 'card', label: 'Karta', icon: 'M2 6h20v12H2Z M2 10h20' },
+      { key: 'debt', label: 'Nasiya', icon: 'M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z M12 8v4l3 2' },
+    ].map((sd) => ({
+      label: sd.label, icon: sd.icon,
+      sent: smFmt(smR[sd.key]),
+      recv: smFmt(smRecvN(sd.key)),
+      setRecv: (e) => { const d = (e.target.value || '').replace(/\D/g, ''); this.setState(s => ({ smEdit: Object.assign({}, s.smEdit, { [sd.key]: d ? parseInt(d, 10) : 0 }) })); },
+    }));
+    const smTotSentN = smR.cash + smR.card + smR.debt;
+    const smTotRecvN = smRecvN('cash') + smRecvN('card') + smRecvN('debt');
+    const smDiffN = smTotRecvN - smTotSentN;
+    const smDiffFmt = (smDiffN > 0 ? '+' : '\u2212') + smFmt(Math.abs(smDiffN));
+    const smClose = () => this.setState({ smSel: null });
+    const smAccept = () => this.setState(s => {
+      const rows = (s.smRows || SM_DEF).slice(); const e = s.smEdit || {};
+      const r = Object.assign({}, rows[smSel]);
+      ['cash', 'card', 'debt'].forEach(k => { if (e[k] != null) r[k] = e[k]; });
+      r.st = 'ok'; r.to = 'Aziz Karimov';
+      rows[smSel] = r; return { smRows: rows, smSel: null };
+    });
+    const smReject = () => this.setState(s => {
+      const rows = (s.smRows || SM_DEF).slice();
+      rows[smSel] = Object.assign({}, rows[smSel], { st: 'rej', to: '\u2014' });
+      return { smRows: rows, smSel: null };
+    });
+
+    // ---- Moliyaviy kategoriyalar (unified table) ----
+    const catTab = st.catTab || 'active';
+    const catSearchRaw = st.catSearch || '';
+    const catSearch = catSearchRaw.toLowerCase();
+    const inBadge = "display:inline-block; min-width:82px; text-align:center; font-size:12.5px; font-weight:800; color:#1AA565; background:#E7F6EE; border-radius:20px; padding:5px 16px;";
+    const outBadge = "display:inline-block; min-width:82px; text-align:center; font-size:12.5px; font-weight:800; color:#E5544E; background:#FCEEED; border-radius:20px; padding:5px 16px;";
+    const catTree = st.catTree || this._defaultCatTree();
+    const catDel = st.catDel || [];
+    const removeById = (nodes, id) => nodes.filter(n => n.id !== id).map(n => Object.assign({}, n, { children: removeById(n.children || [], id) }));
+    const catExp = st.catExp || {};
+    const subMatch = (n) => (n.name || '').toLowerCase().includes(catSearch) || (n.children || []).some(subMatch);
+    let catTop = catTree;
+    if (catTab === 'in') catTop = catTree.filter(n => n.kind === 'in');
+    else if (catTab === 'out') catTop = catTree.filter(n => n.kind === 'out');
+    const catFlat = [];
+    const walkCats = (nodes, level) => nodes.forEach(n => {
+      if (catSearch && !subMatch(n)) return;
+      catFlat.push({ n, level });
+      if ((n.children || []).length && (catSearch || catExp[n.id])) walkCats(n.children, level + 1);
+    });
+    if (catTab !== 'deleted') walkCats(catTop, 0);
+    const mergeAnchor = st.mergeAnchor || null;
+    const mergeSel = st.mergeSel || {};
+    const mergeCount = mergeAnchor ? 1 + Object.keys(mergeSel).filter(k => mergeSel[k]).length : 0;
+    const catRows = mergeAnchor
+      ? catTree
+          .filter(n => !catSearch || (n.name || '').toLowerCase().includes(catSearch))
+          .map(n => {
+            const isAnchor = n.id === mergeAnchor;
+            const sel = isAnchor || !!mergeSel[n.id];
+            return {
+              id: n.id, name: n.name, indent: '0px',
+              chevStyle: 'display:none;',
+              cbStyle: 'width:20px; height:20px; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; box-sizing:border-box;' + (sel ? (isAnchor ? 'background:#ADBECB;' : 'background:#14A0AE;') : 'border:1.5px solid #C7D0D8; background:#fff;'),
+              nameStyle: 'font-size:14px; font-weight:800; color:#16313A; text-transform:uppercase; letter-spacing:0.2px;',
+              badge: n.kind === 'in' ? inBadge : outBadge,
+              typeLabel: n.kind === 'in' ? 'Kirim' : 'Chiqim',
+              bg: sel ? '#EAF6F8' : '#fff',
+              cursor: isAnchor ? 'default' : 'pointer',
+              toggle: isAnchor ? null : () => this.setState(s => { const m = Object.assign({}, s.mergeSel || {}); m[n.id] = !m[n.id]; return { mergeSel: m }; }),
+              canEdit: false, active: false, deleted: false,
+            };
+          })
+      : catTab === 'deleted'
+      ? catDel.map((d, i) => ({
+          id: d.id, name: d.name, indent: '0px',
+          cbStyle: 'display:none;',
+          chevStyle: 'visibility:hidden; flex-shrink:0;',
+          nameStyle: 'font-size:14px; font-weight:800; color:#16313A; text-transform:uppercase; letter-spacing:0.2px;',
+          badge: d.kind === 'in' ? inBadge : outBadge, typeLabel: d.kind === 'in' ? 'Kirim' : 'Chiqim',
+          bg: '#fff', cursor: 'default',
+          canEdit: false, active: false, deleted: true,
+          remove: (e) => { if (e) e.stopPropagation(); this.setState(s => {
+            const del = (s.catDel || []).slice();
+            const item = del.splice(i, 1)[0];
+            const t = (s.catTree || this._defaultCatTree()).slice();
+            if (item) t.unshift(item);
+            return { catDel: del, catTree: t };
+          }); },
+        }))
+      : catFlat.map(({ n, level }, fi) => {
+          const hasKids = (n.children || []).length > 0;
+          const open = !!(catSearch || catExp[n.id]);
+          return {
+            id: n.id, name: n.name,
+            indent: (level * 26) + 'px',
+            cbStyle: 'display:none;',
+            chevStyle: 'flex-shrink:0; transition:transform .15s;' + (open ? 'transform:rotate(90deg);' : '') + (hasKids ? '' : 'visibility:hidden;'),
+            nameStyle: level === 0
+              ? 'font-size:14px; font-weight:800; color:#16313A; text-transform:uppercase; letter-spacing:0.2px;'
+              : 'font-size:13.5px; font-weight:600; color:#46535F;',
+            badge: level === 0 ? (n.kind === 'in' ? inBadge : outBadge) : 'display:none;',
+            typeLabel: n.kind === 'in' ? 'Kirim' : 'Chiqim',
+            bg: level === 0 ? '#fff' : (fi % 2 ? '#FAFBFC' : '#fff'),
+            cursor: hasKids ? 'pointer' : 'default',
+            toggle: hasKids ? () => this.setState(s => { const ex = Object.assign({}, s.catExp || {}); ex[n.id] = !ex[n.id]; return { catExp: ex }; }) : null,
+            canEdit: level === 0,
+            edit: (e) => { if (e) e.stopPropagation(); this._ncOpenEdit(n); },
+            stop: (e) => { if (e) e.stopPropagation(); },
+            link: (e) => { if (e) e.stopPropagation(); if (level === 0) this.setState({ mergeAnchor: n.id, mergeSel: {}, catSearch: '' }); },
+            active: true, deleted: false,
+            remove: (e) => { if (e) e.stopPropagation(); this.setState(s => {
+              const t0 = s.catTree || this._defaultCatTree();
+              if (level === 0) {
+                const del = (s.catDel || []).slice(); del.unshift(n);
+                return { catTree: t0.filter(x => x.id !== n.id), catDel: del };
+              }
+              return { catTree: removeById(t0, n.id) };
+            }); },
+          };
+        });
+    const catEmpty = catRows.length === 0;
+    const mkTab = (key, label, count) => ({
+      label, count,
+      pick: () => this.setState({ catTab: key }),
+      style: catTab === key
+        ? "display:flex; align-items:center; gap:8px; padding:9px 17px; border:none; border-radius:11px; background:#EEF1F4; color:#16313A; font-size:14px; font-weight:800; cursor:pointer;"
+        : "display:flex; align-items:center; gap:8px; padding:9px 17px; border:none; border-radius:11px; background:transparent; color:#9AA3AE; font-size:14px; font-weight:700; cursor:pointer;",
+      badge: catTab === key ? "font-size:12.5px; font-weight:800; color:#5A6675;" : "font-size:12.5px; font-weight:700; color:#C0C7CF;",
+    });
+    const catTabs = [
+      mkTab('active', 'Faol', catTree.length),
+      mkTab('in', 'Kirimlar', catTree.filter(n => n.kind === 'in').length),
+      mkTab('out', 'Chiqimlar', catTree.filter(n => n.kind === 'out').length),
+      mkTab('deleted', "O'chirilgan", catDel.length),
+    ];
+    const addingCat = !!st.addKind;
+    const confirmAddCat = () => {
+      const name = (st.newTypeName || '').trim();
+      if (!name) return;
+      const kind = st.addKind === 'out' ? 'out' : 'in';
+      const key = kind === 'in' ? 'inTypes' : 'outTypes';
+      this.setState(s => {
+        const arr = (s[key] || []).slice();
+        const nid = '0000' + String(10 + Math.floor(Math.random() * 89));
+        arr.unshift({ id: nid, name, color: kind === 'in' ? '#7A5AF8' : '#EC8A3C' });
+        return { [key]: arr, newTypeName: '', addKind: null, catTab: kind === 'in' ? 'in' : 'out' };
+      });
+    };
+    const kindSeg = (on) => on
+      ? "flex:1; padding:11px 0; border:none; border-radius:9px; background:#fff; color:#16313A; font-size:13px; font-weight:800; cursor:pointer; box-shadow:0 1px 2px rgba(16,24,40,0.12);"
+      : "flex:1; padding:11px 0; border:none; border-radius:9px; background:transparent; color:#9AA3AE; font-size:13px; font-weight:700; cursor:pointer;";
+    // ---- Yangi kategoriya formasi ----
+    const ncSeg = (on) => on
+      ? "flex:1; height:52px; border:none; border-radius:11px; background:#fff; color:#16313A; font-size:15px; font-weight:800; cursor:pointer; box-shadow:0 2px 8px rgba(16,24,40,0.10);"
+      : "flex:1; height:52px; border:none; border-radius:11px; background:transparent; color:#7A8593; font-size:15px; font-weight:700; cursor:pointer;";
+    const ncCloneSubs = () => JSON.parse(JSON.stringify(st.ncSubs || []));
+    const ncSubRows = (st.ncSubs || []).map((s1, i) => ({
+      name: s1.name,
+      setName: (e) => { const a = ncCloneSubs(); a[i].name = e.target.value; this.setState({ ncSubs: a }); },
+      remove: () => { const a = ncCloneSubs(); a.splice(i, 1); this.setState({ ncSubs: a }); },
+      addChild: () => { const a = ncCloneSubs(); a[i].children = (a[i].children || []).concat([{ name: '', children: [] }]); this.setState({ ncSubs: a }); },
+      children: (s1.children || []).map((s2, j) => ({
+        name: s2.name,
+        setName: (e) => { const a = ncCloneSubs(); a[i].children[j].name = e.target.value; this.setState({ ncSubs: a }); },
+        remove: () => { const a = ncCloneSubs(); a[i].children.splice(j, 1); this.setState({ ncSubs: a }); },
+      })),
+    }));
+    const ncValid = !!(st.ncName || '').trim();
+    const ncNextId = () => { this._catIdc = (this._catIdc || 100) + 1; return '000' + String(this._catIdc); };
+    const ncCreate = () => {
+      if (!ncValid) return;
+      const kind = st.ncKind === 'in' ? 'in' : 'out';
+      const mk = (subs) => (subs || []).filter(x => (x.name || '').trim()).map(x => ({ id: ncNextId(), name: x.name.trim(), kind, children: mk(x.children) }));
+      const node = { id: st.ncEditId || ncNextId(), name: (st.ncName || '').trim(), kind, children: mk(st.ncSubs) };
+      this.setState(s => {
+        const t0 = s.catTree || this._defaultCatTree();
+        const t = s.ncEditId ? t0.map(x => x.id === s.ncEditId ? node : x) : [node].concat(t0);
+        const ex = Object.assign({}, s.catExp || {}); ex[node.id] = true;
+        return { catTree: t, catView: 'list', catTab: 'active', catExp: ex };
+      });
+    };
+
+    return {
+      // sidebar / view
+      isAccounts, isTxns, isCats, isDash,
+      showDash: () => this.setState({ molView: 'dash' }),
+      subDashStyle: subStyle(isDash),
+      molMenuOpen: !!st.molMenuOpen,
+      molChevron: st.molMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      molSub: isDash ? 'Kassa harakati va tahlil' : (isCats ? 'Kirim va chiqim turlari' : (isTxns ? 'Barcha moliyaviy operatsiyalar' : 'Kassa va hisoblar balansi')),
+      toggleMolMenu: () => this.setState(s => ({ molMenuOpen: !s.molMenuOpen })),
+      showCats: () => this.setState({ molView: 'cats' }),
+      showTxns: () => this.setState({ molView: 'txns' }),
+      showAccounts: () => this.setState({ molView: 'accounts' }),
+      subCatsStyle: subStyle(isCats),
+      subTxnsStyle: subStyle(isTxns),
+      subAccStyle: subStyle(isAccounts),
+      // categories table
+      catTabs, catRows, catEmpty,
+      catSearch: catSearchRaw,
+      setCatSearch: (e) => this.setState({ catSearch: e.target.value }),
+      addingCat,
+      openAddCat: () => this.setState({ catView: 'form', ncEditId: null, ncKind: 'out', ncName: '', ncSubs: [] }),
+      catListView: (st.catView || 'list') !== 'form',
+      catFormView: (st.catView || 'list') === 'form',
+      mergeOn: !!mergeAnchor,
+      mergeOff: !mergeAnchor,
+      mergeCount,
+      mergeCancel: () => this.setState({ mergeAnchor: null, mergeSel: {} }),
+      mergeApply: () => {
+        if (mergeCount < 2) return;
+        this.setState(s => {
+          const t0 = s.catTree || this._defaultCatTree();
+          const selIds = Object.keys(s.mergeSel || {}).filter(k => s.mergeSel[k]);
+          const moved = t0.filter(x => selIds.includes(x.id));
+          const t = t0.filter(x => !selIds.includes(x.id)).map(x => x.id === s.mergeAnchor ? Object.assign({}, x, { children: (x.children || []).concat(moved) }) : x);
+          const ex = Object.assign({}, s.catExp || {}); ex[s.mergeAnchor] = true;
+          return { catTree: t, mergeAnchor: null, mergeSel: {}, catExp: ex };
+        });
+      },
+      mergeApplyStyle: mergeCount >= 2
+        ? "height:48px; padding:0 26px; border:none; border-radius:13px; background:#14A0AE; color:#fff; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.24);"
+        : "height:48px; padding:0 26px; border:none; border-radius:13px; background:#EEF1F4; color:#B6BFC8; font-size:14px; font-weight:800; cursor:not-allowed;",
+      ncTitle: st.ncEditId ? "Kategoriyani tahrirlash" : "Yangi kategoriya",
+      ncBack: () => this.setState({ catView: 'list' }),
+      ncName: st.ncName || '',
+      ncSetName: (e) => this.setState({ ncName: e.target.value }),
+      ncClearName: () => this.setState({ ncName: '' }),
+      ncClearStyle: (st.ncName || '').length ? "border:none; background:transparent; cursor:pointer; display:flex; padding:0;" : "display:none;",
+      ncKindInPick: () => this.setState({ ncKind: 'in' }),
+      ncKindOutPick: () => this.setState({ ncKind: 'out' }),
+      ncKindInStyle: ncSeg(st.ncKind === 'in'),
+      ncKindOutStyle: ncSeg(st.ncKind !== 'in'),
+      ncSubRows,
+      ncAddSub: () => this.setState(s => ({ ncSubs: (s.ncSubs || []).concat([{ name: '', children: [] }]) })),
+      ncCreate,
+      ncCreateLabel: st.ncEditId ? "Saqlash" : "Yaratish",
+      ncCreateStyle: ncValid
+        ? "padding:0 32px; height:48px; border:none; border-radius:13px; background:#14A0AE; color:#fff; font-size:14.5px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.24);"
+        : "padding:0 32px; height:48px; border:none; border-radius:13px; background:#EEF1F4; color:#B6BFC8; font-size:14.5px; font-weight:800; cursor:not-allowed;",
+      setAddKindIn: () => this.setState({ addKind: 'in' }),
+      setAddKindOut: () => this.setState({ addKind: 'out' }),
+      addKindInStyle: kindSeg(st.addKind !== 'out'),
+      addKindOutStyle: kindSeg(st.addKind === 'out'),
+      cancelAdd: () => this.setState({ addKind: null, newTypeName: '' }),
+      setNewType: (e) => this.setState({ newTypeName: e.target.value }),
+      newTypeName: st.newTypeName || '',
+      confirmAdd: confirmAddCat,
+      confirmStyle: ((st.newTypeName || '').trim())
+        ? "padding:0 20px;border:none;border-radius:11px;background:#14A0AE;color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap;"
+        : "padding:0 20px;border:none;border-radius:11px;background:#CBD6DC;color:#fff;font-size:13.5px;font-weight:700;cursor:not-allowed;white-space:nowrap;",
+
+      pYil: setP('yil'), pOy: setP('oy'), pHafta: setP('hafta'),
+      sYil: this._pill(st.period === 'yil'), sOy: this._pill(st.period === 'oy'), sHafta: this._pill(st.period === 'hafta'),
+      cashflow, accounts, txns, expenseCats, txnCount: txns.length,
+      accountCards, acctDonut, acctLegend, storeBalances, storeCount, storeTotalCash, storeTotalCard, storeTotalFrozen,
+      txnTabs, txnTable, txnTab,
+      // tranzaksiya drawer + filtrlar
+      txFiltOpen: !!st.txFiltOpen,
+      txFiltToggle: () => this.setState(s => ({ txFiltOpen: !s.txFiltOpen, txAddOpen: false })),
+      txFiltChevron: st.txFiltOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      txFiltReset: () => this.setState({ txFiltOpen: false }),
+      txFiltApply: () => this.setState({ txFiltOpen: false }),
+      txAddOpen: !!st.txAddOpen,
+      txAddToggle: () => this.setState(s => ({ txAddOpen: !s.txAddOpen, txFiltOpen: false })),
+      txOpenIn: txOpenDrawer('in'), txOpenOut: txOpenDrawer('out'), txOpenMove: txOpenDrawer('move'), txOpenConv: txOpenDrawer('conv'),
+      txDrawerOpen: !!txType,
+      txClose: () => this.setState({ txDrawer: null }),
+      txTitle: txType === 'in' ? 'Yangi daromad' : (txType === 'out' ? 'Yangi xarajat' : (txType === 'move' ? "Yangi ko'chirish" : 'Yangi konvertatsiya')),
+      txSubmitLabel: txType === 'move' ? "Jo'natish" : "Qo'shish",
+      txSubmit,
+      txSubmitStyle: txAmtNum > 0
+        ? "padding:0 30px; height:48px; border:none; border-radius:13px; background:#14A0AE; color:#fff; font-size:14.5px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.24);"
+        : "padding:0 30px; height:48px; border:none; border-radius:13px; background:#EEF1F4; color:#B6BFC8; font-size:14.5px; font-weight:800; cursor:not-allowed;",
+      txIsInOut: txType === 'in' || txType === 'out',
+      txIsMove: txType === 'move',
+      txIsConv: txType === 'conv',
+      txKindLabel: txType === 'out' ? 'Xarajat tipi' : 'Daromad tipi',
+      txBalNow: st.txAccI == null ? 'Hisob tanlanmagan' : (TX_BAL[st.txAccI] + ' UZS / 0 USD'),
+      txBalFrozen: st.txAccI == null ? 'Hisob tanlanmagan' : '0 UZS / 0 USD',
+      txAccVal: st.txAccI == null ? '' : String(st.txAccI),
+      txSetAcc: (e) => this.setState({ txAccI: e.target.value === '' ? null : parseInt(e.target.value, 10) }),
+      txAcc2Val: st.txAcc2I == null ? '' : String(st.txAcc2I),
+      txSetAcc2: (e) => this.setState({ txAcc2I: e.target.value === '' ? null : parseInt(e.target.value, 10) }),
+      txUserVal: String(st.txUserI || 0),
+      txSetUser: (e) => this.setState({ txUserI: parseInt(e.target.value, 10) || 0 }),
+      txPayCash: () => this.setState({ txPay: 'cash' }),
+      txPayCard: () => this.setState({ txPay: 'card' }),
+      txPayCashStyle: txSeg(st.txPay !== 'card'),
+      txPayCardStyle: txSeg(st.txPay === 'card'),
+      txPay2Cash: () => this.setState({ txPay2: 'cash' }),
+      txPay2Card: () => this.setState({ txPay2: 'card' }),
+      txPay2CashStyle: txSeg(st.txPay2 !== 'card'),
+      txPay2CardStyle: txSeg(st.txPay2 === 'card'),
+      txKindDds: () => this.setState({ txKind: 'dds' }),
+      txKindPiu: () => this.setState({ txKind: 'piu' }),
+      txKindSkv: () => this.setState({ txKind: 'skv' }),
+      txKindDdsStyle: txSeg((st.txKind || 'dds') === 'dds'),
+      txKindPiuStyle: txSeg(st.txKind === 'piu'),
+      txKindSkvStyle: txSeg(st.txKind === 'skv'),
+      txAmt: st.txAmt || '',
+      txSetAmt: (e) => { const d = e.target.value.replace(/\D/g, ''); this.setState({ txAmt: d ? txFmt(parseInt(d, 10)) : '' }); },
+      txCurVal: st.txCur || 'UZS',
+      txSetCur: (e) => this.setState({ txCur: e.target.value }),
+      txCatQ: st.txCatQ || '',
+      txSetCatQ: (e) => this.setState({ txCatQ: e.target.value }),
+      txCatRows,
+      txNote: st.txNote || '',
+      txSetNote: (e) => this.setState({ txNote: e.target.value }),
+      txDirVal: st.txDir || 'uzs',
+      txSetDir: (e) => this.setState({ txDir: e.target.value }),
+      txRateVal: st.txRate == null ? '12 200' : st.txRate,
+      txSetRate: (e) => { const d = e.target.value.replace(/\D/g, ''); this.setState({ txRate: d ? txFmt(parseInt(d, 10)) : '' }); },
+      txFinal: txFmt(txFinalNum),
+      txFinalCur: txDirUzs ? 'USD' : 'UZS',
+      txnStatsOpen,
+      txnDrActive: txnTab === 'dr',
+      txnSmenaActive: txnTab === 'smena',
+      txnMoveActive: txnTab === 'move',
+      txnConvActive: txnTab === 'conv',
+      smenaRows,
+      smOpen, smId: smR.id, smSub, smPending, smDone: !smPending,
+      smStLabel: SM_ST[smR.st].label, smStBadge: SM_ST[smR.st].style,
+      smSections, smTotSent: smFmt(smTotSentN), smTotRecv: smFmt(smTotRecvN),
+      smHasDiff: smPending && smDiffN !== 0, smDiff: smDiffFmt,
+      smClose, smAccept, smReject,
+      toggleTxnStats: () => this.setState(s => ({ txnStatsOpen: s.txnStatsOpen === false })),
+      accStatsOpen,
+      toggleAccStats: () => this.setState(s => ({ accStatsOpen: s.accStatsOpen === false })),
+      accStatsToggleLabel: accStatsOpen ? 'Statistikani yashirish' : 'Statistikani ko’rsatish',
+      accStatsChevron: accStatsOpen ? 'rotate(0deg)' : 'rotate(180deg)',
+      txnStatsToggleLabel: txnStatsOpen ? 'Statistikani yashirish' : 'Statistikani ko\u2019rsatish',
+      txnStatsChevron: txnStatsOpen ? 'rotate(0deg)' : 'rotate(180deg)',
+      // modal control
+      openIn: () => this.setState({ modal: 'in', amount: '', cat: 0, acc: 0, note: '' }),
+      openOut: () => this.setState({ modal: 'out', amount: '', cat: 0, acc: 0, note: '' }),
+      closeModal: () => this.setState({ modal: null }),
+      stopProp: (e) => e.stopPropagation(),
+      modalOpen: !!st.modal,
+      modalTitle: type === 'in' ? 'Kirim qo\u2019shish' : 'Xarajat qo\u2019shish',
+      modalColor: type === 'in' ? '#1AA565' : '#E5544E',
+      modalBg: type === 'in' ? '#E7F6EE' : '#FCEEED',
+      modalIcon: type === 'in' ? 'M12 19V5M5 12l7-7 7 7' : 'M12 5v14M5 12l7 7 7-7',
+      catOpts, accOpts,
+      amountFmt: amtNum ? this._fmt(amtNum) : '',
+      setAmount: (e) => { const raw = (e.target.value || '').replace(/[^\d]/g, ''); this.setState({ amount: raw }); },
+      note: st.note,
+      setNote: (e) => this.setState({ note: e.target.value }),
+      saveStyle: canSave
+        ? "flex:1; background:#14A0AE; color:#fff; border:none; border-radius:13px; padding:15px; font-size:15px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);"
+        : "flex:1; background:#CBD6DC; color:#fff; border:none; border-radius:13px; padding:15px; font-size:15px; font-weight:800; cursor:not-allowed;",
+      saveTxn: () => {
+        if (!canSave) return;
+        const t = st.modal;
+        const cl = (t === 'in' ? ['Savdodan tushum', 'Qarz qaytdi', 'Boshqa kirim'] : ['Tovar xaridi', 'Oylik maosh', 'Ijara', 'Kommunal', 'Reklama', 'Boshqa']);
+        const catLabel = cl[st.cat] || cl[0];
+        const accLabel = ACCS[st.acc] || ACCS[0];
+        const row = { type: t, title: (st.note || '').trim() || catLabel, category: catLabel, account: accLabel, num: amtNum, date: 'Bugun' };
+        this.setState(s => ({ extra: [row].concat(s.extra || []), modal: null, amount: '', note: '' }));
+      },
+    };
+  }
+}
+</script>
+<template id="__bundler_thumbnail" data-bg-color="#EEF1F4">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#EEF1F4"/>
+    <rect x="440" y="240" width="320" height="320" rx="72" fill="#14A0AE"/>
+    <path d="M520 340 L560 460 L600 370 L640 460 L680 340" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+</template>
+</body>
+</html>

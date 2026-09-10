@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</helmet>
+
+<!-- HEADER / CONTROLS -->
+<div style="position:absolute; left:40px; top:0px; width:1390px; font-family:'Manrope',system-ui,sans-serif;">
+  <div data-drags-parent="1" style="font-size:13px; font-weight:700; color:#8A93A0; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:10px; cursor:grab;">Wasyt · Mobil ilova — 3 dizayn yo'nalishi</div>
+  <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+    <div style="font-size:30px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">Mobil versiya</div>
+    <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #E7EBEF; border-radius:14px; padding:5px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+      <span style="font-size:12.5px; font-weight:700; color:#9AA3AE; padding:0 8px;">Rol:</span>
+      <button onClick="{{ setOwner }}" style="{{ ownerBtn }}">Egasi</button>
+      <button onClick="{{ setSeller }}" style="{{ sellerBtn }}">Sotuvchi</button>
+    </div>
+    <div style="font-size:13.5px; font-weight:600; color:#8A93A0; max-width:420px; line-height:1.5;">Pastdagi tugmalar bosiladi · har telefon mustaqil ishlaydi. Rolni almashtiring — bosh ekran o'zgaradi.</div>
+  </div>
+</div>
+
+<!-- PHONE 1 — AURORA -->
+<div style="position:absolute; left:40px; top:150px; width:390px; font-family:'Manrope',system-ui,sans-serif;">
+  <div data-drags-parent="1" style="margin-bottom:14px; cursor:grab;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="width:13px; height:13px; border-radius:50%; background:#14A0AE;"></span>
+      <span style="font-size:16px; font-weight:800; color:#16313A;">Aurora</span>
+      <span style="font-size:12px; font-weight:700; color:#14A0AE; background:#E3F3F5; border-radius:7px; padding:3px 9px;">Tavsiya etiladi</span>
+    </div>
+    <div style="font-size:13px; font-weight:600; color:#9AA3AE; margin-top:3px;">Yorug', toza — joriy brendga eng yaqin</div>
+  </div>
+  <dc-import name="Wasyt Mobil Frame" variant="aurora" role="{{ role }}" hint-size="390px,844px"></dc-import>
+</div>
+
+<!-- PHONE 2 — MIDNIGHT -->
+<div style="position:absolute; left:540px; top:150px; width:390px; font-family:'Manrope',system-ui,sans-serif;">
+  <div data-drags-parent="1" style="margin-bottom:14px; cursor:grab;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="width:13px; height:13px; border-radius:50%; background:#2BD4C4;"></span>
+      <span style="font-size:16px; font-weight:800; color:#16313A;">Midnight</span>
+      <span style="font-size:12px; font-weight:700; color:#6E5BD8; background:#ECE9FB; border-radius:7px; padding:3px 9px;">Tungi</span>
+    </div>
+    <div style="font-size:13px; font-weight:600; color:#9AA3AE; margin-top:3px;">Qora tema, suzuvchi navigatsiya, gradient karta</div>
+  </div>
+  <dc-import name="Wasyt Mobil Frame" variant="midnight" role="{{ role }}" hint-size="390px,844px"></dc-import>
+</div>
+
+<!-- PHONE 3 — PAPER -->
+<div style="position:absolute; left:1040px; top:150px; width:390px; font-family:'Manrope',system-ui,sans-serif;">
+  <div data-drags-parent="1" style="margin-bottom:14px; cursor:grab;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="width:13px; height:13px; border-radius:50%; background:#0E7C88;"></span>
+      <span style="font-size:16px; font-weight:800; color:#16313A;">Paper</span>
+      <span style="font-size:12px; font-weight:700; color:#A8855B; background:#F2EBDD; border-radius:7px; padding:3px 9px;">Minimal</span>
+    </div>
+    <div style="font-size:13px; font-weight:600; color:#9AA3AE; margin-top:3px;">Iliq fon, soyasiz, katta tipografika</div>
+  </div>
+  <dc-import name="Wasyt Mobil Frame" variant="paper" role="{{ role }}" hint-size="390px,844px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { role: 'owner' };
+  renderVals() {
+    const role = this.state.role;
+    const on = `padding:8px 18px; border-radius:10px; border:none; cursor:pointer; font-size:13.5px; font-weight:700; background:#14A0AE; color:#fff;`;
+    const off = `padding:8px 18px; border-radius:10px; border:none; cursor:pointer; font-size:13.5px; font-weight:700; background:transparent; color:#5A6675;`;
+    return {
+      role,
+      setOwner: () => this.setState({ role: 'owner' }),
+      setSeller: () => this.setState({ role: 'seller' }),
+      ownerBtn: role === 'owner' ? on : off,
+      sellerBtn: role === 'seller' ? on : off
+    };
+  }
+}
+</script>
+</body>
+</html>

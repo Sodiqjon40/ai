@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .wm-scroll::-webkit-scrollbar { width: 0; height: 0; }
+  @keyframes wm-scan { 0%,100% { top: 24px; } 50% { top: calc(100% - 24px); } }
+</style>
+</helmet>
+
+<div style="{{ frame }}">
+  <div style="{{ screen }}" class="wm-scroll">
+
+    <!-- STATUS BAR -->
+    <div style="height:44px; flex-shrink:0; display:flex; align-items:center; justify-content:space-between; padding:0 26px; font-size:14px; font-weight:700; color:{{ T.text }};">
+      <span>9:41</span>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <svg width="17" height="12" viewBox="0 0 18 12" fill="{{ T.text }}"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity="0.35"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="{{ T.text }}"><path d="M8 2.6c2 0 3.8.8 5.1 2l1.3-1.4A9.3 9.3 0 0 0 8 .6 9.3 9.3 0 0 0 1.6 3.2L2.9 4.6A7.3 7.3 0 0 1 8 2.6Z"/><path d="M8 6.3c1 0 1.9.4 2.6 1l1.3-1.3A6 6 0 0 0 8 4.3a6 6 0 0 0-3.9 1.7l1.3 1.3c.7-.6 1.6-1 2.6-1Z"/><circle cx="8" cy="9.6" r="1.8"/></svg>
+        <div style="width:25px; height:12px; border:1.6px solid {{ T.text }}; border-radius:3px; padding:1.5px; opacity:0.9;"><div style="width:72%; height:100%; background:{{ T.text }}; border-radius:1px;"></div></div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <div style="{{ headerWrap }}">
+      <div style="min-width:0;">
+        <div style="font-size:{{ headerTitleSize }}; font-weight:800; color:{{ T.text }}; letter-spacing:-0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ headerTitle }}</div>
+        <sc-if value="{{ headerSub }}" hint-placeholder-val="x"><div style="font-size:12.5px; font-weight:600; color:{{ T.faint }}; margin-top:2px;">{{ headerSub }}</div></sc-if>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+        <button onClick="{{ openNotifs }}" style="width:40px; height:40px; border-radius:12px; border:1px solid {{ T.border }}; background:{{ T.surface }}; display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ T.dim }}" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.5 21a2 2 0 0 1-3 0"/></svg>
+          <span style="position:absolute; top:-4px; right:-4px; min-width:16px; height:16px; border-radius:8px; background:#E5544E; color:#fff; font-size:9.5px; font-weight:800; display:flex; align-items:center; justify-content:center; padding:0 4px;">3</span>
+        </button>
+        <span style="width:40px; height:40px; border-radius:50%; background:{{ T.accentSoft }}; color:{{ T.accent }}; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0;">{{ avatarInitial }}</span>
+      </div>
+    </div>
+
+    <!-- SCROLL CONTENT -->
+    <div style="flex:1; overflow-y:auto; padding:4px 18px 120px;" class="wm-scroll">
+
+      <!-- ============ HOME ============ -->
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+        <!-- OWNER HERO -->
+        <sc-if value="{{ ownerHome }}" hint-placeholder-val="{{ true }}">
+          <div style="{{ heroStyle }}">
+            <div style="font-size:13.5px; font-weight:600; color:{{ heroLabel }};">Bugungi umumiy savdo</div>
+            <div style="display:flex; align-items:baseline; gap:8px; margin-top:6px;">
+              <span style="font-size:{{ heroNumSize }}; font-weight:900; color:{{ heroNum }}; letter-spacing:-0.03em;">115 070 800</span>
+              <span style="font-size:14px; font-weight:700; color:{{ heroLabel }};">so'm</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:7px; margin-top:10px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:12.5px; font-weight:800; color:{{ heroBadgeText }}; background:{{ heroBadgeBg }}; border-radius:8px; padding:3px 8px;">▲ 12%</span>
+              <span style="font-size:12.5px; font-weight:600; color:{{ heroLabel }};">kechagiga nisbatan</span>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px;">
+            <sc-for list="{{ ownerStats }}" as="s" hint-placeholder-count="3">
+              <div style="{{ statCard }}">
+                <div style="font-size:11.5px; font-weight:600; color:{{ T.faint }}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.label }}</div>
+                <div style="font-size:16px; font-weight:800; color:{{ T.text }}; margin-top:5px; letter-spacing:-0.02em; white-space:nowrap;">{{ s.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- chart -->
+          <div style="{{ sectionCard }}">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+              <span style="font-size:15px; font-weight:800; color:{{ T.text }};">Savdo dinamikasi</span>
+              <span style="font-size:12px; font-weight:700; color:{{ T.accent }};">Bu hafta</span>
+            </div>
+            <div style="display:flex; align-items:flex-end; gap:9px; height:128px;">
+              <sc-for list="{{ chartDays }}" as="d" hint-placeholder-count="7">
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;">
+                  <div style="{{ d.bar }}"></div>
+                  <span style="font-size:11px; font-weight:600; color:{{ T.faint }};">{{ d.date }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- SELLER HERO -->
+        <sc-if value="{{ sellerHome }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ goSell }}" style="{{ ctaCard }}">
+            <span style="width:46px; height:46px; border-radius:14px; background:{{ ctaIconBg }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="{{ T.onAccent }}" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+            <div style="text-align:left; flex:1;">
+              <div style="font-size:17px; font-weight:800; color:{{ T.onAccent }};">Yangi savdo boshlash</div>
+              <div style="font-size:12.5px; font-weight:600; color:{{ ctaSub }}; margin-top:2px;">Mahsulot qo'shing va chek yarating</div>
+            </div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ T.onAccent }}" stroke-width="2.4"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+
+          <div style="{{ heroStyle }}">
+            <div style="font-size:13.5px; font-weight:600; color:{{ heroLabel }};">Bugungi natijangiz</div>
+            <div style="display:flex; align-items:baseline; gap:8px; margin-top:6px;">
+              <span style="font-size:{{ heroNumSize }}; font-weight:900; color:{{ heroNum }}; letter-spacing:-0.03em;">15 300 000</span>
+              <span style="font-size:14px; font-weight:700; color:{{ heroLabel }};">so'm</span>
+            </div>
+            <div style="display:flex; gap:18px; margin-top:12px;">
+              <div><div style="font-size:11.5px; font-weight:600; color:{{ heroLabel }};">Cheklar</div><div style="font-size:17px; font-weight:800; color:{{ heroNum }};">4 ta</div></div>
+              <div><div style="font-size:11.5px; font-weight:600; color:{{ heroLabel }};">O'rtacha chek</div><div style="font-size:17px; font-weight:800; color:{{ heroNum }};">3.8M</div></div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- recent sales -->
+        <div style="{{ sectionCard }}">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+            <span style="font-size:15px; font-weight:800; color:{{ T.text }};">So'nggi savdolar</span>
+            <span style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#E5544E;">Live <span style="width:7px; height:7px; border-radius:50%; background:#E5544E;"></span></span>
+          </div>
+          <sc-for list="{{ salesFeed }}" as="s" hint-placeholder-count="3">
+            <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-top:1px solid {{ T.border }};">
+              <span style="width:42px; height:42px; border-radius:11px; background:{{ T.accentSoft }}; color:{{ T.accent }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              </span>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:14px; font-weight:700; color:{{ T.text }}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.name }}</div>
+                <div style="font-size:12px; font-weight:500; color:{{ T.faint }};">{{ s.ago }}</div>
+              </div>
+              <div style="font-size:14px; font-weight:800; color:#1AA565; white-space:nowrap; flex-shrink:0;">{{ s.amt }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- ============ SELL (catalog grid = default) ============ -->
+      <sc-if value="{{ isSell }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; gap:10px; margin-bottom:14px;">
+          <div style="flex:1; display:flex; align-items:center; gap:10px; background:{{ T.surface }}; border:1px solid {{ T.border }}; border-radius:14px; padding:0 14px; height:46px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ T.faint }}" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+            <input value="{{ query }}" onInput="{{ onSearch }}" placeholder="Mahsulot qidirish..." style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-family:inherit; font-size:14px; font-weight:600; color:{{ T.text }};" />
+          </div>
+          <button onClick="{{ openCatalog }}" style="width:46px; height:46px; border-radius:14px; border:none; background:{{ T.accent }}; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ T.onAccent }}" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 12h10"/></svg>
+          </button>
+        </div>
+
+        <div style="display:flex; gap:8px; overflow-x:auto; margin-bottom:16px; padding-bottom:2px;" class="wm-scroll">
+          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+            <div style="{{ prodCard }}">
+              <div onClick="{{ p.open }}" style="height:84px; border-radius:12px; background:{{ T.accentSoft }}; display:flex; align-items:center; justify-content:center; margin-bottom:10px; cursor:pointer;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{ T.accent }}" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              </div>
+              <div onClick="{{ p.open }}" style="font-size:13px; font-weight:700; color:{{ T.text }}; line-height:1.3; min-height:34px; cursor:pointer;">{{ p.name }}</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-top:8px;">
+                <span style="font-size:13.5px; font-weight:800; color:{{ T.text }};">{{ p.price }}</span>
+                <button onClick="{{ p.add }}" style="width:32px; height:32px; border-radius:10px; border:none; background:{{ T.accent }}; color:{{ T.onAccent }}; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; font-weight:700; line-height:1;">+</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:50px 20px; color:{{ T.faint }}; font-size:14px; font-weight:600;">Hech narsa topilmadi</div>
+        </sc-if>
+      </sc-if>
+
+      <!-- ============ SCANNER CAMERA ============ -->
+      <sc-if value="{{ isCatalog }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <button onClick="{{ closeCatalog }}" style="width:40px; height:40px; border-radius:12px; border:1px solid {{ T.border }}; background:{{ T.surface }}; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ T.text }}" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg>
+          </button>
+          <span style="font-size:18px; font-weight:800; color:{{ T.text }}; letter-spacing:-0.02em;">Skaner kamera</span>
+        </div>
+
+        <!-- CAMERA SCANNER -->
+        <div style="position:relative; border-radius:18px; overflow:hidden; background:#0E1621; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+          <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.4"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <div style="position:absolute; top:24px; left:24px; width:38px; height:38px; border-top:3px solid {{ T.accent }}; border-left:3px solid {{ T.accent }}; border-top-left-radius:10px;"></div>
+          <div style="position:absolute; top:24px; right:24px; width:38px; height:38px; border-top:3px solid {{ T.accent }}; border-right:3px solid {{ T.accent }}; border-top-right-radius:10px;"></div>
+          <div style="position:absolute; bottom:24px; left:24px; width:38px; height:38px; border-bottom:3px solid {{ T.accent }}; border-left:3px solid {{ T.accent }}; border-bottom-left-radius:10px;"></div>
+          <div style="position:absolute; bottom:24px; right:24px; width:38px; height:38px; border-bottom:3px solid {{ T.accent }}; border-right:3px solid {{ T.accent }}; border-bottom-right-radius:10px;"></div>
+          <div style="position:absolute; left:24px; right:24px; height:2px; background:{{ T.accent }}; box-shadow:0 0 12px {{ T.accent }}; animation:wm-scan 2.2s ease-in-out infinite;"></div>
+          <div style="position:absolute; bottom:18px; left:0; right:0; text-align:center; font-size:12.5px; font-weight:700; color:rgba(255,255,255,0.62);">Shtrix-kodni ramkaga joylang</div>
+        </div>
+
+        <button onClick="{{ closeCatalog }}" style="width:100%; margin-top:14px; display:flex; align-items:center; justify-content:center; gap:10px; background:{{ T.surface }}; border:1px solid {{ T.border }}; border-radius:15px; padding:15px; cursor:pointer; box-shadow:{{ cardShadow }};">
+          <span style="width:34px; height:34px; border-radius:10px; background:{{ T.accentSoft }}; color:{{ T.accent }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5ZM3 8v8l9 5 9-5V8"/></svg>
+          </span>
+          <span style="flex:1; text-align:left; font-size:15px; font-weight:800; color:{{ T.text }};">Mahsulotlar katalogi</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ T.faint }}" stroke-width="2.4"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+      </sc-if>
+
+      <!-- ============ PRODUCTS ============ -->
+      <sc-if value="{{ isProducts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:10px; background:{{ T.surface }}; border:1px solid {{ T.border }}; border-radius:14px; padding:0 14px; height:46px; margin-bottom:14px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ T.faint }}" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+          <input value="{{ query }}" onInput="{{ onSearch }}" placeholder="Qidirish..." style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-family:inherit; font-size:14px; font-weight:600; color:{{ T.text }};" />
+        </div>
+        <div style="{{ listCard }}">
+          <sc-for list="{{ productRows }}" as="p" hint-placeholder-count="5">
+            <div onClick="{{ p.open }}" style="display:flex; align-items:center; gap:13px; padding:13px 0; border-top:1px solid {{ T.border }}; cursor:pointer;">
+              <span style="width:46px; height:46px; border-radius:12px; background:{{ T.accentSoft }}; color:{{ T.accent }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              </span>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:14px; font-weight:700; color:{{ T.text }}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.name }}</div>
+                <div style="font-size:12px; font-weight:600; color:{{ T.faint }};">{{ p.cat }} · {{ p.price }}</div>
+              </div>
+              <span style="{{ p.badge }}">{{ p.stock }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- ============ CUSTOMERS ============ -->
+      <sc-if value="{{ isCustomers }}" hint-placeholder-val="{{ false }}">
+        <div style="{{ debtBanner }}">
+          <div>
+            <div style="font-size:12.5px; font-weight:600; color:{{ debtBannerLabel }};">Umumiy qarz qoldig'i</div>
+            <div style="font-size:22px; font-weight:900; color:{{ debtBannerNum }}; letter-spacing:-0.02em; margin-top:3px;">{{ totalDebt }} <span style="font-size:13px; font-weight:700;">so'm</span></div>
+          </div>
+          <span style="width:46px; height:46px; border-radius:13px; background:{{ debtBannerIcon }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ debtBannerNum }}" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+        </div>
+        <div style="{{ listCard }}">
+          <sc-for list="{{ customers }}" as="c" hint-placeholder-count="4">
+            <div onClick="{{ c.open }}" style="display:flex; align-items:center; gap:13px; padding:13px 0; border-top:1px solid {{ T.border }}; cursor:pointer;">
+              <span style="width:44px; height:44px; border-radius:50%; background:{{ c.avBg }}; color:{{ c.avText }}; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; flex-shrink:0;">{{ c.initial }}</span>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:14px; font-weight:700; color:{{ T.text }}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ c.name }}</div>
+                <div style="font-size:12px; font-weight:500; color:{{ T.faint }};">{{ c.phone }}</div>
+              </div>
+              <span style="{{ c.badge }}">{{ c.debt }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- ============ MORE ============ -->
+      <sc-if value="{{ isMore }}" hint-placeholder-val="{{ false }}">
+        <div style="{{ profileCard }}">
+          <span style="width:54px; height:54px; border-radius:50%; background:{{ T.accentSoft }}; color:{{ T.accent }}; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:800; flex-shrink:0;">{{ avatarInitial }}</span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:16px; font-weight:800; color:{{ T.text }};">{{ greetName }}</div>
+            <div style="font-size:12.5px; font-weight:600; color:{{ T.faint }}; margin-top:2px;">{{ roleLabel }} · Markaziy do'kon</div>
+          </div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ T.faint }}" stroke-width="2.2"><path d="m9 6 6 6-6 6"/></svg>
+        </div>
+        <div style="{{ listCard }}">
+          <sc-for list="{{ moreItems }}" as="m" hint-placeholder-count="6">
+            <button onClick="{{ m.open }}" style="width:100%; display:flex; align-items:center; gap:14px; padding:14px 0; border:none; background:none; border-top:1px solid {{ T.border }}; cursor:pointer; text-align:left;">
+              <span style="width:40px; height:40px; border-radius:11px; background:{{ T.accentSoft }}; color:{{ T.accent }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="{{ m.icon }}"/></svg>
+              </span>
+              <span style="flex:1; font-size:14.5px; font-weight:700; color:{{ T.text }};">{{ m.label }}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ T.faint }}" stroke-width="2.2"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+    </div>
+
+    <!-- CART BAR (sell only) -->
+    <sc-if value="{{ showCart }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ openCheckout }}" style="{{ cartBar }}">
+        <div>
+          <div style="font-size:12px; font-weight:600; color:{{ cartSub }};">{{ cartCount }} mahsulot</div>
+          <div style="font-size:17px; font-weight:900; color:{{ T.onAccent }}; letter-spacing:-0.02em;">{{ cartTotal }} so'm</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; font-size:15px; font-weight:800; color:{{ T.onAccent }};">To'lovga o'tish <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ T.onAccent }}" stroke-width="2.4"><path d="m9 6 6 6-6 6"/></svg></div>
+      </button>
+    </sc-if>
+
+    <!-- TOAST -->
+    <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; left:50%; top:70px; transform:translateX(-50%); z-index:40; background:#16313A; color:#fff; font-size:13px; font-weight:700; padding:11px 18px; border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.3); white-space:nowrap;">{{ toast }}</div>
+    </sc-if>
+
+    <!-- OVERLAY -->
+    <sc-if value="{{ hasOverlay }}" hint-placeholder-val="{{ false }}">{{ overlayEl }}</sc-if>
+
+    <!-- BOTTOM NAV -->
+    <div style="{{ navWrap }}">
+      <div style="{{ navInner }}">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <button onClick="{{ n.go }}" style="{{ n.style }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="{{ n.icon }}"/></svg>
+            <span style="font-size:10.5px; font-weight:{{ n.weight }};">{{ n.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:844},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;aurora&quot;,&quot;midnight&quot;,&quot;paper&quot;],&quot;default&quot;:&quot;aurora&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;role&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;owner&quot;,&quot;seller&quot;],&quot;default&quot;:&quot;owner&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 'home', cat: 0, cart: {}, query: '', overlay: null, toast: '', paid: {}, catalog: false };
+
+  open(type, data) { this.setState({ overlay: { type, data } }); }
+  close() { this.setState({ overlay: null }); }
+  flash(msg) { this.setState({ toast: msg }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: '' }), 2200); }
+  addToCart(id) { this.setState(s => ({ cart: { ...s.cart, [id]: (s.cart[id] || 0) + 1 } })); }
+  decCart(id) { this.setState(s => { const n = (s.cart[id] || 0) - 1; const cart = { ...s.cart }; if (n <= 0) delete cart[id]; else cart[id] = n; return { cart }; }); }
+  payDebt(name) { this.setState(s => ({ paid: { ...s.paid, [name]: true }, overlay: null })); this.flash("To'lov qabul qilindi"); }
+  finishSale() { this.setState({ cart: {}, overlay: null, tab: 'home' }); this.flash('Savdo yakunlandi · chek saqlandi'); }
+
+  renderOverlay(c, fmt, fmtM) {
+    const ov = this.state.overlay;
+    if (!ov) return null;
+    const h = React.createElement;
+    const rad = c.radius;
+    const S = (o) => o; // style passthrough
+    const sheet = { position:'absolute', left:0, right:0, bottom:0, top:0, zIndex:20, display:'flex', flexDirection:'column', background:c.bg, fontFamily:"'Manrope',system-ui,sans-serif", borderRadius:'38px', overflow:'hidden' };
+    const titleBar = (title, sub) => h('div', { style:{ flexShrink:0, display:'flex', alignItems:'center', gap:12, padding:'52px 18px 14px' } },
+      h('button', { onClick:()=>this.close(), style:{ width:40, height:40, borderRadius:12, border:'1px solid '+c.border, background:c.surface, display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer', flexShrink:0 } },
+        h('svg', { width:20, height:20, viewBox:'0 0 24 24', fill:'none', stroke:c.text, strokeWidth:2.2 }, h('path', { d:'m15 18-6-6 6-6' }))),
+      h('div', { style:{ minWidth:0 } },
+        h('div', { style:{ fontSize:19, fontWeight:800, color:c.text, letterSpacing:'-0.02em' } }, title),
+        sub ? h('div', { style:{ fontSize:12.5, fontWeight:600, color:c.faint, marginTop:1 } }, sub) : null));
+    const body = (kids) => h('div', { style:{ flex:1, overflowY:'auto', padding:'4px 18px 28px' }, className:'wm-scroll' }, kids);
+    const card = (kids, extra) => h('div', { style:{ background:c.surface, border:'1px solid '+c.border, borderRadius:rad, padding:'18px', boxShadow:c.shadow, ...(extra||{}) } }, kids);
+    const primaryBtn = (label, onClick, extra) => h('button', { onClick, style:{ width:'100%', border:'none', borderRadius:16, background:c.accent, color:c.onAccent, fontSize:16, fontWeight:800, padding:'16px', cursor:'pointer', fontFamily:'inherit', ...(extra||{}) } }, label);
+    const d = ov.data || {};
+
+    if (ov.type === 'product') {
+      const margin = d.price - d.cost;
+      const out = d.stock === 0;
+      return h('div', { style:sheet },
+        titleBar('Mahsulot', d.sku),
+        body([
+          card([
+            h('div', { key:'img', style:{ height:150, borderRadius:14, background:c.accentSoft, display:'flex', alignItems:'center', justifyContent:'center', marginBottom:16 } },
+              h('svg', { width:54, height:54, viewBox:'0 0 24 24', fill:'none', stroke:c.accent, strokeWidth:1.4 }, h('rect',{x:3,y:3,width:18,height:18,rx:3}), h('circle',{cx:8.5,cy:8.5,r:1.5}), h('path',{d:'m21 15-5-5L5 21'}))),
+            h('div', { key:'nm', style:{ fontSize:20, fontWeight:800, color:c.text, letterSpacing:'-0.02em' } }, d.name),
+            h('div', { key:'ct', style:{ fontSize:13, fontWeight:600, color:c.faint, marginTop:3 } }, d.cat),
+            h('div', { key:'pr', style:{ display:'flex', alignItems:'baseline', gap:6, marginTop:14 } },
+              h('span', { style:{ fontSize:28, fontWeight:900, color:c.text, letterSpacing:'-0.02em' } }, fmt(d.price)),
+              h('span', { style:{ fontSize:14, fontWeight:700, color:c.faint } }, "so'm"))
+          ], { marginBottom:14 }),
+          h('div', { key:'stats', style:{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12, marginBottom:14 } }, [
+            card([ h('div',{key:1,style:{fontSize:12,fontWeight:600,color:c.faint}},'Qoldiq'), h('div',{key:2,style:{fontSize:20,fontWeight:800,color:out?'#E5544E':c.text,marginTop:4}}, out?'Tugagan':d.stock+' dona') ], { padding:'15px 16px' }),
+            card([ h('div',{key:1,style:{fontSize:12,fontWeight:600,color:c.faint}},'Foyda / dona'), h('div',{key:2,style:{fontSize:20,fontWeight:800,color:'#1AA565',marginTop:4}}, fmtM(margin)) ], { padding:'15px 16px' })
+          ]),
+          primaryBtn(out?'Omborga qo\u2019shish':'Savatga qo\u2019shish', ()=>{ if(out){this.flash('Mahsulot tugagan');} else { this.addToCart(d.id); this.setState({tab:'sell'}); this.close(); this.flash('Savatga qo\u2019shildi'); } })
+        ]));
+    }
+
+    if (ov.type === 'customer') {
+      const hasDebt = d.debtN > 0;
+      return h('div', { style:sheet },
+        titleBar('Mijoz', d.phone),
+        body([
+          card([
+            h('div',{key:'top',style:{display:'flex',alignItems:'center',gap:14}},
+              h('span',{style:{width:56,height:56,borderRadius:'50%',background:hasDebt?'#FBE7E5':c.accentSoft,color:hasDebt?'#E5544E':c.accent,display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,fontWeight:800,flexShrink:0}}, d.name[0]),
+              h('div',{style:{minWidth:0}}, h('div',{style:{fontSize:18,fontWeight:800,color:c.text}},d.name), h('div',{style:{fontSize:13,fontWeight:600,color:c.faint,marginTop:2}},d.phone))),
+            h('div',{key:'debt',style:{marginTop:16,padding:'14px 16px',borderRadius:14,background:hasDebt?(c.mode==='dark'?'#2A1A1C':'#FFF4F3'):(c.mode==='dark'?'#13301E':'#E6F7EE')}},
+              h('div',{style:{fontSize:12.5,fontWeight:600,color:hasDebt?'#C97A72':'#1AA565'}}, hasDebt?'Qarz qoldig\u2019i':'Qarzdorlik yo\u2019q'),
+              hasDebt?h('div',{style:{fontSize:24,fontWeight:900,color:'#E5544E',letterSpacing:'-0.02em',marginTop:3}}, fmt(d.debtN)+" so'm"):null)
+          ], { marginBottom:14 }),
+          h('div',{key:'ht',style:{fontSize:14,fontWeight:800,color:c.text,margin:'4px 4px 8px'}},'Hisob tarixi'),
+          card(d.history.map((row,i)=> h('div',{key:i,style:{display:'flex',alignItems:'center',justifyContent:'space-between',gap:12,padding:'12px 0',borderTop:i?'1px solid '+c.border:'none'}},
+            h('div',{style:{minWidth:0}}, h('div',{style:{fontSize:14,fontWeight:700,color:c.text}},row[0]), h('div',{style:{fontSize:12,fontWeight:500,color:c.faint}},row[1])),
+            h('span',{style:{fontSize:14,fontWeight:800,color:row[2]<0?'#1AA565':c.text,whiteSpace:'nowrap'}}, (row[2]<0?'+':'')+fmt(Math.abs(row[2]))))
+          ), { padding:'4px 18px 8px', marginBottom:14 }),
+          hasDebt ? primaryBtn("To'lov qabul qilish", ()=>this.payDebt(d.name)) : null
+        ]));
+    }
+
+    if (ov.type === 'checkout') {
+      return h('div', { style:sheet },
+        titleBar('To\u2019lov', d.lines.length+' mahsulot'),
+        body([
+          card(d.lines.map((l,i)=> h('div',{key:l.id,style:{display:'flex',alignItems:'center',gap:12,padding:'12px 0',borderTop:i?'1px solid '+c.border:'none'}},
+            h('div',{style:{flex:1,minWidth:0}}, h('div',{style:{fontSize:14,fontWeight:700,color:c.text,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}},l.name), h('div',{style:{fontSize:12,fontWeight:600,color:c.faint,marginTop:1}},l.price+" so'm")),
+            h('div',{style:{display:'flex',alignItems:'center',gap:10}},
+              h('button',{onClick:l.dec,style:{width:30,height:30,borderRadius:9,border:'1px solid '+c.border,background:c.surface,color:c.text,fontSize:18,fontWeight:700,cursor:'pointer',lineHeight:1}},'\u2212'),
+              h('span',{style:{minWidth:20,textAlign:'center',fontSize:15,fontWeight:800,color:c.text}},l.qty),
+              h('button',{onClick:l.inc,style:{width:30,height:30,borderRadius:9,border:'none',background:c.accent,color:c.onAccent,fontSize:18,fontWeight:700,cursor:'pointer',lineHeight:1}},'+'))
+          ), { padding:'4px 18px 8px', marginBottom:14 })),
+          card([
+            h('div',{key:1,style:{display:'flex',justifyContent:'space-between',fontSize:13.5,fontWeight:600,color:c.faint}}, h('span',null,'Jami summa'), h('span',null,fmt(d.total)+" so'm")),
+            h('div',{key:2,style:{display:'flex',justifyContent:'space-between',fontSize:13.5,fontWeight:600,color:c.faint,marginTop:8}}, h('span',null,'Chegirma'), h('span',null,'0')),
+            h('div',{key:3,style:{display:'flex',justifyContent:'space-between',fontSize:18,fontWeight:900,color:c.text,marginTop:12,paddingTop:12,borderTop:'1px solid '+c.border,letterSpacing:'-0.02em'}}, h('span',null,'To\u2019lov'), h('span',null,fmt(d.total)+" so'm"))
+          ], { marginBottom:14 }),
+          h('div',{key:'pm',style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginBottom:16}}, [
+            h('button',{key:'cash',style:{padding:'14px',borderRadius:14,border:'2px solid '+c.accent,background:c.accentSoft,color:c.accent,fontSize:14.5,fontWeight:800,cursor:'pointer'}},'Naqd'),
+            h('button',{key:'card',style:{padding:'14px',borderRadius:14,border:'1px solid '+c.border,background:c.surface,color:c.dim,fontSize:14.5,fontWeight:700,cursor:'pointer'}},'Karta / Click')
+          ]),
+          primaryBtn('Chekni tasdiqlash', ()=>this.open('receipt', { lines:d.lines, total:d.total }))
+        ]));
+    }
+
+    if (ov.type === 'receipt') {
+      return h('div', { style:sheet },
+        titleBar('Chek', '#'+(1000+Math.floor(Math.random()*900))),
+        body([
+          h('div',{key:'r',style:{background:c.surface,border:'1px solid '+c.border,borderRadius:rad,padding:'22px 20px',boxShadow:c.shadow,marginBottom:16}},[
+            h('div',{key:'ok',style:{display:'flex',flexDirection:'column',alignItems:'center',gap:10,paddingBottom:18,borderBottom:'1px dashed '+c.border,marginBottom:16}},
+              h('span',{style:{width:56,height:56,borderRadius:'50%',background:'#E6F7EE',display:'flex',alignItems:'center',justifyContent:'center'}}, h('svg',{width:30,height:30,viewBox:'0 0 24 24',fill:'none',stroke:'#1AA565',strokeWidth:2.6},h('path',{d:'M20 6 9 17l-5-5'}))),
+              h('div',{style:{fontSize:17,fontWeight:800,color:c.text}},'Savdo muvaffaqiyatli'),
+              h('div',{style:{fontSize:12.5,fontWeight:600,color:c.faint}},'Markaziy do\u2019kon · 24-iyun, 9:41')),
+            ...d.lines.map((l,i)=>h('div',{key:i,style:{display:'flex',justifyContent:'space-between',gap:10,padding:'7px 0'}},
+              h('span',{style:{fontSize:13.5,fontWeight:600,color:c.dim}}, l.name+' × '+l.qty),
+              h('span',{style:{fontSize:13.5,fontWeight:700,color:c.text,whiteSpace:'nowrap'}}, l.line))),
+            h('div',{key:'tot',style:{display:'flex',justifyContent:'space-between',marginTop:14,paddingTop:14,borderTop:'1px dashed '+c.border,fontSize:18,fontWeight:900,color:c.text}}, h('span',null,'Jami'), h('span',null,fmt(d.total)+" so'm"))
+          ]),
+          h('div',{key:'tg',style:{display:'flex',alignItems:'center',gap:10,background:c.accentSoft,borderRadius:14,padding:'13px 16px',marginBottom:16}},
+            h('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:c.accent},h('path',{d:'M21.9 4.3 18.7 19.5c-.24 1.06-.87 1.32-1.76.82l-4.86-3.58-2.35 2.26c-.26.26-.48.48-.98.48l.35-4.96 9.02-8.15c.39-.35-.09-.55-.6-.2L6.43 13.1l-4.8-1.5c-1.04-.33-1.06-1.04.22-1.54l18.77-7.23c.87-.32 1.63.2 1.35 1.47Z'})),
+            h('span',{style:{fontSize:13,fontWeight:700,color:c.accent}},'Chek mijozga Telegram orqali yuborildi')),
+          primaryBtn('Yangi savdo', ()=>this.finishSale())
+        ]));
+    }
+
+    if (ov.type === 'notifs') {
+      const ic = { sale:['#1AA565','#E6F7EE','M6 6h15l-1.6 9H7.5z'], debt:['#E5544E','#FBE7E5','M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'], stock:['#C98A12','#FBF1DA','M3 21V8l9-5 9 5v13'], pay:['#14A0AE','#E3F3F5','M20 6 9 17l-5-5'] };
+      return h('div', { style:sheet },
+        titleBar('Bildirishnomalar', 'Telegram bot'),
+        body([ card((d.notifs||[]).map((n,i)=>{ const k=ic[n.icon]||ic.sale; return h('div',{key:i,style:{display:'flex',gap:13,padding:'14px 0',borderTop:i?'1px solid '+c.border:'none'}},
+          h('span',{style:{width:42,height:42,borderRadius:11,background:k[1],display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}, h('svg',{width:19,height:19,viewBox:'0 0 24 24',fill:'none',stroke:k[0],strokeWidth:2},h('path',{d:k[2]}))),
+          h('div',{style:{flex:1,minWidth:0}}, h('div',{style:{fontSize:14,fontWeight:800,color:c.text}},n.title), h('div',{style:{fontSize:12.5,fontWeight:500,color:c.dim,marginTop:2,lineHeight:1.4}},n.body), h('div',{style:{fontSize:11.5,fontWeight:600,color:c.faint,marginTop:4}},n.time)));
+        }), { padding:'4px 18px 10px' }) ]));
+    }
+
+    if (ov.type === 'reports') {
+      const days = [['Du',46],['Se',62],['Ch',54],['Pa',78],['Ju',92],['Sh',70],['Ya',58]];
+      const tops = [['iPhone 15 128GB',19600000],['Redmi Note 13 Pro',15300000],['Samsung Galaxy A55',6000000],['AirPods Pro 2',3450000]];
+      const maxTop = tops[0][1];
+      return h('div', { style:sheet },
+        titleBar('Hisobotlar', 'Bu hafta'),
+        body([
+          h('div',{key:'sum',style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginBottom:14}},[
+            card([h('div',{key:1,style:{fontSize:12,fontWeight:600,color:c.faint}},'Haftalik savdo'),h('div',{key:2,style:{fontSize:20,fontWeight:900,color:c.text,marginTop:5,letterSpacing:'-0.02em'}},'681.5M')],{padding:'15px 16px'}),
+            card([h('div',{key:1,style:{fontSize:12,fontWeight:600,color:c.faint}},'Sof foyda'),h('div',{key:2,style:{fontSize:20,fontWeight:900,color:'#1AA565',marginTop:5,letterSpacing:'-0.02em'}},'58.2M')],{padding:'15px 16px'})
+          ]),
+          card([
+            h('div',{key:'t',style:{fontSize:15,fontWeight:800,color:c.text,marginBottom:16}},'Kunlik savdo'),
+            h('div',{key:'ch',style:{display:'flex',alignItems:'flex-end',gap:9,height:140}}, days.map((dd,i)=>h('div',{key:i,style:{flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:7,height:'100%',justifyContent:'flex-end'}},
+              h('div',{style:{width:'100%',maxWidth:26,height:Math.round(dd[1]/100*116)+'px',background:i===4?c.accent:(c.mode==='dark'?'#23323F':c.accentSoft),borderRadius:7}}),
+              h('span',{style:{fontSize:11,fontWeight:600,color:c.faint}},dd[0]))))
+          ], { marginBottom:14 }),
+          h('div',{key:'tt',style:{fontSize:14,fontWeight:800,color:c.text,margin:'4px 4px 8px'}},'Eng ko\u2019p sotilgan'),
+          card(tops.map((t,i)=>h('div',{key:i,style:{padding:'11px 0',borderTop:i?'1px solid '+c.border:'none'}},
+            h('div',{style:{display:'flex',justifyContent:'space-between',marginBottom:7}}, h('span',{style:{fontSize:13.5,fontWeight:700,color:c.text}},t[0]), h('span',{style:{fontSize:13,fontWeight:800,color:c.text}},fmtM(t[1]))),
+            h('div',{style:{height:6,borderRadius:3,background:c.accentSoft,overflow:'hidden'}}, h('div',{style:{height:'100%',width:Math.round(t[1]/maxTop*100)+'%',background:c.accent,borderRadius:3}}))
+          ), { padding:'6px 18px 12px' }))
+        ]));
+    }
+
+    if (ov.type === 'settings') {
+      const groups = [
+        ['Profil', [['Shaxsiy ma\u2019lumotlar','user'],['Do\u2019kon sozlamalari','store'],['Xodimlar','team']]],
+        ['Bildirishnomalar', [['Telegram bot','tg'],['Mijoz uchun bot','tg'],['Xodim uchun bot','tg']]],
+        ['Tizim', [['Til · O\u2019zbekcha','lang'],['Ma\u2019lumotlar bazasi','db'],['Chiqish','out']]]
+      ];
+      return h('div', { style:sheet },
+        titleBar('Sozlamalar', null),
+        body(groups.map((g,gi)=>h('div',{key:gi,style:{marginBottom:14}},
+          h('div',{style:{fontSize:13,fontWeight:800,color:c.faint,textTransform:'uppercase',letterSpacing:'0.04em',margin:'4px 4px 8px'}},g[0]),
+          card(g[1].map((it,i)=>h('button',{key:i,style:{width:'100%',display:'flex',alignItems:'center',gap:13,padding:'14px 0',border:'none',background:'none',borderTop:i?'1px solid '+c.border:'none',cursor:'pointer',textAlign:'left'}},
+            h('span',{style:{flex:1,fontSize:14.5,fontWeight:700,color:it[1]==='out'?'#E5544E':c.text}},it[0]),
+            it[1]!=='out'?h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:c.faint,strokeWidth:2.2},h('path',{d:'m9 6 6 6-6 6'})):null
+          )), { padding:'4px 18px 8px' })
+        ))));
+    }
+
+    // generic placeholder for stock / finance / suppliers / video
+    const labels = { stock:['Ombor / Qoldiqlar','248 ta mahsulot omborida'], finance:['Moliya','Kunlik kassa va xarajatlar'], suppliers:['Ta\u2019minotchilar','12 ta faol ta\u2019minotchi'], video:['Video darslik','Dasturni o\u2019rganing'] };
+    const lb = labels[ov.type] || ['Bo\u2019lim',''];
+    return h('div', { style:sheet },
+      titleBar(lb[0], lb[1]),
+      body(card([
+        h('div',{key:1,style:{padding:'40px 0',textAlign:'center'}},
+          h('div',{style:{fontSize:15,fontWeight:700,color:c.dim}},'Bu bo\u2019lim asosiy dasturda to\u2019liq mavjud'),
+          h('div',{style:{fontSize:13,fontWeight:500,color:c.faint,marginTop:6}},'Mobil versiyada keyingi bosqichda'))
+      ])));
+  }
+
+  renderVals() {
+    const THEMES = {
+      aurora: { mode:'light', bg:'#EEF1F4', surface:'#FFFFFF', border:'#EAEDF1', text:'#16313A', dim:'#5A6675', faint:'#9AA3AE', accent:'#14A0AE', accentSoft:'#E3F3F5', onAccent:'#FFFFFF', radius:20, shadow:'0 1px 3px rgba(16,24,40,0.05)', nav:'flat', hero:'plain' },
+      midnight: { mode:'dark', bg:'#0E1621', surface:'#16212E', border:'#243243', text:'#EAF1F6', dim:'#9DB0BF', faint:'#6B7E8D', accent:'#2BD4C4', accentSoft:'#143A3C', onAccent:'#06181A', radius:22, shadow:'0 12px 30px rgba(0,0,0,0.45)', nav:'float', hero:'gradient' },
+      paper: { mode:'light', bg:'#F5F2EA', surface:'#FFFFFF', border:'#ECE6D9', text:'#1A1A17', dim:'#6E6A60', faint:'#A39E90', accent:'#0E7C88', accentSoft:'#E5F0EF', onAccent:'#FFFFFF', radius:14, shadow:'none', nav:'flat', hero:'big' }
+    };
+    const c = THEMES[this.props.variant] || THEMES.aurora;
+    const role = this.props.role || 'owner';
+    const tab = this.state.tab || 'home';
+    const isOwner = role === 'owner';
+    const T = { bg:c.bg, surface:c.surface, border:c.border, text:c.text, dim:c.dim, faint:c.faint, accent:c.accent, accentSoft:c.accentSoft, onAccent:c.onAccent, rad:c.radius+'px' };
+    const rad = c.radius;
+
+    // ---- frame & screen ----
+    const frame = `width:390px; height:844px; flex-shrink:0; background:#0B0B0D; border-radius:48px; padding:11px; box-shadow:0 30px 70px rgba(16,24,40,0.28), inset 0 0 0 1.5px #2A2A2E; position:relative;`;
+    const screen = `position:relative; width:100%; height:100%; border-radius:38px; overflow:hidden; background:${c.bg}; display:flex; flex-direction:column; font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased;`;
+
+    // ---- header ----
+    const titles = {
+      home: { t: isOwner ? 'Salom, Akmal' : 'Salom, Dilnoza', s: isOwner ? 'Markaziy do\u2019kon · Bugun' : 'Sotuvchi · Markaziy do\u2019kon', size:'22px' },
+      sell: { t: 'Yangi savdo', s: 'Mahsulot tanlang', size:'21px' },
+      products: { t: 'Mahsulotlar', s: '248 ta mahsulot', size:'21px' },
+      customers: { t: 'Mijozlar', s: '1 240 ta mijoz', size:'21px' },
+      more: { t: 'Menyu', s: '', size:'21px' }
+    };
+    const ht = titles[tab] || titles.home;
+    const headerWrap = `flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 18px 14px;`;
+
+    // ---- hero ----
+    let heroStyle, heroNum, heroLabel, heroNumSize, heroBadgeBg, heroBadgeText;
+    if (c.hero === 'gradient') {
+      heroStyle = `background:linear-gradient(135deg, ${c.accent}, #1796A6); border-radius:${rad}px; padding:20px 22px; box-shadow:0 16px 34px ${c.accentSoft}33;`;
+      heroNum = '#FFFFFF'; heroLabel = 'rgba(255,255,255,0.8)'; heroNumSize='30px';
+      heroBadgeBg = 'rgba(255,255,255,0.18)'; heroBadgeText = '#FFFFFF';
+    } else if (c.hero === 'big') {
+      heroStyle = `padding:8px 2px 14px;`;
+      heroNum = c.text; heroLabel = c.faint; heroNumSize='36px';
+      heroBadgeBg = c.accentSoft; heroBadgeText = c.accent;
+    } else {
+      heroStyle = `background:${c.surface}; border:1px solid ${c.border}; border-radius:${rad}px; padding:20px 22px; box-shadow:${c.shadow};`;
+      heroNum = c.text; heroLabel = c.faint; heroNumSize='30px';
+      heroBadgeBg = '#E6F7EE'; heroBadgeText = '#1AA565';
+    }
+    const heroBadgeBg2 = heroBadgeBg, heroBadgeText2 = heroBadgeText;
+
+    const statCard = `background:${c.surface}; border:1px solid ${c.border}; border-radius:${Math.max(12,rad-4)}px; padding:13px 13px; box-shadow:${c.shadow};`;
+    const sectionCard = `background:${c.surface}; border:1px solid ${c.border}; border-radius:${rad}px; padding:18px 18px; box-shadow:${c.shadow}; margin-top:14px;`;
+    const listCard = `background:${c.surface}; border:1px solid ${c.border}; border-radius:${rad}px; padding:4px 18px 14px; box-shadow:${c.shadow};`;
+    const prodCard = `background:${c.surface}; border:1px solid ${c.border}; border-radius:${rad}px; padding:12px; box-shadow:${c.shadow};`;
+    const profileCard = `background:${c.surface}; border:1px solid ${c.border}; border-radius:${rad}px; padding:16px 18px; box-shadow:${c.shadow}; display:flex; align-items:center; gap:14px; margin-bottom:14px;`;
+
+    // ---- owner stats ----
+    const ownerStats = [
+      { label: 'Oylik savdo', value: '681.5M' },
+      { label: 'Foyda', value: '8.1M' },
+      { label: 'Cheklar', value: '7 ta' }
+    ];
+
+    // ---- chart ----
+    const days = [['Du',46],['Se',62],['Ch',54],['Pa',78],['Ju',92],['Sh',70],['Ya',58]];
+    const chartDays = days.map(([date,h],i) => ({
+      date,
+      bar: `width:100%; max-width:26px; height:${Math.round(h/100*104)}px; background:${i===4?c.accent:(c.mode==='dark'?'#23323F':c.accentSoft)}; border-radius:7px;`
+    }));
+
+    // ---- seller CTA ----
+    const ctaCard = `width:100%; display:flex; align-items:center; gap:14px; background:${c.hero==='gradient'?`linear-gradient(135deg, ${c.accent}, #1796A6)`:c.accent}; border:none; border-radius:${rad}px; padding:18px 18px; cursor:pointer; box-shadow:0 14px 30px ${c.accent}3a; margin-bottom:14px;`;
+    const ctaIconBg = 'rgba(255,255,255,0.2)';
+    const ctaSub = 'rgba(255,255,255,0.82)';
+
+    // ---- sales feed ----
+    const salesFeed = [
+      { name: 'Redmi Note 13 Pro', ago: '2 daqiqa oldin', amt: '15.3M' },
+      { name: 'iPhone 15 128GB', ago: '14 daqiqa oldin', amt: '19.6M' },
+      { name: 'Samsung Galaxy A55', ago: '32 daqiqa oldin', amt: '6.0M' }
+    ];
+
+    // ---- POS products ----
+    const catNames = ['Hammasi', 'Telefon', 'Aksessuar', 'Soat'];
+    const cats = catNames.map((label,i) => ({
+      label,
+      pick: () => this.setState({ cat: i }),
+      style: `flex-shrink:0; padding:9px 16px; border-radius:11px; border:1px solid ${this.state.cat===i?c.accent:c.border}; background:${this.state.cat===i?c.accent:c.surface}; color:${this.state.cat===i?c.onAccent:c.dim}; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap;`
+    }));
+    const prodData = [
+      { id:'p1', name:'Redmi Note 13 Pro', price:3200000, cat:'Telefon', stock:3, sku:'RDM-13PRO', cost:2750000 },
+      { id:'p2', name:'iPhone 15 128GB', price:16800000, cat:'Telefon', stock:12, sku:'IPH-15-128', cost:15200000 },
+      { id:'p3', name:'Samsung Galaxy A55', price:5100000, cat:'Telefon', stock:27, sku:'SAM-A55', cost:4500000 },
+      { id:'p4', name:'AirPods Pro 2', price:3450000, cat:'Aksessuar', stock:8, sku:'APP-2', cost:2900000 },
+      { id:'p5', name:'Redmi Watch 4', price:1250000, cat:'Soat', stock:0, sku:'RDM-W4', cost:980000 },
+      { id:'p6', name:'Anker 20W adapter', price:189000, cat:'Aksessuar', stock:54, sku:'ANK-20W', cost:120000 }
+    ];
+    const fmt = (n) => n.toLocaleString('ru-RU').replace(/,/g,' ');
+    const fmtM = (n) => (n>=1000000 ? (n/1000000).toFixed(n%1000000?1:0)+'M' : fmt(n));
+    const q = (this.state.query || '').trim().toLowerCase();
+    const catFilter = this.state.cat > 0 ? catNames[this.state.cat] : null;
+    const matches = (p) => (!q || p.name.toLowerCase().includes(q)) && (!catFilter || p.cat === catFilter);
+    const products = prodData.filter(matches).map(p => ({
+      name: p.name, price: fmtM(p.price), soldOut: p.stock === 0,
+      add: () => p.stock === 0 ? this.flash('Mahsulot tugagan') : this.addToCart(p.id),
+      open: () => this.open('product', p)
+    }));
+    const onSearch = (e) => this.setState({ query: e.target.value });
+    const clearSearch = () => this.setState({ query: '' });
+
+    // ---- cart ----
+    const cart = this.state.cart || {};
+    const priceMap = Object.fromEntries(prodData.map(p => [p.id, p.price]));
+    let cartCount = 0, cartTotalN = 0;
+    for (const k in cart) { cartCount += cart[k]; cartTotalN += cart[k]*priceMap[k]; }
+    const showCart = tab === 'sell' && cartCount > 0;
+    const cartBar = `position:absolute; left:14px; right:14px; bottom:96px; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:12px; background:${c.accent}; border-radius:18px; padding:14px 20px; box-shadow:0 16px 34px ${c.accent}55; cursor:pointer; border:none;`;
+    const cartSub = 'rgba(255,255,255,0.82)';
+    const cartLines = Object.keys(cart).map(id => {
+      const p = prodData.find(x => x.id === id);
+      return { id, name: p.name, qty: cart[id], price: fmtM(p.price), lineN: cart[id]*p.price, line: fmt(cart[id]*p.price),
+        inc: () => this.addToCart(id), dec: () => this.decCart(id) };
+    });
+    const openCheckout = () => this.open('checkout', { lines: cartLines, total: cartTotalN });
+
+    // ---- products list ----
+    const badge = (txt, kind) => {
+      if (kind==='out') return `font-size:11.5px; font-weight:800; color:#E5544E; background:#FBE7E5; border-radius:8px; padding:5px 10px; white-space:nowrap;`;
+      if (kind==='low') return `font-size:11.5px; font-weight:800; color:#C98A12; background:#FBF1DA; border-radius:8px; padding:5px 10px; white-space:nowrap;`;
+      return `font-size:11.5px; font-weight:800; color:${c.accent}; background:${c.accentSoft}; border-radius:8px; padding:5px 10px; white-space:nowrap;`;
+    };
+    const productRows = prodData.filter(p => !q || p.name.toLowerCase().includes(q)).map(p => {
+      const kind = p.stock === 0 ? 'out' : (p.stock <= 5 ? 'low' : 'ok');
+      return { name:p.name, cat:p.cat, price:fmtM(p.price),
+        stock: kind==='out' ? 'Tugagan' : (p.stock+' dona'),
+        badge: badge(null, kind),
+        open: () => this.open('product', p) };
+    });
+
+    // ---- customers ----
+    const paidMap = this.state.paid || {};
+    const cdata = [
+      { name:'Akmal Toshmatov', phone:'+998 90 123 45 67', debtN:16000000, history:[['Redmi Note 13 Pro','12-iyun',3200000],['iPhone 15 128GB','3-iyun',16800000],['To\u2019lov','1-iyun',-4000000]] },
+      { name:'Dilnoza Karimova', phone:'+998 91 234 56 78', debtN:0, history:[['AirPods Pro 2','10-iyun',3450000],['To\u2019lov','10-iyun',-3450000]] },
+      { name:'Jasur Rahimov', phone:'+998 93 345 67 89', debtN:4500000, history:[['Samsung Galaxy A55','8-iyun',5100000],['To\u2019lov','9-iyun',-600000]] },
+      { name:'Nilufar Saidova', phone:'+998 94 456 78 90', debtN:0, history:[['Anker 20W adapter','5-iyun',189000],['To\u2019lov','5-iyun',-189000]] }
+    ];
+    const custDebt = (p) => paidMap[p.name] ? 0 : p.debtN;
+    const customers = cdata.map(p => {
+      const d = custDebt(p);
+      return { name:p.name, phone:p.phone, initial:p.name[0],
+        avBg: d>0 ? '#FBE7E5' : c.accentSoft, avText: d>0 ? '#E5544E' : c.accent,
+        debt: d>0 ? fmtM(d) : 'Qarzsiz',
+        badge: d>0
+          ? `font-size:12px; font-weight:800; color:#E5544E; background:#FBE7E5; border-radius:9px; padding:6px 11px; white-space:nowrap;`
+          : `font-size:11.5px; font-weight:700; color:#1AA565; background:#E6F7EE; border-radius:9px; padding:6px 11px; white-space:nowrap;`,
+        open: () => this.open('customer', { ...p, debtN: d }) };
+    });
+    const totalDebt = cdata.reduce((s,p) => s + custDebt(p), 0);
+    const debtBanner = `display:flex; align-items:center; justify-content:space-between; gap:12px; background:${c.mode==='dark'?'#2A1A1C':'#FFF4F3'}; border:1px solid ${c.mode==='dark'?'#4A2A2C':'#FBD9D5'}; border-radius:${rad}px; padding:16px 18px; margin-bottom:14px;`;
+    const debtBannerLabel = c.mode==='dark' ? '#C99' : '#C97A72';
+    const debtBannerNum = '#E5544E';
+    const debtBannerIcon = c.mode==='dark' ? '#3A2224' : '#FBE0DC';
+
+    // ---- notifications (Telegram bot) ----
+    const notifs = [
+      { icon:'sale', title:'Yangi savdo', body:'Redmi Note 13 Pro · 15.3M so\u2019m — Dilnoza sotdi', time:'2 daqiqa oldin' },
+      { icon:'debt', title:'Qarz eslatmasi', body:'Akmal Toshmatov · 16M so\u2019m muddati o\u2019tdi', time:'1 soat oldin' },
+      { icon:'stock', title:'Qoldiq tugayapti', body:'Redmi Note 13 Pro · 3 dona qoldi', time:'3 soat oldin' },
+      { icon:'pay', title:'To\u2019lov qabul qilindi', body:'Jasur Rahimov · 600 000 so\u2019m', time:'Kecha' }
+    ];
+    const openNotifs = () => this.open('notifs', { notifs });
+
+    // ---- more ----
+    const moreData = [
+      { label:'Ombor / Qoldiqlar', type:'stock', icon:'M3 21V8l9-5 9 5v13M3 21h18M8 13h8v8H8z' },
+      { label:'Hisobotlar', type:'reports', icon:'M3 3v18h18M7 14l4-4 3 3 5-6' },
+      { label:'Moliya', type:'finance', icon:'M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M21 11h-5a2 2 0 0 0 0 4h5z' },
+      { label:'Ta\u2019minotchilar', type:'suppliers', icon:'M1 3h12v11H1zM13 7h4l4 4v3h-8M6 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM19 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z' },
+      { label:'Bildirishnomalar', type:'notifs', icon:'M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.5 21a2 2 0 0 1-3 0' },
+      { label:'Sozlamalar', type:'settings', icon:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08' },
+      { label:'Video darslik', type:'video', icon:'M3 5.5A1.5 1.5 0 0 1 4.5 4h9A1.5 1.5 0 0 1 15 5.5v9A1.5 1.5 0 0 1 13.5 16h-9A1.5 1.5 0 0 1 3 14.5zM15 9l6-3.5v11L15 13' }
+    ];
+    const moreItems = moreData.map(m => ({ label:m.label, icon:m.icon, open: () => this.open(m.type, { notifs }) }));
+
+    // ---- nav ----
+    const navTabs = [
+      { key:'home', label:'Bosh', icon:'M3 10.5 12 3l9 7.5M5 9.5V21h6v-6h2v6h6V9.5' },
+      { key:'sell', label:'Savdo', icon:'M6 6h15l-1.6 9H7.5zM6 6 5.4 3H2M9.5 20.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM19 20.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z' },
+      { key:'products', label:'Mahsulot', icon:'M21 8 12 3 3 8l9 5 9-5ZM3 8v8l9 5 9-5V8' },
+      { key:'customers', label:'Mijoz', icon:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87' },
+      { key:'more', label:'Yana', icon:'M5 12h.01M12 12h.01M19 12h.01' }
+    ];
+    const navItems = navTabs.map(n => {
+      const on = n.key === tab;
+      return {
+        label:n.label, icon:n.icon, weight: on?700:600,
+        go: () => this.setState({ tab: n.key }),
+        style: `flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; background:none; border:none; cursor:pointer; padding:7px 0; color:${on?c.accent:c.faint};`
+      };
+    });
+    let navWrap, navInner;
+    if (c.nav === 'float') {
+      navWrap = `position:absolute; left:16px; right:16px; bottom:14px; z-index:5;`;
+      navInner = `display:flex; align-items:center; background:${c.surface}; border:1px solid ${c.border}; border-radius:22px; padding:4px 6px; box-shadow:0 14px 30px rgba(0,0,0,0.3);`;
+    } else {
+      navWrap = `position:absolute; left:0; right:0; bottom:0; z-index:5; padding-bottom:14px; background:${c.surface}; border-top:1px solid ${c.border};`;
+      navInner = `display:flex; align-items:center; padding:6px 8px 0;`;
+    }
+
+    return {
+      T, frame, screen, headerWrap,
+      headerTitle: ht.t, headerSub: ht.s, headerTitleSize: ht.size,
+      avatarInitial: isOwner ? 'A' : 'D',
+      greetName: isOwner ? 'Akmal Toshmatov' : 'Dilnoza Karimova',
+      roleLabel: isOwner ? 'Egasi' : 'Sotuvchi',
+      isHome: tab==='home', isSell: tab==='sell' && !this.state.catalog, isCatalog: tab==='sell' && this.state.catalog, isProducts: tab==='products', isCustomers: tab==='customers', isMore: tab==='more',
+      ownerHome: tab==='home' && isOwner, sellerHome: tab==='home' && !isOwner,
+      heroStyle, heroNum, heroLabel, heroNumSize, heroBadgeBg: heroBadgeBg2, heroBadgeText: heroBadgeText2,
+      statCard, sectionCard, listCard, prodCard, profileCard,
+      ownerStats, chartDays, salesFeed,
+      ctaCard, ctaIconBg, ctaSub, goSell: () => this.setState({ tab:'sell', catalog:false }),
+      openCatalog: () => this.setState({ catalog: true }),
+      closeCatalog: () => this.setState({ catalog: false, query: '' }),
+      cardShadow: c.shadow,
+      cats, products, prodData,
+      query: this.state.query, onSearch, clearSearch, hasQuery: !!q, noResults: products.length === 0,
+      showCart, cartBar, cartSub, cartCount, cartTotal: fmt(cartTotalN), openCheckout,
+      productRows, customers, moreItems, openNotifs,
+      debtBanner, debtBannerLabel, debtBannerNum, debtBannerIcon,
+      totalDebt: fmt(totalDebt),
+      navItems, navWrap, navInner,
+      overlayEl: this.renderOverlay(c, fmt, fmtM),
+      hasOverlay: !!this.state.overlay,
+      toast: this.state.toast, hasToast: !!this.state.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body { background: #EEF1F4; font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #16313A; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: #D4D8DD; border-radius: 6px; border: 2px solid transparent; background-clip: content-box; }
+  button, input, select { font-family: inherit; }
+  a { color: #0E7C88; text-decoration: none; }
+  a:hover { color: #14A0AE; }
+  html.nav-collapsed .navbar { width: 74px !important; }
+  html.nav-collapsed .navbar .navlabel { display: none !important; }
+  html.nav-collapsed .navbar .navscroll > a > svg + svg,
+  html.nav-collapsed .navbar .navscroll > button > svg + svg { display: none !important; }
+  html.nav-collapsed .navbar .navscroll > a,
+  html.nav-collapsed .navbar .navscroll > button { justify-content: center !important; gap: 0 !important; padding-left: 8px !important; padding-right: 8px !important; }
+  .navbar .navscroll > a > svg:first-child,
+  .navbar .navscroll > button > span:first-child { flex-shrink: 0 !important; }
+  html.nav-collapsed .navbar .navlogo { display: none !important; }
+  html.nav-collapsed .navbar .navlogo-row { justify-content: center !important; }
+  .navtoggle svg { transition: transform .2s ease; }
+  html.nav-collapsed .navtoggle svg { transform: rotate(180deg); }
+</style>
+<script src="i18n.js" data-i18n-skip></script>
+<script src="theme.js" data-i18n-skip></script>
+<script src="nav-collapse.js" data-i18n-skip></script>
+<script src="support-widget.js" data-i18n-skip></script>
+</helmet>
+
+<div style="display: flex; height: 100vh; overflow: hidden; background: #EEF1F4;">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="navbar" style="width: 256px; flex-shrink: 0; background: #FFFFFF; border-right: 1px solid #E7EAEE; display: flex; flex-direction: column; padding: 22px 16px 16px;">
+    <div class="navlogo-row" style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding: 4px 6px 24px;">
+      <img class="navlogo" src="assets/wasyt-logo-new.png" alt="WASYT" style="height: 28px; width: auto; display: block;" />
+      <button class="navtoggle" type="button" title="Menyuni yig'ish" style="width:30px; height:30px; flex-shrink:0; border:none; border-radius:9px; background:#F2F4F6; color:#7C8794; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m13 6-6 6 6 6M19 6l-6 6 6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="navscroll" style="overflow-y: auto; flex: 1; margin: 0 -6px; padding: 0 6px;">
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:#E3F3F5;color:#0E7C88;font-size:14.5px;font-weight:700;cursor:pointer;text-align:left;">
+        <span style="width:30px;height:30px;border-radius:9px;background:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        </span>
+        <span class="navlabel">Bosh sahifa</span>
+      </button>
+
+      <a href="Wasyt - Savdo.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+        <span class="navlabel">Savdo</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Mahsulotlar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        <span class="navlabel">Mahsulotlar</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Mijozlar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+        <span class="navlabel">Mijozlar</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Ta'minotchilar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M1 3h12v11H1zM13 7h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        <span class="navlabel">Ta'minotchilar</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Ombor.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M3 21V9l9-6 9 6v12"/><path d="M3 21h18M9 21v-6h6v6"/></svg>
+        <span class="navlabel">Ombor</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Moliya.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M21 11h-5a2 2 0 0 0 0 4h5z"/></svg>
+        <span class="navlabel">Moliya</span>
+      </a>
+
+      <a href="Wasyt - Hisobotlar.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <span class="navlabel">Hisobotlar</span>
+      </a>
+
+      <a href="Wasyt - Video darslik.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border-radius:13px;color:#46535F;font-size:14.5px;font-weight:500;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="m15.5 10 6-3.5v11l-6-3.5"/></svg>
+        <span class="navlabel">Video darslik</span>
+      </a>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:13px; padding: 14px 8px 4px; border-top: 1px solid #EEF1F4; margin-top: 8px;">
+      <span style="width:42px;height:42px;border-radius:50%;background:#E3F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#14A0AE"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z"/></svg>
+      </span>
+      <div class="navlabel">
+        <div style="font-size:11.5px;color:#9AA3AE;">Call Center</div>
+        <div style="font-size:15px;font-weight:700;color:#16313A;">+998 (55) 055-51-00</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <header style="height: 76px; flex-shrink: 0; background: #FFFFFF; border-bottom: 1px solid #E7EAEE; display: flex; align-items: center; padding: 0 26px 0 0;">
+      <div style="flex: 1;"></div>
+
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="position:relative;">
+          <button style="position:relative;width:44px;height:44px;border-radius:50%;border:1px solid #ECEEF1;background:#F4F6F8;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:#EAF5F5;border-color:#BFE6E9;">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            <span style="position:absolute;top:-2px;right:-3px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:#14A0AE;color:#fff;font-size:10px;font-weight:800;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div style="flex: 1; overflow-y: auto; padding: 22px 26px 30px;">
+
+      <!-- KPI ROW -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:16px;">
+        <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+          <div onClick="{{ k.open }}" style="position:relative; background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03); cursor:pointer;" style-hover="border-color:#14A0AE; box-shadow:0 8px 22px rgba(20,160,174,0.12);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2CAD2" stroke-width="2.4" style="position:absolute; top:20px; right:16px;"><path d="m9 6 6 6-6 6"/></svg>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; padding-right:22px;">
+              <span style="{{ k.iconStyle }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.iconPath }}"/></svg></span>
+              <span style="{{ k.labelStyle }}">{{ k.label }}</span>
+            </div>
+            <div style="font-size:23px; font-weight:800; color:#16313A; letter-spacing:-0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ k.value }} <span style="font-size:13px; font-weight:600; color:#9AA3AE;">{{ k.unit }}</span></div>
+            <div style="display:flex; align-items:center; gap:9px; margin-top:7px;">
+              <span style="{{ k.deltaStyle }}">{{ k.delta }}</span>
+              <span style="font-size:12.5px; font-weight:600; color:#AEB6C0;">{{ k.sub }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- FILTER + FILIAL SELECT -->
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px;">
+        <div style="display:flex; align-items:center; gap:4px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:5px;">
+          <sc-for list="{{ periodChips }}" as="p" hint-placeholder-count="4">
+            <button onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</button>
+          </sc-for>
+          <button style="width:38px;height:34px;border:none;border-radius:9px;background:#E3F3F5;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+          </button>
+        </div>
+
+        <div style="flex:1; min-width:10px;"></div>
+
+        <div style="position:relative;">
+          <button onClick="{{ toggleOrg }}" style="display:flex; align-items:center; gap:11px; min-width:250px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:9px 12px; cursor:pointer; text-align:left;" style-hover="border-color:#14A0AE;">
+            <span style="{{ scopeDot }}"></span>
+            <span style="flex:1; min-width:0;">
+              <span style="display:block; font-size:10.5px; font-weight:700; color:#9AA3AE; letter-spacing:0.3px;">FILIAL</span>
+              <span style="display:block; font-size:13.5px; font-weight:800; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ scopeName }}</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2.4" style="flex-shrink:0;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <sc-if value="{{ orgOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:62px; right:0; width:288px; background:#fff; border:1px solid #EDEFF2; border-radius:16px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:8px; z-index:220;">
+              <sc-for list="{{ orgItems }}" as="o" hint-placeholder-count="6">
+                <button onClick="{{ o.pick }}" style="{{ o.style }}">
+                  <span style="{{ o.dot }}"></span>
+                  <span style="flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ o.label }}</span>
+                  <span style="font-size:11.5px; font-weight:700; color:#9AA3AE; flex-shrink:0;">{{ o.meta }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- ROW: TO'LOV USULI + SAVDOLAR (LIVE) -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:16px; margin-bottom:16px; align-items:start;">
+
+        <div onClick="{{ openPay }}" style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03); cursor:pointer;" style-hover="border-color:#14A0AE; box-shadow:0 8px 22px rgba(20,160,174,0.12);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="6" width="19" height="12.5" rx="2.5"/><path d="M2.5 10h19"/></svg>
+            </span>
+            <span style="flex:1; min-width:0;">
+              <span style="display:block; font-size:12.5px; font-weight:600; color:#9AA3AE;">To'lov usuli</span>
+              <span style="display:block; font-size:19px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">{{ paysTotal }}</span>
+            </span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2CAD2" stroke-width="2.4" style="flex-shrink:0;"><path d="m9 6 6 6-6 6"/></svg>
+          </div>
+          <sc-for list="{{ pays }}" as="p" hint-placeholder-count="5">
+            <div style="display:flex; align-items:center; gap:13px; padding:11px 0; border-top:1px solid #F2F4F6;">
+              <span style="width:36px;height:36px;border-radius:10px;background:#F2F4F6;color:#5A6675;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.iconPath }}"/></svg>
+              </span>
+              <span style="flex:1; min-width:0;">
+                <span style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:8px;">
+                  <span style="font-size:14px; font-weight:600; color:#16313A;">{{ p.label }}</span>
+                  <span style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap;">{{ p.amt }}</span>
+                </span>
+                <span style="display:block; height:6px; background:#EEF1F4; border-radius:4px; overflow:hidden;"><span style="{{ p.barStyle }}"></span></span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+
+      <!-- ROW: XARITA + FILIALLAR SAVDOSI -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap:16px; margin-bottom:16px; align-items:start;">
+
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px 14px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+            <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </span>
+            <span style="flex:1; min-width:0;">
+              <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Filiallar xaritada</span>
+              <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ mapSub }}</span>
+            </span>
+          </div>
+          <x-import component-from-global-scope="uz-branch-map" from="./uz-branch-map.js" points="{{ mapPoints }}" selected="{{ mapSel }}" style="display:block; width:100%; height:300px;" hint-size="100%,300px"></x-import>
+          <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding-top:12px; border-top:1px solid #F2F4F6;">
+            <span style="font-size:11.5px; font-weight:600; color:#9AA3AE;">Doira o'lchami — savdo hajmi</span>
+            <span style="flex:1; min-width:6px;"></span>
+            <sc-for list="{{ mapLegend }}" as="m" hint-placeholder-count="5">
+              <span style="display:flex; align-items:center; gap:6px;">
+                <span style="{{ m.dotStyle }}"></span>
+                <span style="font-size:11.5px; font-weight:700; color:#5A6675; white-space:nowrap;">{{ m.label }}</span>
+              </span>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:18px 20px 14px;">
+            <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-3"/></svg>
+            </span>
+            <span style="min-width:0;">
+              <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Filiallar savdosi</span>
+              <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ rankSub }}</span>
+            </span>
+          </div>
+          <sc-for list="{{ branchRows }}" as="b" hint-placeholder-count="5">
+            <div onClick="{{ b.open }}" style="{{ b.rowStyle }}" style-hover="background:#FAFBFC;">
+              <span style="{{ b.rankStyle }}">{{ b.rank }}</span>
+              <span style="flex:1; min-width:0;">
+                <span style="display:flex; align-items:center; gap:7px;">
+                  <span style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ b.name }}</span>
+                  <span style="{{ b.dotStyle }}" title="{{ b.shiftTitle }}"></span>
+                </span>
+                <span style="display:flex; align-items:center; gap:9px; margin-top:6px;">
+                  <span style="flex:1; height:6px; border-radius:4px; background:#EEF1F4; overflow:hidden; max-width:170px;"><span style="{{ b.barStyle }}"></span></span>
+                  <span style="font-size:11.5px; font-weight:700; color:#5A6675; flex-shrink:0;">{{ b.share }}</span>
+                  <span style="font-size:11.5px; font-weight:600; color:#9AA3AE; flex-shrink:0;">{{ b.city }}</span>
+                </span>
+              </span>
+              <span style="text-align:right; flex-shrink:0;">
+                <span style="display:block; font-size:14.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ b.amount }}</span>
+                <span style="display:block; font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:4px; white-space:nowrap;">{{ b.meta }}</span>
+              </span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2CAD2" stroke-width="2.4" style="flex-shrink:0;"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- FILIALLAR BO'YICHA TOVAR QOLDIG'I -->
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden; margin-bottom:16px;">
+        <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L22 7H6"/></svg>
+          </span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Filiallar bo'yicha tovar qoldig'i</span>
+            <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ stockSub }}</span>
+          </span>
+        </div>
+        <div style="overflow-x:auto;">
+          <div style="min-width:660px; display:grid; grid-template-columns:52px minmax(150px, 1.6fr) 1fr 1fr 1fr; gap:12px; align-items:end; padding:0 20px 12px;">
+            <div style="font-size:11.5px; font-weight:700; color:#9AA3AE;">№</div>
+            <div style="font-size:11.5px; font-weight:700; color:#9AA3AE;">Filial nomi</div>
+            <sc-for list="{{ stockHead }}" as="h" hint-placeholder-count="3">
+              <div style="background:#F2F4F6; border-radius:12px; padding:10px 14px; text-align:center;">
+                <div style="font-size:11.5px; font-weight:600; color:#9AA3AE;">{{ h.label }}</div>
+                <div style="{{ h.valStyle }}">{{ h.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ stockRows }}" as="r" hint-placeholder-count="5">
+            <div style="{{ r.rowStyle }}">
+              <div style="font-size:13.5px; font-weight:700; color:#9AA3AE;">{{ r.idx }}</div>
+              <div style="display:flex; align-items:center; gap:9px; min-width:0;">
+                <span style="{{ r.dot }}"></span>
+                <span style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</span>
+              </div>
+              <div style="text-align:center; font-size:15px; font-weight:800; color:#16313A;">{{ r.items }}</div>
+              <div style="text-align:center; font-size:15px; font-weight:800; color:#EC8A3C;">{{ r.low }}</div>
+              <div style="text-align:center; font-size:15px; font-weight:800; color:#E5544E;">{{ r.out }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- FILIALLAR BO'YICHA MIJOZLAR -->
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden; margin-bottom:16px;">
+        <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+          </span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Filiallar bo'yicha mijozlar</span>
+            <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ clientSub }}</span>
+          </span>
+        </div>
+        <div style="overflow-x:auto;">
+          <div style="min-width:660px; display:grid; grid-template-columns:52px minmax(150px, 1.6fr) 1fr 1fr 1fr; gap:12px; align-items:end; padding:0 20px 12px;">
+            <div style="font-size:11.5px; font-weight:700; color:#9AA3AE;">№</div>
+            <div style="font-size:11.5px; font-weight:700; color:#9AA3AE;">Filial nomi</div>
+            <sc-for list="{{ clientHead }}" as="h" hint-placeholder-count="3">
+              <div style="background:#F2F4F6; border-radius:12px; padding:10px 14px; text-align:center;">
+                <div style="font-size:11.5px; font-weight:600; color:#9AA3AE;">{{ h.label }}</div>
+                <div style="{{ h.valStyle }}">{{ h.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ clientRows }}" as="r" hint-placeholder-count="5">
+            <div style="{{ r.rowStyle }}">
+              <div style="font-size:13.5px; font-weight:700; color:#9AA3AE;">{{ r.idx }}</div>
+              <div style="display:flex; align-items:center; gap:9px; min-width:0;">
+                <span style="{{ r.dot }}"></span>
+                <span style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</span>
+              </div>
+              <div style="text-align:center; font-size:15px; font-weight:800; color:#16313A;">{{ r.all }}</div>
+              <div style="text-align:center; font-size:15px; font-weight:800; color:#EC8A3C;">{{ r.new }}</div>
+              <div style="text-align:center; font-size:15px; font-weight:800; color:#E5544E;">{{ r.debtors }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- QARZDORLAR -->
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden; margin-bottom:18px;">
+        <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#FAD9D6;color:#E5544E;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="6" width="19" height="12.5" rx="2.5"/><path d="M2.5 10h19"/></svg>
+          </span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Qarzdorlar</span>
+            <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ debtSub }}</span>
+          </span>
+          <span style="flex-shrink:0; font-size:12.5px; font-weight:700; color:#E5544E; background:#FCEEED; border-radius:8px; padding:5px 11px; white-space:nowrap;">{{ debtCount }}</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <div style="min-width:620px; display:grid; grid-template-columns:52px minmax(190px, 2fr) minmax(120px, 1.1fr) minmax(110px, 1fr); gap:12px; padding:10px 20px; background:#FAFBFC; border-top:1px solid #F2F4F6; border-bottom:1px solid #F2F4F6; font-size:11.5px; font-weight:700; color:#9AA3AE;">
+            <div>№</div>
+            <div>Qarzdor</div>
+            <div style="text-align:right;">Qarz summasi</div>
+            <div style="text-align:right;">Kechikkan kun</div>
+          </div>
+          <sc-for list="{{ debtors }}" as="d" hint-placeholder-count="5">
+            <div style="min-width:620px; display:grid; grid-template-columns:52px minmax(190px, 2fr) minmax(120px, 1.1fr) minmax(110px, 1fr); gap:12px; align-items:center; padding:12px 20px; border-top:1px solid #F2F4F6;">
+              <div style="font-size:13.5px; font-weight:700; color:#9AA3AE;">{{ d.idx }}</div>
+              <div style="display:flex; align-items:center; gap:11px; min-width:0;">
+                <span style="{{ d.avStyle }}">{{ d.initials }}</span>
+                <span style="min-width:0;">
+                  <span style="display:block; font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ d.name }}</span>
+                  <span style="display:flex; align-items:center; gap:7px; margin-top:3px;">
+                    <span style="{{ d.branchStyle }}">{{ d.branch }}</span>
+                    <span style="font-size:11.5px; font-weight:600; color:#AEB6C0;">{{ d.phone }}</span>
+                  </span>
+                </span>
+              </div>
+              <div style="text-align:right; font-size:14px; font-weight:800; color:#16313A; white-space:nowrap;">{{ d.amount }}</div>
+              <div style="text-align:right;"><span style="{{ d.dayStyle }}">{{ d.days }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:center; gap:8px; padding:4px 0 10px; font-size:13px; font-weight:600; color:#AEB6C0;">
+        Ishlab chiqildi <a href="#" style="font-weight:800;">ICAN BUSINESS</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<sc-if value="{{ detOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed; inset:0; z-index:300; background:#EEF1F4; display:flex; flex-direction:column; overflow:hidden;">
+
+  <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:16px 30px; background:#fff; border-bottom:1px solid #E7EAEE; flex-shrink:0;">
+    <button onClick="{{ closeDet }}" style="width:44px; height:44px; flex-shrink:0; border-radius:12px; border:1px solid #E7EAEE; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:#F2F4F6;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg>
+    </button>
+    <div style="min-width:0;">
+      <div style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">{{ detTitle }}</div>
+      <div style="font-size:12.5px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ detSub }}</div>
+    </div>
+    <div style="flex:1; min-width:8px;"></div>
+    <sc-if value="{{ detHasPeriod }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; align-items:center; gap:4px; background:#F2F4F6; border-radius:12px; padding:5px;">
+        <sc-for list="{{ periodChips }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ detDailyNote }}" hint-placeholder-val="{{ false }}">
+      <span style="display:flex; align-items:center; gap:8px; background:#F2F4F6; border-radius:12px; padding:10px 14px; font-size:12.5px; font-weight:700; color:#7C8794; white-space:nowrap;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>
+        Kunlik o'rtacha ko'rsatkich
+      </span>
+    </sc-if>
+  </div>
+
+  <div style="flex:1; overflow-y:auto; padding:22px 30px 40px;">
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(228px, 1fr)); gap:16px; margin-bottom:18px;">
+      <sc-for list="{{ detCards }}" as="c" hint-placeholder-count="4">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="font-size:13px; font-weight:600; color:#9AA3AE;">{{ c.label }}</div>
+          <div style="font-size:24px; font-weight:800; color:#16313A; letter-spacing:-0.02em; margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ c.value }} <span style="font-size:13px; font-weight:600; color:#9AA3AE;">{{ c.unit }}</span></div>
+          <div style="font-size:12.5px; font-weight:600; color:#AEB6C0; margin-top:5px;">{{ c.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden; margin-bottom:18px;">
+      <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+        <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-3"/></svg>
+        </span>
+        <span style="flex:1; min-width:0;">
+          <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Filiallar kesimida</span>
+          <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ detTableSub }}</span>
+        </span>
+      </div>
+      <div style="overflow-x:auto;">
+        <div style="min-width:720px; display:grid; grid-template-columns:52px minmax(160px, 1.7fr) 1fr 1fr minmax(150px, 1.3fr); gap:14px; padding:10px 20px; background:#FAFBFC; border-top:1px solid #F2F4F6; border-bottom:1px solid #F2F4F6; font-size:11.5px; font-weight:700; color:#9AA3AE;">
+          <div>№</div>
+          <div>Filial</div>
+          <div style="text-align:right;">{{ detCol1 }}</div>
+          <div style="text-align:right;">{{ detCol2 }}</div>
+          <div>Ulush</div>
+        </div>
+        <sc-for list="{{ detRows }}" as="r" hint-placeholder-count="5">
+          <div onClick="{{ r.open }}" style="{{ r.rowStyle }}" style-hover="background:#FAFBFC;">
+            <div style="font-size:13.5px; font-weight:700; color:#9AA3AE;">{{ r.idx }}</div>
+            <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+              <span style="{{ r.dot }}"></span>
+              <span style="min-width:0;">
+                <span style="display:block; font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</span>
+                <span style="display:block; font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:3px;">{{ r.city }}</span>
+              </span>
+            </div>
+            <div style="text-align:right; font-size:14.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ r.v1 }}</div>
+            <div style="text-align:right; font-size:13.5px; font-weight:700; color:#5A6675; white-space:nowrap;">{{ r.v2 }}</div>
+            <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+              <span style="flex:1; height:7px; border-radius:4px; background:#EEF1F4; overflow:hidden;"><span style="{{ r.barStyle }}"></span></span>
+              <span style="font-size:12px; font-weight:800; color:#5A6675; flex-shrink:0;">{{ r.share }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+      <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+        <span style="{{ detListIconStyle }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ detListIconPath }}"/></svg></span>
+        <span style="flex:1; min-width:0;">
+          <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">{{ detListTitle }}</span>
+          <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ detListSub }}</span>
+        </span>
+      </div>
+      <sc-for list="{{ detList }}" as="l" hint-placeholder-count="5">
+        <div style="display:flex; align-items:center; gap:13px; padding:13px 20px; border-top:1px solid #F2F4F6;">
+          <span style="{{ l.dot }}"></span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ l.label }}</span>
+            <span style="display:flex; align-items:center; gap:9px; margin-top:6px;">
+              <span style="flex:1; height:6px; border-radius:4px; background:#EEF1F4; overflow:hidden; max-width:220px;"><span style="{{ l.barStyle }}"></span></span>
+              <span style="font-size:11.5px; font-weight:600; color:#9AA3AE; white-space:nowrap;">{{ l.meta }}</span>
+            </span>
+          </span>
+          <span style="text-align:right; flex-shrink:0; font-size:14.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ l.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</div>
+</sc-if>
+
+
+<!-- ============ FILIAL DRILL-IN ============ -->
+<sc-if value="{{ bdOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed; inset:0; z-index:320; background:#EEF1F4; display:flex; flex-direction:column; overflow:hidden;">
+
+  <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap; padding:16px 30px; background:#fff; border-bottom:1px solid #E7EAEE; flex-shrink:0;">
+    <button onClick="{{ bdClose }}" style="width:44px; height:44px; flex-shrink:0; border-radius:12px; border:1px solid #E7EAEE; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:#F2F4F6;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg>
+    </button>
+    <span style="{{ bdMarkStyle }}">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-3"/></svg>
+    </span>
+    <div style="min-width:0;">
+      <div style="display:flex; align-items:center; gap:9px; flex-wrap:wrap;">
+        <span style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">{{ bdName }}</span>
+        <span style="{{ bdShiftStyle }}">{{ bdShift }}</span>
+      </div>
+      <div style="font-size:12.5px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ bdAddr }}</div>
+    </div>
+    <div style="flex:1; min-width:8px;"></div>
+    <div style="display:flex; align-items:center; gap:4px; background:#F2F4F6; border-radius:12px; padding:5px;">
+      <sc-for list="{{ bdTabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex; align-items:center; gap:4px; background:#F2F4F6; border-radius:12px; padding:5px;">
+      <sc-for list="{{ periodChips }}" as="p" hint-placeholder-count="4">
+        <button onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="flex:1; overflow-y:auto; padding:22px 30px 40px;">
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(228px, 1fr)); gap:16px; margin-bottom:18px;">
+      <sc-for list="{{ bdCards }}" as="c" hint-placeholder-count="4">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:11px; margin-bottom:12px;">
+            <span style="{{ c.iconStyle }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.iconPath }}"/></svg></span>
+            <span style="font-size:13.5px; font-weight:700; color:#46535F;">{{ c.label }}</span>
+          </div>
+          <div style="font-size:23px; font-weight:800; color:#16313A; letter-spacing:-0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ c.value }} <span style="font-size:12.5px; font-weight:600; color:#9AA3AE;">{{ c.unit }}</span></div>
+          <div style="font-size:12.5px; font-weight:600; color:#AEB6C0; margin-top:6px;">{{ c.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden; margin-bottom:18px;">
+      <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+        <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15v3M12 10v8M17 6v12"/></svg>
+        </span>
+        <span style="flex:1; min-width:0;">
+          <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Tarmoqda o'rni</span>
+          <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ bdRankSub }}</span>
+        </span>
+      </div>
+      <sc-for list="{{ bdRank }}" as="r" hint-placeholder-count="5">
+        <div onClick="{{ r.open }}" style="{{ r.rowStyle }}" style-hover="background:#FAFBFC;">
+          <span style="{{ r.rankStyle }}">{{ r.rank }}</span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</span>
+            <span style="display:flex; align-items:center; gap:9px; margin-top:6px;">
+              <span style="flex:1; height:7px; border-radius:4px; background:#EEF1F4; overflow:hidden; max-width:280px;"><span style="{{ r.barStyle }}"></span></span>
+              <span style="font-size:11.5px; font-weight:600; color:#9AA3AE; white-space:nowrap;">{{ r.city }}</span>
+            </span>
+          </span>
+          <span style="text-align:right; flex-shrink:0; font-size:14.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ r.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap:16px; margin-bottom:18px; align-items:start;">
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/></svg>
+          </span>
+          <span style="font-size:16px; font-weight:700; color:#16313A;">Ombor qoldig'i</span>
+        </div>
+        <sc-for list="{{ bdStock }}" as="s" hint-placeholder-count="3">
+          <div style="display:flex; align-items:center; gap:13px; padding:14px 2px; border-top:1px solid #F2F4F6;">
+            <span style="{{ s.iconStyle }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ s.iconPath }}"/></svg></span>
+            <span style="flex:1; font-size:14px; font-weight:700; color:#16313A;">{{ s.label }}</span>
+            <span style="font-size:16.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ s.value }} <span style="font-size:11px; color:#9AA3AE; font-weight:700;">Ed.</span></span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+          </span>
+          <span style="font-size:16px; font-weight:700; color:#16313A;">Mijozlar</span>
+        </div>
+        <sc-for list="{{ bdClients }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex; align-items:center; gap:13px; padding:14px 2px; border-top:1px solid #F2F4F6;">
+            <span style="{{ c.iconStyle }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7.4" r="3.8"/><path d="M12 12.6c-4.1 0-7.4 2.9-7.4 6.6 0 .9.7 1.6 1.6 1.6h11.6c.9 0 1.6-.7 1.6-1.6 0-3.7-3.3-6.6-7.4-6.6Z"/></svg></span>
+            <span style="flex:1; font-size:14px; font-weight:700; color:#16313A;">{{ c.label }}</span>
+            <span style="font-size:16.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ c.value }} <span style="font-size:11px; color:#9AA3AE; font-weight:700;">ta</span></span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>
+          </span>
+          <span style="font-size:16px; font-weight:700; color:#16313A;">Kassa va smena</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:13px; padding:14px 2px; border-top:1px solid #F2F4F6;">
+          <span style="{{ bdKassirAvStyle }}">{{ bdKassirInitials }}</span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ bdKassir }}</span>
+            <span style="display:inline-block; {{ bdShiftStyle }} margin-top:5px;">{{ bdShift }}</span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:13px; padding:14px 2px; border-top:1px solid #F2F4F6;">
+          <span style="flex:1; font-size:14px; font-weight:700; color:#16313A;">Kassa qoldig'i</span>
+          <span style="font-size:16.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ bdCash }}</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:13px; padding:14px 2px; border-top:1px solid #F2F4F6;">
+          <span style="flex:1; font-size:14px; font-weight:700; color:#16313A;">Cheklar</span>
+          <span style="font-size:16.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ bdChecks }} <span style="font-size:11px; color:#9AA3AE; font-weight:700;">ta</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+      <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+        <span style="width:38px;height:38px;border-radius:11px;background:#FAD9D6;color:#E5544E;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="6" width="19" height="12.5" rx="2.5"/><path d="M2.5 10h19"/></svg>
+        </span>
+        <span style="flex:1; min-width:0;">
+          <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Filial qarzdorlari</span>
+          <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ bdDebtSub }}</span>
+        </span>
+      </div>
+      <sc-for list="{{ bdDebtors }}" as="d" hint-placeholder-count="3">
+        <div onClick="{{ d.open }}" style="display:flex; align-items:center; gap:13px; padding:13px 20px; border-top:1px solid #F2F4F6; cursor:pointer;" style-hover="background:#FAFBFC;">
+          <span style="{{ d.avStyle }}">{{ d.initials }}</span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ d.name }}</span>
+            <span style="display:block; font-size:11.5px; font-weight:600; color:#AEB6C0; margin-top:3px;">{{ d.phone }}</span>
+          </span>
+          <span style="text-align:right; flex-shrink:0;">
+            <span style="display:block; font-size:14px; font-weight:800; color:#16313A; white-space:nowrap;">{{ d.amount }}</span>
+            <span style="{{ d.dayStyle }}">{{ d.days }}</span>
+          </span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2CAD2" stroke-width="2.4" style="flex-shrink:0;"><path d="m9 6 6 6-6 6"/></svg>
+        </div>
+      </sc-for>
+      <sc-if value="{{ bdDebtEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:30px 20px 34px; border-top:1px solid #F2F4F6; text-align:center; font-size:12.5px; font-weight:600; color:#9AA3AE;">Bu filialda qarzdor yo'q</div>
+      </sc-if>
+    </div>
+
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ QARZDOR DRILL-IN ============ -->
+<sc-if value="{{ qdOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed; inset:0; z-index:340; background:#EEF1F4; display:flex; flex-direction:column; overflow:hidden;">
+
+  <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap; padding:16px 30px; background:#fff; border-bottom:1px solid #E7EAEE; flex-shrink:0;">
+    <button onClick="{{ qdClose }}" style="width:44px; height:44px; flex-shrink:0; border-radius:12px; border:1px solid #E7EAEE; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:#F2F4F6;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg>
+    </button>
+    <span style="{{ qdAvStyle }}">{{ qdInitials }}</span>
+    <div style="min-width:0;">
+      <div style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">{{ qdName }}</div>
+      <div style="display:flex; align-items:center; gap:9px; margin-top:3px; flex-wrap:wrap;">
+        <span style="{{ qdBranchStyle }}">{{ qdBranch }}</span>
+        <span style="font-size:12.5px; font-weight:600; color:#9AA3AE;">{{ qdPhone }}</span>
+      </div>
+    </div>
+    <div style="flex:1; min-width:8px;"></div>
+    <button style="display:flex; align-items:center; gap:8px; border:1px solid #E7EAEE; border-radius:12px; background:#fff; color:#46535F; font-size:13.5px; font-weight:700; padding:11px 15px; cursor:pointer;" style-hover="background:#F2F4F6;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .5 3 .7a2 2 0 0 1 1.7 2Z"/></svg>
+      Qo'ng'iroq
+    </button>
+    <button style="display:flex; align-items:center; gap:8px; border:none; border-radius:12px; background:#14A0AE; color:#fff; font-size:13.5px; font-weight:700; padding:11px 16px; cursor:pointer;" style-hover="background:#0E7C88;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+      SMS yuborish
+    </button>
+  </div>
+
+  <div style="flex:1; overflow-y:auto; padding:22px 30px 40px;">
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(228px, 1fr)); gap:16px; margin-bottom:18px;">
+      <sc-for list="{{ qdCards }}" as="c" hint-placeholder-count="4">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="font-size:13px; font-weight:600; color:#9AA3AE;">{{ c.label }}</div>
+          <div style="{{ c.valStyle }}">{{ c.value }} <span style="font-size:12.5px; font-weight:600; color:#9AA3AE;">{{ c.unit }}</span></div>
+          <div style="font-size:12.5px; font-weight:600; color:#AEB6C0; margin-top:6px;">{{ c.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap:16px; align-items:start;">
+
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#E3F3F5;color:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          </span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">Qarz tarkibi</span>
+            <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ qdItemsSub }}</span>
+          </span>
+        </div>
+        <sc-for list="{{ qdItems }}" as="i" hint-placeholder-count="3">
+          <div style="display:flex; align-items:center; gap:13px; padding:13px 20px; border-top:1px solid #F2F4F6;">
+            <span style="flex:1; min-width:0;">
+              <span style="display:block; font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ i.label }}</span>
+              <span style="display:block; font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:3px;">{{ i.meta }}</span>
+            </span>
+            <span style="text-align:right; flex-shrink:0; font-size:14px; font-weight:800; color:#16313A; white-space:nowrap;">{{ i.value }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:12px; padding:18px 20px 14px;">
+          <span style="width:38px;height:38px;border-radius:11px;background:#E7F6EE;color:#1AA565;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M21 3v6h-6"/><path d="M12 8v4.5l3 2"/></svg>
+          </span>
+          <span style="flex:1; min-width:0;">
+            <span style="display:block; font-size:16px; font-weight:700; color:#16313A;">To'lov tarixi</span>
+            <span style="display:block; font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ qdPaySub }}</span>
+          </span>
+        </div>
+        <sc-for list="{{ qdPayments }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex; align-items:center; gap:13px; padding:13px 20px; border-top:1px solid #F2F4F6;">
+            <span style="{{ p.iconStyle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.iconPath }}"/></svg></span>
+            <span style="flex:1; min-width:0;">
+              <span style="display:block; font-size:13.5px; font-weight:700; color:#16313A;">{{ p.label }}</span>
+              <span style="display:block; font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:3px;">{{ p.meta }}</span>
+            </span>
+            <span style="text-align:right; flex-shrink:0; font-size:14px; font-weight:800; color:#1AA565; white-space:nowrap;">{{ p.value }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </div>
+</div>
+</sc-if></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { scope: 'all', period: 'oy', cur: 'uzs', sort: 'savdo', orgOpen: false, det: null, bdet: null, bsort: 'savdo', qdet: null };
+
+  branches() {
+    return [
+      { id: 'b1', name: "Markaziy do'kon", short: 'Markaziy', city: 'Toshkent', lat: 41.2856, lon: 69.2034, color: '#14A0AE',
+        month: 553168480, cash: 98275000, debt: 18750000, profit: 92000000, checks: 412, shift: 'open',
+        kassir: "Ulug'bek Sodiqov · Kassa 1", items: 318, low: 150, out: 1, clients: 42, fresh: 3, debtors: 4 },
+      { id: 'b2', name: 'Samarqand filiali', short: 'Samarqand', city: 'Samarqand', lat: 39.6542, lon: 66.9597, color: '#2A6FDB',
+        month: 312400000, cash: 54200000, debt: 9300000, profit: 51500000, checks: 268, shift: 'open',
+        kassir: 'Dilnoza Karimova · Kassa 2', items: 214, low: 86, out: 0, clients: 31, fresh: 2, debtors: 3 },
+      { id: 'b3', name: 'Quva filiali', short: 'Quva', city: "Farg'ona", lat: 40.5222, lon: 72.07, color: '#EC8A3C',
+        month: 198650000, cash: 31800000, debt: 4100000, profit: 33800000, checks: 174, shift: 'stuck',
+        kassir: "Sardor Yo'ldoshev · Kassa 1", items: 156, low: 41, out: 2, clients: 24, fresh: 1, debtors: 2 },
+      { id: 'b4', name: 'Namangan filiali', short: 'Namangan', city: 'Namangan', lat: 40.9983, lon: 71.6726, color: '#7A5AF8',
+        month: 121300000, cash: 19400000, debt: 2350000, profit: 19800000, checks: 96, shift: 'closed',
+        kassir: 'Nodira Rahimova · Kassa 1', items: 98, low: 22, out: 3, clients: 18, fresh: 1, debtors: 2 },
+      { id: 'b5', name: 'Buxoro filiali', short: 'Buxoro', city: 'Buxoro', lat: 39.7747, lon: 64.4286, color: '#1AA565',
+        month: 86400000, cash: 12600000, debt: 1180000, profit: 13900000, checks: 71, shift: 'open',
+        kassir: 'Aziza Tursunova · Kassa 1', items: 74, low: 18, out: 1, clients: 12, fresh: 0, debtors: 1 },
+    ];
+  }
+
+  renderVals() {
+    const S = this.state;
+    const B = this.branches();
+    const RATE = 12780;
+    const uzsMode = S.cur !== 'usd';
+    const fmt = (n) => Math.round(n).toLocaleString('ru-RU').replace(/\u00A0/g, ' ');
+    const money = (n) => uzsMode ? fmt(n) : fmt(n / RATE);
+    const unit = uzsMode ? 'uzs' : 'usd';
+    const compact = (n) => uzsMode
+      ? (n >= 1e9 ? (n / 1e9).toFixed(2) + ' mlrd' : (n >= 1e6 ? Math.round(n / 1e6) + ' mln' : fmt(n)))
+      : fmt(n / RATE);
+
+    const sel = S.scope === 'all' ? null : B.filter(b => b.id === S.scope)[0];
+    const inScope = sel ? [sel] : B;
+    const sum = (k) => inScope.reduce((a, b) => a + b[k], 0);
+    const netMonth = B.reduce((a, b) => a + b.month, 0);
+
+    const PERIOD = { kun: ['Kun', 1 / 30], hafta: ['Hafta', 7 / 30], oy: ['Oy', 1], yil: ['Yil', 11.4] };
+    const pk = PERIOD[S.period] ? S.period : 'oy';
+    const pf = PERIOD[pk][1];
+    const scopeName = sel ? sel.name : 'Barcha filiallar (' + B.length + ')';
+    const scopeColor = sel ? sel.color : '#16313A';
+
+    const orgItems = [{ id: 'all', label: 'Barcha filiallar', meta: B.length + ' ta', color: '#16313A' }]
+      .concat(B.map(b => ({ id: b.id, label: b.name, meta: compact(b.month * pf), color: b.color })))
+      .map(o => ({
+        label: o.label, meta: o.meta,
+        pick: () => this.setState({ scope: o.id, orgOpen: false }),
+        dot: 'width:9px; height:9px; border-radius:3px; flex-shrink:0; background:' + o.color + ';',
+        style: 'width:100%; display:flex; align-items:center; gap:10px; border:none; border-radius:11px; padding:10px; cursor:pointer; text-align:left; font-family:inherit; font-size:13.5px; font-weight:'
+          + (S.scope === o.id ? '800' : '600') + '; color:#16313A; background:' + (S.scope === o.id ? '#E3F3F5' : 'transparent') + ';',
+      }));
+
+    const chip = (on) => 'border:none; border-radius:9px; padding:8px 15px; font-size:13.5px; font-weight:' + (on ? '700' : '600')
+      + '; cursor:pointer; white-space:nowrap; font-family:inherit; '
+      + (on ? 'background:#14A0AE; color:#fff;' : 'background:transparent; color:#5A6675;');
+    const periodChips = Object.keys(PERIOD).map(k => ({
+      label: PERIOD[k][0], style: chip(pk === k), pick: () => this.setState({ period: k }),
+    }));
+    const curChips = [['uzs', 'UZS'], ['usd', 'USD']].map(c => ({
+      label: c[1], style: chip(S.cur === c[0]), pick: () => this.setState({ cur: c[0] }),
+    }));
+
+    const savdoOy = sum('month') * pf;
+    const savdoKun = sum('month') / 30;
+    const checks = Math.round(sum('checks') / 30);
+    const avg = checks ? savdoKun / checks : 0;
+    const delta = (txt, up) => 'font-size:12px; font-weight:700; border-radius:7px; padding:3px 8px; white-space:nowrap; background:'
+      + (up ? '#E7F6EE' : '#FCEEED') + '; color:' + (up ? '#1AA565' : '#D24039') + ';';
+    const kIcon = (bg, color) => 'width:38px; height:38px; border-radius:11px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:' + bg + '; color:' + color + ';';
+    const kpis = [
+      { label: 'Umumiy kunlik savdo', v: savdoKun, u: unit, d: '+6.2%', up: true, c: '#14A0AE', bg: '#E3F3F5',
+        p: 'M3 3v18h18M7 15v3M12 10v8M17 6v12' },
+      { label: PERIOD[pk][0] + ' savdosi', v: savdoOy, u: unit, d: '+12.4%', up: true, c: '#14A0AE', bg: '#E3F3F5',
+        p: 'M3 17l6-6 4 4 7-7M14 8h7v7' },
+      { label: 'Bugungi cheklar', v: checks, u: 'ta', d: '+4.1%', up: true, c: '#1AA565', bg: '#E7F6EE',
+        p: 'M6 3h12v18l-3-2-3 2-3-2-3 2ZM9 8h6M9 12h6' },
+      { label: "O'rtacha chek", v: avg, u: unit, d: '-2.8%', up: false, c: '#1AA565', bg: '#E7F6EE',
+        p: 'M9 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM18 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L22 7H6' },
+    ].map((k, ki) => ({
+      label: k.label, iconPath: k.p, delta: k.d, deltaStyle: delta(k.d, k.up),
+      open: () => this.setState({ det: ['kun', 'oy', 'chek', 'avg'][ki] }),
+      value: k.u === 'ta' ? fmt(k.v) : money(k.v), unit: k.u,
+      sub: sel ? sel.short : inScope.length + ' filial',
+      iconStyle: kIcon(k.bg, k.c),
+      labelStyle: 'flex:1 1 auto; min-width:0; font-size:15px; font-weight:700; line-height:1.25; color:' + k.c + '; text-wrap:pretty;',
+    }));
+
+    const PAYS = [
+      { label: 'Hisob raqam', k: 0.14, p: 'M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6' },
+      { label: 'Bank kartasi', k: 0.31, p: 'M2.5 6h19v12.5h-19zM2.5 10h19' },
+      { label: 'Naqd pul', k: 0.46, p: 'M2.5 6h19v12.5h-19zM12 12.2h.01M6 12.2h.01M18 12.2h.01' },
+      { label: 'Bonuslar', k: 0.03, p: 'M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7 8.5 3.5a2.5 2.5 0 1 0-3.5 3.5M12 7l3.5-3.5a2.5 2.5 0 1 1 3.5 3.5' },
+      { label: 'Qarzga', k: 0.06, p: 'M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z' },
+    ];
+    const payTotal = savdoOy;
+    const pays = PAYS.map(p => ({
+      label: p.label, iconPath: p.p, amt: money(payTotal * p.k) + ' ' + unit,
+      barStyle: 'display:block; height:100%; border-radius:4px; background:#14A0AE; width:' + Math.round(p.k * 100 / 0.46) + '%;',
+    }));
+
+    const mapPoints = JSON.stringify(B.map(b => ({
+      id: b.id, name: b.name, city: b.city, lat: b.lat, lon: b.lon, val: b.month, color: b.color,
+    })));
+    const mapLegend = B.map(b => ({
+      label: b.short,
+      dotStyle: 'width:9px; height:9px; border-radius:50%; flex-shrink:0; background:' + b.color + '; opacity:' + (!sel || sel.id === b.id ? '1' : '0.35') + ';',
+    }));
+
+    const sortChip = (on) => 'border:none; border-radius:9px; padding:7px 13px; font-size:12.5px; font-weight:' + (on ? '700' : '600')
+      + '; cursor:pointer; white-space:nowrap; font-family:inherit; '
+      + (on ? 'background:#fff; color:#0E7C88; box-shadow:0 1px 3px rgba(16,24,40,0.1);' : 'background:transparent; color:#8A93A0;');
+    const sortChips = [['savdo', 'Savdo'], ['foyda', 'Foyda'], ['marja', 'Marja']].map(r => ({
+      label: r[1], style: sortChip(S.sort === r[0]), pick: () => this.setState({ sort: r[0] }),
+    }));
+
+    const sorted = B.slice().sort((a, b) => S.sort === 'foyda' ? b.profit - a.profit
+      : (S.sort === 'marja' ? (b.profit / b.month) - (a.profit / a.month) : b.month - a.month));
+    const maxMonth = Math.max.apply(null, B.map(b => b.month));
+    const SHIFT = { open: ['#1AA565', 'Smena ochiq'], stuck: ['#E5544E', 'Smena yopilmagan'], closed: ['#AEB6C0', 'Smena yopilgan'] };
+
+    const branchRows = sorted.map((b, i) => {
+      const on = sel && sel.id === b.id;
+      const val = S.sort === 'foyda' ? b.profit * pf : b.month * pf;
+      return {
+        rank: String(i + 1), name: b.name, city: b.city, shiftTitle: SHIFT[b.shift][1],
+        share: Math.round(b.month / netMonth * 100) + '%',
+        amount: money(val) + ' ' + unit,
+        meta: S.sort === 'marja' ? 'marja ' + (b.profit / b.month * 100).toFixed(1) + '%'
+          : fmt(Math.round(b.checks * pf)) + ' chek',
+        rowStyle: 'display:flex; align-items:center; gap:12px; padding:13px 20px; border-top:1px solid #F2F4F6; background:' + (on ? '#F4FBFB' : '#fff') + ';',
+        rankStyle: 'width:26px; height:26px; flex-shrink:0; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; background:' + (on ? b.color : '#F2F4F6') + '; color:' + (on ? '#fff' : '#7C8794') + ';',
+        dotStyle: 'width:8px; height:8px; border-radius:50%; flex-shrink:0; background:' + SHIFT[b.shift][0] + ';',
+        barStyle: 'display:block; height:100%; border-radius:4px; background:' + b.color + '; width:' + Math.round(b.month / maxMonth * 100) + '%;',
+      };
+    });
+
+    const headVal = (color) => 'font-size:17px; font-weight:800; margin-top:3px; white-space:nowrap; color:' + color + ';';
+    const tblRow = (on) => 'min-width:660px; display:grid; grid-template-columns:52px minmax(150px, 1.6fr) 1fr 1fr 1fr; gap:12px; align-items:center; padding:13px 20px; border-top:1px solid #F2F4F6; background:' + (on ? '#F4FBFB' : '#fff') + ';';
+    const rowDot = (color) => 'width:9px; height:9px; border-radius:3px; flex-shrink:0; background:' + color + ';';
+
+    const stockHead = [
+      { label: 'Tovarlar mavjud', value: fmt(sum('items')) + ' Ed.', valStyle: headVal('#16313A') },
+      { label: 'Kam qoldiq', value: fmt(sum('low')) + ' Ed.', valStyle: headVal('#EC8A3C') },
+      { label: 'Nol qoldiq', value: fmt(sum('out')) + ' Ed.', valStyle: headVal('#E5544E') },
+    ];
+    const stockRows = inScope.map((b, i) => ({
+      idx: String(i + 1), name: b.name, items: fmt(b.items), low: fmt(b.low), out: fmt(b.out),
+      dot: rowDot(b.color), rowStyle: tblRow(sel && sel.id === b.id),
+      open: () => this.setState({ bdet: b.id }),
+    }));
+
+    const clientHead = [
+      { label: 'Barcha mijozlar', value: fmt(sum('clients')) + ' Ed.', valStyle: headVal('#16313A') },
+      { label: 'Yangi mijozlar', value: fmt(sum('fresh')) + ' Ed.', valStyle: headVal('#EC8A3C') },
+      { label: 'Qarzdorlar', value: fmt(sum('debtors')) + ' Ed.', valStyle: headVal('#E5544E') },
+    ];
+    const clientRows = inScope.map((b, i) => ({
+      idx: String(i + 1), name: b.name, all: fmt(b.clients), new: fmt(b.fresh), debtors: fmt(b.debtors),
+      dot: rowDot(b.color), rowStyle: tblRow(sel && sel.id === b.id),
+      open: () => this.setState({ bdet: b.id }),
+    }));
+
+    const DEBT = [
+      { name: 'Jahongir Toshmatov', phone: '+998 90 123-45-67', b: 'b1', amt: 8400000, days: 34 },
+      { name: 'MCHJ «Barkamol Qurilish»', phone: '+998 91 220-11-04', b: 'b1', amt: 6250000, days: 21 },
+      { name: 'Aziz Karimov', phone: '+998 93 445-67-89', b: 'b2', amt: 4100000, days: 12 },
+      { name: 'Shahnoza Yusupova', phone: '+998 97 336-22-15', b: 'b3', amt: 2350000, days: 6 },
+      { name: 'Test123', phone: '+998 88 444-22-12', b: 'b4', amt: 200000, days: 0 },
+    ];
+    const debtPool = DEBT.filter(d => !sel || d.b === sel.id);
+    const debtors = debtPool.map((d, i) => {
+      const br = B.filter(b => b.id === d.b)[0];
+      const late = d.days > 30 ? ['#FCEEED', '#D24039'] : (d.days > 0 ? ['#FBE7D2', '#C77A1A'] : ['#F2F4F6', '#7C8794']);
+      return {
+        idx: String(i + 1), name: d.name, phone: d.phone, branch: br.short,
+        open: () => this.setState({ qdet: d.name }),
+        amount: money(d.amt) + ' ' + unit, days: d.days === 0 ? "Kechikish yo'q" : d.days + ' kun',
+        initials: d.name.replace(/[«»]/g, '').trim().slice(0, 2).toUpperCase(),
+        avStyle: 'width:38px; height:38px; flex-shrink:0; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:800; background:' + br.color + '1F; color:' + br.color + ';',
+        branchStyle: 'font-size:11px; font-weight:700; border-radius:6px; padding:2px 7px; white-space:nowrap; background:' + br.color + '1F; color:' + br.color + ';',
+        dayStyle: 'display:inline-block; font-size:11.5px; font-weight:700; border-radius:7px; padding:4px 9px; white-space:nowrap; background:' + late[0] + '; color:' + late[1] + ';',
+      };
+    });
+
+    // ---------- KPI drill-in ----------
+    const det = S.det;
+    const DET = {
+      kun: { title: 'Umumiy kunlik savdo', metric: (b) => b.month / 30, c1: "Kunlik o'rtacha savdo", c2: 'Kunlik chek', f: 1 / 30, per: 'kunlik' },
+      oy: { title: PERIOD[pk][0] + ' savdosi', metric: (b) => b.month * pf, c1: PERIOD[pk][0] + ' savdosi', c2: 'Cheklar', f: pf, per: PERIOD[pk][0].toLowerCase() },
+      chek: { title: 'Bugungi cheklar', metric: (b) => b.checks / 30, c1: 'Kunlik cheklar', c2: 'Kunlik savdo', f: 1 / 30, per: 'kunlik' },
+      avg: { title: "O'rtacha chek", metric: (b) => (b.month / 30) / (b.checks / 30), c1: "O'rtacha chek", c2: 'Kunlik cheklar', f: 1 / 30, per: 'kunlik' },
+    };
+    const D = DET[det] || DET.oy;
+    const df = D.f;
+    const isCount = det === 'chek';
+    const metTotal = det === 'avg'
+      ? (checks ? savdoKun / checks : 0)
+      : inScope.reduce((a, b) => a + D.metric(b), 0);
+    const maxMet = Math.max.apply(null, B.map(b => D.metric(b)).concat([1]));
+    const metSum = B.reduce((a, b) => a + D.metric(b), 0);
+    const best = B.slice().sort((a, b) => D.metric(b) - D.metric(a))[0];
+
+    const detCards = [
+      { label: det === 'avg' ? "Tarmoq o'rtacha cheki" : 'Jami', value: isCount ? fmt(metTotal) : money(metTotal), unit: isCount ? 'ta' : unit,
+        sub: sel ? sel.name : B.length + ' filial' },
+      { label: 'Eng yaxshi filial', value: best.short, unit: '', sub: (isCount ? fmt(D.metric(best)) + ' ta' : money(D.metric(best)) + ' ' + unit) },
+      { label: "O'rtacha filial", value: isCount ? fmt(metSum / B.length) : money(metSum / B.length), unit: isCount ? 'ta' : unit,
+        sub: 'Tarmoq bo\u2019yicha' },
+      { label: 'Sof foyda (' + D.per + ')', value: money(sum('profit') * df), unit: unit,
+        sub: 'marja ' + (sum('month') ? (sum('profit') / sum('month') * 100).toFixed(1) : '0') + '%' },
+    ];
+
+    const detRows = B.slice().sort((a, b) => D.metric(b) - D.metric(a)).map((b, i) => {
+      const on = sel && sel.id === b.id;
+      const v = D.metric(b);
+      return {
+        idx: String(i + 1), name: b.name, city: b.city,
+        v1: isCount ? fmt(v) + ' ta' : money(v) + ' ' + unit,
+        v2: isCount ? money(b.month * df) + ' ' + unit : fmt(Math.max(Math.round(b.checks * df), 1)) + ' chek',
+        share: Math.round(v / metSum * 100) + '%',
+        open: () => this.setState({ scope: on ? 'all' : b.id }),
+        dot: 'width:10px; height:10px; border-radius:3px; flex-shrink:0; background:' + b.color + ';',
+        rowStyle: 'min-width:720px; display:grid; grid-template-columns:52px minmax(160px, 1.7fr) 1fr 1fr minmax(150px, 1.3fr); gap:14px; align-items:center; padding:13px 20px; border-top:1px solid #F2F4F6; cursor:pointer; background:' + (on ? '#F4FBFB' : '#fff') + ';',
+        barStyle: 'display:block; height:100%; border-radius:4px; background:' + b.color + '; width:' + Math.round(v / maxMet * 100) + '%;',
+      };
+    });
+
+    const TOPP = [
+      { name: 'Iphone 17 pro max 256', qty: 42, sum: 825552000, b: 'b1' },
+      { name: 'Redmi 14 Pro 8/128', qty: 57, sum: 344736000, b: 'b4' },
+      { name: 'Xolodilnik Artel HD-434', qty: 68, sum: 308448000, b: 'b2' },
+      { name: 'Lg Smart TV 55', qty: 31, sum: 234360000, b: 'b1' },
+      { name: 'Sement M400', qty: 12400, sum: 62000000, b: 'b3' },
+    ];
+    const isPay = det === 'kun' || det === 'oy';
+    let detList, detListTitle, detListSub, detListIconPath, detListIconStyle;
+    if (isPay) {
+      const maxK = Math.max.apply(null, PAYS.map(p => p.k));
+      detList = PAYS.map(p => ({
+        label: p.label, value: money(metTotal * p.k) + ' ' + unit, meta: Math.round(p.k * 100) + '%',
+        dot: 'width:10px; height:10px; border-radius:3px; flex-shrink:0; background:#14A0AE;',
+        barStyle: 'display:block; height:100%; border-radius:4px; background:#14A0AE; width:' + Math.round(p.k / maxK * 100) + '%;',
+      }));
+      detListTitle = "To'lov usullari";
+      detListSub = sel ? sel.name : 'Tarmoq bo\u2019yicha taqsimot';
+      detListIconPath = 'M2.5 6h19v12.5h-19zM2.5 10h19';
+      detListIconStyle = 'width:38px;height:38px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#E3F3F5;color:#14A0AE;';
+    } else {
+      const pool = TOPP.filter(t => !sel || t.b === sel.id);
+      const use = pool.length ? pool : TOPP;
+      const maxT = Math.max.apply(null, use.map(t => t.sum));
+      detList = use.map(t => {
+        const br = B.filter(b => b.id === t.b)[0];
+        return {
+          label: t.name, value: money(t.sum * df) + ' ' + unit,
+          meta: br.short + ' · ' + fmt(t.qty) + (t.name.indexOf('Sement') === 0 ? ' kg' : ' dona'),
+          dot: 'width:10px; height:10px; border-radius:3px; flex-shrink:0; background:' + br.color + ';',
+          barStyle: 'display:block; height:100%; border-radius:4px; background:' + br.color + '; width:' + Math.round(t.sum / maxT * 100) + '%;',
+        };
+      });
+      detListTitle = 'Top mahsulotlar';
+      detListSub = sel ? sel.name : 'Chek tarkibiga eng ko\u2019p ta\u2019sir qilgan';
+      detListIconPath = 'M21 8 12 3 3 8l9 5 9-5ZM3 8v8l9 5 9-5V8';
+      detListIconStyle = 'width:38px;height:38px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#E3F3F5;color:#14A0AE;';
+    }
+
+    // ---------- filial drill-in ----------
+    const bd = S.bdet ? B.filter(b => b.id === S.bdet)[0] : null;
+    const bsort = S.bsort || 'savdo';
+    const BM = {
+      savdo: { label: 'Savdo', get: (b) => b.month * pf, count: false },
+      foyda: { label: 'Foyda', get: (b) => b.profit * pf, count: false },
+      marja: { label: 'Marja', get: (b) => b.profit / b.month * 100, count: true },
+    };
+    const M = BM[bsort];
+    const bdTabs = Object.keys(BM).map(k => ({
+      label: BM[k].label, style: sortChip(bsort === k), pick: () => this.setState({ bsort: k }),
+    }));
+    const bdMaxM = Math.max.apply(null, B.map(b => M.get(b)));
+    const bdRank = B.slice().sort((a, b) => M.get(b) - M.get(a)).map((b, i) => {
+      const on = bd && bd.id === b.id;
+      const v = M.get(b);
+      return {
+        rank: String(i + 1), name: b.name, city: b.city,
+        value: M.count ? v.toFixed(1) + '%' : money(v) + ' ' + unit,
+        open: () => this.setState({ bdet: b.id }),
+        rowStyle: 'display:flex; align-items:center; gap:13px; padding:13px 20px; border-top:1px solid #F2F4F6; cursor:pointer; background:' + (on ? '#F4FBFB' : '#fff') + ';',
+        rankStyle: 'width:26px; height:26px; flex-shrink:0; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; background:' + (on ? b.color : '#F2F4F6') + '; color:' + (on ? '#fff' : '#7C8794') + ';',
+        barStyle: 'display:block; height:100%; border-radius:4px; background:' + b.color + '; width:' + Math.round(v / bdMaxM * 100) + '%;',
+      };
+    });
+    const bdIcon = (bg, color) => 'width:34px; height:34px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:' + bg + '; color:' + color + ';';
+    const bdCards = bd ? [
+      { label: PERIOD[pk][0] + ' savdosi', value: money(bd.month * pf), unit: unit, sub: fmt(Math.round(bd.checks * pf)) + ' chek',
+        iconStyle: bdIcon('#E3F3F5', '#14A0AE'), iconPath: 'M3 3v18h18M7 15v3M12 10v8M17 6v12' },
+      { label: 'Sof foyda', value: money(bd.profit * pf), unit: unit, sub: 'marja ' + (bd.profit / bd.month * 100).toFixed(1) + '%',
+        iconStyle: bdIcon('#EDF4FD', '#2A6FDB'), iconPath: 'M3 17l6-6 4 4 7-7M14 8h7v7' },
+      { label: "Kassa qoldig'i", value: money(bd.cash), unit: unit, sub: 'Naqd + karta',
+        iconStyle: bdIcon('#E7F6EE', '#1AA565'), iconPath: 'M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M21 11h-5a2 2 0 0 0 0 4h5z' },
+      { label: 'Qarzdorlik', value: money(bd.debt), unit: unit, sub: bd.debtors + ' ta mijoz',
+        iconStyle: bdIcon('#FAD9D6', '#E5544E'), iconPath: 'M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z' },
+    ] : [];
+    const bdStock = bd ? [
+      { label: 'Tovarlar mavjud', value: fmt(bd.items), iconStyle: bdIcon('#E3F3F5', '#14A0AE'), iconPath: 'M4 3h16v18H4zM8 8h8M8 12h8M8 16h5' },
+      { label: 'Kam qoldiq', value: fmt(bd.low), iconStyle: bdIcon('#FBE7D2', '#EC8A3C'), iconPath: 'M21 8 12 3 3 8l9 5 9-5ZM3 8v8l9 5 9-5V8' },
+      { label: 'Nol qoldiq', value: fmt(bd.out), iconStyle: bdIcon('#FAD9D6', '#E5544E'), iconPath: 'M4 3h16v18H4zM9 11l6 6M15 11l-6 6' },
+    ] : [];
+    const bdClients = bd ? [
+      { label: 'Barcha mijozlar', value: fmt(bd.clients), iconStyle: bdIcon('#E3F3F5', '#14A0AE') },
+      { label: 'Yangi mijozlar', value: fmt(bd.fresh), iconStyle: bdIcon('#FBE7D2', '#EC8A3C') },
+      { label: 'Qarzdorlar', value: fmt(bd.debtors), iconStyle: bdIcon('#FAD9D6', '#E5544E') },
+    ] : [];
+    const bdDebtPool = bd ? DEBT.filter(d => d.b === bd.id) : [];
+    const bdDebtors = bdDebtPool.map(d => {
+      const late = d.days > 30 ? ['#FCEEED', '#D24039'] : (d.days > 0 ? ['#FBE7D2', '#C77A1A'] : ['#F2F4F6', '#7C8794']);
+      return {
+        name: d.name, phone: d.phone, amount: money(d.amt) + ' ' + unit,
+        days: d.days === 0 ? "Kechikish yo'q" : d.days + ' kun',
+        initials: d.name.replace(/[«»]/g, '').trim().slice(0, 2).toUpperCase(),
+        open: () => this.setState({ qdet: d.name }),
+        avStyle: 'width:38px; height:38px; flex-shrink:0; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:800; background:' + bd.color + '1F; color:' + bd.color + ';',
+        dayStyle: 'display:inline-block; font-size:11px; font-weight:700; border-radius:6px; padding:3px 8px; margin-top:4px; white-space:nowrap; background:' + late[0] + '; color:' + late[1] + ';',
+      };
+    });
+    const bdShiftPair = bd ? SHIFT[bd.shift] : ['#AEB6C0', ''];
+
+    // ---------- qarzdor drill-in ----------
+    const qd = S.qdet ? DEBT.filter(d => d.name === S.qdet)[0] : null;
+    const qdBr = qd ? B.filter(b => b.id === qd.b)[0] : null;
+    const qdPaid = qd ? Math.round(qd.amt * 0.4) : 0;
+    const qdLate = qd ? (qd.days > 30 ? '#D24039' : (qd.days > 0 ? '#C77A1A' : '#7C8794')) : '#7C8794';
+    const qdCards = qd ? [
+      { label: 'Qarz summasi', value: money(qd.amt), unit: unit, sub: 'Umumiy limit ' + money(qd.amt + qdPaid) + ' ' + unit,
+        valStyle: 'font-size:24px; font-weight:800; color:#16313A; letter-spacing:-0.02em; margin-top:5px; white-space:nowrap;' },
+      { label: 'Kechikkan kun', value: qd.days === 0 ? '0' : String(qd.days), unit: qd.days === 0 ? "kun · kechikish yo'q" : 'kun',
+        sub: qd.days > 30 ? "Yuridik bo'limga o'tkazish tavsiya etiladi" : 'Muddat nazoratda',
+        valStyle: 'font-size:24px; font-weight:800; color:' + qdLate + '; letter-spacing:-0.02em; margin-top:5px; white-space:nowrap;' },
+      { label: "To'langan", value: money(qdPaid), unit: unit, sub: 'Oxirgi to\u2019lov 12.07.2026',
+        valStyle: 'font-size:24px; font-weight:800; color:#1AA565; letter-spacing:-0.02em; margin-top:5px; white-space:nowrap;' },
+      { label: 'Filial', value: qdBr.short, unit: '', sub: qdBr.name + ' · ' + qdBr.city,
+        valStyle: 'font-size:24px; font-weight:800; color:#16313A; letter-spacing:-0.02em; margin-top:5px; white-space:nowrap;' },
+    ] : [];
+    const qdItems = qd ? [
+      { label: 'Chek № 1042', meta: '18.06.2026 · 3 ta tovar', value: money(qd.amt * 0.52) + ' ' + unit },
+      { label: 'Chek № 1187', meta: '02.07.2026 · 1 ta tovar', value: money(qd.amt * 0.31) + ' ' + unit },
+      { label: 'Chek № 1230', meta: '14.07.2026 · 2 ta tovar', value: money(qd.amt * 0.17) + ' ' + unit },
+    ] : [];
+    const qdPayIcon = 'width:32px; height:32px; border-radius:9px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:#E7F6EE; color:#1AA565;';
+    const qdPayments = qd ? [
+      { label: 'Naqd pul', meta: '12.07.2026 · Kassa 1', value: money(qdPaid * 0.55) + ' ' + unit,
+        iconStyle: qdPayIcon, iconPath: 'M2.5 6h19v12.5h-19zM12 12.2h.01' },
+      { label: 'Bank kartasi', meta: '28.06.2026 · Payme', value: money(qdPaid * 0.3) + ' ' + unit,
+        iconStyle: qdPayIcon, iconPath: 'M2.5 6h19v12.5h-19zM2.5 10h19' },
+      { label: 'Naqd pul', meta: '19.06.2026 · Kassa 1', value: money(qdPaid * 0.15) + ' ' + unit,
+        iconStyle: qdPayIcon, iconPath: 'M2.5 6h19v12.5h-19zM12 12.2h.01' },
+    ] : [];
+
+    return {
+      kpis, periodChips, curChips, pays, mapLegend, branchRows,
+      bdOpen: !!bd, bdClose: () => this.setState({ bdet: null }),
+      bdName: bd ? bd.name : '', bdAddr: bd ? bd.city + ' · ' + bd.kassir : '',
+      bdMarkStyle: 'width:44px; height:44px; flex-shrink:0; border-radius:13px; display:flex; align-items:center; justify-content:center; background:' + (bd ? bd.color + '1F' : '#F2F4F6') + '; color:' + (bd ? bd.color : '#7C8794') + ';',
+      bdShift: bdShiftPair[1],
+      bdShiftStyle: 'font-size:11.5px; font-weight:700; border-radius:7px; padding:4px 9px; white-space:nowrap; background:' + bdShiftPair[0] + '1F; color:' + bdShiftPair[0] + ';',
+      bdTabs, bdRank, bdCards, bdStock, bdClients, bdDebtors,
+      bdRankSub: M.label + ' bo\u2019yicha · ' + B.length + ' filial',
+      bdKassir: bd ? bd.kassir : '',
+      bdKassirInitials: bd ? bd.kassir.slice(0, 2).toUpperCase() : '',
+      bdKassirAvStyle: 'width:40px; height:40px; flex-shrink:0; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; background:' + (bd ? bd.color + '1F' : '#F2F4F6') + '; color:' + (bd ? bd.color : '#7C8794') + ';',
+      bdCash: bd ? money(bd.cash) + ' ' + unit : '',
+      bdChecks: bd ? fmt(Math.round(bd.checks * pf)) : '',
+      bdDebtSub: bdDebtPool.length + ' ta qarzdor · ' + (bd ? money(bd.debt) + ' ' + unit : ''),
+      bdDebtEmpty: bdDebtPool.length === 0,
+
+      qdOpen: !!qd, qdClose: () => this.setState({ qdet: null }),
+      qdName: qd ? qd.name : '', qdPhone: qd ? qd.phone : '', qdBranch: qdBr ? qdBr.short : '',
+      qdInitials: qd ? qd.name.replace(/[«»]/g, '').trim().slice(0, 2).toUpperCase() : '',
+      qdAvStyle: 'width:46px; height:46px; flex-shrink:0; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; background:' + (qdBr ? qdBr.color + '1F' : '#F2F4F6') + '; color:' + (qdBr ? qdBr.color : '#7C8794') + ';',
+      qdBranchStyle: 'font-size:11.5px; font-weight:700; border-radius:7px; padding:3px 9px; white-space:nowrap; background:' + (qdBr ? qdBr.color + '1F' : '#F2F4F6') + '; color:' + (qdBr ? qdBr.color : '#7C8794') + ';',
+      qdCards, qdItems, qdPayments,
+      qdItemsSub: qd ? '3 ta chek · ' + money(qd.amt) + ' ' + unit : '',
+      qdPaySub: qd ? '3 ta to\u2019lov · ' + money(qdPaid) + ' ' + unit : '',
+      detOpen: !!det, closeDet: () => this.setState({ det: null }),
+      detTitle: D.title,
+      detSub: (sel ? sel.name : 'Barcha filiallar (' + B.length + ')') + ' · ' + (det === 'oy' ? PERIOD[pk][0] : "oxirgi 30 kun o'rtachasi"),
+      detHasPeriod: det === 'oy', detDailyNote: !!det && det !== 'oy',
+      detTableSub: isCount ? 'Chek soni bo\u2019yicha reyting' : 'Summa bo\u2019yicha reyting',
+      detCol1: D.c1, detCol2: D.c2, detCards, detRows,
+      detList, detListTitle, detListSub, detListIconPath, detListIconStyle,
+      stockHead, stockRows, clientHead, clientRows, debtors,
+      scopeName: scopeName, scopeDot: 'width:10px; height:10px; border-radius:3px; flex-shrink:0; background:' + scopeColor + ';',
+      orgOpen: !!S.orgOpen, orgItems: orgItems,
+      toggleOrg: () => this.setState(s => ({ orgOpen: !s.orgOpen })),
+      paysTotal: money(payTotal) + ' ' + unit,
+      mapPoints: mapPoints, mapSel: sel ? sel.id : '',
+      mapSub: sel ? sel.city + ' · ' + sel.name : B.length + ' filial · ' + inScope.length + ' shahar',
+      rankSub: PERIOD[pk][0] + ' · jami ' + compact(netMonth * pf) + ' ' + unit,
+      stockSub: sel ? sel.name : 'Tarmoq bo\u2019yicha jami',
+      clientSub: sel ? sel.name : 'Tarmoq bo\u2019yicha jami',
+      debtSub: sel ? sel.name : 'Barcha filiallar bo\u2019yicha',
+      debtCount: debtPool.length + ' ta',
+    };
+  }
+}
+</script>
+</body>
+</html>

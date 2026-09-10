@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="14" fill="#0E5560"/><g fill="none" stroke="#7FD3DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="36" width="40" height="28" rx="4"/><path d="M60 54h2"/></g></svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body { background: #EEF1F4; font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #16313A; overflow-x: auto; }
+  .app-root { min-width: 1440px; }
+  /* the flex-column wrapper around .app-root clips horizontally; let it scroll */
+  :has(> .app-root) { overflow-x: auto !important; min-height: 0; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: #D4D8DD; border-radius: 6px; border: 2px solid transparent; background-clip: content-box; }
+  button { font-family: inherit; }
+  .navbar { transition: width .2s ease; }
+  html.nav-collapsed .navbar { width: 76px !important; min-width: 76px !important; padding-left: 12px !important; padding-right: 12px !important; overflow-x: hidden !important; }
+  html.nav-collapsed .navbar .navscroll a, html.nav-collapsed .navbar .navscroll button { font-size: 0 !important; justify-content: center !important; gap: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+  html.nav-collapsed .navbar .navscroll svg ~ svg, html.nav-collapsed .navbar .navscroll span ~ svg, html.nav-collapsed .navbar .navchev { display: none !important; }
+  html.nav-collapsed .navbar .navscroll > div { display: none !important; }
+  html.nav-collapsed .navbar .navscroll > div.navgroup { display: block !important; }
+  html.nav-collapsed .navbar .navscroll .navsub { display: none !important; }
+  html.nav-collapsed .navbar .navlogo { display: none !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) { justify-content: center !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) > div { display: none !important; }
+  html.nav-collapsed .navbar .navlogo-row { justify-content: center !important; }
+  .navtoggle svg { transition: transform .2s ease; }
+  .navbar button, .navbar a { outline: none !important; -webkit-tap-highlight-color: transparent; }
+  .navbar button:focus, .navbar button:focus-visible, .navbar a:focus, .navbar a:focus-visible { outline: none !important; box-shadow: none !important; }
+  html.nav-collapsed .navtoggle svg { transform: rotate(180deg); }
+</style>
+<script src="i18n.js" data-i18n-skip></script>
+<script src="theme.js" data-i18n-skip></script>
+<script src="nav-collapse.js" data-i18n-skip></script>
+<script src="support-widget.js" data-i18n-skip></script>
+<script src="col-toggle.js" data-i18n-skip></script>
+</helmet>
+
+<div style="display: flex; height: 100vh; overflow: hidden; background: #EEF1F4;">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="navbar" style="width: 256px; flex-shrink: 0; background: #FFFFFF; border-right: 1px solid #E7EAEE; display: flex; flex-direction: column; padding: 22px 16px 16px;">
+    <div class="navlogo-row" style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding: 4px 6px 24px;">
+      <img class="navlogo" src="assets/wasyt-logo-new.png" alt="WASYT" style="height: 28px; width: auto; display: block;" />
+      <button class="navtoggle" type="button" title="Menyuni yig'ish" style="width:30px; height:30px; flex-shrink:0; border:none; border-radius:9px; background:#F2F4F6; color:#7C8794; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m13 6-6 6 6 6M19 6l-6 6 6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="navscroll" style="overflow-y: auto; flex: 1; margin: 0 -6px; padding: 0 6px;">
+      <a href="Wasyt - Bosh sahifa.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        Bosh sahifa
+      </a>
+
+      <a href="Wasyt - Savdo.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+        Savdo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Konsultant.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M9 4h9a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H9"/><path d="M4 8h8M4 12h8M4 16h5"/></svg>
+        Sotuvchi
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a href="Wasyt - Mahsulotlar.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        Mahsulotlar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Mijozlar.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+        Mijozlar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <div class="navgroup">
+        <button onClick="{{ toggleNav }}" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:#E3F3F5;color:#0E7C88;font-size:14.5px;font-weight:700;cursor:pointer;text-align:left;">
+          <span style="width:30px;height:30px;border-radius:9px;background:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M1 3h12v11H1zM13 7h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          </span>
+          Ta'minotchilar
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7C88" stroke-width="2.4" style="margin-left:auto; transition:transform .18s ease; {{ navChevStyle }}"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ true }}">
+        <div class="navsub" style="display:flex; flex-direction:column; gap:2px; margin:2px 0 6px 21px; padding:2px 0 2px 22px; border-left:2px solid #DFEDEF;">
+          <button data-nav="list" onClick="{{ goList }}" style="{{ navListStyle }}">Ta'minotchilar</button>
+          <button data-nav="vazvrat" onClick="{{ openReturnNav }}" style="{{ navReturnStyle }}">Ta'minotchiga qaytarish</button>
+        </div>
+        </sc-if>
+      </div>
+      <a href="Wasyt - Moliya.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M21 11h-5a2 2 0 0 0 0 4h5z"/></svg>
+        Moliya
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+
+      <a href="Wasyt - Hisobotlar.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        Hisobotlar
+      </a>
+
+      
+
+    </div>
+
+    <div style="display:flex; align-items:center; gap:13px; padding: 14px 8px 4px; border-top: 1px solid #EEF1F4; margin-top: 8px;">
+      <span style="width:42px;height:42px;border-radius:50%;background:#E3F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#14A0AE"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z"/></svg>
+      </span>
+      <div>
+        <div style="font-size:11.5px;color:#9AA3AE;">Call Center</div>
+        <div style="font-size:15px;font-weight:700;color:#16313A;">+998 (55) 055-51-00</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <!-- topbar -->
+    <header style="height: 76px; flex-shrink: 0; background: #FFFFFF; border-bottom: 1px solid #E7EAEE; display: flex; align-items: center; padding: 0 26px; gap: 16px;">
+      <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">{{ pageTitle }}</div>
+      <div style="font-size:13px; color:#9AA3AE; font-weight:600; background:#EEF1F4; padding:5px 11px; border-radius:8px; white-space:nowrap;">Ta'minotchilar</div>
+      <div style="flex: 1;"></div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <button style="position:relative;width:44px;height:44px;border-radius:50%;border:1px solid #ECEEF1;background:#F4F6F8;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:#EAF5F5;border-color:#BFE6E9;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span style="position:absolute;top:-2px;right:-3px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:#14A0AE;color:#fff;font-size:10px;font-weight:800;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">0</span></button>
+      </div>
+    </header>
+
+    <!-- scroll content -->
+    <div style="flex: 1; overflow-y: auto; padding: 22px 26px 32px;">
+      <sc-if value="{{ isListPage }}" hint-placeholder-val="{{ true }}">
+
+      <!-- combined dashboard: period filter + supplier stats -->
+      <div style="background:#F4F6FB; border:1px solid #EAEDF3; border-radius:22px; padding:14px; margin-bottom:20px;">
+        <div style="display:flex; align-items:center; gap:8px; padding:4px 6px 14px;">
+          <div style="display:flex; gap:4px; background:#fff; border:1px solid #EAEDF3; border-radius:13px; padding:4px;">
+            <sc-for list="{{ periods }}" as="p" hint-placeholder-count="5">
+              <button onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</button>
+            </sc-for>
+          </div>
+          <button style="width:42px; height:42px; border-radius:11px; border:1px solid #EAEDF3; background:#fff; color:#14A0AE; display:flex; align-items:center; justify-content:center; cursor:pointer; margin-left:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></button>
+        </div>
+        <!-- balans qatori -->
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px;">
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; align-items:center; gap:15px;">
+            <span style="width:50px; height:50px; border-radius:50%; background:#FBEDEC; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h.01"/></svg></span>
+            <div style="min-width:0;"><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Oy boshiga ta'minotchidan qarzimiz:</div><div style="font-size:17px; font-weight:800; color:#16313A; white-space:nowrap; line-height:1.25;"><span style="font-size:12px; color:#9AA3AE; font-weight:700;">UZS</span> {{ balOpenU }}</div><div style="font-size:17px; font-weight:800; color:#16313A; white-space:nowrap; line-height:1.25;"><span style="font-size:12px; color:#9AA3AE; font-weight:700;">USD</span> {{ balOpenD }}</div></div>
+          </div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; align-items:center; gap:15px;">
+            <span style="width:50px; height:50px; border-radius:50%; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12l4 4 4-4"/></svg></span>
+            <div style="min-width:0;"><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:6px;">Ta'minotchidan kirim:</div><div style="font-size:18px; font-weight:800; color:#16313A; white-space:nowrap;"><span style="font-size:12px; color:#9AA3AE; font-weight:700;">USD</span> {{ balInD }}</div></div>
+          </div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; align-items:center; gap:15px;">
+            <span style="width:50px; height:50px; border-radius:50%; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 16V8M8 12l4-4 4 4"/></svg></span>
+            <div style="min-width:0;"><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:6px;">Ta'minotchiga berilgan pullar:</div><div style="font-size:18px; font-weight:800; color:#16313A; white-space:nowrap;"><span style="font-size:12px; color:#9AA3AE; font-weight:700;">UZS</span> {{ balOutU }}</div></div>
+          </div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; align-items:center; gap:15px;">
+            <span style="width:50px; height:50px; border-radius:50%; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H7"/></svg></span>
+            <div style="min-width:0;"><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:6px;">Ta'minotchiga vazvrat:</div><div style="font-size:18px; font-weight:800; color:#16313A; white-space:nowrap; line-height:1.25;"><span style="font-size:12px; color:#9AA3AE; font-weight:700;">UZS</span> {{ returnStatSum }}</div><div style="font-size:12px; color:#9AA3AE; font-weight:600; margin-top:3px;">{{ returnStatCount }} ta hujjat</div></div>
+          </div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; align-items:center; gap:15px;">
+            <span style="width:50px; height:50px; border-radius:50%; background:#EFEAFB; color:#7B5BD6; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h.01"/></svg></span>
+            <div style="min-width:0;"><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Ta'minotchidan qarzimiz:</div><div style="font-size:17px; font-weight:800; color:#16313A; white-space:nowrap; line-height:1.25;"><span style="font-size:12px; color:#9AA3AE; font-weight:700;">UZS</span> {{ balCloseU }}</div><div style="font-size:17px; font-weight:800; color:#16313A; white-space:nowrap; line-height:1.25;"><span style="font-size:12px; color:#9AA3AE; font-weight:700;">USD</span> {{ balCloseD }}</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- filter toolbar -->
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:220px; background:#fff; border:1px solid #EDEFF2; border-radius:13px; padding:0 16px; height:50px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input value="{{ fltSearch }}" onInput="{{ setFltSearch }}" placeholder="Qidiruv" style="border:none; outline:none; flex:1; min-width:0; font-size:14px; color:#16313A; background:transparent; height:100%;" />
+        </div>
+        <button onClick="{{ toggleFlt }}" style="{{ fltBtnStyle }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="transition:transform .18s; transform:{{ fltChevron }};"><path d="m6 9 6 6 6-6"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>
+          Filtr
+        </button>
+        <button onClick="{{ openAdd }}" style="display:flex; align-items:center; gap:9px; background:#14A0AE; color:#fff; border:none; border-radius:13px; padding:0 22px; height:50px; font-size:14.5px; font-weight:700; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26); white-space:nowrap; flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6"><path d="M12 5v14M5 12h14"/></svg>
+          Ta'minotchi qo'shish
+        </button>
+      </div>
+
+      <!-- expandable filter panel -->
+      <sc-if value="{{ fltOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#F7F9FC; border:1px solid #EAEDF3; border-radius:16px; padding:18px; margin-bottom:18px;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
+          <div style="position:relative;">
+            <div onClick="{{ dropType.toggle }}" style="display:flex; align-items:stretch; border:1px solid #E1E6EB; border-radius:12px; overflow:hidden; background:#fff; cursor:pointer;">
+              <span style="{{ dropType.labelStyle }}">{{ dropType.label }}</span>
+              <span style="width:48px; background:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+            </div>
+            <sc-if value="{{ dropType.open }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:30; background:#fff; border:1px solid #EDEFF2; border-radius:12px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:6px; max-height:260px; overflow-y:auto;">
+              <sc-for list="{{ dropType.options }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button></sc-for>
+            </div>
+            </sc-if>
+          </div>
+          <div style="position:relative;">
+            <div onClick="{{ dropCreator.toggle }}" style="display:flex; align-items:stretch; border:1px solid #E1E6EB; border-radius:12px; overflow:hidden; background:#fff; cursor:pointer;">
+              <span style="{{ dropCreator.labelStyle }}">{{ dropCreator.label }}</span>
+              <span style="width:48px; background:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+            </div>
+            <sc-if value="{{ dropCreator.open }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:30; background:#fff; border:1px solid #EDEFF2; border-radius:12px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:6px; max-height:260px; overflow-y:auto;">
+              <sc-for list="{{ dropCreator.options }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button></sc-for>
+            </div>
+            </sc-if>
+          </div>
+          <div style="position:relative;">
+            <div onClick="{{ dropCompany.toggle }}" style="display:flex; align-items:stretch; border:1px solid #E1E6EB; border-radius:12px; overflow:hidden; background:#fff; cursor:pointer;">
+              <span style="{{ dropCompany.labelStyle }}">{{ dropCompany.label }}</span>
+              <span style="width:48px; background:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></span>
+            </div>
+            <sc-if value="{{ dropCompany.open }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:30; background:#fff; border:1px solid #EDEFF2; border-radius:12px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:6px; max-height:260px; overflow-y:auto;">
+              <sc-for list="{{ dropCompany.options }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button></sc-for>
+            </div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-top:18px;">
+          <button onClick="{{ resetFlt }}" style="display:flex; align-items:center; gap:8px; background:#EEF1F4; color:#5A6675; border:none; border-radius:11px; padding:11px 22px; font-size:13.5px; font-weight:700; cursor:pointer;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/></svg>Tozalash</button>
+          <button onClick="{{ applyFlt }}" style="display:flex; align-items:center; gap:8px; background:#14A0AE; color:#fff; border:none; border-radius:11px; padding:11px 26px; font-size:13.5px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Qo'llash</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ noSuppliers }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:44px; text-align:center; margin-bottom:18px;">
+        <div style="font-size:14.5px; font-weight:700; color:#46535F;">Filtrga mos ta'minotchi topilmadi</div>
+        <div style="font-size:13px; color:#9AA3AE; font-weight:500; margin-top:5px;">Qidiruv yoki filtr shartlarini o'zgartiring</div>
+      </div>
+      </sc-if>
+
+      <!-- table -->
+      <div data-coltable="tam-suppliers" style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+        <div style="overflow-x:auto;"><div style="min-width:920px;">
+        <div data-colhead style="display:grid; grid-template-columns:2.2fr 1.4fr 0.8fr 1.3fr 1.3fr 1.3fr 60px; gap:14px; padding:14px 24px; background:#FAFBFC; border-bottom:1px solid #F2F4F6; font-size:12px; color:#9AA3AE; font-weight:700; text-transform:uppercase; letter-spacing:0.3px;">
+          <div>Ta'minotchi</div><div>Telefon</div><div>Valyuta</div><div>Oxirgi xarid</div><div>Jami xarid</div><div>Balans</div><div></div>
+        </div>
+        <sc-for list="{{ suppliers }}" as="s" hint-placeholder-count="6">
+          <div data-colrow onClick="{{ s.open }}" style="display:grid; grid-template-columns:2.2fr 1.4fr 0.8fr 1.3fr 1.3fr 1.3fr 60px; gap:14px; padding:15px 24px; border-bottom:1px solid #F4F6F8; align-items:center; cursor:pointer;" style-hover="background:#FAFBFC;">
+            <div style="display:flex; align-items:center; gap:13px; min-width:0;">
+              <span style="width:42px; height:42px; border-radius:11px; background:{{ s.avBg }}; color:{{ s.avColor }}; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0;">{{ s.initials }}</span>
+              <div style="min-width:0;"><div style="font-size:14.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.name }}</div><div style="font-size:12px; color:#9AA3AE; font-weight:500;">{{ s.category }}</div></div>
+            </div>
+            <div style="font-size:13.5px; color:#46535F; font-weight:600;">{{ s.phone }}</div>
+            <div><span style="{{ s.curBadgeStyle }}">{{ s.curBadge }}</span></div>
+            <div style="font-size:13.5px; color:#46535F; font-weight:600;">{{ s.lastDate }}</div>
+            <div style="font-size:14px; font-weight:800; color:#16313A;">{{ s.total }}</div>
+            <div style="font-size:14px; font-weight:800; color:{{ s.balColor }};">{{ s.balance }}</div>
+            <div style="display:flex; justify-content:flex-end;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2CAD2" stroke-width="2.2"><path d="m9 6 6 6-6 6"/></svg></div>
+          </div>
+        </sc-for>
+        </div></div>
+      </div>
+      </sc-if>
+
+      <!-- ============ RETURN PAGE ============ -->
+      <sc-if value="{{ isReturnPage }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:22px;">
+        <button onClick="{{ goList }}" style="width:44px; height:44px; border-radius:12px; border:1px solid #E7EAEE; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;" style-hover="background:#F2F4F6;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg></button>
+        <span style="width:46px; height:46px; border-radius:13px; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H7"/></svg></span>
+        <div><div style="font-size:21px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Ta'minotchiga qaytarish</div><div style="font-size:13px; color:#9AA3AE; font-weight:600;">Mahsulotni ta'minotchiga qaytarish va ombordan chiqarish</div></div>
+      </div>
+
+      <!-- ===== RETURN HOME (mini-dashboard + tugma) ===== -->
+      <sc-if value="{{ returnHome }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:20px;">
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:11px;"><span style="width:32px; height:32px; border-radius:9px; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H7"/></svg></span><span style="font-size:12.5px; color:#9AA3AE; font-weight:700;">Jami vazvratlar</span></div>
+          <div style="font-size:26px; font-weight:800; color:#16313A;">{{ returnStatCount }}</div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:11px;"><span style="width:32px; height:32px; border-radius:9px; background:#FFF4E5; color:#D98324; display:flex; align-items:center; justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span style="font-size:12.5px; color:#9AA3AE; font-weight:700;">Qaytarilgan summa</span></div>
+          <div style="font-size:22px; font-weight:800; color:#16313A;">{{ returnStatSum }}</div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:11px;"><span style="width:32px; height:32px; border-radius:9px; background:#E8F1FE; color:#2A6FDB; display:flex; align-items:center; justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span><span style="font-size:12.5px; color:#9AA3AE; font-weight:700;">Mahsulot (dona)</span></div>
+          <div style="font-size:26px; font-weight:800; color:#16313A;">{{ returnStatQty }}</div>
+        </div>
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:11px;"><span style="width:32px; height:32px; border-radius:9px; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></span><span style="font-size:12.5px; color:#9AA3AE; font-weight:700;">Ta'minotchilar</span></div>
+          <div style="font-size:26px; font-weight:800; color:#16313A;">{{ returnStatSuppliers }}</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:20px 24px; box-shadow:0 1px 3px rgba(16,24,40,0.03); margin-bottom:20px;">
+        <div>
+          <div style="font-size:16px; font-weight:800; color:#16313A; margin-bottom:3px;">Yangi vazvrat</div>
+          <div style="font-size:13px; color:#9AA3AE; font-weight:600;">Ta'minotchiga mahsulot qaytarish va ombordan chiqarish</div>
+        </div>
+        <button onClick="{{ startReturnForm }}" style="display:inline-flex; align-items:center; gap:9px; background:#14A0AE; color:#fff; border:none; border-radius:12px; padding:14px 22px; font-size:14.5px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26); white-space:nowrap;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>Vazvrat rasmiylashtirish</button>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ returnForm }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ backToReturnHome }}" style="display:inline-flex; align-items:center; gap:7px; background:#fff; color:#5A6675; border:1px solid #E1E6EB; border-radius:11px; padding:9px 15px; font-size:13.5px; font-weight:700; cursor:pointer; margin-bottom:16px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>Orqaga</button>
+      <div style="display:grid; grid-template-columns:1fr 360px; gap:20px; align-items:start;">
+        <!-- LEFT column -->
+        <div style="display:flex; flex-direction:column; gap:18px; min-width:0;">
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); padding:22px;">
+            <div style="font-size:12px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:13px;">Ta'minotchi</div>
+            <select value="{{ returnSupplierIdx }}" onChange="{{ setReturnSupplier }}" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none; background:#fff; cursor:pointer; appearance:none;">
+              <sc-for list="{{ returnSupplierOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.i }}">{{ o.name }}</option></sc-for>
+            </select>
+          </div>
+
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); padding:22px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:13px;">
+              <span style="font-size:12px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.4px;">Qaytariladigan mahsulotlar</span>
+              <span style="font-size:12px; font-weight:700; color:#9AA3AE;">{{ returnLines }} tur · {{ returnCount }} dona tanlandi</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:9px; background:#F6F8FA; border:1px solid #EDEFF2; border-radius:11px; padding:0 13px; height:44px; margin-bottom:13px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input value="{{ returnSearch }}" onInput="{{ setReturnSearch }}" placeholder="Mahsulot nomi bo'yicha qidirish" style="border:none; outline:none; flex:1; min-width:0; font-size:13.5px; color:#16313A; background:transparent; height:100%;" />
+            </div>
+            <sc-for list="{{ returnItems }}" as="r" hint-placeholder-count="4">
+              <div style="border:1px solid {{ r.borderColor }}; border-radius:13px; margin-bottom:9px; background:{{ r.rowBg }};">
+                <div style="display:flex; align-items:center; gap:13px; padding:12px 14px;">
+                  <button onClick="{{ r.toggle }}" style="width:24px; height:24px; border-radius:7px; border:2px solid {{ r.checkBorder }}; background:{{ r.checkBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" style="{{ r.checkVis }}"><path d="M20 6 9 17l-5-5"/></svg></button>
+                  <span style="width:40px; height:40px; border-radius:11px; background:{{ r.bg }}; color:{{ r.color }}; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; font-weight:800;">{{ r.tag }}</span>
+                  <div style="flex:1; min-width:0;"><div style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</div><div style="font-size:12px; color:#9AA3AE; font-weight:600;">Oxirgi prixod: <span style="color:#46535F; font-weight:700;">{{ r.inPriceTxt }} so'm</span> · sotuv {{ r.priceTxt }} · omborda {{ r.stock }} dona</div></div>
+                  <div style="display:flex; align-items:center; border:1px solid #E1E6EB; border-radius:10px; overflow:hidden; flex-shrink:0; {{ r.qtyVis }}">
+                    <button onClick="{{ r.dec }}" style="width:30px; height:32px; border:none; background:#F4F6F8; color:#16313A; font-size:17px; cursor:pointer;">−</button>
+                    <span style="width:36px; text-align:center; font-size:14px; font-weight:800; color:#16313A;">{{ r.qty }}</span>
+                    <button onClick="{{ r.inc }}" style="{{ r.incStyle }}">+</button>
+                  </div>
+                </div>
+                <div style="{{ r.priceRowVis }} align-items:center; gap:12px; padding:2px 14px 13px 53px; flex-wrap:wrap; border-top:1px dashed #F1D9D7;">
+                  <div style="display:flex; align-items:center; gap:9px; padding-top:11px;">
+                    <span style="font-size:12.5px; color:#9AA3AE; font-weight:700;">Vazvrat narxi (1 dona)</span>
+                    <div style="display:flex; align-items:center; gap:6px; border:1px solid #E1E6EB; border-radius:9px; padding:0 11px; height:36px; background:#fff;">
+                      <input value="{{ r.returnPrice }}" onInput="{{ r.setPrice }}" type="number" style="border:none; outline:none; width:120px; font-size:13.5px; font-weight:700; color:#16313A; background:transparent;" />
+                      <span style="font-size:12px; color:#9AA3AE; font-weight:600;">so'm</span>
+                    </div>
+                  </div>
+                  <span style="margin-left:auto; padding-top:11px; font-size:13.5px; color:#E5544E; font-weight:800;">Jami: {{ r.subtotalTxt }}</span>
+                </div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ returnNoResults }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:10px; padding:34px 20px; color:#9AA3AE;">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#CBD3DB" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <div style="font-size:13.5px; font-weight:600;">"{{ returnSearch }}" bo'yicha mahsulot topilmadi</div>
+                <button onClick="{{ clearReturnSearch }}" style="background:#EEF1F4; color:#5A6675; border:none; border-radius:9px; padding:8px 16px; font-size:13px; font-weight:700; cursor:pointer;">Qidiruvni tozalash</button>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); padding:22px;">
+            <div style="font-size:12px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:12px;">Qaytarish sababi <span style="color:#E5544E;">*</span></div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <sc-for list="{{ returnReasons }}" as="rs" hint-placeholder-count="4">
+                <button onClick="{{ rs.pick }}" style="{{ rs.style }}">{{ rs.label }}</button>
+              </sc-for>
+            </div>
+            <div style="{{ reasonHintVis }}; display:flex; align-items:center; gap:7px; margin-top:11px; color:#E5544E; font-size:12.5px; font-weight:600;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+              Davom etish uchun qaytarish sababini tanlang
+            </div>
+            <div style="font-size:12px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.4px; margin:20px 0 10px;">Izoh <span style="text-transform:none; letter-spacing:0; color:#9AA3AE; font-weight:600;">(ixtiyoriy)</span></div>
+            <textarea value="{{ returnNote }}" onInput="{{ setReturnNote }}" placeholder="Masalan: 3 ta qadoq shikastlangan, seriya raqami ko'rsatilgan" style="width:100%; box-sizing:border-box; resize:vertical; min-height:70px; border:1px solid #E1E6EB; border-radius:11px; padding:11px 14px; font-size:13.5px; color:#16313A; outline:none; font-family:inherit;"></textarea>
+          </div>
+        </div>
+
+        <!-- RIGHT summary -->
+        <div style="position:sticky; top:0;">
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); padding:22px;">
+            <div style="font-size:12px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:14px;">Vazvrat xulosasi</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:9px 0; border-bottom:1px solid #F2F4F6;"><span style="font-size:13px; color:#9AA3AE; font-weight:600;">Mahsulot turi</span><span style="font-size:14px; color:#16313A; font-weight:700;">{{ returnLines }} tur</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:9px 0; border-bottom:1px solid #F2F4F6;"><span style="font-size:13px; color:#9AA3AE; font-weight:600;">Umumiy miqdor</span><span style="font-size:14px; color:#16313A; font-weight:700;">{{ returnCount }} dona</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:13px 0 16px;"><span style="font-size:13.5px; color:#46535F; font-weight:700;">Jami summa</span><span style="font-size:22px; color:#E5544E; font-weight:800; letter-spacing:-0.01em;">{{ returnTotal }}</span></div>
+            <button onClick="{{ confirmReturn }}" style="{{ returnPageBtnStyle }}">Vazvratni rasmiylashtirish</button>
+            <button onClick="{{ goList }}" style="width:100%; margin-top:10px; background:#EEF1F4; color:#5A6675; border:none; border-radius:13px; padding:13px; font-size:14.5px; font-weight:700; cursor:pointer;">Bekor qilish</button>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- VAZVRATLAR TARIXI -->
+      <sc-if value="{{ returnHome }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:10px; padding:18px 24px; border-bottom:1px solid #F2F4F6;">
+          <span style="font-size:16px; font-weight:800; color:#16313A;">Vazvratlar tarixi</span>
+          <sc-if value="{{ hasReturnHistory }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px; font-weight:800; color:#E5544E; background:#FCEEED; border-radius:7px; padding:2px 9px;">{{ returnHistoryCount }} ta</span></sc-if>
+        </div>
+        <sc-if value="{{ hasReturnHistory }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid; grid-template-columns:1.2fr 2fr 1.3fr 1.3fr 1.2fr; gap:14px; padding:13px 24px; background:#FAFBFC; border-bottom:1px solid #F2F4F6; font-size:12px; color:#9AA3AE; font-weight:700; text-transform:uppercase; letter-spacing:0.3px;">
+          <div>Sana</div><div>Ta'minotchi</div><div>Mahsulot</div><div>Summa</div><div>Sababi</div>
+        </div>
+        <sc-for list="{{ returnHistory }}" as="h" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:1.2fr 2fr 1.3fr 1.3fr 1.2fr; gap:14px; padding:15px 24px; border-bottom:1px solid #F4F6F8; align-items:center;">
+            <div style="font-size:13.5px; color:#46535F; font-weight:600;">{{ h.date }}</div>
+            <div style="display:flex; align-items:center; gap:11px; min-width:0;"><span style="width:34px; height:34px; border-radius:9px; background:{{ h.avBg }}; color:{{ h.avColor }}; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0;">{{ h.initials }}</span><span style="font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ h.supplier }}</span></div>
+            <div style="font-size:13px; color:#9AA3AE; font-weight:600;">{{ h.meta }}</div>
+            <div style="font-size:14px; font-weight:800; color:#E5544E;">{{ h.amount }}</div>
+            <div><span style="display:inline-block; font-size:12.5px; font-weight:700; color:#E5544E; background:#FCEEED; border-radius:8px; padding:4px 11px;">{{ h.reason }}</span></div>
+          </div>
+        </sc-for>
+        </sc-if>
+        <sc-if value="{{ noReturnHistory }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:9px; padding:40px 20px; color:#9AA3AE;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#CBD3DB" stroke-width="1.7"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H7"/></svg>
+            <div style="font-size:13.5px; font-weight:600;">Hozircha rasmiylashtirilgan vazvrat yo'q</div>
+          </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ returnDone }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:560px; margin:8px auto 0; background:#fff; border:1px solid #EDEFF2; border-radius:20px; box-shadow:0 1px 3px rgba(16,24,40,0.03); padding:34px 30px;">
+        <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+          <span style="width:78px; height:78px; border-radius:50%; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; margin-bottom:17px;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div style="font-size:22px; font-weight:800; color:#16313A; margin-bottom:6px;">Vazvrat rasmiylashtirildi</div>
+          <div style="font-size:13.5px; color:#9AA3AE; font-weight:600; margin-bottom:8px;">Mahsulotlar ta'minotchiga qaytarildi va ombordan chiqarildi</div>
+          <div style="display:inline-flex; align-items:center; gap:7px; background:#E7F6EE; color:#0E7C88; border-radius:9px; padding:6px 13px; font-size:12.5px; font-weight:700; margin-bottom:22px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 8v5l3 2"/><circle cx="12" cy="12" r="9"/></svg>{{ returnSupplierName }} tarixiga yozildi</div>
+          <div style="width:100%; background:#FAFBFC; border:1px solid #EDEFF2; border-radius:14px; padding:6px 18px; margin-bottom:22px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid #F0F2F5;"><span style="font-size:13px; color:#9AA3AE; font-weight:600;">Ta'minotchi</span><span style="font-size:13.5px; color:#16313A; font-weight:700;">{{ returnSupplierName }}</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid #F0F2F5;"><span style="font-size:13px; color:#9AA3AE; font-weight:600;">Sana</span><span style="font-size:13.5px; color:#16313A; font-weight:700;">{{ returnDate }}</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid #F0F2F5;"><span style="font-size:13px; color:#9AA3AE; font-weight:600;">Sababi</span><span style="font-size:13.5px; color:#16313A; font-weight:700;">{{ doneReason }}</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid #F0F2F5;"><span style="font-size:13px; color:#9AA3AE; font-weight:600;">Mahsulotlar</span><span style="font-size:13.5px; color:#16313A; font-weight:700;">{{ returnLines }} tur · {{ returnCount }} dona</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:13px 0;"><span style="font-size:13px; color:#46535F; font-weight:700;">Qaytarilgan summa</span><span style="font-size:18px; color:#E5544E; font-weight:800;">{{ returnTotal }} so'm</span></div>
+          </div>
+          <div style="display:flex; gap:12px; width:100%;">
+            <button onClick="{{ newReturn }}" style="flex:1; background:#fff; color:#0E7C88; border:1px solid #BFE6CF; border-radius:13px; padding:14px; font-size:15px; font-weight:700; cursor:pointer;">Yangi vazvrat</button>
+            <button onClick="{{ viewReturnHistory }}" style="flex:1.4; background:#14A0AE; color:#fff; border:none; border-radius:13px; padding:14px; font-size:15px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);">Tarixni ko'rish</button>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+      </sc-if>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SUPPLIER DETAIL ============ -->
+<sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed; inset:0; z-index:100; background:#EEF1F4; display:flex; flex-direction:column; overflow:hidden;">
+  <div style="display:flex; align-items:center; gap:16px; padding:16px 30px; background:#fff; border-bottom:1px solid #E7EAEE; flex-shrink:0;">
+    <button onClick="{{ closeDetail }}" style="width:44px; height:44px; border-radius:12px; border:1px solid #E7EAEE; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;" style-hover="background:#F2F4F6;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg></button>
+    <span style="font-size:15px; font-weight:700; color:#5A6675;">Ta'minotchilar</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2CAD2" stroke-width="2.2"><path d="m9 6 6 6-6 6"/></svg><span style="font-size:15px; font-weight:800; color:#16313A;">{{ curName }}</span>
+  </div>
+
+  <div style="flex:1; overflow-y:auto; padding:24px 30px 40px;">
+    <!-- supplier hero card -->
+    <div style="background:#fff; border:1px solid #EDEFF2; border-radius:20px; padding:24px 26px; margin-bottom:18px; position:relative;">
+      <div style="display:grid; grid-template-columns:280px 1.15fr 1fr 1fr 280px; gap:22px; align-items:start;">
+        <!-- illustration -->
+        <div style="align-self:center;"><img src="./assets/supplier-hero.png" alt="Wasyt" style="width:100%; height:240px; object-fit:contain; display:block;" /></div>
+        <!-- name + active + chips -->
+        <div>
+          <div style="font-size:28px; font-weight:800; color:#16313A; letter-spacing:-0.01em; line-height:1.1; margin-bottom:6px;">{{ curName }}</div>
+          <div style="font-size:13.5px; font-weight:700; color:#8A93A0; margin-bottom:12px;">{{ curCategory }}</div>
+          <div style="display:inline-flex; align-items:center; gap:7px; background:#E7F6EE; border-radius:9px; padding:5px 12px; margin-bottom:20px;"><span style="width:8px; height:8px; border-radius:50%; background:#1AA565;"></span><span style="font-size:13px; font-weight:700; color:#0E7C56;">Active</span></div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:34px; height:34px; border-radius:10px; background:#F2F4F6; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z"/></svg></span><div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Telefon:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curPhone }}</div></div></div>
+              <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:34px; height:34px; border-radius:10px; background:#F2F4F6; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z"/><path d="M17 2v6M20 5h-6"/></svg></span><div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Qo'shimcha telefonlar:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curExtraPhone }}</div></div></div>
+          </div>
+        </div>
+        <!-- info col 1 -->
+        <div style="display:flex; flex-direction:column; gap:20px; border-left:1px solid #F2F4F6; padding-left:22px;">
+          <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:6px;">FISH:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curFish }}</div></div>
+          <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:6px;">INN:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curInn }}</div></div>
+          <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:6px;">Hisob raqami:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curAcct }}</div><div style="font-size:12.5px; font-weight:600; color:#9AA3AE; margin-top:4px;">{{ curBankName }}</div></div>
+          <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:6px;">MFO:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curMfo }}</div></div>
+        </div>
+        <!-- info col 2 -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:34px; height:34px; border-radius:10px; background:#F2F4F6; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2" fill="currentColor"/></svg></span><div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Turi:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curType }}</div></div></div>
+          <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:34px; height:34px; border-radius:10px; background:#F2F4F6; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Manzil:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curAddress }}</div></div></div>
+          <div style="display:flex; align-items:flex-start; gap:12px;"><span style="width:34px; height:34px; border-radius:10px; background:#F2F4F6; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Oldi-berdi valyutasi:</div><div style="font-size:16px; font-weight:800; color:#16313A;">{{ curCurrency }}</div></div></div>
+        </div>
+        <!-- pay button + balans -->
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <button onClick="{{ openPay }}" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#14A0AE; color:#fff; border:none; border-radius:12px; padding:13px 18px; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>Yetkazib beruvchiga to'lash</button>
+          <button onClick="{{ openAkt }}" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#fff; color:#0E7C88; border:1.5px solid #BCDFE3; border-radius:12px; padding:11px 18px; font-size:13.5px; font-weight:700; cursor:pointer;" style-hover="background:#F2FAFB;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13l2 2 4-4"/></svg>Akt sverka</button>
+          <sc-if value="{{ balansDark }}" hint-placeholder-val="{{ true }}">
+          <div style="position:relative; overflow:hidden; background:#0E5560; border:1px solid #0B4650; border-radius:18px; padding:22px 24px; flex:1; box-shadow:0 14px 30px rgba(14,85,96,0.24);">
+            <div style="position:relative; z-index:1; display:flex; flex-direction:column; height:100%;">
+              <div style="font-size:12px; font-weight:800; color:#8FC4CC; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:14px;">Balans</div>
+              <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+                <span style="font-size:32px; font-weight:800; color:{{ detBalanceColorDark }}; letter-spacing:-0.02em; line-height:1;">{{ detBalance }}</span>
+                <span style="font-size:11px; font-weight:800; color:#0E5560; background:#7FD3DC; border-radius:6px; padding:3px 8px;">{{ detCurLabel }}</span>
+              </div>
+              <div style="margin-top:6px; font-size:12.5px; font-weight:700; color:#8FC4CC;">{{ detBalanceHint }}</div>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(143,196,204,0.28);">
+                <div style="font-size:11px; font-weight:800; color:#7FA7AF; text-transform:uppercase; letter-spacing:0.4px;">Boshlang'ich qoldiq</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:7px;">
+                  <div onClick="{{ openObEdit }}" style="{{ obRowStyle }}">
+                    <div style="font-size:14.5px; font-weight:800; color:#EAF6F7; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ obText }}</div>
+                    <div style="font-size:11.5px; font-weight:600; color:#7FA7AF; margin-top:2px;">{{ obDateTxt }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#2E7A85" stroke-width="1.2" style="position:absolute; right:-26px; bottom:-30px; opacity:0.55;"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h.01"/></svg>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ balansSoft }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative; overflow:hidden; background:linear-gradient(160deg, #F2FAFB 0%, #DCEFF2 46%, #BFE1E6 100%); border:1px solid #BCDFE3; border-radius:18px; padding:22px 24px; flex:1; box-shadow:inset 0 1px 0 rgba(255,255,255,0.75), 0 10px 24px rgba(14,85,96,0.10);">
+            <div style="position:relative; z-index:1; display:flex; flex-direction:column; height:100%;">
+              <div style="font-size:12px; font-weight:800; color:#5E939B; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:14px;">Balans</div>
+              <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+                <span style="font-size:32px; font-weight:800; color:{{ detBalanceColor }}; letter-spacing:-0.02em; line-height:1;">{{ detBalance }}</span>
+                <span style="font-size:11px; font-weight:800; color:#fff; background:#14A0AE; border-radius:6px; padding:3px 8px;">{{ detCurLabel }}</span>
+              </div>
+              <div style="margin-top:6px; font-size:12.5px; font-weight:700; color:#5E939B;">{{ detBalanceHint }}</div>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(94,147,155,0.26);">
+                <div style="font-size:11px; font-weight:800; color:#7B9DA4; text-transform:uppercase; letter-spacing:0.4px;">Boshlang'ich qoldiq</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:7px;">
+                  <div onClick="{{ openObEdit }}" style="{{ obRowStyle }}">
+                    <div style="font-size:14.5px; font-weight:800; color:#0E5560; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ obText }}</div>
+                    <div style="font-size:11.5px; font-weight:600; color:#7B9DA4; margin-top:2px;">{{ obDateTxt }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#A5CFD6" stroke-width="1.2" style="position:absolute; right:-26px; bottom:-30px; opacity:0.6;"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h.01"/></svg>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ balansPlain }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative; overflow:hidden; background:#fff; border:1px solid #EDEFF2; border-left:4px solid #14A0AE; border-radius:18px; padding:22px 24px; flex:1; box-shadow:0 1px 3px rgba(16,24,40,0.04);">
+            <div style="display:flex; flex-direction:column; height:100%;">
+              <div style="font-size:12px; font-weight:800; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:14px;">Balans</div>
+              <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+                <span style="font-size:32px; font-weight:800; color:{{ detBalanceColor }}; letter-spacing:-0.02em; line-height:1;">{{ detBalance }}</span>
+                <span style="font-size:11px; font-weight:800; color:#0E7C88; background:#E3F3F5; border-radius:6px; padding:3px 8px;">{{ detCurLabel }}</span>
+              </div>
+              <div style="margin-top:6px; font-size:12.5px; font-weight:700; color:#9AA3AE;">{{ detBalanceHint }}</div>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid #F2F4F6;">
+                <div style="font-size:11px; font-weight:800; color:#AEB6C0; text-transform:uppercase; letter-spacing:0.4px;">Boshlang'ich qoldiq</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:7px;">
+                  <div onClick="{{ openObEdit }}" style="{{ obRowStyle }}">
+                    <div style="font-size:14.5px; font-weight:800; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ obText }}</div>
+                    <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ obDateTxt }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ payOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePay }}" style="position:fixed; inset:0; z-index:900; background:rgba(13,32,38,0.44); display:flex; justify-content:flex-end;">
+      <div onClick="{{ payStop }}" style="width:620px; max-width:94%; height:100%; overflow-y:auto; background:#fff; border-radius:24px 0 0 24px; box-shadow:-24px 0 64px rgba(13,32,38,0.3); padding:26px 30px 34px;">
+        <sc-if value="{{ payFormStep }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+          <button onClick="{{ closePay }}" style="width:42px; height:42px; border-radius:13px; border:1px solid #E7EAEE; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; box-shadow:0 1px 3px rgba(16,24,40,0.05);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg></button>
+          <div style="font-size:21px; font-weight:800; color:#16313A; flex:1;">Yangi xarajat — ta'minotchiga to'lov</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:16px 0; border-top:1.5px dashed #E7EAEE; border-bottom:1.5px dashed #E7EAEE; margin-bottom:20px;">
+          <div style="background:#F7F9FB; border:1px solid #EFF2F5; border-radius:14px; padding:14px 16px;">
+            <div style="font-size:13px; color:#7C8794; font-weight:600; margin-bottom:5px;">Tanlangan hisobda hozir</div>
+            <div style="font-size:15px; font-weight:800; color:#0E7C88;">{{ payAcctBalance }}</div>
+          </div>
+          <div style="background:#F7F9FB; border:1px solid #EFF2F5; border-radius:14px; padding:14px 16px;">
+            <div style="font-size:13px; color:#7C8794; font-weight:600; margin-bottom:5px;">Ta'minotchi balansi</div>
+            <div style="font-size:15px; font-weight:800; color:#D64545;">{{ detBalance }} {{ detCurLabel }}</div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; align-items:start;">
+          <div>
+            <div style="display:flex; align-items:center; gap:7px; margin-bottom:7px;"><span style="width:18px; height:18px; border-radius:6px; background:#14A0AE; color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center;">1</span><span style="font-size:13px; color:#46535F; font-weight:700;">Kassa</span></div>
+            <div style="position:relative;">
+              <button onClick="{{ payKassaToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid #E1E6EB; border-radius:12px; background:#fff; padding:13px 15px; font-size:14px; font-weight:700; color:{{ payKassaColor }}; cursor:pointer;">{{ payKassaLabel }}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
+              <sc-if value="{{ payKassaOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:22; background:#fff; border:1px solid #EDEFF2; border-radius:13px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:6px;">
+                  <sc-for list="{{ payKassaOpts }}" as="k" hint-placeholder-count="2"><button onClick="{{ k.pick }}" style="{{ k.style }}"><span style="flex:1; min-width:0; text-align:left;">{{ k.label }}</span><span style="font-size:12px; color:#9AA3AE; font-weight:700;">{{ k.count }}</span></button></sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; align-items:center; gap:7px; margin-bottom:7px;"><span style="{{ payStep2BadgeStyle }}">2</span><span style="font-size:13px; color:#46535F; font-weight:700;">Hisob</span></div>
+            <div style="position:relative;">
+              <button onClick="{{ payAcctToggle }}" style="{{ payAcctBtnStyle }}">{{ payAcctLabel }}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
+              <sc-if value="{{ payAcctOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:20; background:#fff; border:1px solid #EDEFF2; border-radius:13px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:6px;">
+                  <sc-for list="{{ payAcctOpts }}" as="a" hint-placeholder-count="3"><button onClick="{{ a.pick }}" style="{{ a.style }}"><span style="{{ a.iconWrap }}">{{ a.icon }}</span><span style="display:flex; flex-direction:column; align-items:flex-start; gap:2px; flex:1; min-width:0;"><span style="font-size:13.5px; font-weight:700; line-height:1.25; text-align:left;">{{ a.label }}</span><span style="font-size:11.5px; font-weight:700; color:#9AA3AE; white-space:nowrap;">{{ a.bal }}</span></span></button></sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:7px; margin-bottom:7px;"><span style="{{ payStep3BadgeStyle }}">3</span><span style="font-size:13px; color:#46535F; font-weight:700;">Summa</span></div>
+            <div style="{{ payAmountWrapStyle }}">
+              <input value="{{ payAmount }}" onInput="{{ setPayAmount }}" inputmode="numeric" disabled="{{ payAmountDisabled }}" placeholder="{{ payAmountPlaceholder }}" style="flex:1; min-width:0; border:none; outline:none; background:transparent; padding:13px 15px; font-size:15.5px; font-weight:800; color:#0E7C88;" />
+              <div style="{{ payCurChipStyle }}">
+                <span style="font-size:12px; font-weight:800; color:#0E7C88; background:#E3F3F5; border-radius:8px; padding:7px 12px;">{{ payCurLabel }}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Foydalanuvchi</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid #E1E6EB; border-radius:12px; padding:13px 15px; font-size:14px; font-weight:700; color:#16313A;">Aziz Karimov<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></div>
+          </div>
+        </div>
+        <sc-if value="{{ convDoneShow }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:center; gap:9px; background:#E7F6EE; border:1px solid #C4E7D4; border-radius:12px; padding:11px 14px; margin-bottom:16px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0E6B4F" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg>
+            <span style="font-size:12.5px; font-weight:700; color:#0E6B4F;">{{ convDoneMsg }}</span>
+          </div>
+        </sc-if>
+        <div style="margin-bottom:18px;">
+          <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Izoh</div>
+          <textarea value="{{ payNote }}" onInput="{{ setPayNote }}" placeholder="Izoh kiriting" style="width:100%; box-sizing:border-box; min-height:96px; resize:vertical; border:1px solid #E1E6EB; border-radius:12px; padding:13px 15px; font-size:14px; color:#16313A; outline:none; font-family:inherit;"></textarea>
+        </div>
+        <button onClick="{{ payConfirm }}" style="{{ payAddBtnStyle }}">Qo'shish</button>
+        </sc-if>
+        <sc-if value="{{ payConvStep }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+          <button onClick="{{ closeConv }}" style="width:42px; height:42px; border-radius:13px; border:1px solid #E7EAEE; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; box-shadow:0 1px 3px rgba(16,24,40,0.05);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg></button>
+          <div style="font-size:21px; font-weight:800; color:#16313A; flex:1;">Yangi konvertatsiya</div>
+          <button onClick="{{ convConfirm }}" style="{{ convAddBtnStyle }}">Qo'shish</button>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:16px 0; border-top:1.5px dashed #E7EAEE; border-bottom:1.5px dashed #E7EAEE; margin-bottom:20px;">
+          <div style="background:#F7F9FB; border:1px solid #EFF2F5; border-radius:14px; padding:14px 16px;">
+            <div style="font-size:13px; color:#7C8794; font-weight:600; margin-bottom:5px;">Tanlangan hisobda hozir</div>
+            <div style="font-size:15px; font-weight:800; color:#0E7C88;">{{ convAcctBalance }}</div>
+          </div>
+          <div style="background:#F7F9FB; border:1px solid #EFF2F5; border-radius:14px; padding:14px 16px;">
+            <div style="font-size:13px; color:#7C8794; font-weight:600; margin-bottom:5px;">Hisobda muzlatilgan</div>
+            <div style="font-size:15px; font-weight:800; color:#0E7C88;">0 UZS / 0 USD</div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; align-items:end;">
+          <div>
+            <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Kassa</div>
+            <div style="position:relative;">
+              <button onClick="{{ convKassaToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid #E1E6EB; border-radius:12px; background:#fff; padding:13px 15px; font-size:14px; font-weight:700; color:#16313A; cursor:pointer; font-family:inherit;">{{ convKassaLabel }}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
+              <sc-if value="{{ convKassaOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:24; background:#fff; border:1px solid #EDEFF2; border-radius:13px; box-shadow:0 18px 44px rgba(16,24,40,0.16); padding:6px;">
+                  <sc-for list="{{ convKassaOpts }}" as="k" hint-placeholder-count="2"><button onClick="{{ k.pick }}" style="{{ k.style }}">{{ k.label }}</button></sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+          <div style="display:flex; gap:6px; background:#F2F4F6; border-radius:13px; padding:5px;">
+            <sc-for list="{{ convKindOpts }}" as="k" hint-placeholder-count="2"><button onClick="{{ k.pick }}" style="{{ k.style }}">{{ k.label }}</button></sc-for>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div>
+            <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Summa</div>
+            <div style="display:flex; align-items:stretch; border:1px solid #E1E6EB; border-radius:12px; overflow:hidden; background:#F7F9FB;">
+              <input value="{{ convAmount }}" onInput="{{ setConvAmount }}" inputmode="numeric" placeholder="0" style="flex:1; min-width:0; border:none; outline:none; background:transparent; padding:13px 15px; font-size:15.5px; font-weight:800; color:#16313A;" />
+              <button onClick="{{ convDirToggle }}" style="display:flex; align-items:center; gap:8px; border:none; border-left:1px solid #E1E6EB; background:#fff; padding:0 14px; font-size:13px; font-weight:800; color:#16313A; cursor:pointer; font-family:inherit; white-space:nowrap;">{{ convDirLabel }}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Yakuniy summa</div>
+            <div style="display:flex; align-items:center; border:1px solid #E7EAEE; border-radius:12px; background:#F7F9FB; padding:0 15px; height:48px;">
+              <span style="flex:1; min-width:0; font-size:15.5px; font-weight:800; color:#0E7C88;">{{ convResult }}</span>
+              <span style="font-size:12px; font-weight:800; color:#9AA3AE;">{{ convToCur }}</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div>
+            <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Kurs</div>
+            <div style="display:flex; align-items:center; border:1px solid #E1E6EB; border-radius:12px; overflow:hidden; background:#F7F9FB;">
+              <input value="{{ convRate }}" onInput="{{ setConvRate }}" inputmode="numeric" style="flex:1; min-width:0; border:none; outline:none; background:transparent; padding:13px 15px; font-size:15.5px; font-weight:800; color:#16313A;" />
+              <span style="font-size:12px; font-weight:800; color:#9AA3AE; background:#fff; border-left:1px solid #E1E6EB; padding:14px 16px;">UZS</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Foydalanuvchi</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid #E1E6EB; border-radius:12px; padding:13px 15px; font-size:14px; font-weight:700; color:#16313A;">Aziz Karimov<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></div>
+          </div>
+        </div>
+        <sc-if value="{{ convShortShow }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; align-items:center; gap:8px; background:#FDF0EF; border:1px solid #F5D8D6; border-radius:12px; padding:11px 14px; margin-bottom:16px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C2413C" stroke-width="2.2"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+            <span style="font-size:12.5px; font-weight:700; color:#B23A34;">{{ convShortText }}</span>
+          </div>
+        </sc-if>
+        <div>
+          <div style="font-size:13px; color:#46535F; font-weight:700; margin-bottom:7px;">Izoh</div>
+          <textarea value="{{ convNote }}" onInput="{{ setConvNote }}" placeholder="Izoh kiriting" style="width:100%; box-sizing:border-box; min-height:96px; resize:vertical; border:1px solid #E1E6EB; border-radius:12px; padding:13px 15px; font-size:14px; color:#16313A; outline:none; background:#F7F9FB; font-family:inherit;"></textarea>
+        </div>
+        </sc-if>
+        <sc-if value="{{ payDoneStep }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; height:100%;">
+          <span style="width:64px; height:64px; border-radius:50%; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; margin-bottom:16px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div style="font-size:19px; font-weight:800; color:#16313A;">Xarajat qo'shildi</div>
+          <div style="font-size:13.5px; color:#7C8794; font-weight:500; margin-top:7px; max-width:340px;">{{ curName }} · <span style="font-weight:800; color:#0E7C88;">{{ payDoneSum }}</span> to'landi ({{ payDoneType }}, {{ payDoneAcct }}) — kassa xarajati sifatida moliyaga yozildi</div>
+          <button onClick="{{ closePay }}" style="margin-top:20px; background:#14A0AE; color:#fff; border:none; border-radius:12px; padding:12px 28px; font-size:14px; font-weight:700; cursor:pointer;">Yopish</button>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- dashboard metrics -->
+    <div style="background:#F4F6FB; border:1px solid #EAEDF3; border-radius:18px; padding:14px; margin-bottom:18px;">
+        <div style="display:flex; align-items:center; gap:8px; padding:2px 4px 12px;">
+          <div style="display:flex; gap:4px; background:#fff; border:1px solid #EAEDF3; border-radius:13px; padding:4px;">
+            <sc-for list="{{ detPeriods }}" as="p" hint-placeholder-count="5"><button onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</button></sc-for>
+          </div>
+          <div style="position:relative;">
+            <button onClick="{{ toggleDetCal }}" style="{{ detCalBtnStyle }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></button>
+            <sc-if value="{{ detCalOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; top:50px; right:0; z-index:30; background:#fff; border:1px solid #E7EAEE; border-radius:16px; box-shadow:0 18px 40px rgba(16,24,40,0.16); padding:18px; width:300px;">
+                <div style="font-size:13.5px; font-weight:800; color:#16313A; margin-bottom:14px;">Sana oralig'i</div>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                  <div><div style="font-size:12px; color:#9AA3AE; font-weight:700; margin-bottom:6px;">Dan</div><input type="date" value="{{ detFrom }}" onInput="{{ setDetFrom }}" style="width:100%; box-sizing:border-box; border:1px solid #E1E6EB; border-radius:10px; padding:10px 12px; font-size:13.5px; color:#16313A; outline:none; font-family:inherit;" /></div>
+                  <div><div style="font-size:12px; color:#9AA3AE; font-weight:700; margin-bottom:6px;">Gacha</div><input type="date" value="{{ detTo }}" onInput="{{ setDetTo }}" style="width:100%; box-sizing:border-box; border:1px solid #E1E6EB; border-radius:10px; padding:10px 12px; font-size:13.5px; color:#16313A; outline:none; font-family:inherit;" /></div>
+                </div>
+                <sc-if value="{{ detRangeActive }}" hint-placeholder-val="{{ false }}"><div style="margin-top:12px; font-size:12.5px; font-weight:700; color:#0E7C88; background:#E3F3F5; border-radius:9px; padding:7px 11px; text-align:center;">{{ detRangeLabel }}</div></sc-if>
+                <div style="display:flex; gap:9px; margin-top:16px;">
+                  <button onClick="{{ clearDetRange }}" style="flex:1; background:#EEF1F4; color:#5A6675; border:none; border-radius:10px; padding:11px; font-size:13.5px; font-weight:700; cursor:pointer;">Tozalash</button>
+                  <button onClick="{{ applyDetRange }}" style="flex:1.4; background:#14A0AE; color:#fff; border:none; border-radius:10px; padding:11px; font-size:13.5px; font-weight:800; cursor:pointer;">Qo'llash</button>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(165px, 1fr)); gap:12px;">
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:16px 18px; display:flex; align-items:center; gap:13px;"><span style="width:46px; height:46px; border-radius:50%; background:#FBEDEC; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/></svg></span><div style="min-width:0;"><div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Oy boshiga ta'minotchidan qarzimiz:</div><div style="font-size:15px; font-weight:800; color:#16313A; white-space:nowrap; line-height:1.3;"><span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ detCurLabel }}</span> {{ detOpen }}</div></div></div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:16px 18px; display:flex; align-items:center; gap:13px;"><span style="width:46px; height:46px; border-radius:50%; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></span><div style="min-width:0;"><div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Ta'minotchidan kirim:</div><div style="font-size:16px; font-weight:800; color:#16313A; white-space:nowrap;"><span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ detCurLabel }}</span> {{ detIn }}</div></div></div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:16px 18px; display:flex; align-items:center; gap:13px;"><span style="width:46px; height:46px; border-radius:50%; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 9l5-5 5 5"/><path d="M12 4v12"/></svg></span><div style="min-width:0;"><div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Ta'minotchiga berilgan pullar:</div><div style="font-size:16px; font-weight:800; color:#16313A; white-space:nowrap;"><span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ detCurLabel }}</span> {{ detOut }}</div></div></div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:16px 18px; display:flex; align-items:center; gap:13px;"><span style="width:46px; height:46px; border-radius:50%; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H7"/></svg></span><div style="min-width:0;"><div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Ta'minotchiga vazvrat:</div><div style="font-size:16px; font-weight:800; color:#E5544E; white-space:nowrap;"><span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ detCurLabel }}</span> {{ detReturnTotal }}</div><div style="font-size:11.5px; color:#9AA3AE; font-weight:600; margin-top:2px;">{{ detReturnCount }} ta hujjat</div></div></div>
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:16px; padding:16px 18px; display:flex; align-items:center; gap:13px;"><span style="width:46px; height:46px; border-radius:50%; background:#EFEAFB; color:#7B5BD6; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg></span><div style="min-width:0;"><div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Ta'minotchidan qarzimiz:</div><div style="font-size:16px; font-weight:800; color:{{ detCloseColor }}; white-space:nowrap;"><span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ detCurLabel }}</span> {{ detClose }}</div></div></div>
+        </div>
+    </div>
+
+    <!-- income / expense -->
+    <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 22px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; align-items:start;">
+        <div style="background:#FBFCFD; border:1px solid #EEF1F4; border-radius:16px; padding:16px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><span style="font-size:16px; font-weight:800; color:#16313A;">Ta'minotchidan kirim</span><span style="font-size:13px; color:#9AA3AE; font-weight:600;">{{ detIncomeCount }} topildi</span></div>
+          <div style="border:1px solid #F0F2F5; border-radius:14px; overflow:hidden; overflow-x:auto;"><div style="min-width:0;">
+            <div style="display:grid; grid-template-columns:30px 0.8fr 1.5fr 1.1fr 40px; gap:6px; padding:12px 14px; background:#F7F9FB; font-size:12px; color:#9AA3AE; font-weight:700;"><div></div><div>ID</div><div>Yaratilgan · xodim</div><div>Summa</div><div></div></div>
+            <sc-for list="{{ detIncome }}" as="t" hint-placeholder-count="2">
+              <div style="display:grid; grid-template-columns:30px 0.8fr 1.5fr 1.1fr 40px; gap:6px; padding:13px 14px; border-top:1px solid #F4F6F8; align-items:center;"><div style="font-size:13px; color:#9AA3AE; font-weight:700;">{{ t.row }}</div><div style="font-size:13.5px; font-weight:700; color:#16313A;">{{ t.id }}</div><div style="min-width:0;"><div style="font-size:12.5px; color:#5A6675; font-weight:600; white-space:nowrap;">{{ t.date }}</div><div style="display:flex; align-items:center; gap:5px; margin-top:3px; min-width:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span style="font-size:11.5px; font-weight:700; color:#8A93A0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ t.user }}</span></div></div><div style="font-size:13.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ t.sum }} <span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ t.cur }}</span></div><div style="display:flex; justify-content:center;"><span onClick="{{ t.view }}" style="width:30px; height:30px; border-radius:8px; background:#E7F6EE; color:#1AA565; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span></div></div>
+            </sc-for>
+          </div></div>
+        </div>
+        <div style="background:#FBFCFD; border:1px solid #EEF1F4; border-radius:16px; padding:16px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><span style="font-size:16px; font-weight:800; color:#16313A;">Ta'minotchiga berilgan pullar</span><span style="font-size:13px; color:#9AA3AE; font-weight:600;">{{ detExpenseCount }} topildi</span></div>
+          <div style="border:1px solid #F0F2F5; border-radius:14px; overflow:hidden; overflow-x:auto;"><div style="min-width:0;">
+            <div style="display:grid; grid-template-columns:30px 0.7fr 1.4fr 0.9fr 1fr; gap:6px; padding:12px 14px; background:#F7F9FB; font-size:12px; color:#9AA3AE; font-weight:700;"><div></div><div>ID</div><div>Yaratilgan · xodim</div><div>To'lov turi</div><div>Summa</div></div>
+            <sc-for list="{{ detExpense }}" as="t" hint-placeholder-count="1">
+              <div style="display:grid; grid-template-columns:30px 0.7fr 1.4fr 0.9fr 1fr; gap:6px; padding:13px 14px; border-top:1px solid #F4F6F8; align-items:center;"><div style="font-size:13px; color:#9AA3AE; font-weight:700;">{{ t.row }}</div><div style="font-size:13.5px; font-weight:700; color:#16313A;">{{ t.id }}</div><div style="min-width:0;"><div style="font-size:12.5px; color:#5A6675; font-weight:600; white-space:nowrap;">{{ t.date }}</div><div style="display:flex; align-items:center; gap:5px; margin-top:3px; min-width:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span style="font-size:11.5px; font-weight:700; color:#8A93A0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ t.user }}</span></div></div><div><span style="display:inline-block; font-size:12px; font-weight:700; color:#0E7C88; background:#E3F3F5; border-radius:7px; padding:4px 10px;">{{ t.pay }}</span></div><div style="font-size:13.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ t.sum }} <span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ t.cur }}</span></div></div>
+            </sc-for>
+          </div></div>
+        </div>
+        <div style="background:#FBFCFD; border:1px solid #EEF1F4; border-radius:16px; padding:16px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><span style="font-size:16px; font-weight:800; color:#16313A;">Vazvrat</span><span style="font-size:13px; color:#9AA3AE; font-weight:600;">{{ detReturnCount }} topildi</span></div>
+          <div style="border:1px solid #F0F2F5; border-radius:14px; overflow:hidden; overflow-x:auto;"><div style="min-width:0;">
+            <div style="display:grid; grid-template-columns:30px 0.7fr 1.4fr 0.9fr 1fr 30px; gap:6px; padding:12px 14px; background:#F7F9FB; font-size:12px; color:#9AA3AE; font-weight:700;"><div></div><div>ID</div><div>Yaratilgan · xodim</div><div>Sababi</div><div>Summa</div><div></div></div>
+            <sc-if value="{{ hasDetReturns }}" hint-placeholder-val="{{ false }}">
+            <sc-for list="{{ detReturns }}" as="t" hint-placeholder-count="1">
+              <div style="border-top:1px solid #F4F6F8;">
+              <div style="display:grid; grid-template-columns:30px 0.7fr 1.4fr 0.9fr 1fr 30px; gap:6px; padding:13px 14px; align-items:center;"><div style="font-size:13px; color:#9AA3AE; font-weight:700;">{{ t.row }}</div><div><div style="font-size:13.5px; font-weight:700; color:#16313A;">{{ t.id }}</div><div style="font-size:11px; font-weight:700; color:#9AA3AE; margin-top:3px; white-space:nowrap;">{{ t.qtyLabel }}</div></div><div style="min-width:0;"><div style="font-size:12.5px; color:#5A6675; font-weight:600; white-space:nowrap;">{{ t.date }}</div><div style="display:flex; align-items:center; gap:5px; margin-top:3px; min-width:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="flex-shrink:0;"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span style="font-size:11.5px; font-weight:700; color:#8A93A0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ t.user }}</span></div></div><div><span style="display:inline-block; font-size:12px; font-weight:700; color:#E5544E; background:#FCEEED; border-radius:7px; padding:4px 10px;">{{ t.reason }}</span></div><div style="font-size:13.5px; font-weight:800; color:#E5544E; white-space:nowrap;">− {{ t.sum }} <span style="font-size:11px; color:#9AA3AE; font-weight:700;">{{ t.cur }}</span></div><div style="display:flex; justify-content:center;"><span onClick="{{ t.view }}" title="Qaytarilgan mahsulotlarni ko'rish" style="width:30px; height:30px; border-radius:8px; background:#FCEEED; color:#E5544E; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span></div></div>
+              </div>
+            </sc-for>
+            </sc-if>
+            <sc-if value="{{ noDetReturns }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex; flex-direction:column; align-items:center; gap:8px; padding:30px 16px; color:#9AA3AE;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#CBD3DB" stroke-width="1.7"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H7"/></svg><div style="font-size:12.5px; font-weight:600;">Vazvrat yo'q</div></div>
+            </sc-if>
+          </div></div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ DOC DETAIL MODAL ============ -->
+<sc-if value="{{ docOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeDoc }}" style="position:fixed; inset:0; z-index:120; background:rgba(16,24,40,0.45); display:flex; align-items:flex-start; justify-content:center; padding:40px 28px; overflow-y:auto;">
+  <div onClick="{{ stopProp }}" style="width:1180px; max-width:97vw; background:#fff; border-radius:20px; box-shadow:0 30px 70px rgba(16,24,40,0.3); overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:12px; padding:18px 26px; border-bottom:1px solid #F2F4F6;">
+      <div style="flex:1;"><div style="font-size:18px; font-weight:800; color:#16313A;">Kirim hujjati № {{ docId }}</div></div>
+      <button onClick="{{ printDoc }}" style="display:flex; align-items:center; gap:8px; background:#14A0AE; color:#fff; border:none; border-radius:11px; padding:0 18px; height:40px; font-size:13.5px; font-weight:700; cursor:pointer;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Pechat</button>
+      <button onClick="{{ closeDoc }}" style="width:40px; height:40px; border-radius:11px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div style="padding:24px 26px;">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:22px;">
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Sana va vaqt:</div><div style="font-size:15.5px; font-weight:700; color:#16313A;">{{ docDate }}</div></div>
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Ombor:</div><div style="font-size:15.5px; font-weight:700; color:#16313A;">{{ docWarehouse }}</div></div>
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Yetkazib beruvchi:</div><div style="font-size:15.5px; font-weight:700; color:#16313A;">{{ docSupplier }}</div></div>
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Valyuta:</div><div style="font-size:15.5px; font-weight:700; color:#16313A;">{{ docCurrency }}</div></div>
+      </div>
+      <div style="border:1px solid #F0F2F5; border-radius:14px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:46px 3fr 1fr 1.4fr 1.5fr; gap:8px; padding:14px 18px; font-size:12.5px; color:#5A6675; font-weight:700;">
+          <div></div><div>Nomlanish</div><div>Miqdori</div><div>Sotib olish narxi</div><div>Umumiy xarid narxi</div>
+        </div>
+        <sc-for list="{{ docRows }}" as="d" hint-placeholder-count="8">
+          <div style="display:grid; grid-template-columns:46px 3fr 1fr 1.4fr 1.5fr; gap:8px; padding:14px 18px; border-top:1px solid #F4F6F8; align-items:center; font-size:13.5px; color:#16313A;">
+            <div style="color:#9AA3AE; font-weight:700;">{{ d.row }}</div><div style="font-weight:700;">{{ d.name }}</div><div>{{ d.qty }}</div><div>{{ d.buy }}</div><div>{{ d.total }}</div>
+          </div>
+        </sc-for>
+        <div style="display:grid; grid-template-columns:46px 3fr 1fr 1.4fr 1.5fr; gap:8px; padding:16px 18px; border-top:1px solid #EDEFF2; align-items:center; font-size:14px; font-weight:800; color:#16313A;">
+          <div></div><div></div><div></div><div style="text-align:right; color:#9AA3AE; font-weight:700;">Umumiy summa:</div><div>{{ docTotalBuy }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ VAZVRAT DETAIL MODAL ============ -->
+<sc-if value="{{ retDocOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeRetDoc }}" style="position:fixed; inset:0; z-index:120; background:rgba(16,24,40,0.45); display:flex; align-items:flex-start; justify-content:center; padding:40px 28px; overflow-y:auto;">
+  <div onClick="{{ stopProp }}" style="width:1000px; max-width:97vw; background:#fff; border-radius:20px; box-shadow:0 30px 70px rgba(16,24,40,0.3); overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:12px; padding:18px 26px; border-bottom:1px solid #F2F4F6;">
+      <div style="flex:1;"><div style="font-size:18px; font-weight:800; color:#16313A;">Vazvrat hujjati № {{ retDocId }}</div></div>
+      <button onClick="{{ closeRetDoc }}" style="width:40px; height:40px; border-radius:11px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div style="padding:24px 26px;">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:22px;">
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Sana:</div><div style="font-size:15.5px; font-weight:700; color:#16313A;">{{ retDocDate }}</div></div>
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Yetkazib beruvchi:</div><div style="font-size:15.5px; font-weight:700; color:#16313A;">{{ retDocSupplier }}</div></div>
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Sababi:</div><div style="font-size:15.5px; font-weight:700; color:#E5544E;">{{ retDocReason }}</div></div>
+        <div><div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-bottom:5px;">Xodim:</div><div style="font-size:15.5px; font-weight:700; color:#16313A;">{{ retDocUser }}</div></div>
+      </div>
+      <div style="border:1px solid #F0F2F5; border-radius:14px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:46px 3fr 1fr 1.4fr 1.5fr; gap:8px; padding:14px 18px; font-size:12.5px; color:#5A6675; font-weight:700;">
+          <div></div><div>Nomlanish</div><div>Miqdori</div><div>Vazvrat narxi</div><div>Umumiy summa</div>
+        </div>
+        <sc-for list="{{ retDocRows }}" as="d" hint-placeholder-count="2">
+          <div style="display:grid; grid-template-columns:46px 3fr 1fr 1.4fr 1.5fr; gap:8px; padding:14px 18px; border-top:1px solid #F4F6F8; align-items:center; font-size:13.5px; color:#16313A;">
+            <div style="color:#9AA3AE; font-weight:700;">{{ d.row }}</div><div style="display:flex; align-items:center; gap:10px; min-width:0;"><span style="width:30px; height:30px; border-radius:9px; background:{{ d.bg }}; color:{{ d.color }}; display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:800; flex-shrink:0;">{{ d.tag }}</span><span style="font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ d.name }}</span></div><div style="font-weight:700; color:#E5544E;">{{ d.qty }} dona</div><div>{{ d.price }}</div><div style="font-weight:700;">{{ d.sum }}</div>
+          </div>
+        </sc-for>
+        <div style="display:grid; grid-template-columns:46px 3fr 1fr 1.4fr 1.5fr; gap:8px; padding:16px 18px; border-top:1px solid #EDEFF2; align-items:center; font-size:14px; font-weight:800; color:#16313A;">
+          <div></div><div></div><div style="color:#E5544E;">{{ retDocQty }} dona</div><div style="text-align:right; color:#9AA3AE; font-weight:700;">Umumiy summa:</div><div style="color:#E5544E;">− {{ retDocTotal }} {{ retDocCur }}</div>
+        </div>
+      </div>
+      <sc-if value="{{ retDocHasNote }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:16px; background:#FBFCFD; border:1px solid #EEF1F4; border-radius:12px; padding:14px 16px;"><div style="font-size:12px; color:#9AA3AE; font-weight:700; margin-bottom:5px;">Izoh:</div><div style="font-size:13.5px; color:#46535F; font-weight:600;">{{ retDocNote }}</div></div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ AKT SVERKA MODAL ============ -->
+<sc-if value="{{ aktOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeAkt }}" style="position:fixed; inset:0; z-index:120; background:rgba(16,24,40,0.45); display:flex; align-items:flex-start; justify-content:center; padding:40px 28px; overflow-y:auto;">
+  <div onClick="{{ stopProp }}" style="width:1080px; max-width:97vw; background:#fff; border-radius:20px; box-shadow:0 30px 70px rgba(16,24,40,0.3); overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:12px; padding:18px 26px; border-bottom:1px solid #F2F4F6;">
+      <span style="width:42px; height:42px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13l2 2 4-4"/></svg></span>
+      <div style="flex:1;"><div style="font-size:18px; font-weight:800; color:#16313A;">Solishtirish dalolatnomasi (Акт сверки)</div><div style="font-size:13px; color:#9AA3AE; font-weight:600;">{{ aktSupplier }} · {{ aktPeriodLabel }} · {{ aktDate }}</div></div>
+      <button onClick="{{ printAkt }}" style="display:flex; align-items:center; gap:8px; background:#14A0AE; color:#fff; border:none; border-radius:11px; padding:0 18px; height:40px; font-size:13.5px; font-weight:700; cursor:pointer;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>Yuklab olish</button>
+      <button onClick="{{ closeAkt }}" style="width:40px; height:40px; border-radius:11px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div style="padding:22px 26px;">
+      <div style="border:1px solid #F0F2F5; border-radius:14px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:46px 1fr 2.4fr 1fr 0.8fr 1.2fr 1.2fr; gap:8px; padding:13px 18px; background:#F7F9FB; font-size:11.5px; color:#5A6675; font-weight:700; text-transform:uppercase; letter-spacing:0.3px;">
+          <div></div><div>Sana</div><div>Amaliyot</div><div>Hujjat</div><div>Valyuta</div><div style="text-align:right;">Debet (qarz)</div><div style="text-align:right;">Kredit (to'lov)</div>
+        </div>
+        <sc-for list="{{ aktRows }}" as="r" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:46px 1fr 2.4fr 1fr 0.8fr 1.2fr 1.2fr; gap:8px; padding:13px 18px; border-top:1px solid #F4F6F8; align-items:center; font-size:13px;">
+            <div style="color:#9AA3AE; font-weight:700;">{{ r.row }}</div>
+            <div style="color:#5A6675; font-weight:600; white-space:nowrap;">{{ r.date }}</div>
+            <div style="color:#16313A; font-weight:700;">{{ r.op }}</div>
+            <div style="color:#5A6675; font-weight:600;">{{ r.doc }}</div>
+            <div style="color:#9AA3AE; font-weight:700;">{{ r.cur }}</div>
+            <div style="text-align:right; font-weight:800; color:{{ r.debitColor }};">{{ r.debit }}</div>
+            <div style="text-align:right; font-weight:800; color:{{ r.creditColor }};">{{ r.credit }}</div>
+          </div>
+        </sc-for>
+        <div style="display:grid; grid-template-columns:46px 1fr 2.4fr 1fr 0.8fr 1.2fr 1.2fr; gap:8px; padding:14px 18px; border-top:2px solid #E7EAEE; align-items:center; font-size:13px; font-weight:800; color:#16313A; background:#FAFBFC;">
+          <div></div><div></div><div></div><div></div><div style="color:#9AA3AE;">Jami {{ detCurLabel }}</div><div style="text-align:right;">{{ aktSumDebitU }}</div><div style="text-align:right;">{{ aktSumCreditU }}</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:28px; margin-top:18px; padding:16px 20px; background:#F4F6FB; border:1px solid #EAEDF3; border-radius:14px;">
+        <div style="font-size:13.5px; color:#5A6675; font-weight:700;">Davr oxiriga qoldiq (сальдо):</div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="font-size:11px; font-weight:800; color:#fff; background:#14A0AE; border-radius:6px; padding:3px 8px;">{{ detCurLabel }}</span><span style="font-size:18px; font-weight:800; color:{{ aktCloseUsdColor }};">{{ aktCloseUsd }}</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ BOSHLANG'ICH QOLDIQ — TUZATISH ============ -->
+<sc-if value="{{ obEditOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeObEdit }}" style="position:fixed; inset:0; z-index:140; background:rgba(16,24,40,0.45); display:flex; align-items:center; justify-content:center; padding:28px; overflow-y:auto;">
+  <div onClick="{{ stopProp }}" style="width:520px; max-width:96vw; background:#fff; border-radius:20px; box-shadow:0 30px 70px rgba(16,24,40,0.3); overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:12px; padding:20px 24px; border-bottom:1px solid #F2F4F6;">
+      <span style="width:42px; height:42px; border-radius:12px; background:#FFF4E5; color:#D98324; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+      <div style="flex:1;"><div style="font-size:17px; font-weight:800; color:#16313A;">Boshlang'ich qoldiqni tuzatish</div><div style="font-size:12.5px; color:#9AA3AE; font-weight:600;">{{ curName }} · <span>faqat administrator</span></div></div>
+      <button onClick="{{ closeObEdit }}" style="width:38px; height:38px; border-radius:11px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div style="padding:20px 24px; display:flex; flex-direction:column; gap:14px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+        <button onClick="{{ obPickWe }}" style="{{ obEditWeStyle }}">Biz qarzdormiz</button>
+        <button onClick="{{ obPickThem }}" style="{{ obEditThemStyle }}">Ta'minotchi qarzdor</button>
+      </div>
+      <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:9px;">
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #E1E6EB; border-radius:11px; padding:0 14px; height:46px;">
+          <input value="{{ obEditAmount }}" onInput="{{ setObAmount }}" inputmode="numeric" placeholder="0" style="border:none; outline:none; flex:1; min-width:0; font-size:14px; font-weight:700; color:#16313A; background:transparent;" />
+          <span style="font-size:11.5px; font-weight:800; color:#9AA3AE;">{{ detCurLabel }}</span>
+        </div>
+        <input type="date" value="{{ obEditDate }}" onInput="{{ setObDate }}" style="width:100%; box-sizing:border-box; border:1px solid #E1E6EB; border-radius:11px; padding:13px 14px; font-size:13.5px; color:#16313A; outline:none;" />
+      </div>
+      <div>
+        <div style="font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Tuzatish sababi <span style="color:#E5544E;">*</span></div>
+        <input value="{{ obEditReason }}" onInput="{{ setObReason }}" placeholder="Masalan: akt sverka bo'yicha to'g'rilandi" style="width:100%; box-sizing:border-box; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:13.5px; color:#16313A; outline:none;" />
+      </div>
+      <sc-if value="{{ hasObLog }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#FAFBFC; border:1px solid #EEF1F4; border-radius:13px; padding:12px 14px;">
+        <div style="font-size:11.5px; font-weight:800; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px; margin-bottom:9px;">O'zgarishlar tarixi</div>
+        <sc-for list="{{ obLog }}" as="l" hint-placeholder-count="1">
+          <div style="display:flex; align-items:flex-start; gap:9px; padding:6px 0; border-top:1px solid #F1F3F6;">
+            <span style="font-size:12px; font-weight:700; color:#9AA3AE; white-space:nowrap;">{{ l.date }}</span>
+            <span style="font-size:12.5px; font-weight:700; color:#16313A; flex:1;">{{ l.change }}<span style="display:block; font-weight:600; color:#7C8794;">{{ l.reason }} · {{ l.user }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:10px; padding:15px 24px; border-top:1px solid #F2F4F6; background:#FAFBFC;">
+      <button onClick="{{ closeObEdit }}" style="background:#EEF1F4; color:#5A6675; border:none; border-radius:11px; padding:12px 20px; font-size:14px; font-weight:700; cursor:pointer;">Bekor qilish</button>
+      <button onClick="{{ saveObEdit }}" style="{{ obSaveBtnStyle }}">Saqlash</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ ADD SUPPLIER MODAL ============ -->
+<sc-if value="{{ addOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeAdd }}" style="position:fixed; inset:0; z-index:110; background:rgba(16,24,40,0.42); display:flex; align-items:flex-start; justify-content:center; padding:28px; overflow-y:auto;">
+  <div onClick="{{ stopProp }}" style="width:560px; max-width:96vw; margin:auto; background:#fff; border-radius:20px; box-shadow:0 30px 70px rgba(16,24,40,0.3); overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:12px; padding:22px 26px; border-bottom:1px solid #F2F4F6;">
+      <span style="width:42px; height:42px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h12v11H1zM13 7h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+      <div style="flex:1;"><div style="font-size:18px; font-weight:800; color:#16313A;">Yangi ta'minotchi</div><div style="font-size:13px; color:#9AA3AE; font-weight:600;">Yetkazib beruvchi qo'shing</div></div>
+      <button onClick="{{ closeAdd }}" style="width:40px; height:40px; border-radius:11px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div style="padding:22px 26px; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div style="grid-column:1 / -1;"><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Nomi</label><input value="{{ addName }}" onInput="{{ setAddName }}" placeholder="Masalan: Apple Distribution" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+      <div style="grid-column:1 / -1;"><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Turi</label><div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;"><button onClick="{{ pickTypeYur }}" style="{{ typeYurStyle }}">Yuridik shaxs</button><button onClick="{{ pickTypeJis }}" style="{{ typeJisStyle }}">Jismoniy shaxs</button></div></div>
+      <div><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Ta'minotchi ismi</label><input value="{{ addFish }}" onInput="{{ setAddFish }}" placeholder="Masalan: Jasur Komilov" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+      <div><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Telefon raqami</label><div style="display:flex; flex-direction:column; gap:8px;"><sc-for list="{{ addPhoneRows }}" as="p" hint-placeholder-count="1"><div style="display:flex; align-items:center; gap:8px;"><input value="{{ p.value }}" onInput="{{ p.onInput }}" placeholder="+998 __ ___ __ __" style="flex:1; min-width:0; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /><button onClick="{{ p.btnClick }}" title="{{ p.btnTitle }}" style="{{ p.btnStyle }}">{{ p.btnLabel }}</button></div></sc-for></div></div>
+      <div style="grid-column:1 / -1;"><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Manzil</label><input value="{{ addAddress }}" onInput="{{ setAddAddress }}" placeholder="Shahar, ko'cha" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+      <div><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Kategoriya</label><input value="{{ addCategory }}" onInput="{{ setAddCategory }}" placeholder="Masalan: Elektronika" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+      <div style="position:relative;">
+        <label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Oldi-berdi valyutasi</label>
+        <button onClick="{{ addCurToggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid #E1E6EB; border-radius:11px; background:#fff; padding:13px 15px; cursor:pointer;">
+          <span style="font-size:14px; font-weight:700; color:{{ addCurColor }};">{{ addCurLabel }}</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2.4" style="transform:{{ addCurChevron }}; transition:transform .15s;"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <sc-if value="{{ addCurMenuOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; bottom:calc(100% + 6px); left:0; right:0; z-index:30; background:#fff; border:1px solid #EDEFF2; border-radius:13px; box-shadow:0 18px 44px rgba(16,24,40,0.18); padding:6px;">
+            <sc-for list="{{ addCurOpts }}" as="c" hint-placeholder-count="2">
+              <button onClick="{{ c.pick }}" style="{{ c.style }}">
+                <span style="flex:1; min-width:0; text-align:left; display:flex; flex-direction:column;"><span style="font-size:13.5px; font-weight:800;">{{ c.label }}</span><span style="font-size:11.5px; font-weight:600; opacity:0.7;">{{ c.sub }}</span></span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2.6" style="opacity:{{ c.checkOpacity }}; flex-shrink:0;"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <div style="grid-column:1 / -1; background:#F7F9FC; border:1px solid #E7EDF2; border-radius:14px; padding:15px 16px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:11px;">
+          <span style="font-size:12.5px; font-weight:800; color:#46535F;">Boshlang'ich qoldiq</span>
+          <span style="font-size:11.5px; font-weight:700; color:#9AA3AE;">ixtiyoriy</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:10px;">
+          <button onClick="{{ pickObWe }}" style="{{ obWeStyle }}">Biz qarzdormiz</button>
+          <button onClick="{{ pickObThem }}" style="{{ obThemStyle }}">Ta'minotchi qarzdor</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #E1E6EB; border-radius:11px; padding:0 14px; height:46px;">
+          <input value="{{ addOpenBal }}" onInput="{{ setAddOpenBal }}" inputmode="numeric" placeholder="0" style="border:none; outline:none; flex:1; min-width:0; font-size:14px; font-weight:700; color:#16313A; background:transparent;" />
+          <span style="font-size:11.5px; font-weight:800; color:#9AA3AE;">{{ addCurCode }}</span>
+        </div>
+        <div style="margin-top:9px; font-size:11.5px; font-weight:600; color:#9AA3AE; line-height:1.45;">Dasturgacha bo'lgan oldi-berdi qoldig'i. Kassaga tushmaydi — faqat ta'minotchi balansiga yoziladi.</div>
+      </div>
+      <div style="{{ moreWrapStyle }}"><button onClick="{{ toggleMore }}" style="{{ moreBtnStyle }}"><span>Batafsil ma'lumot</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="transform:{{ moreChevron }}; transition:transform .15s;"><path d="m6 9 6 6 6-6"/></svg></button></div>
+      <sc-if value="{{ addMoreOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">INN</label><input value="{{ addInn }}" onInput="{{ setAddInn }}" placeholder="9 xonali raqam" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+          <div><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Hisob raqami (r/s)</label><input value="{{ addAcct }}" onInput="{{ setAddAcct }}" placeholder="2020 8000 1234 5678 9012" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+          <div><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">Bank nomi</label><input value="{{ addBank }}" onInput="{{ setAddBank }}" placeholder="Masalan: Ipoteka Bank" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+          <div><label style="display:block; font-size:12.5px; font-weight:700; color:#46535F; margin-bottom:7px;">MFO</label><input value="{{ addMfo }}" onInput="{{ setAddMfo }}" placeholder="5 xonali kod" style="width:100%; border:1px solid #E1E6EB; border-radius:11px; padding:13px 15px; font-size:14px; color:#16313A; outline:none;" /></div>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:10px; padding:16px 26px; border-top:1px solid #F2F4F6; background:#FAFBFC;">
+      <button onClick="{{ closeAdd }}" style="background:#EEF1F4; color:#5A6675; border:none; border-radius:11px; padding:12px 20px; font-size:14px; font-weight:700; cursor:pointer;">Bekor qilish</button>
+      <button onClick="{{ saveSupplier }}" style="{{ saveBtnStyle }}">Qo'shish</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;userRole&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;admin&quot;,&quot;xodim&quot;],&quot;default&quot;:&quot;admin&quot;,&quot;tsType&quot;:&quot;'admin' | 'xodim'&quot;,&quot;section&quot;:&quot;Ruxsatlar&quot;},&quot;balansUslubi&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;toq&quot;,&quot;gradient&quot;,&quot;oq&quot;],&quot;default&quot;:&quot;toq&quot;,&quot;tsType&quot;:&quot;'toq' | 'gradient' | 'oq'&quot;,&quot;section&quot;:&quot;Balans kartasi&quot;}}">
+class Component extends DCLogic {
+  // print hujjatlari alohida oynada ochiladi — i18n u yerga yetib bormaydi, shuning uchun qo'lda tarjima
+  _prtTr(h) {
+    const W = window.WasytI18n;
+    if (!W || W.lang !== 'ru') return h;
+    const keys = ["Kirim hujjati №", "Solishtirish dalolatnomasi", "Akt sverka", "Wasyt savdo tizimi", "Sana va vaqt", "Tuzilgan sana", "Yetkazib beruvchi", "Nomlanish", "Miqdori", "Sotib olish narxi", "Umumiy xarid narxi", "Umumiy summa:", "Ta\u2019minotchidan kirim (приход)", "Ta\u2019minotchiga to\u2019lov", "Ta\u2019minotchiga vazvrat", "Debet (qarz)", "Kredit (to\u2019lov)", "Davr oxiriga qoldiq", "Biz tomonimizdan", "Ta\u2019minotchi tomonidan", "Ta\u2019minotchi", "Amaliyot", "Hujjat", "Valyuta", "Manzil", "Ombor", "Sana", "Jami", "Nuqsonli", "Buyurtmaga mos emas", "Muddati o\u2019tgan", "Ortiqcha yetkazildi", "Barcha davr", "Joriy yil", "Joriy oy", "Joriy hafta", "Tanlangan davr", "Bugun"];
+    keys.forEach(k => {
+      const v = W.t(k);
+      if (!v || v === k) return;
+      const pat = k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/['\u2018\u2019\u02bb\u02bc`\u00b4]/g, "['\u2018\u2019\u02bb\u02bc`\u00b4]");
+      h = h.replace(new RegExp(pat, 'g'), v);
+    });
+    return h;
+  }
+
+  state = {
+    detailIdx: null, docOpen: false, docId: null, aktOpen: false,
+    navOpen: true, page: 'list', returnSupplierIdx: null, period: 'oy', detPeriod: 'oy',
+    detCalOpen: false, detFrom: '', detTo: '',
+    addOpen: false, addName: '', addPhone: '', addAddress: '', addCategory: '',
+    addFish: '', addInn: '', addAcct: '', addBank: '', addMfo: '', addMore: false, addPhones: [''], addType: 'Yuridik shaxs',
+    addOpenBal: '', addOpenDir: 'we', addOpenDate: '',
+    obEditOpen: false, obEditAmount: '', obEditDir: 'we', obEditDate: '', obEditReason: '',
+    fltOpen: false, fltPeriod: 'all', fltSearch: '', fltType: '', fltCreator: '', fltCompany: '', fltDrop: null,
+    returnOpen: false, returnView: 'home', returnDone: false, returnCart: {}, returnPrices: {}, returnReason: null, returnSearch: '', returnNote: '', returns: [], retDocId: null,
+    list: [
+      { name: "Apple Distribution", cur: "usd", category: "Elektronika · Smartfonlar", phone: "+998 71 200 10 10", address: "Toshkent, Amir Temur 12", contact: "Jasur Komilov", fish: "Jasur Komilov", inn: "—", acct: "—", extraPhone: "—", legalType: "Yuridik shaxs", since: 2022, docs: 125, trusted: true, openBal: -1200, openBalDate: "2026-01-01", openBalLog: [], lastDate: "17.06.2026", total: "34 288", balance: "-2 900", debt: true, avBg: "#E3F3F5", avColor: "#0E7C88" },
+      { name: "Samsung Optom", cur: "uzs", category: "Elektronika · Maishiy", phone: "+998 71 230 22 33", address: "Toshkent, Bunyodkor 45", contact: "Dilshod Rahimov", fish: "Dilshod Rahimov", inn: "—", acct: "—", extraPhone: "—", legalType: "Yuridik shaxs", since: 2021, docs: 98, trusted: true, openBal: 4500000, openBalDate: "2026-01-01", openBalLog: [], lastDate: "15.06.2026", total: "312 480 000", balance: "-18 200 000", debt: true, avBg: "#EAF1FC", avColor: "#2A6FDB" },
+      { name: "Xiaomi Savdo", cur: "uzs", category: "Elektronika · Telefonlar", phone: "+998 90 345 33 44", address: "Toshkent, Chilonzor 7", contact: "Aziz Tursunov", fish: "Aziz Tursunov", inn: "—", acct: "—", extraPhone: "—", legalType: "Yuridik shaxs", since: 2023, docs: 64, trusted: true, lastDate: "12.06.2026", total: "196 740 000", balance: "0", debt: false, avBg: "#FBF4EC", avColor: "#EC8A3C" },
+      { name: "Artel Ombor", cur: "usd", category: "Maishiy texnika", phone: "+998 71 205 55 66", address: "Toshkent, Yunusobod 3", contact: "Sardor Olimov", fish: "Sardor Olimov", inn: "—", acct: "—", extraPhone: "—", legalType: "Yuridik shaxs", since: 2020, docs: 143, trusted: true, lastDate: "09.06.2026", total: "11 866", balance: "-1 552", debt: true, avBg: "#EEEBFE", avColor: "#7A5AF8" },
+      { name: "LG Markaz", cur: "uzs", category: "Televizorlar · Maishiy", phone: "+998 90 411 77 88", address: "Toshkent, Mirzo Ulug'bek 9", contact: "Bobur Aliyev", fish: "Bobur Aliyev", inn: "—", acct: "—", extraPhone: "—", legalType: "Yuridik shaxs", since: 2023, docs: 47, trusted: false, lastDate: "05.06.2026", total: "96 200 000", balance: "0", debt: false, avBg: "#E7F6EE", avColor: "#1AA565" },
+      { name: "Aksessuar Plus", cur: "uzs", category: "Aksessuarlar", phone: "+998 93 522 99 00", address: "Toshkent, Sergeli 14", contact: "Nodir Yusupov", fish: "Nodir Yusupov", inn: "—", acct: "—", extraPhone: "—", legalType: "Jismoniy shaxs", since: 2024, docs: 21, trusted: false, lastDate: "02.06.2026", total: "42 800 000", balance: "0", debt: false, avBg: "#FCEEED", avColor: "#E5544E" },
+    ],
+  };
+
+  _initials(name) {
+    return (name.trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('') || "?").toUpperCase();
+  }
+
+  _fmtDmy(iso) {
+    if (!iso) return '';
+    const p = iso.split('-');
+    return p.length === 3 ? (p[2] + '.' + p[1] + '.' + p[0]) : iso;
+  }
+
+  renderVals() {
+    const st = this.state;
+    const self = this;
+    const svgIcon = (paths) => React.createElement('svg', {
+      width: 14, height: 14, viewBox: '0 0 24 24', fill: 'none',
+      stroke: '#0E7C88', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round',
+    }, paths.map((d, i) => React.createElement('path', { key: i, d: d })));
+    const ICO = {
+      cash: () => svgIcon(['M2 6h20v12H2z', 'M12 10.5v3']),
+      card: () => svgIcon(['M2 6h20v12H2z', 'M2 10h20', 'M6 14h3']),
+      bank: () => svgIcon(['M3 10 12 4l9 6', 'M5 10v9M19 10v9M12 10v9', 'M3 19h18']),
+    };
+    const KASSAS = [
+      { label: 'Sotuv kassasi', accounts: [
+        { label: 'Naqd pul', uzs: 18400000, usd: 1250, icon: ICO.cash() },
+        { label: 'Bank kartasi', uzs: 9250000, usd: 0, icon: ICO.card() },
+      ] },
+      { label: 'Asosiy kassa', accounts: [
+        { label: 'Naqd pul', uzs: 123500000, usd: 8400, icon: ICO.cash() },
+        { label: 'Bank kartasi', uzs: 12750000, usd: 0, icon: ICO.card() },
+        { label: 'Hisob raqami', uzs: 46400000, usd: 3200, icon: ICO.bank() },
+      ] },
+    ];
+    // konvertatsiyalardan keyingi qoldiqlar (balAdj — kassa|hisob kaliti bo'yicha)
+    const balAdj = this.state.balAdj || {};
+    const KASSAS_LIVE = KASSAS.map(k => ({ label: k.label, accounts: k.accounts.map(a => {
+      const d = balAdj[k.label + '|' + a.label] || {};
+      return Object.assign({}, a, { uzs: a.uzs + (d.uzs || 0), usd: a.usd + (d.usd || 0) });
+    }) }));
+    const kassaAccts = (KASSAS_LIVE.find(k => k.label === this.state.payKassa) || {}).accounts || [];
+    const UZS_PER_USD = 12780;
+    const payAcctObj = kassaAccts.filter(a => a.label === this.state.payAcct)[0] || null;
+    const payAcctUzs = payAcctObj ? payAcctObj.uzs : 0;
+    const payRate = parseInt(String(this.state.payRate == null ? UZS_PER_USD : this.state.payRate).replace(/[^\d]/g, ''), 10) || UZS_PER_USD;
+    const payAmtNum = parseInt(String(this.state.payAmount || '').replace(/[^\d]/g, ''), 10) || 0;
+    // --- konvertatsiya hisoblari ---
+    const convKassa = this.state.convKassa || KASSAS[0].label;
+    const convKind = this.state.convKind || 'naqd';
+    const convDir = this.state.convDir || 'uzs_usd';
+    const convAcctLabel = convKind === 'naqd' ? 'Naqd pul' : 'Bank kartasi';
+    const convAcctObj = ((KASSAS_LIVE.find(k => k.label === convKassa) || {}).accounts || []).filter(a => a.label === convAcctLabel)[0] || null;
+    const convRateNum = parseInt(String(this.state.convRate == null ? UZS_PER_USD : this.state.convRate).replace(/[^\d]/g, ''), 10) || UZS_PER_USD;
+    const convAmtNum = parseInt(String(this.state.convAmount || '').replace(/[^\d]/g, ''), 10) || 0;
+    const convFromCur = convDir === 'uzs_usd' ? 'UZS' : 'USD';
+    const convAvail = convAcctObj ? (convDir === 'uzs_usd' ? convAcctObj.uzs : convAcctObj.usd) : 0;
+    const convOut = convDir === 'uzs_usd'
+      ? Math.floor(convAmtNum / convRateNum)
+      : Math.round(convAmtNum * convRateNum);
+    const badge = (on) => 'width:18px; height:18px; border-radius:6px; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; '
+      + (on ? 'background:#14A0AE; color:#fff;' : 'background:#EEF1F4; color:#AEB6C0;');
+    const fmt = (n) => Math.round(n).toLocaleString('ru-RU').replace(/\u00A0/g, ' ');
+    const isAdmin = (this.props.userRole || 'admin') === 'admin';
+    const tUI = (x) => (window.WasytI18n ? window.WasytI18n.t(x) : x);
+    // hisob qoldig'i: UZS / USD (bo'sh bo'lsa — 0)
+    const acctBal = (a) => a
+      ? (fmt(a.uzs) + ' UZS / ' + (a.usd ? fmt(a.usd) : '0') + ' USD')
+      : '—';
+    const obNum = (v) => parseInt(String(v == null ? '' : v).replace(/[^\d]/g, ''), 10) || 0;
+    const sgnTxt = (v) => (v ? ((v < 0 ? '−' : '+') + fmt(Math.abs(v))) : '0');
+    const dirStyle = (on, kind) => 'padding:12px 10px; border-radius:11px; font-size:13px; font-weight:800; cursor:pointer; '
+      + (on
+        ? (kind === 'we' ? 'background:#FCEEED; color:#C0463F; border:1.5px solid #F0B9B5;' : 'background:#E7F6EE; color:#0E6B4F; border:1.5px solid #A9DCC3;')
+        : 'background:#fff; color:#5A6675; border:1px solid #E1E6EB;');
+    const history = [
+      { date: "17.06.2026", doc: "#KIR-001248", items: "12", amount: "84 200 000", status: "To'langan", statusColor: "#1AA565", statusBg: "#E7F6EE" },
+      { date: "10.06.2026", doc: "#KIR-001186", items: "8", amount: "62 400 000", status: "Qisman", statusColor: "#EC8A3C", statusBg: "#FBF4EC" },
+      { date: "02.06.2026", doc: "#KIR-001094", items: "15", amount: "118 600 000", status: "To'langan", statusColor: "#1AA565", statusBg: "#E7F6EE" },
+      { date: "24.05.2026", doc: "#KIR-000987", items: "6", amount: "38 200 000", status: "Qarz", statusColor: "#E5544E", statusBg: "#FCEEED" },
+      { date: "18.05.2026", doc: "#KIR-000912", items: "10", amount: "72 800 000", status: "To'langan", statusColor: "#1AA565", statusBg: "#E7F6EE" },
+    ];
+
+    const _norm = (x) => String(x || '').toLowerCase();
+    const _fs = _norm(st.fltSearch), _ft = st.fltType || '', _fc = st.fltCreator || '', _fk = st.fltCompany || '';
+    const suppliers = st.list.map((s, i) => ({
+      ...s,
+      initials: this._initials(s.name),
+      balColor: s.debt ? "#E5544E" : "#1AA565",
+      balance: (s.debt ? s.balance : "0") + ' ' + (s.cur || 'uzs').toUpperCase(),
+      total: s.total + ' ' + (s.cur || 'uzs').toUpperCase(),
+      curBadge: (s.cur || 'uzs').toUpperCase(),
+      curBadgeStyle: 'display:inline-block; font-size:11px; font-weight:800; letter-spacing:0.4px; border-radius:6px; padding:4px 9px; ' + ((s.cur || 'uzs') === 'usd' ? 'background:#E8F1FD; color:#2563EB;' : 'background:#E3F3F5; color:#0E7C88;'),
+      open: () => this.setState({ detailIdx: i }),
+    })).filter(s => {
+      if (_fs && !(_norm(s.name).includes(_fs) || _norm(s.phone).includes(_fs) || _norm(s.category).includes(_fs) || _norm(s.contact).includes(_fs))) return false;
+      if (_ft && String(s.category || '').split('·')[0].trim() !== _ft) return false;
+      if (_fc && s.name !== _fc) return false;
+      if (_fk && s.name !== _fk) return false;
+      return true;
+    });
+
+    const cur = st.detailIdx != null ? st.list[st.detailIdx] : null;
+
+    // ===== detail page derived data =====
+    // ta'minotchi bilan barcha oldi-berdi FAQAT uning valyutasida yuritiladi
+    const detCurCode = (cur && cur.cur) || 'uzs';
+    const detIsUsd = detCurCode === 'usd';
+    const detCurLabel = detCurCode.toUpperCase();
+    const payNeedConv = !!payAcctObj && detCurLabel !== 'UZS';
+    const payInCur = payNeedConv ? (this.state.payInCur || detCurLabel) : detCurLabel;
+    const payDebtAmt = payNeedConv ? (payInCur === 'UZS' ? payAmtNum / payRate : payAmtNum) : payAmtNum;
+    const payCashOut = payNeedConv ? (payInCur === 'UZS' ? payAmtNum : payAmtNum * payRate) : payAmtNum;
+    const K = detIsUsd ? 1 : 12500;       // so'mli ta'minotchida summalar shu masshtabda
+    const baseFigs = {
+      all:  { open: 0, in: 24800, out: 18000 },
+      year: { open: 0, in: 18600, out: 13000 },
+      oy:   { open: 0, in: 7900,  out: 5000 },
+      week: { open: 0, in: 3300,  out: 0 },
+      day:  { open: 0, in: 0,     out: 0 },
+      custom: { open: 0, in: 12400, out: 8000 },
+    };
+    const bf = baseFigs[st.detPeriod] || baseFigs.oy;
+    // boshlang'ich qoldiq: manfiy = biz ta'minotchiga qarzdormiz, musbat = ta'minotchi bizga qarzdor
+    const obVal = (cur && Number(cur.openBal)) || 0;
+    const detPd = { open: bf.open * K + (-obVal), in: bf.in * K, out: bf.out * K };
+    const detDebt = detPd.open + detPd.in - detPd.out;   // ta'minotchiga qarzimiz
+    const detBal = -detDebt;                              // manfiy = qarzdormiz
+    const detPeriods = [
+      { key: 'all', label: 'Barchasi' }, { key: 'year', label: 'Joriy yil' },
+      { key: 'oy', label: 'Joriy oy' }, { key: 'week', label: 'Joriy hafta' },
+      { key: 'day', label: 'Bugun' },
+    ].map(p => ({
+      label: p.label,
+      onClick: () => self.setState({ detPeriod: p.key }),
+      style: st.detPeriod === p.key
+        ? "padding:8px 18px; border-radius:10px; border:none; background:#14A0AE; color:#fff; font-size:13.5px; font-weight:700; cursor:pointer; white-space:nowrap;"
+        : "padding:8px 18px; border-radius:10px; border:none; background:transparent; color:#5A6675; font-size:13.5px; font-weight:600; cursor:pointer; white-space:nowrap;",
+    }));
+    const docItems = [
+      { name: 'Lg Smart TV 32', qty: 1, buy: 150, total: 150, markPct: 30, mark: 45, sell: 195, sellTotal: 195 },
+      { name: 'Redmi 14 Pro 8/128', qty: 1, buy: 300, total: 300, markPct: 30, mark: 90, sell: 390, sellTotal: 390 },
+      { name: 'Xolodilnik', qty: 1, buy: 400, total: 400, markPct: 30, mark: 120, sell: 520, sellTotal: 520 },
+      { name: 'iphone 18', qty: 1, buy: 1500, total: 1500, markPct: 30, mark: 450, sell: 1950, sellTotal: 1950 },
+      { name: 'Iphone 17 pro max 256', qty: 1, buy: 1400, total: 1400, markPct: 30, mark: 420, sell: 1820, sellTotal: 1820 },
+      { name: 'Skuter', qty: 1, buy: 300, total: 300, markPct: 30, mark: 90, sell: 390, sellTotal: 390 },
+      { name: 'Телефон инои 243', qty: 1, buy: 150, total: 150, markPct: 30, mark: 45, sell: 195, sellTotal: 195 },
+      { name: 'редми будс 4 про', qty: 1, buy: 400, total: 400, markPct: 30, mark: 120, sell: 520, sellTotal: 520 },
+    ];
+    const allIncome = [
+      { id: '11811', date: '23.06.2026', sum: fmt(4600 * K), cur: detCurLabel, user: 'Aziz Karimov', docDate: '2026-06-17 10:58:38', warehouse: 'Ombor 1', items: docItems },
+      { id: '9831', date: '05.06.2026', sum: fmt(3300 * K), cur: detCurLabel, user: 'Madina Karimova', docDate: '2026-06-05 10:57:12', warehouse: 'Ombor 1', items: docItems.slice(0, 5) },
+    ];
+    const allExpense = [
+      { id: '9849', date: '05.06.2026', sum: fmt(5000 * K), cur: detCurLabel, pay: 'Naqd', user: 'Aziz Karimov' },
+    ];
+    const initials = (n) => String(n || '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+    const withRow = (arr) => arr.map((d, i) => Object.assign({}, d, {
+      row: i + 1,
+      user: d.user ? tUI(d.user) : '—',
+      userAv: d.user ? initials(d.user) : '—',
+      view: () => self.setState({ docOpen: true, docId: d.id }),
+    }));
+    const detIncome = withRow((st.detPeriod === 'day' || st.detPeriod === 'week') ? allIncome.slice(0, 1) : allIncome);
+    const loggedPays = (st.payLog || []).filter(p => p.supplierIdx === st.detailIdx);
+    const detExpense = withRow((st.detPeriod === 'day' || st.detPeriod === 'week') ? loggedPays : allExpense.concat(loggedPays));
+    const detReturns = (cur ? (st.returns || []).filter(r => r.supplierIdx === st.detailIdx) : []).map((r, i) => {
+      const rid = r.id || ('V-' + (i + 1));
+      const items = (r.items || []).map(p => ({
+        name: p.name, tag: p.tag, bg: p.bg, color: p.color,
+        qty: p.qty, price: fmt(p.price), sum: fmt(p.sum),
+      }));
+      return {
+        row: i + 1, id: rid, date: r.date, reason: r.reason,
+        user: tUI(r.user || 'Aziz Karimov'),
+        sum: fmt(r.total), cur: detCurLabel,
+        items: items,
+        qtyLabel: (r.lines || items.length) + ' tur \u00b7 ' + r.count + ' dona',
+        view: () => this.setState({ retDocId: rid }),
+      };
+    });
+    const detReturnTotal = (cur ? (st.returns || []).filter(r => r.supplierIdx === st.detailIdx) : []).reduce((a, r) => a + r.total, 0);
+
+    const retList = cur ? (st.returns || []).filter(r => r.supplierIdx === st.detailIdx) : [];
+    const retSrc = retList.filter((r, i) => (r.id || ('V-' + (i + 1))) === st.retDocId)[0] || null;
+    const retSrcItems = retSrc ? (retSrc.items || []) : [];
+
+    // ===== doc modal =====
+    const docSrc = allIncome.find(d => d.id === st.docId) || null;
+    const docItemsRows = docSrc ? docSrc.items.map((it, i) => ({
+      row: i + 1, name: it.name, qty: it.qty,
+      buy: fmt(it.buy), total: fmt(it.total), markPct: it.markPct,
+      mark: fmt(it.mark), sell: fmt(it.sell), sellTotal: fmt(it.sellTotal),
+    })) : [];
+    const docTotalBuy = docSrc ? docSrc.items.reduce((a, it) => a + it.total, 0) : 0;
+    const docTotalSell = docSrc ? docSrc.items.reduce((a, it) => a + it.sellTotal, 0) : 0;
+
+    // ===== AKT SVERKA (reconciliation ledger) =====
+    const pn = (s) => parseInt(String(s).replace(/\D/g, ''), 10) || 0;
+    const dSort = (d) => { const p = String(d).split('.'); return p.length === 3 ? (p[2] + p[1] + p[0]) : String(d); };
+    const aktEvents = [];
+    allIncome.forEach(d => aktEvents.push({ date: d.date, op: "Ta'minotchidan kirim (приход)", doc: '№ ' + d.id, cur: d.cur.toUpperCase(), debit: pn(d.sum), credit: 0 }));
+    allExpense.forEach(d => aktEvents.push({ date: d.date, op: "Ta'minotchiga to'lov (" + d.pay + ")", doc: '№ ' + d.id, cur: d.cur.toUpperCase(), debit: 0, credit: pn(d.sum) }));
+    (cur ? (st.returns || []).filter(r => r.supplierIdx === st.detailIdx) : []).forEach((r, i) => aktEvents.push({ date: r.date, op: 'Ta\u2019minotchiga vazvrat (' + r.reason + ')', doc: r.id || ('V-' + (i + 1)), cur: detCurLabel, debit: 0, credit: r.total }));
+    aktEvents.sort((a, b) => dSort(a.date) < dSort(b.date) ? -1 : (dSort(a.date) > dSort(b.date) ? 1 : 0));
+    if (obVal) aktEvents.unshift({
+      date: (cur && cur.openBalDate) ? this._fmtDmy(cur.openBalDate) : '—',
+      op: "Boshlang'ich qoldiq", doc: '—', cur: detCurLabel,
+      debit: obVal < 0 ? Math.abs(obVal) : 0, credit: obVal > 0 ? obVal : 0,
+    });
+    const aktRows = aktEvents.map((e, i) => ({
+      row: i + 1, date: e.date, op: e.op, doc: e.doc, cur: e.cur,
+      debit: e.debit ? fmt(e.debit) : '—',
+      credit: e.credit ? fmt(e.credit) : '—',
+      debitColor: e.debit ? '#16313A' : '#CBD3DB',
+      creditColor: e.credit ? '#16313A' : '#CBD3DB',
+    }));
+    const aktSumDebitU = aktEvents.reduce((a, e) => a + e.debit, 0);
+    const aktSumCreditU = aktEvents.reduce((a, e) => a + e.credit, 0);
+    const aktDate = new Date().toLocaleDateString('ru-RU');
+    const aktPeriodLabel = ({ all: 'Barcha davr', year: 'Joriy yil', oy: 'Joriy oy', week: 'Joriy hafta', day: 'Bugun', custom: 'Tanlangan davr' })[st.detPeriod] || 'Joriy oy';
+
+
+    const canSave = (st.addName || '').trim().length > 0;
+    const rsi = st.returnSupplierIdx != null ? st.returnSupplierIdx : (st.detailIdx != null ? st.detailIdx : 0);
+    const rsupp = st.list[rsi] || null;
+
+    // ===== VAZVRAT (return) =====
+    const returnable = [
+      { id: 'r1', name: 'Iphone 17 pro max 256', tag: 'iP', bg: '#EAF1FC', color: '#2A6FDB', price: 11800000, inPrice: 10900000, stock: 42 },
+      { id: 'r2', name: 'Redmi 14 Pro 8/128', tag: 'Re', bg: '#E3F3F5', color: '#0E7C88', price: 2480000, inPrice: 2150000, stock: 128 },
+      { id: 'r3', name: 'Xolodilnik Artel', tag: 'Ar', bg: '#FBF4EC', color: '#EC8A3C', price: 6100000, inPrice: 5400000, stock: 24 },
+      { id: 'r4', name: 'редми будс 4 про', tag: 'Бд', bg: '#E7F6EE', color: '#1AA565', price: 320000, inPrice: 245000, stock: 6 },
+      { id: 'r5', name: 'Adapter 65W', tag: 'Ad', bg: '#FCEEED', color: '#E5544E', price: 142000, inPrice: 98000, stock: 212 },
+    ];
+    const rCart = st.returnCart || {};
+    const rPrices = st.returnPrices || {};
+    const unitPrice = (p) => (rPrices[p.id] != null ? rPrices[p.id] : p.inPrice);
+    let rTotal = 0, rCount = 0, rLines = 0;
+    returnable.forEach(p => { if (rCart[p.id] != null) { rTotal += rCart[p.id] * unitPrice(p); rCount += rCart[p.id]; rLines += 1; } });
+    const rSearch = (st.returnSearch || '').trim().toLowerCase();
+    const visibleReturnable = returnable.filter(p => !rSearch || p.name.toLowerCase().indexOf(rSearch) !== -1);
+    const returnItems = visibleReturnable.map(p => {
+      const on = rCart[p.id] != null;
+      const qty = on ? rCart[p.id] : 0;
+      const atMax = qty >= p.stock;
+      const uPrice = unitPrice(p);
+      return {
+        name: p.name, tag: p.tag, bg: p.bg, color: p.color, stock: p.stock, qty,
+        priceTxt: fmt(p.price),
+        inPriceTxt: fmt(p.inPrice),
+        returnPrice: uPrice,
+        subtotalTxt: fmt(qty * uPrice) + " so'm",
+        subtotalVis: on ? '' : 'display:none;',
+        priceRowVis: on ? 'display:flex;' : 'display:none;',
+        setPrice: (e) => { const v = Number(String(e.target.value).replace(/[^0-9]/g, '')) || 0; self.setState(s => { const m = Object.assign({}, s.returnPrices); m[p.id] = v; return { returnPrices: m }; }); },
+        incStyle: 'width:30px; height:32px; border:none; background:' + (atMax ? '#FBECEB' : '#F4F6F8') + '; color:' + (atMax ? '#E5544E' : '#16313A') + '; font-size:17px; cursor:' + (atMax ? 'not-allowed' : 'pointer') + ';',
+        rowBg: on ? '#FFF8F7' : '#fff',
+        borderColor: on ? '#F3C9C6' : '#EDEFF2',
+        checkBg: on ? '#E5544E' : '#fff',
+        checkBorder: on ? '#E5544E' : '#CBD6DC',
+        checkVis: on ? '' : 'display:none;',
+        qtyVis: on ? '' : 'opacity:0.4; pointer-events:none;',
+        toggle: () => self.setState(s => { const c = Object.assign({}, s.returnCart); if (c[p.id] != null) delete c[p.id]; else c[p.id] = 1; return { returnCart: c }; }),
+        inc: () => self.setState(s => { const c = Object.assign({}, s.returnCart); c[p.id] = Math.min((c[p.id] || 0) + 1, p.stock); return { returnCart: c }; }),
+        dec: () => self.setState(s => { const c = Object.assign({}, s.returnCart); const n = (c[p.id] || 0) - 1; if (n <= 0) delete c[p.id]; else c[p.id] = n; return { returnCart: c }; }),
+      };
+    });
+    const reasonDefs = ['Nuqsonli', 'Buyurtmaga mos emas', 'Muddati o\u2019tgan', 'Ortiqcha yetkazildi'];
+    const returnReasons = reasonDefs.map((label, i) => ({
+      label,
+      pick: () => self.setState({ returnReason: i }),
+      style: (st.returnReason === i
+        ? 'padding:9px 14px; border:1px solid #E5544E; border-radius:11px; background:#FCEEED; color:#E5544E; font-size:13px; font-weight:700; cursor:pointer;'
+        : 'padding:9px 14px; border:1px solid #E1E6EB; border-radius:11px; background:#fff; color:#46535F; font-size:13px; font-weight:600; cursor:pointer;'),
+    }));
+    const canReturn = rCount > 0 && st.returnReason != null;
+    const hasItems = rCount > 0;
+    const hasReason = st.returnReason != null;
+    const doneReason = st.returnReason != null ? reasonDefs[st.returnReason] : '';
+    const returnDate = '29.06.2026';
+
+    // ===== Dashboard period filter =====
+    const periodData = {
+      all:   { total: 8, debt: 62400000, buys: 1842000000, active: 8, openU: 201250000, openD: 35015700, inD: 180181, outU: 901000, closeU: 200349000, closeD: 35195881 },
+      year:  { total: 8, debt: 62400000, buys: 1284500000, active: 7, openU: 198400000, openD: 34820000, inD: 142060, outU: 740000, closeU: 200349000, closeD: 35195881 },
+      oy:    { total: 8, debt: 62400000, buys: 184920000,  active: 6, openU: 201250000, openD: 35015700, inD: 180181, outU: 901000, closeU: 200349000, closeD: 35195881 },
+      week:  { total: 8, debt: 38150000, buys: 41600000,   active: 4, openU: 200100000, openD: 35090000, inD: 41200,  outU: 310000, closeU: 200349000, closeD: 35195881 },
+      day:   { total: 8, debt: 11800000, buys: 11800000,   active: 2, openU: 200320000, openD: 35180000, inD: 11800,  outU: 118000, closeU: 200349000, closeD: 35195881 },
+    };
+    const pd = periodData[st.period] || periodData.oy;
+    const periods = [
+      { key: 'all', label: 'Barchasi' }, { key: 'year', label: 'Joriy yil' },
+      { key: 'oy', label: 'Joriy oy' }, { key: 'week', label: 'Joriy hafta' },
+      { key: 'day', label: 'Bugun' },
+    ].map(p => ({
+      label: p.label,
+      onClick: () => self.setState({ period: p.key }),
+      style: st.period === p.key
+        ? "padding:8px 18px; border-radius:10px; border:none; background:#14A0AE; color:#fff; font-size:13.5px; font-weight:700; cursor:pointer; white-space:nowrap;"
+        : "padding:8px 18px; border-radius:10px; border:none; background:transparent; color:#5A6675; font-size:13.5px; font-weight:600; cursor:pointer; white-space:nowrap;",
+    }));
+
+    // ===== list filter =====
+    const T = (s) => (typeof window !== 'undefined' && window.WasytI18n) ? window.WasytI18n.t(s) : s;
+    const fltOpen = !!st.fltOpen;
+    const fltActive = fltOpen || _ft || _fc || _fk;
+    const fltChips = [
+      { key: 'all', label: 'Barchasi' }, { key: 'year', label: 'Joriy yil' },
+      { key: 'oy', label: 'Joriy oy' }, { key: 'week', label: 'Joriy hafta' }, { key: 'day', label: 'Bugun' },
+    ].map(p => ({
+      label: T(p.label),
+      onClick: () => self.setState({ fltPeriod: p.key }),
+      style: (st.fltPeriod || 'all') === p.key
+        ? "padding:9px 17px; border-radius:10px; border:none; background:#14A0AE; color:#fff; font-size:13.5px; font-weight:700; cursor:pointer; white-space:nowrap;"
+        : "padding:9px 17px; border-radius:10px; border:none; background:transparent; color:#5A6675; font-size:13.5px; font-weight:600; cursor:pointer; white-space:nowrap;",
+    }));
+    const _uniq = (arr) => arr.filter((v, i) => v && v !== '—' && arr.indexOf(v) === i);
+    const _mkDrop = (kind, cur, opts, placeholder) => ({
+      label: cur || T(placeholder),
+      labelStyle: "flex:1; min-width:0; text-align:left; padding:14px 16px; font-size:13.5px; font-weight:" + (cur ? '700' : '500') + "; color:" + (cur ? '#16313A' : '#9AA3AE') + "; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;",
+      open: st.fltDrop === kind,
+      toggle: () => self.setState(s => ({ fltDrop: s.fltDrop === kind ? null : kind })),
+      options: [{ v: '', label: T(placeholder) }].concat(opts.map(o => ({ v: o, label: o }))).map(o => ({
+        label: o.label,
+        pick: () => self.setState({ ['flt' + kind]: o.v, fltDrop: null }),
+        style: "display:block; width:100%; text-align:left; border:none; background:" + ((cur || '') === o.v ? '#F3FBFB' : '#fff') + "; color:" + ((cur || '') === o.v ? '#0E7C88' : '#46535F') + "; font-size:13.5px; font-weight:" + ((cur || '') === o.v ? '700' : '500') + "; padding:10px 13px; border-radius:9px; cursor:pointer; white-space:nowrap;",
+      })),
+    });
+    const typeOpts = _uniq(st.list.map(s => String(s.category || '').split('·')[0].trim()));
+    const companyOpts = _uniq(st.list.map(s => s.name));
+    const creatorOpts = companyOpts;
+
+    return {
+      fltOpen,
+      noSuppliers: suppliers.length === 0,
+      fltChevron: fltOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      fltBtnStyle: fltActive
+        ? "display:flex; align-items:center; gap:9px; background:#E3F3F5; border:1px solid #14A0AE; border-radius:13px; padding:0 20px; height:50px; font-size:14px; font-weight:700; color:#0E7C88; cursor:pointer; white-space:nowrap; flex-shrink:0;"
+        : "display:flex; align-items:center; gap:9px; background:#fff; border:1px solid #EDEFF2; border-radius:13px; padding:0 20px; height:50px; font-size:14px; font-weight:700; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03); white-space:nowrap; flex-shrink:0;",
+      toggleFlt: () => self.setState(s => ({ fltOpen: !s.fltOpen, fltDrop: null })),
+      fltChips,
+      fltSearch: st.fltSearch || '',
+      setFltSearch: (e) => self.setState({ fltSearch: e.target.value }),
+      dropType: _mkDrop('Type', _ft, typeOpts, 'Turi'),
+      dropCreator: _mkDrop('Creator', _fc, creatorOpts, "Ta'minotchi tanlash"),
+      dropCompany: _mkDrop('Company', _fk, companyOpts, 'Kompaniya'),
+      resetFlt: () => self.setState({ fltPeriod: 'all', fltSearch: '', fltType: '', fltCreator: '', fltCompany: '', fltDrop: null }),
+      applyFlt: () => self.setState({ fltOpen: false, fltDrop: null }),
+      periods,
+      statTotal: pd.total,
+      statDebt: fmt(pd.debt),
+      statBuys: fmt(pd.buys),
+      statActive: pd.active,
+      balOpenU: fmt(pd.openU), balOpenD: fmt(pd.openD),
+      balInD: fmt(pd.inD), balOutU: fmt(pd.outU),
+      balCloseU: fmt(pd.closeU), balCloseD: fmt(pd.closeD),
+      pageTitle: st.page === 'return' ? "Ta'minotchiga qaytarish" : "Ta'minotchilar",
+      isListPage: st.page !== 'return',
+      isReturnPage: st.page === 'return',
+      goList: () => this.setState({ page: 'list', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '' }),
+      navListStyle: "width:100%;display:flex;align-items:center;gap:10px;padding:9px 12px;border:none;border-radius:10px;font-size:13.5px;cursor:pointer;text-align:left;" + (st.page !== 'return' ? "background:#F2F4F6;color:#0E7C88;font-weight:700;" : "background:transparent;color:#46535F;font-weight:600;"),
+      navReturnStyle: "width:100%;display:flex;align-items:center;gap:10px;padding:9px 12px;border:none;border-radius:10px;font-size:13.5px;cursor:pointer;text-align:left;" + (st.page === 'return' ? "background:#F2F4F6;color:#0E7C88;font-weight:700;" : "background:transparent;color:#46535F;font-weight:600;"),
+      suppliers,
+      // nav submenu
+      navOpen: !!st.navOpen,
+      navChevStyle: st.navOpen ? 'transform:rotate(180deg);' : '',
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      openReturnNav: () => self.setState({ page: 'return', returnView: 'home', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '', returnSupplierIdx: 0 }),
+      startReturnForm: () => self.setState({ page: 'return', returnView: 'form', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '', returnSupplierIdx: 0 }),
+      // return supplier picker
+      returnSupplierName: rsupp ? rsupp.name : '',
+      returnSupplierIdx: rsi,
+      returnSupplierOptions: st.list.map((s, i) => ({ i, name: s.name })),
+      setReturnSupplier: (e) => this.setState({ returnSupplierIdx: Number(e.target.value) }),
+      // vazvratlar tarixi (shu bo'limda)
+      returnHistory: (st.returns || []).slice().reverse().map(r => ({
+        supplier: (st.list[r.supplierIdx] || {}).name || '—',
+        initials: this._initials((st.list[r.supplierIdx] || {}).name || '?'),
+        avBg: (st.list[r.supplierIdx] || {}).avBg || '#FCEEED',
+        avColor: (st.list[r.supplierIdx] || {}).avColor || '#E5544E',
+        date: r.date, reason: r.reason,
+        meta: r.lines + ' tur · ' + r.count + ' dona',
+        amount: '− ' + fmt(r.total),
+      })),
+      hasReturnHistory: (st.returns || []).length > 0,
+      noReturnHistory: (st.returns || []).length === 0,
+      returnHistoryCount: (st.returns || []).length,
+      returnStatCount: (st.returns || []).length,
+      returnStatSum: fmt((st.returns || []).reduce((a, r) => a + r.total, 0)),
+      returnStatQty: (st.returns || []).reduce((a, r) => a + r.count, 0),
+      returnStatSuppliers: new Set((st.returns || []).map(r => r.supplierIdx)).size,
+      payOpen: !!st.payOpen,
+      payFormStep: (st.payStep || 'form') === 'form',
+      payDoneStep: st.payStep === 'done',
+      payAmount: st.payAmount || '',
+      payNote: st.payNote || '',
+      payDoneSum: payNeedConv
+        ? (fmt(payDebtAmt) + ' ' + detCurLabel + ' (' + fmt(payCashOut) + ' UZS)')
+        : ((st.payAmount || '0') + ' ' + detCurLabel),
+      payDoneType: st.payAcct || '—',
+      payDoneAcct: st.payKassa || 'Asosiy kassa',
+      payAcctLabel: st.payAcct || (st.payKassa ? 'Hisobni tanlang' : 'Avval kassani tanlang'),
+      payAcctBalance: st.payAcct ? acctBal(kassaAccts.find(a => a.label === st.payAcct)) : (st.payKassa ? 'Hisob tanlanmagan' : 'Kassa tanlanmagan'),
+      payAcctOpen: !!st.payAcctOpen,
+      payAcctToggle: () => { if (!st.payKassa) return; self.setState(s => ({ payAcctOpen: !s.payAcctOpen, payKassaOpen: false })); },
+      payAcctBtnStyle: 'width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid #E1E6EB; border-radius:12px; padding:13px 15px; font-size:14px; font-weight:700; '
+        + (st.payKassa
+          ? ('background:#fff; cursor:pointer; color:' + (st.payAcct ? '#16313A' : '#9AA3AE') + ';')
+          : 'background:#F7F9FB; color:#B4BCC5; cursor:not-allowed;'),
+      payAcctOpts: kassaAccts.map(a => ({ label: a.label, bal: acctBal(a), icon: a.icon,
+        iconWrap: 'width:24px; height:24px; flex-shrink:0; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:12px; background:'
+          + (st.payAcct === a.label ? '#CDEBEF' : '#F2F4F6'),
+        pick: () => self.setState({ payAcct: a.label, payAcctOpen: false }),
+        style: 'width:100%; display:flex; align-items:center; gap:11px; border:none; border-radius:10px; padding:10px 12px; text-align:left; cursor:pointer; font-family:inherit; ' + (st.payAcct === a.label ? 'background:#E3F3F5; color:#0E7C88;' : 'background:transparent; color:#16313A;') })),
+      // 1 — kassa
+      payKassaLabel: st.payKassa || 'Kassani tanlang',
+      payKassaColor: st.payKassa ? '#16313A' : '#9AA3AE',
+      payKassaOpen: !!st.payKassaOpen,
+      payKassaToggle: () => self.setState(s => ({ payKassaOpen: !s.payKassaOpen, payAcctOpen: false })),
+      payKassaOpts: KASSAS_LIVE.map(k => ({ label: k.label, count: k.accounts.length + ' ' + tUI('hisob'),
+        pick: () => self.setState({ payKassa: k.label, payAcct: null, payKassaOpen: false }),
+        style: 'width:100%; display:flex; align-items:center; gap:10px; border:none; border-radius:9px; padding:11px 13px; font-size:13.5px; font-weight:700; cursor:pointer; ' + (st.payKassa === k.label ? 'background:#E3F3F5; color:#0E7C88;' : 'background:transparent; color:#16313A;') })),
+      payStep2BadgeStyle: badge(!!st.payKassa, '2'),
+      payStep3BadgeStyle: badge(!!(st.payKassa && st.payAcct), '3'),
+      payAmountDisabled: !(st.payKassa && st.payAcct),
+      payAmountPlaceholder: st.payKassa ? (st.payAcct ? tUI('Summani kiriting') : tUI('Hisobni tanlang')) : tUI('Kassani tanlang'),
+      payCurChipStyle: (st.payKassa && st.payAcct) ? 'display:flex; gap:4px; padding:0 8px;' : 'display:none;',
+      payAmountWrapStyle: 'display:flex; align-items:center; border-radius:12px; overflow:hidden; '
+        + ((st.payKassa && st.payAcct) ? 'border:1.5px solid #14A0AE; background:#fff;' : 'border:1px solid #E7EAEE; background:#F7F9FB;'),
+      payAddBtnStyle: 'width:100%; border:none; border-radius:13px; padding:15px; font-size:15px; font-weight:800; ' + ((st.payAmount || '').trim() && st.payAcct && st.payKassa ? 'background:#14A0AE; color:#fff; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);' : 'background:#EEF1F4; color:#AEB6C0; cursor:default;'),
+      openPay: () => self.setState({ payOpen: true, payStep: 'form', payAmount: '', payNote: '', payCur: 'uzs', payKassa: null, payKassaOpen: false, payAcct: null, payAcctOpen: false, payRate: fmt(UZS_PER_USD), payInCur: null, convDoneMsg: '' }),
+      closePay: () => self.setState({ payOpen: false, payStep: 'form', payAcctOpen: false, payKassaOpen: false }),
+      payStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      setPayAmount: (e) => { const v = (e.target.value || '').replace(/[^\d]/g, ''); self.setState({ payAmount: v ? v.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : '' }); },
+      setPayNote: (e) => self.setState({ payNote: e.target.value }),
+      payCurLabel: payInCur,
+      // ===== Yangi konvertatsiya oynasi =====
+      payConvStep: st.payStep === 'conv',
+      openConv: () => self.setState({
+        payStep: 'conv', convKassa: st.payKassa || KASSAS[0].label, convKind: 'naqd',
+        convAmount: '', convDir: 'uzs_usd', convRate: fmt(UZS_PER_USD), convNote: '', convKassaOpen: false,
+      }),
+      closeConv: () => self.setState({ payStep: 'form', convKassaOpen: false }),
+      convKassaLabel: convKassa,
+      convKassaOpen: !!st.convKassaOpen,
+      convKassaToggle: () => self.setState(s => ({ convKassaOpen: !s.convKassaOpen })),
+      convKassaOpts: KASSAS_LIVE.map(k => ({ label: k.label,
+        pick: () => self.setState({ convKassa: k.label, convKassaOpen: false }),
+        style: 'width:100%; text-align:left; border:none; border-radius:9px; padding:11px 13px; font-size:13.5px; font-weight:700; cursor:pointer; font-family:inherit; ' + (convKassa === k.label ? 'background:#E3F3F5; color:#0E7C88;' : 'background:transparent; color:#16313A;') })),
+      convKindOpts: [{ id: 'naqd', label: 'Naqd pul' }, { id: 'naqdsiz', label: 'Naqdsiz' }].map(k => ({ label: k.label,
+        pick: () => self.setState({ convKind: k.id }),
+        style: 'flex:1; border:none; border-radius:10px; padding:12px; font-size:13.5px; font-weight:700; cursor:pointer; font-family:inherit; ' + (convKind === k.id ? 'background:#fff; color:#16313A; box-shadow:0 1px 4px rgba(16,24,40,0.12);' : 'background:transparent; color:#7C8794;') })),
+      convAcctBalance: acctBal(convAcctObj),
+      convAmount: st.convAmount || '',
+      setConvAmount: (e) => { const v = (e.target.value || '').replace(/[^\d]/g, ''); self.setState({ convAmount: v ? v.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : '' }); },
+      convDirLabel: convDir === 'uzs_usd' ? 'UZS → USD' : 'USD → UZS',
+      convDirToggle: () => self.setState({ convDir: convDir === 'uzs_usd' ? 'usd_uzs' : 'uzs_usd' }),
+      convToCur: convDir === 'uzs_usd' ? 'USD' : 'UZS',
+      convResult: convOut ? fmt(convOut) : '0',
+      convRate: st.convRate == null ? fmt(UZS_PER_USD) : st.convRate,
+      setConvRate: (e) => { const v = (e.target.value || '').replace(/[^\d]/g, ''); self.setState({ convRate: v ? v.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : '' }); },
+      convNote: st.convNote || '',
+      setConvNote: (e) => self.setState({ convNote: e.target.value }),
+      convShortShow: convAmtNum > 0 && convAvail > 0 && convAmtNum > convAvail,
+      convShortText: tUI('Tanlangan hisobda summa yetarli emas') + ' · ' + fmt(convAvail) + ' ' + convFromCur,
+      convAddBtnStyle: 'border:none; border-radius:12px; padding:12px 26px; font-size:14px; font-weight:800; font-family:inherit; '
+        + (convAmtNum > 0 && convOut > 0 ? 'background:#14A0AE; color:#fff; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);' : 'background:#EEF1F4; color:#AEB6C0; cursor:default;'),
+      convConfirm: () => {
+        if (!(convAmtNum > 0) || !(convOut > 0)) return;
+        const key = convKassa + '|' + convAcctLabel;
+        self.setState(s => {
+          const adj = Object.assign({}, s.balAdj || {});
+          const cur = Object.assign({ uzs: 0, usd: 0 }, adj[key] || {});
+          if (convDir === 'uzs_usd') { cur.uzs -= convAmtNum; cur.usd += convOut; }
+          else { cur.usd -= convAmtNum; cur.uzs += convOut; }
+          adj[key] = cur;
+          return { balAdj: adj, payStep: 'form',
+            convDoneMsg: fmt(convAmtNum) + ' ' + convFromCur + ' → ' + fmt(convOut) + ' ' + (convDir === 'uzs_usd' ? 'USD' : 'UZS') + ' · ' + tUI(convAcctLabel) };
+        });
+      },
+      convDoneShow: !!st.convDoneMsg,
+      convDoneMsg: st.convDoneMsg || '',
+      payRate: st.payRate || fmt(UZS_PER_USD),
+      setPayRate: (e) => { const v = (e.target.value || '').replace(/[^\d]/g, ''); self.setState({ payRate: v ? v.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : '' }); },
+      payRateHint: '1 USD = ' + fmt(payRate) + ' UZS',
+      payInCurOpts: ['USD', 'UZS'].map(c => ({ label: c,
+        pick: () => self.setState({ payInCur: c }),
+        style: 'border:none; border-radius:9px; padding:7px 14px; font-size:12.5px; font-weight:800; cursor:pointer; font-family:inherit; '
+          + (payInCur === c ? 'background:#0E7C88; color:#fff;' : 'background:transparent; color:#7C8794;') })),
+      payConvLines: [
+        { k: tUI("Kassadan yechiladi"), v: fmt(payCashOut) + ' UZS', color: '#C2413C' },
+        { k: tUI("Ta'minotchi qarziga yoziladi"), v: fmt(payDebtAmt) + ' ' + detCurLabel, color: '#0E7C88' },
+      ],
+      payShortShow: payNeedConv && payAcctUzs > 0 && payCashOut > payAcctUzs,
+      payShortText: tUI('Tanlangan hisobda summa yetarli emas') + ' · ' + fmt(payAcctUzs) + ' UZS',
+      payConfirm: () => {
+        if (!(st.payAmount || '').trim() || !st.payAcct || !st.payKassa) return;
+        const rec = { id: String(9850 + ((st.payLog || []).length)), date: new Date().toLocaleDateString('ru-RU'),
+          sum: fmt(payAmtNum), cur: payInCur, pay: st.payAcct, user: 'Aziz Karimov', supplierIdx: st.detailIdx };
+        self.setState(s => ({ payStep: 'done', payLog: (s.payLog || []).concat([rec]) }));
+      },
+      openReturn: () => self.setState({ page: 'return', returnView: 'form', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '', returnSupplierIdx: self.state.detailIdx, detailIdx: null }),
+      closeReturn: () => self.setState({ page: 'list', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '' }),
+      returnDone: !!st.returnDone,
+      returnHome: (st.returnView || 'home') === 'home' && !st.returnDone,
+      returnForm: (st.returnView || 'home') === 'form' && !st.returnDone,
+      backFromForm: () => self.setState({ returnView: 'home', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '' }),
+      returnSearch: st.returnSearch || '',
+      setReturnSearch: (e) => this.setState({ returnSearch: e.target.value }),
+      clearReturnSearch: () => this.setState({ returnSearch: '' }),
+      returnNoResults: visibleReturnable.length === 0,
+      returnNote: st.returnNote || '',
+      setReturnNote: (e) => this.setState({ returnNote: e.target.value }),
+      hasItems, hasReason, returnLines: rLines,
+      reasonHintVis: (hasItems && !hasReason) ? '' : 'display:none;',
+      doneReason, returnDate,
+      returnItems, returnReasons,
+      returnCount: rCount,
+      returnTotal: fmt(rTotal),
+      returnBtnStyle: (canReturn
+        ? 'flex:1.4; background:#E5544E; color:#fff; border:none; border-radius:13px; padding:14px; font-size:15px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(229,84,78,0.28);'
+        : 'flex:1.4; background:#CBD6DC; color:#fff; border:none; border-radius:13px; padding:14px; font-size:15px; font-weight:800; cursor:not-allowed;'),
+      returnPageBtnStyle: (canReturn
+        ? 'width:100%; background:#E5544E; color:#fff; border:none; border-radius:13px; padding:15px; font-size:15px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(229,84,78,0.28);'
+        : 'width:100%; background:#CBD6DC; color:#fff; border:none; border-radius:13px; padding:15px; font-size:15px; font-weight:800; cursor:not-allowed;'),
+      confirmReturn: () => {
+        if (!canReturn) return;
+        const sIdx = rsi, cnt = rCount, tot = rTotal, lines = rLines, reason = reasonDefs[st.returnReason], note = (st.returnNote || '');
+        const items = returnable.filter(p => rCart[p.id] != null).map(p => ({
+          name: p.name, tag: p.tag, bg: p.bg, color: p.color,
+          qty: rCart[p.id], price: unitPrice(p), sum: rCart[p.id] * unitPrice(p),
+        }));
+        self.setState(s => ({ returnDone: true, returns: (s.returns || []).concat([{ supplierIdx: sIdx, date: returnDate, lines, count: cnt, total: tot, reason, note, items }]) }));
+      },
+      viewReturnHistory: () => self.setState({ page: 'list', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '', detailIdx: rsi }),
+      newReturn: () => self.setState({ returnView: 'form', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '' }),
+      backToReturnHome: () => self.setState({ returnView: 'home', returnDone: false, returnCart: {}, returnReason: null, returnSearch: '', returnNote: '' }),
+      // detail
+      detailOpen: cur != null,
+      closeDetail: () => this.setState({ detailIdx: null }),
+      curName: cur ? cur.name : "",
+      curCategory: cur ? cur.category : "",
+      curPhone: cur ? cur.phone : "",
+      curAddress: cur ? cur.address : "",
+      curContact: cur ? cur.contact : "",
+      curTotal: cur ? cur.total : "",
+      curBalance: cur ? (cur.debt ? cur.balance : "0") : "",
+      curBalColor: cur ? (cur.debt ? "#E5544E" : "#1AA565") : "#16313A",
+      curInitials: cur ? this._initials(cur.name) : "",
+      curAvBg: cur ? cur.avBg : "#E3F3F5",
+      curAvColor: cur ? cur.avColor : "#0E7C88",
+      curHistory: cur ? (st.returns || []).filter(r => r.supplierIdx === st.detailIdx).map(r => ({
+        date: r.date, doc: "Vazvrat", items: String(r.count), amount: "− " + fmt(r.total),
+        status: r.reason, statusColor: "#E5544E", statusBg: "#FCEEED",
+      })).concat(history) : [],
+      // ===== detail: info fields =====
+      curFish: cur ? (cur.fish || cur.contact || "—") : "",
+      curType: cur ? (cur.legalType || "—") : "",
+      curInn: cur ? (cur.inn || "—") : "",
+      curAcct: cur ? (cur.acct || "—") : "",
+      curBankName: cur ? (cur.bank || "") : "",
+      curCurrency: cur ? (cur.cur === 'usd' ? "USD" : "UZS") : "",
+      curMfo: cur ? (cur.mfo || "—") : "",
+      curExtraPhone: cur ? (cur.extraPhone || "—") : "",
+      curSince: cur ? String(cur.since || new Date().getFullYear()) : "",
+      curDocs: cur ? String(cur.docs != null ? cur.docs : 0) : "",
+      curTrustLabel: cur ? (cur.trusted ? "Ishonchli hamkor" : "Yangi hamkor") : "",
+      curTrustColor: cur && cur.trusted ? "#16313A" : "#8A93A0",
+      // ===== detail: balance =====
+      detBalance: (detBal < 0 ? "−" : "") + fmt(Math.abs(detBal)),
+      detBalanceColor: detBal < 0 ? "#C6382F" : "#0E5560",
+      detCurLabel: detCurLabel,
+      detOpen: fmt(detPd.open), detIn: fmt(detPd.in), detOut: fmt(detPd.out),
+      detClose: (detBal < 0 ? "−" : "") + fmt(Math.abs(detBal)),
+      detCloseColor: detBal < 0 ? "#E5544E" : "#1AA565",
+      detPeriods: detPeriods,
+      // ===== detail: date-range calendar =====
+      detCalOpen: !!st.detCalOpen,
+      detFrom: st.detFrom || '',
+      detTo: st.detTo || '',
+      detCalBtnStyle: "width:42px; height:42px; border-radius:11px; border:1px solid " + (st.detPeriod === 'custom' ? '#14A0AE' : '#EAEDF3') + "; background:" + (st.detPeriod === 'custom' ? '#14A0AE' : '#fff') + "; color:" + (st.detPeriod === 'custom' ? '#fff' : '#14A0AE') + "; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;",
+      detRangeActive: st.detPeriod === 'custom',
+      detRangeLabel: (st.detFrom && st.detTo) ? (self._fmtDmy(st.detFrom) + ' — ' + self._fmtDmy(st.detTo)) : '',
+      detCanApplyRange: !!(st.detFrom && st.detTo),
+      toggleDetCal: () => self.setState(s => ({ detCalOpen: !s.detCalOpen })),
+      setDetFrom: (e) => self.setState({ detFrom: e.target.value }),
+      setDetTo: (e) => self.setState({ detTo: e.target.value }),
+      applyDetRange: () => { if (st.detFrom && st.detTo) self.setState({ detPeriod: 'custom', detCalOpen: false }); },
+      clearDetRange: () => self.setState({ detFrom: '', detTo: '', detPeriod: 'oy', detCalOpen: false }),
+      // ===== detail: income / expense tables =====
+      detIncome: detIncome,
+      detExpense: detExpense,
+      detIncomeCount: detIncome.length,
+      detExpenseCount: detExpense.length,
+      detReturns: detReturns,
+      retDocOpen: !!st.retDocId && retSrc != null,
+      retDocId: st.retDocId || '',
+      retDocDate: retSrc ? retSrc.date : '',
+      retDocSupplier: cur ? cur.name : '',
+      retDocReason: retSrc ? retSrc.reason : '',
+      retDocUser: retSrc ? tUI(retSrc.user || 'Aziz Karimov') : '',
+      retDocCur: detCurLabel,
+      retDocQty: retSrc ? retSrc.count : 0,
+      retDocTotal: retSrc ? fmt(retSrc.total) : '0',
+      retDocNote: retSrc ? (retSrc.note || '') : '',
+      retDocHasNote: !!(retSrc && (retSrc.note || '').trim()),
+      retDocRows: retSrcItems.map((p, i) => ({
+        row: i + 1, name: p.name, tag: p.tag, bg: p.bg, color: p.color,
+        qty: p.qty, price: fmt(p.price), sum: fmt(p.sum),
+      })),
+      closeRetDoc: () => this.setState({ retDocId: null }),
+      detReturnCount: detReturns.length,
+      detReturnTotal: fmt(detReturnTotal),
+      hasDetReturns: detReturns.length > 0,
+      noDetReturns: detReturns.length === 0,
+      // doc modal
+      docOpen: !!st.docOpen && docSrc != null,
+      closeDoc: () => self.setState({ docOpen: false, docId: null }),
+      printDoc: () => {
+        if (!docSrc || !cur) return;
+        const rows = docItemsRows.map(d => '<tr><td>' + d.row + '<\/td><td style="text-align:left;font-weight:600;">' + d.name + '<\/td><td>' + d.qty + '<\/td><td>' + d.buy + '<\/td><td>' + d.total + '<\/td><\/tr>').join('');
+        const html = self._prtTr('<!doctype html><html><head><meta charset="utf-8"><title>Kirim hujjati № ' + docSrc.id + '<\/title>'
+          + '<style>*{font-family:Arial,Helvetica,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}body{margin:32px;color:#16313A;}h1{font-size:20px;margin:0 0 4px;}'
+          + '.meta{display:flex;gap:36px;flex-wrap:wrap;margin:18px 0 22px;font-size:13px;}.meta div span{display:block;color:#9AA3AE;font-size:11px;margin-bottom:3px;}'
+          + 'table{width:100%;border-collapse:collapse;font-size:13px;}th,td{padding:9px 12px;border-bottom:1px solid #E7EAEE;text-align:right;}th{background:#F4F6FB;color:#5A6675;font-size:11px;text-transform:uppercase;letter-spacing:.3px;}th:nth-child(2){text-align:left;}'
+          + 'tfoot td{font-weight:800;border-top:2px solid #16313A;border-bottom:none;}<\/style><\/head><body>'
+          + '<h1>Kirim hujjati № ' + docSrc.id + '<\/h1>'
+          + '<div class="meta"><div><span>Sana va vaqt<\/span>' + docSrc.docDate + '<\/div><div><span>Ombor<\/span>' + docSrc.warehouse + '<\/div><div><span>Yetkazib beruvchi<\/span>' + cur.name + '<\/div><div><span>Valyuta<\/span>' + docSrc.cur + '<\/div><\/div>'
+          + '<table><thead><tr><th>#<\/th><th>Nomlanish<\/th><th>Miqdori<\/th><th>Sotib olish narxi<\/th><th>Umumiy xarid narxi<\/th><\/tr><\/thead><tbody>' + rows + '<\/tbody>'
+          + '<tfoot><tr><td colspan="4" style="text-align:right;color:#9AA3AE;">Umumiy summa:<\/td><td>' + fmt(docTotalBuy) + ' ' + docSrc.cur + '<\/td><\/tr><\/tfoot><\/table><\/body><\/html>');
+        const w = window.open('', '_blank');
+        if (!w) return;
+        w.document.write(html);
+        w.document.close();
+        w.focus();
+        setTimeout(() => { w.print(); }, 250);
+      },
+      docId: docSrc ? docSrc.id : '',
+      docDate: docSrc ? docSrc.docDate : '',
+      docWarehouse: docSrc ? docSrc.warehouse : '',
+      docSupplier: cur ? cur.name : '',
+      docCurrency: docSrc ? docSrc.cur : '',
+      docRows: docItemsRows,
+      docTotalBuy: fmt(docTotalBuy),
+      docTotalSell: fmt(docTotalSell),
+      // akt sverka
+      aktOpen: !!st.aktOpen && cur != null,
+      openAkt: () => self.setState({ aktOpen: true }),
+      closeAkt: () => self.setState({ aktOpen: false }),
+      aktRows: aktRows,
+      aktSupplier: cur ? cur.name : '',
+      aktDate: aktDate,
+      aktPeriodLabel: aktPeriodLabel,
+      aktSumDebitU: fmt(aktSumDebitU), aktSumCreditU: fmt(aktSumCreditU),
+      aktCloseUsd: (detBal < 0 ? '−' : '') + fmt(Math.abs(detBal)),
+      aktCloseUsdColor: detBal < 0 ? '#E5544E' : '#1AA565',
+      printAkt: () => {
+        if (!cur) return;
+        const rows = aktRows.map(r => '<tr><td>' + r.row + '<\/td><td>' + r.date + '<\/td><td style="text-align:left;font-weight:600;">' + r.op + '<\/td><td>' + r.doc + '<\/td><td>' + r.cur + '<\/td><td>' + r.debit + '<\/td><td>' + r.credit + '<\/td><\/tr>').join('');
+        const foot = '<tr><td colspan="5" style="text-align:right;color:#9AA3AE;">Jami ' + detCurLabel + ':<\/td><td>' + fmt(aktSumDebitU) + '<\/td><td>' + fmt(aktSumCreditU) + '<\/td><\/tr>';
+        const html = self._prtTr('<!doctype html><html><head><meta charset="utf-8"><title>Akt sverka — ' + cur.name + '<\/title>'
+          + '<style>*{font-family:Arial,Helvetica,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;}body{margin:32px;color:#16313A;}h1{font-size:20px;margin:0 0 4px;}'
+          + '.sub{color:#9AA3AE;font-size:13px;margin:0 0 18px;}'
+          + '.meta{display:flex;gap:36px;flex-wrap:wrap;margin:0 0 22px;font-size:13px;}.meta div span{display:block;color:#9AA3AE;font-size:11px;margin-bottom:3px;}'
+          + 'table{width:100%;border-collapse:collapse;font-size:12.5px;}th,td{padding:9px 11px;border-bottom:1px solid #E7EAEE;text-align:right;}th{background:#F4F6FB;color:#5A6675;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px;}th:nth-child(3),td:nth-child(3){text-align:left;}'
+          + 'tfoot td{font-weight:800;border-top:2px solid #16313A;border-bottom:none;}'
+          + '.bal{margin-top:22px;font-size:13.5px;}.bal b{font-size:16px;}'
+          + '.sign{display:flex;justify-content:space-between;margin-top:60px;font-size:13px;}.sign div{width:40%;border-top:1px solid #16313A;padding-top:8px;text-align:center;color:#5A6675;}<\/style><\/head><body>'
+          + '<h1>Solishtirish dalolatnomasi (Акт сверки)<\/h1>'
+          + '<p class="sub">Wasyt savdo tizimi · ' + aktPeriodLabel + '<\/p>'
+          + '<div class="meta"><div><span>Ta\u2019minotchi<\/span>' + cur.name + '<\/div><div><span>Manzil<\/span>' + (cur.address || '—') + '<\/div><div><span>Tuzilgan sana<\/span>' + aktDate + '<\/div><\/div>'
+          + '<table><thead><tr><th>#<\/th><th>Sana<\/th><th>Amaliyot<\/th><th>Hujjat<\/th><th>Valyuta<\/th><th>Debet (qarz)<\/th><th>Kredit (to\u2018lov)<\/th><\/tr><\/thead><tbody>' + rows + '<\/tbody>'
+          + '<tfoot>' + foot + '<\/tfoot><\/table>'
+          + '<div class="bal">Davr oxiriga qoldiq (сальдо): <b>' + ((detBal < 0 ? '−' : '') + fmt(Math.abs(detBal))) + ' ' + detCurLabel + '<\/b><\/div>'
+          + '<div class="sign"><div>Biz tomonimizdan<\/div><div>Ta\u2019minotchi tomonidan<\/div><\/div>'
+          + '<\/body><\/html>');
+        const w = window.open('', '_blank');
+        if (!w) return;
+        w.document.write(html);
+        w.document.close();
+        w.focus();
+        setTimeout(() => { w.print(); }, 250);
+      },
+      // ===== boshlang'ich qoldiq (входящее сальдо) =====
+      obText: obVal ? (fmt(Math.abs(obVal)) + ' ' + detCurLabel + ' · ' + tUI(obVal < 0 ? "biz qarzdormiz" : "ta'minotchi qarzdor")) : tUI('Kiritilmagan'),
+      detBalanceColorDark: detBal < 0 ? '#FF9A93' : (detBal > 0 ? '#7BE0B4' : '#EAF6F7'),
+      balansDark: (this.props.balansUslubi || 'toq') === 'toq',
+      balansSoft: this.props.balansUslubi === 'gradient',
+      balansPlain: this.props.balansUslubi === 'oq',
+      obRowStyle: 'min-width:0; ' + (isAdmin ? 'cursor:pointer;' : ''),
+      obEditBtnStylePlain: isAdmin
+        ? 'flex-shrink:0; background:#F2F4F6; color:#0E7C88; border:1px solid #E1E6EB; border-radius:10px; padding:8px 14px; font-size:12.5px; font-weight:800; cursor:pointer;'
+        : 'display:none;',
+      obEditBtnStyleSoft: isAdmin
+        ? 'flex-shrink:0; background:rgba(255,255,255,0.85); color:#0E5560; border:1px solid #A9CFD5; border-radius:10px; padding:8px 14px; font-size:12.5px; font-weight:800; cursor:pointer;'
+        : 'display:none;',
+      detBalanceHint: tUI(detBal < 0 ? "Ta'minotchiga qarzimiz" : (detBal > 0 ? "Ta'minotchi bizga qarzdor" : "Hisob-kitob teng")),
+      obColor: obVal < 0 ? '#A6423C' : (obVal > 0 ? '#0E6B4F' : '#4C7D86'),
+      obDateTxt: (cur && cur.openBalDate) ? this._fmtDmy(cur.openBalDate) : '—',
+      obEditBtnStyle: isAdmin
+        ? 'flex-shrink:0; background:rgba(255,255,255,0.10); color:#BFE6EA; border:1px solid rgba(143,196,204,0.45); border-radius:10px; padding:8px 14px; font-size:12.5px; font-weight:800; cursor:pointer;'
+        : 'display:none;',
+      obEditOpen: !!st.obEditOpen && cur != null,
+      openObEdit: () => this.setState({
+        obEditOpen: true,
+        obEditAmount: obVal ? String(Math.abs(obVal)) : '',
+        obEditDir: obVal > 0 ? 'them' : 'we',
+        obEditDate: (cur && cur.openBalDate) || '',
+        obEditReason: '',
+      }),
+      closeObEdit: () => this.setState({ obEditOpen: false }),
+      obEditAmount: st.obEditAmount, obEditDate: st.obEditDate, obEditReason: st.obEditReason,
+      setObAmount: (e) => this.setState({ obEditAmount: e.target.value }),
+      setObDate: (e) => this.setState({ obEditDate: e.target.value }),
+      setObReason: (e) => this.setState({ obEditReason: e.target.value }),
+      obPickWe: () => this.setState({ obEditDir: 'we' }),
+      obPickThem: () => this.setState({ obEditDir: 'them' }),
+      obEditWeStyle: dirStyle((st.obEditDir || 'we') === 'we', 'we'),
+      obEditThemStyle: dirStyle(st.obEditDir === 'them', 'them'),
+      hasObLog: !!(cur && cur.openBalLog && cur.openBalLog.length),
+      obLog: ((cur && cur.openBalLog) || []).slice().reverse(),
+      obSaveBtnStyle: String(st.obEditReason || '').trim()
+        ? 'background:#14A0AE; color:#fff; border:none; border-radius:11px; padding:12px 24px; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);'
+        : 'background:#CBD6DC; color:#fff; border:none; border-radius:11px; padding:12px 24px; font-size:14px; font-weight:800; cursor:not-allowed;',
+      saveObEdit: () => {
+        const reason = String(st.obEditReason || '').trim();
+        if (!reason || st.detailIdx == null) return;
+        const nv = (st.obEditDir === 'them' ? 1 : -1) * obNum(st.obEditAmount);
+        const idx = st.detailIdx;
+        this.setState(s => {
+          const list = s.list.slice();
+          const it = Object.assign({}, list[idx]);
+          const old = Number(it.openBal) || 0;
+          it.openBal = nv;
+          it.openBalDate = s.obEditDate || it.openBalDate || '';
+          it.openBalLog = (it.openBalLog || []).concat([{
+            date: new Date().toLocaleDateString('ru-RU'),
+            change: sgnTxt(old) + ' → ' + sgnTxt(nv) + ' ' + detCurLabel,
+            reason: reason, user: 'Aziz Karimov',
+          }]);
+          list[idx] = it;
+          return { list: list, obEditOpen: false };
+        });
+      },
+      // add modal
+      addOpenBal: st.addOpenBal,
+      addOpenDate: st.addOpenDate,
+      addCurCode: (st.addCur || 'uzs').toUpperCase(),
+      setAddOpenBal: (e) => this.setState({ addOpenBal: e.target.value }),
+      setAddOpenDate: (e) => this.setState({ addOpenDate: e.target.value }),
+      pickObWe: () => this.setState({ addOpenDir: 'we' }),
+      pickObThem: () => this.setState({ addOpenDir: 'them' }),
+      obWeStyle: dirStyle((st.addOpenDir || 'we') === 'we', 'we'),
+      obThemStyle: dirStyle(st.addOpenDir === 'them', 'them'),
+      addOpen: !!st.addOpen,
+      openAdd: () => this.setState({ addOpen: true, addName: '', addPhone: '', addAddress: '', addCategory: '' }),
+      closeAdd: () => this.setState({ addOpen: false }),
+      stopProp: (e) => e.stopPropagation(),
+      addName: st.addName, addPhone: st.addPhone, addAddress: st.addAddress, addCategory: st.addCategory,
+      addFish: st.addFish, addInn: st.addInn, addAcct: st.addAcct,
+      setAddAcct: (e) => this.setState({ addAcct: e.target.value }),
+      addBank: st.addBank, addMfo: st.addMfo,
+      setAddBank: (e) => this.setState({ addBank: e.target.value }),
+      setAddMfo: (e) => this.setState({ addMfo: e.target.value }),
+      moreWrapStyle: st.addType === 'Jismoniy shaxs' ? 'display:none;' : 'grid-column:1 / -1;',
+      addMoreOpen: !!st.addMore && st.addType !== 'Jismoniy shaxs',
+      toggleMore: () => this.setState(s => ({ addMore: !s.addMore })),
+      moreChevron: st.addMore ? 'rotate(180deg)' : 'rotate(0deg)',
+      moreBtnStyle: 'width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; background:#F7F9FA; border:1px dashed #D2DBE1; border-radius:11px; padding:12px 15px; font-size:13.5px; font-weight:800; color:#0E7C88; cursor:pointer;',
+      addPhoneRows: (st.addPhones && st.addPhones.length ? st.addPhones : ['']).map((v, i, arr) => ({
+        value: v,
+        onInput: (e) => { const n = (this.state.addPhones || ['']).slice(); n[i] = e.target.value; this.setState({ addPhones: n }); },
+        btnLabel: i === arr.length - 1 ? '+' : '×',
+        btnTitle: i === arr.length - 1 ? "Yana telefon qo'shish" : "O'chirish",
+        btnClick: i === arr.length - 1
+          ? () => this.setState(s => ({ addPhones: (s.addPhones || ['']).concat(['']) }))
+          : () => this.setState(s => { const n = (s.addPhones || ['']).slice(); n.splice(i, 1); return { addPhones: n.length ? n : [''] }; }),
+        btnStyle: 'width:44px; height:46px; flex-shrink:0; border-radius:11px; font-size:19px; font-weight:700; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; ' + (i === arr.length - 1 ? 'background:#E3F3F5; color:#0E7C88; border:1px solid #BCDFE3;' : 'background:#fff; color:#8A93A0; border:1px solid #E1E6EB;'),
+      })),
+      setAddFish: (e) => this.setState({ addFish: e.target.value }),
+      setAddInn: (e) => this.setState({ addInn: e.target.value }),
+      pickTypeYur: () => this.setState({ addType: 'Yuridik shaxs' }),
+      pickTypeJis: () => this.setState({ addType: 'Jismoniy shaxs' }),
+      typeYurStyle: 'padding:12px 10px; border-radius:11px; font-size:13.5px; font-weight:800; cursor:pointer; ' + ((st.addType || 'Yuridik shaxs') === 'Yuridik shaxs' ? 'background:#E3F3F5; color:#0E7C88; border:1.5px solid #9FD3DA;' : 'background:#fff; color:#5A6675; border:1px solid #E1E6EB;'),
+      typeJisStyle: 'padding:12px 10px; border-radius:11px; font-size:13.5px; font-weight:800; cursor:pointer; ' + (st.addType === 'Jismoniy shaxs' ? 'background:#E3F3F5; color:#0E7C88; border:1.5px solid #9FD3DA;' : 'background:#fff; color:#5A6675; border:1px solid #E1E6EB;'),
+      setAddName: (e) => this.setState({ addName: e.target.value }),
+      setAddPhone: (e) => this.setState({ addPhone: e.target.value }),
+      setAddAddress: (e) => this.setState({ addAddress: e.target.value }),
+      setAddCategory: (e) => this.setState({ addCategory: e.target.value }),
+      addCurLabel: st.addCur === 'usd' ? 'USD — dollar' : (st.addCur === 'uzs' ? 'UZS — so\u2018m' : 'Valyutani tanlang'),
+      addCurColor: st.addCur ? '#16313A' : '#AEB6C0',
+      addCurChevron: st.addCurMenuOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      addCurMenuOpen: !!st.addCurMenuOpen,
+      addCurToggle: () => this.setState(s => ({ addCurMenuOpen: !s.addCurMenuOpen })),
+      addCurOpts: [{ k: 'uzs', label: 'UZS — so\u2018m', sub: 'Milliy valyutada hisob-kitob' }, { k: 'usd', label: 'USD — dollar', sub: 'Dollarda hisob-kitob' }].map(c => ({
+        label: c.label, sub: c.sub,
+        pick: () => this.setState({ addCur: c.k, addCurMenuOpen: false }),
+        checkOpacity: st.addCur === c.k ? '1' : '0',
+        style: 'width:100%; display:flex; align-items:center; gap:10px; border:none; border-radius:9px; padding:10px 13px; cursor:pointer; ' + (st.addCur === c.k ? 'background:#E3F3F5; color:#0E7C88;' : 'background:transparent; color:#16313A;'),
+      })),
+      saveBtnStyle: canSave
+        ? "background:#14A0AE; color:#fff; border:none; border-radius:11px; padding:12px 24px; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);"
+        : "background:#CBD6DC; color:#fff; border:none; border-radius:11px; padding:12px 24px; font-size:14px; font-weight:800; cursor:not-allowed;",
+      saveSupplier: () => {
+        if (!(st.addName || '').trim()) return;
+        const ob = (st.addOpenDir === 'them' ? 1 : -1) * obNum(st.addOpenBal);
+        this.setState(s => ({
+          list: s.list.concat([{
+            openBal: ob, openBalDate: s.addOpenDate || new Date().toISOString().slice(0, 10), openBalLog: [],
+            name: s.addName.trim(), category: (s.addCategory || '').trim() || "—",
+            phone: ((s.addPhones || []).map(p => (p || '').trim()).filter(Boolean)[0]) || "—", address: (s.addAddress || '').trim() || "—",
+            contact: (s.addFish || '').trim() || "—", fish: (s.addFish || '').trim() || "—",
+            inn: (s.addInn || '').trim() || "—", acct: (s.addAcct || '').trim() || "—",
+            bank: (s.addBank || '').trim(), mfo: (s.addMfo || '').trim(),
+            extraPhone: ((s.addPhones || []).map(p => (p || '').trim()).filter(Boolean).slice(1).join(', ')) || "—",
+            legalType: s.addType || "Yuridik shaxs",
+            since: new Date().getFullYear(), docs: 0, trusted: false,
+            lastDate: "—", total: "0", balance: ob ? fmt(Math.abs(ob)) : "0", debt: ob < 0, avBg: "#E3F3F5", avColor: "#0E7C88",
+            cur: s.addCur || 'uzs',
+          }]),
+          addOpen: false, addName: '', addPhone: '', addAddress: '', addCategory: '', addCur: 'uzs',
+          addOpenBal: '', addOpenDir: 'we', addOpenDate: '',
+          addFish: '', addInn: '', addAcct: '', addBank: '', addMfo: '', addBank: '', addMfo: '', addMore: false, addPhones: [''], addType: 'Yuridik shaxs',
+        }));
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

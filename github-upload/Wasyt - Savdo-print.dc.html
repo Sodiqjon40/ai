@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body { background: #EEF1F4; font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #16313A; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: #D4D8DD; border-radius: 6px; border: 2px solid transparent; background-clip: content-box; }
+  button { font-family: inherit; }
+  input { font-family: inherit; }
+  @media print {
+    @page { margin: 14mm; }
+    body { background: #fff !important; }
+    .app-root { display: none !important; }
+    .no-print { display: none !important; }
+    .report-overlay { position: static !important; inset: auto !important; background: #fff !important; padding: 0 !important; overflow: visible !important; }
+    .report-sheet { box-shadow: none !important; border-radius: 0 !important; margin: 0 !important; max-width: none !important; padding: 0 !important; }
+  }
+  .navbar { transition: width .2s ease; }
+  html.nav-collapsed .navbar { width: 76px !important; min-width: 76px !important; padding-left: 12px !important; padding-right: 12px !important; overflow-x: hidden !important; }
+  html.nav-collapsed .navbar .navscroll a, html.nav-collapsed .navbar .navscroll button { font-size: 0 !important; justify-content: center !important; gap: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+  html.nav-collapsed .navbar .navscroll svg ~ svg, html.nav-collapsed .navbar .navscroll span ~ svg, html.nav-collapsed .navbar .navchev { display: none !important; }
+  html.nav-collapsed .navbar .navscroll > div { display: none !important; }
+  html.nav-collapsed .navbar .navlogo { display: none !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) { justify-content: center !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) > div { display: none !important; }
+  html.nav-collapsed .navbar .navlogo-row { justify-content: center !important; }
+  .navtoggle svg { transition: transform .2s ease; }
+  html.nav-collapsed .navtoggle svg { transform: rotate(180deg); }
+</style>
+<script src="i18n.js" data-i18n-skip></script>
+<script src="theme.js" data-i18n-skip></script>
+<script src="nav-collapse.js" data-i18n-skip></script>
+<script src="support-widget.js" data-i18n-skip></script>
+</helmet>
+
+<div class="app-root" style="display: flex; height: 100vh; overflow: hidden; background: #EEF1F4;">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="navbar" style="width: 256px; flex-shrink: 0; background: #FFFFFF; border-right: 1px solid #E7EAEE; display: flex; flex-direction: column; padding: 22px 16px 16px;">
+    <div class="navlogo-row" style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding: 4px 6px 24px;">
+      <img class="navlogo" src="assets/wasyt-logo-new.png" alt="WASYT" style="height: 28px; width: auto; display: block;" />
+      <button class="navtoggle" type="button" title="Menyuni yig'ish" style="width:30px; height:30px; flex-shrink:0; border:none; border-radius:9px; background:#F2F4F6; color:#7C8794; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m13 6-6 6 6 6M19 6l-6 6 6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="navscroll" style="overflow-y: auto; flex: 1; margin: 0 -6px; padding: 0 6px;">
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        Bosh sahifa
+      </button>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:#E3F3F5;color:#0E7C88;font-size:14.5px;font-weight:700;cursor:pointer;text-align:left;">
+        <span style="width:30px;height:30px;border-radius:9px;background:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+        </span>
+        Savdo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7C88" stroke-width="2.4" style="margin-left:auto;"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+
+      <div style="margin:2px 0 8px 26px; padding-left:14px; border-left:1.5px solid #E7EAEE;">
+        <button onClick="{{ setPos }}" style="{{ subPos }}">Yangi savdo</button>
+        <button onClick="{{ setSotuv }}" style="{{ subSotuv }}">Barcha sotuvlar</button>
+        <button onClick="{{ setSold }}" style="{{ subSold }}">Sotilgan mahsulotlar</button>
+      </div>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        Mahsulotlar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+        Mijozlar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M1 3h12v11H1zM13 7h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        Ta'minotchilar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/><rect x="8" y="13" width="8" height="8"/></svg>
+        Ombor
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.81 1.17V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4.5a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 6 9.4l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 11 6.6V4.5a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 2.82 1.17l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 11h.1a2 2 0 1 1 0 4h-.1Z"/></svg>
+        Sozlamalar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </button>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        Hisobotlar
+      </button>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="m15.5 10 6-3.5v11l-6-3.5"/></svg>
+        Video darslik
+      </button>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:13px; padding: 14px 8px 4px; border-top: 1px solid #EEF1F4; margin-top: 8px;">
+      <span style="width:42px;height:42px;border-radius:50%;background:#E3F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#14A0AE"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z"/></svg>
+      </span>
+      <div>
+        <div style="font-size:11.5px;color:#9AA3AE;">Call Center</div>
+        <div style="font-size:15px;font-weight:700;color:#16313A;">+998 (55) 055-51-00</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <!-- topbar -->
+    <header style="height: 76px; flex-shrink: 0; background: #FFFFFF; border-bottom: 1px solid #E7EAEE; display: flex; align-items: center; padding: 0 26px; gap: 16px;">
+      <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">{{ pageTitle }}</div>
+      <div style="font-size:13px; color:#9AA3AE; font-weight:600; background:#EEF1F4; padding:5px 11px; border-radius:8px; white-space:nowrap;">Savdo</div>
+      <div style="flex: 1;"></div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div style="position:relative;">
+          <button style="position:relative;width:44px;height:44px;border-radius:50%;border:1px solid #ECEEF1;background:#F4F6F8;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:#EAF5F5;border-color:#BFE6E9;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span style="position:absolute;top:-2px;right:-3px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:#14A0AE;color:#fff;font-size:10px;font-weight:800;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">0</span></button>
+          <span style="position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;border-radius:9px;background:#14A0AE;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- scroll content -->
+    <div style="flex: 1; overflow-y: auto; padding: 22px 26px 32px;">
+
+      <!-- =================================================== -->
+      <!-- SCREEN 1: TO'G'RIDAN-TO'G'RI SOTUV (POS)            -->
+      <!-- =================================================== -->
+      <sc-if value="{{ isPos }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="POS">
+
+        <!-- toolbar -->
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:0; background:#fff; border:1px solid #EDEFF2; border-radius:14px; padding:0 16px; height:50px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input placeholder="Barkod , Nomi" style="border:none; outline:none; flex:1; min-width:0; font-size:14.5px; color:#16313A; background:transparent; height:100%;" />
+            <span style="font-size:11px; font-weight:700; color:#AEB6C0; background:#F2F4F6; border-radius:6px; padding:3px 8px;">/</span>
+          </div>
+          <button style="display:flex; align-items:center; gap:9px; height:50px; padding:0 18px; background:#fff; border:1px solid #EDEFF2; border-radius:14px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            Qaytarildi
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-1"/></svg>
+          </button>
+          <button style="display:flex; align-items:center; gap:9px; height:50px; padding:0 18px; background:#fff; border:1px solid #EDEFF2; border-radius:14px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            Kechiktirishlar
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#EC8A3C" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </button>
+        </div>
+
+        <!-- 3-column -->
+        <div style="display:grid; grid-template-columns:336px 1fr 360px; gap:18px; align-items:stretch; height:calc(100vh - 232px); min-height:560px;">
+
+          <!-- LEFT: catalog -->
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; flex-direction:column; min-height:0;">
+            <div style="padding:18px 18px 12px;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+                <span style="font-size:17px; font-weight:800; color:#16313A;">Katalog</span>
+                <button style="display:flex; align-items:center; gap:7px; background:#14A0AE; color:#fff; border:none; border-radius:10px; padding:7px 14px; font-size:13px; font-weight:600; cursor:pointer;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                  Menyu
+                </button>
+              </div>
+              <button style="width:100%; display:flex; align-items:center; justify-content:space-between; background:#F7F8FA; border:1px solid #EDEFF2; border-radius:12px; padding:13px 15px; font-size:14px; color:#9AA3AE; font-weight:500; cursor:pointer;">
+                Kategoriya
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </div>
+            <div style="flex:1; overflow-y:auto; padding:0 10px 10px;">
+              <sc-for list="{{ catalog }}" as="p" hint-placeholder-count="7">
+                <button style="width:100%; display:flex; align-items:center; gap:12px; padding:11px 8px; border:none; border-bottom:1px solid #F2F4F6; background:transparent; cursor:pointer; text-align:left;">
+                  <span style="width:44px; height:44px; border-radius:11px; background:#EEF1F4; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                  </span>
+                  <span style="flex:1; min-width:0;">
+                    <span style="display:block; font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.name }}</span>
+                    <span style="display:block; font-size:12px; color:#9AA3AE; margin-top:2px;">{{ p.cat }}</span>
+                  </span>
+                  <span style="text-align:right; flex-shrink:0;">
+                    <span style="display:block; font-size:13px; font-weight:800; color:#16313A; white-space:nowrap;">{{ p.price }}</span>
+                    <span style="display:block; font-size:11.5px; color:#AEB6C0; margin-top:2px;">{{ p.qty }}</span>
+                  </span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- CENTER: cart -->
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; flex-direction:column; min-height:0;">
+            <div style="display:flex; gap:8px; padding:16px 18px 0;">
+              <button onClick="{{ setChek1 }}" style="{{ chek1 }}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+                Chek 1
+              </button>
+              <button onClick="{{ setChek2 }}" style="{{ chek2 }}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+                Chek 2
+              </button>
+              <button onClick="{{ setChek3 }}" style="{{ chek3 }}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+                Chek 3
+              </button>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; padding:16px 20px 12px;">
+              <span style="font-size:18px; font-weight:800; color:#16313A;">Savat</span>
+              <span style="min-width:26px; height:26px; padding:0 8px; border-radius:8px; background:#E3F3F5; color:#0E7C88; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center;">{{ cartCount }}</span>
+              <div style="flex:1;"></div>
+              <button style="width:34px; height:34px; border-radius:9px; border:1px solid #FAD9D6; background:#FBEDEC; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E5544E" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+              </button>
+            </div>
+            <div style="flex:1; overflow-y:auto; padding:0 16px 16px;">
+              <sc-for list="{{ cart }}" as="c" hint-placeholder-count="3">
+                <div style="display:flex; align-items:center; gap:13px; padding:13px 14px; background:#F9FAFB; border:1px solid #EFF1F4; border-radius:14px; margin-bottom:10px;">
+                  <span style="width:48px; height:48px; border-radius:12px; background:#EEF1F4; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                  </span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ c.name }}</div>
+                    <div style="font-size:12.5px; color:#9AA3AE; margin-top:3px;">{{ c.unit }} <span style="color:#CBD2D9;">uzs</span></div>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+                    <button style="width:30px; height:30px; border-radius:9px; border:1px solid #E7EAEE; background:#fff; color:#46535F; font-size:18px; font-weight:600; line-height:1; cursor:pointer;">−</button>
+                    <span style="min-width:22px; text-align:center; font-size:14px; font-weight:800; color:#16313A;">{{ c.qty }}</span>
+                    <button style="width:30px; height:30px; border-radius:9px; border:none; background:#14A0AE; color:#fff; font-size:18px; font-weight:600; line-height:1; cursor:pointer;">+</button>
+                  </div>
+                  <div style="width:118px; text-align:right; flex-shrink:0;">
+                    <div style="font-size:14px; font-weight:800; color:#16313A; white-space:nowrap;">{{ c.total }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- RIGHT: checkout -->
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); display:flex; flex-direction:column; min-height:0;">
+            <div style="padding:18px 20px; border-bottom:1px solid #F2F4F6;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                <span style="width:34px; height:34px; border-radius:10px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/><rect x="8" y="13" width="8" height="8"/></svg>
+                </span>
+                <span style="font-size:16px; font-weight:800; color:#16313A;">{{ kassaName }}</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:10px; font-weight:800; color:#0E7C88; background:#E3F3F5; border-radius:6px; padding:3px 7px; text-transform:uppercase;">uzs</span>
+                <span style="font-size:19px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">{{ kassaBalance }}</span>
+                <span style="font-size:10px; font-weight:800; color:#9AA3AE; background:#F0F2F5; border-radius:6px; padding:3px 7px; text-transform:uppercase; margin-left:auto;">usd</span>
+                <span style="font-size:15px; font-weight:700; color:#9AA3AE;">0</span>
+              </div>
+            </div>
+
+            <div style="flex:1; overflow-y:auto; padding:18px 20px;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:9px;">
+                <span style="font-size:14px; font-weight:700; color:#16313A;">Mijoz</span>
+                <button style="background:none; border:none; color:#14A0AE; font-size:13px; font-weight:700; cursor:pointer;">+ Yaratish</button>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; background:#F7F8FA; border:1px solid #EDEFF2; border-radius:12px; padding:11px 14px; margin-bottom:20px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                <input placeholder="Ism yoki mijoz raqami" style="border:none; outline:none; flex:1; min-width:0; font-size:13.5px; color:#16313A; background:transparent;" />
+              </div>
+
+              <div style="font-size:14px; font-weight:700; color:#16313A; margin-bottom:9px;">Chegirma</div>
+              <div style="display:flex; gap:9px; margin-bottom:12px;">
+                <input placeholder="0" style="flex:1; min-width:0; border:1px solid #EDEFF2; background:#F7F8FA; border-radius:11px; padding:11px 14px; font-size:14px; font-weight:700; color:#16313A; outline:none;" />
+                <button onClick="{{ setDiscPct }}" style="{{ discPctStyle }}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5 5 19M6.5 6.5h.01M17.5 17.5h.01"/></svg>
+                </button>
+                <button onClick="{{ setDiscUzs }}" style="{{ discUzsStyle }}">UZS</button>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:9px;">
+                <button style="padding:11px 0; border:1px solid #EDEFF2; border-radius:11px; background:#F7F8FA; color:#46535F; font-size:13.5px; font-weight:700; cursor:pointer;">15%</button>
+                <button style="padding:11px 0; border:1px solid #EDEFF2; border-radius:11px; background:#F7F8FA; color:#46535F; font-size:13.5px; font-weight:700; cursor:pointer;">30%</button>
+                <button style="padding:11px 0; border:1px solid #EDEFF2; border-radius:11px; background:#F7F8FA; color:#46535F; font-size:13.5px; font-weight:700; cursor:pointer;">50%</button>
+                <button style="padding:11px 0; border:1px solid #EDEFF2; border-radius:11px; background:#F7F8FA; color:#46535F; font-size:13.5px; font-weight:700; cursor:pointer;">75%</button>
+              </div>
+            </div>
+
+            <div style="padding:16px 20px; border-top:1px solid #F2F4F6;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <span style="font-size:13.5px; color:#9AA3AE; font-weight:500;">Jami</span>
+                <span style="font-size:14px; font-weight:700; color:#16313A;">{{ jamiTxt }} <span style="font-size:11px; color:#AEB6C0;">uzs</span></span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <span style="font-size:13.5px; color:#9AA3AE; font-weight:500;">Chegirma</span>
+                <span style="font-size:14px; font-weight:700; color:#16313A;">0 <span style="font-size:11px; color:#AEB6C0;">uzs</span></span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px dashed #E1E5EA; margin-bottom:14px;">
+                <span style="font-size:14px; color:#16313A; font-weight:700;">To'lanadigan summa</span>
+                <span style="font-size:20px; font-weight:800; color:#14A0AE; letter-spacing:-0.01em;">{{ toPayTxt }} <span style="font-size:12px; color:#9AABB0;">uzs</span></span>
+              </div>
+              <button style="width:100%; display:flex; align-items:center; justify-content:center; gap:10px; background:#14A0AE; color:#fff; border:none; border-radius:13px; padding:15px; font-size:15.5px; font-weight:700; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.28);">
+                To'lash
+                <span style="font-size:11px; font-weight:700; background:rgba(255,255,255,0.22); border-radius:6px; padding:2px 7px;">L</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- bottom action toolbar -->
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;">
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 16px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Kassalar tanlovi
+          </button>
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 16px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            Kassa operatsiyalari
+          </button>
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 16px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EC8A3C" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Xarajatlar
+          </button>
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 16px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7"/></svg>
+            Mijozlar
+          </button>
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 16px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1AA565" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="2.5"/></svg>
+            Inkassatsiya
+          </button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- =================================================== -->
+      <!-- SCREEN 2: SOTUV (sales list)                        -->
+      <!-- =================================================== -->
+      <sc-if value="{{ isSotuv }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Sotuv">
+
+        <!-- header: period pills + date range + print -->
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:4px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:5px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <button onClick="{{ spBugun }}" style="{{ ssBugun }}">Bugun</button>
+            <button onClick="{{ spHafta }}" style="{{ ssHafta }}">Joriy hafta</button>
+            <button onClick="{{ spOy }}" style="{{ ssOy }}">Joriy oy</button>
+          </div>
+          <button style="display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 15px; font-size:13.5px; color:#46535F; font-weight:600; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            01.08.2025 - 01.09.2025
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+          </button>
+          <div style="flex:1;"></div>
+          <button onClick="{{ openReport }}" style="display:flex; align-items:center; gap:9px; background:#14A0AE; color:#fff; border:none; border-radius:12px; padding:12px 20px; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);">
+            Hisobotni chop etish
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <!-- two columns -->
+        <div style="display:grid; grid-template-columns:1fr 372px; gap:18px; align-items:start;">
+
+          <!-- LEFT: filters + feed -->
+          <div style="min-width:0;">
+            <!-- search row -->
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+              <button style="width:46px; height:46px; border-radius:12px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+              </button>
+              <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:0; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:0 15px; height:46px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input placeholder="Qidiruv" style="border:none; outline:none; flex:1; min-width:0; font-size:13.5px; color:#16313A; background:transparent;" />
+              </div>
+              <button style="width:46px; height:46px; border-radius:12px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/></svg>
+              </button>
+              <button style="width:46px; height:46px; border-radius:12px; border:none; background:#14A0AE; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; box-shadow:0 6px 14px rgba(20,160,174,0.26);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              </button>
+              <button style="width:46px; height:46px; border-radius:12px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#46535F" stroke-width="2"><path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h6M14 18h6"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="12" cy="18" r="2"/></svg>
+              </button>
+            </div>
+
+            <!-- dropdowns -->
+            <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:18px;">
+              <button style="display:flex; align-items:center; justify-content:space-between; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 14px; font-size:13px; color:#9AA3AE; font-weight:500; cursor:pointer;">Kompaniya <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>
+              <button style="display:flex; align-items:center; justify-content:space-between; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 14px; font-size:13px; color:#9AA3AE; font-weight:500; cursor:pointer;">Kassa <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>
+              <button style="display:flex; align-items:center; justify-content:space-between; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 14px; font-size:13px; color:#9AA3AE; font-weight:500; cursor:pointer;">To'lov turi <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>
+              <button style="display:flex; align-items:center; justify-content:space-between; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 14px; font-size:13px; color:#9AA3AE; font-weight:500; cursor:pointer;">Sotuvchi <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>
+              <button style="display:flex; align-items:center; justify-content:space-between; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 14px; font-size:13px; color:#9AA3AE; font-weight:500; cursor:pointer;">Kassir <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+
+            <!-- timeline feed -->
+            <div style="position:relative; padding-left:60px;">
+              <div style="position:absolute; left:22px; top:26px; bottom:18px; width:2px; background:#D6E3E5;"></div>
+              <sc-for list="{{ feedItems }}" as="f" hint-placeholder-count="7">
+                <sc-if value="{{ f.isDate }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:relative; margin:8px 0 14px;">
+                    <div style="position:absolute; left:-60px; top:-3px; width:46px; height:46px; border-radius:13px; background:#14A0AE; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(20,160,174,0.28);">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+                    </div>
+                    <div style="font-size:16px; font-weight:800; color:#16313A;">{{ f.date }}</div>
+                    <div style="font-size:13px; color:#9AA3AE; font-weight:600; margin-top:2px;">{{ f.sub }}</div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ f.isTxn }}" hint-placeholder-val="{{ false }}">
+                  <div onClick="{{ f.open }}" style="position:relative; display:flex; align-items:center; gap:14px; background:#fff; border:1px solid #EDEFF2; border-radius:14px; padding:13px 16px; margin-bottom:10px; cursor:pointer; box-shadow:0 1px 3px rgba(16,24,40,0.03);" style-hover="border-color:#BFE0E4; box-shadow:0 6px 16px rgba(20,160,174,0.12);">
+                    <span style="position:absolute; left:-41px; top:50%; transform:translateY(-50%); width:11px; height:11px; border-radius:50%; background:#fff; border:3px solid #BFD6D9;"></span>
+                    <span style="width:42px; height:42px; border-radius:11px; background:{{ f.iconBg }}; color:{{ f.iconColor }}; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="{{ f.arrowPath }}"/></svg>
+                    </span>
+                    <div style="flex:1; min-width:0;">
+                      <div style="display:flex; align-items:center; gap:9px; margin-bottom:4px;">
+                        <span style="font-size:14px; font-weight:700; color:#16313A;">{{ f.id }}</span>
+                        <span style="{{ f.badgeStyle }}">{{ f.badge }}</span>
+                      </div>
+                      <div style="font-size:12.5px; color:#9AA3AE; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ f.dateTime }} <span style="color:#D5DBE0;">|</span> {{ f.seller }}</div>
+                    </div>
+                    <span style="font-size:12.5px; font-weight:700; color:#46535F; background:#F2F4F6; border-radius:8px; padding:5px 11px; flex-shrink:0;">{{ f.units }}</span>
+                    <div style="text-align:right; flex-shrink:0; min-width:130px;">
+                      <div style="font-size:14.5px; font-weight:800; color:{{ f.amountColor }}; white-space:nowrap;">{{ f.amount }}</div>
+                      <div style="display:flex; align-items:center; justify-content:flex-end; gap:6px; font-size:11.5px; color:#9AA3AE; margin-top:3px;">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/></svg>
+                        {{ f.store }}
+                      </div>
+                    </div>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C5CCD3" stroke-width="2.2" style="flex-shrink:0;"><path d="m9 6 6 6-6 6"/></svg>
+                  </div>
+                </sc-if>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- RIGHT: stats -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+
+            <!-- Jami tranzaksiyalar -->
+            <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                <span style="width:42px; height:42px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+                <div>
+                  <div style="font-size:13px; color:#9AA3AE; font-weight:600;">Jami tranzaksiyalar</div>
+                  <div style="font-size:23px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">9864 <span style="font-size:13px; color:#9AA3AE; font-weight:700;">ta</span></div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; padding-top:15px; border-top:1px solid #F2F4F6;">
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Mahsulotlar</div><div style="font-size:15px; font-weight:800; color:#16313A;">20 ta</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Xizmatlar</div><div style="font-size:15px; font-weight:800; color:#16313A;">0 ta</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">To'plamlar</div><div style="font-size:15px; font-weight:800; color:#16313A;">0 ta</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Sertifikatlar</div><div style="font-size:15px; font-weight:800; color:#16313A;">0 ta</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Qaytarishlar</div><div style="font-size:15px; font-weight:800; color:#16313A;">1 ta</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Qaytarish summasi</div><div style="font-size:14px; font-weight:800; color:#E5544E;">− 1 500 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Almashtirishlar</div><div style="font-size:15px; font-weight:800; color:#16313A;">1 ta</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Almashtirish summasi</div><div style="font-size:14px; font-weight:800; color:#E5544E;">− 1 204 000 UZS</div></div>
+              </div>
+            </div>
+
+            <!-- Tranzaksiya summasi -->
+            <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                <span style="width:42px; height:42px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="6" width="19" height="12.5" rx="2.5"/><path d="M2.5 10h19"/></svg></span>
+                <div>
+                  <div style="font-size:13px; color:#9AA3AE; font-weight:600;">Tranzaksiya summasi</div>
+                  <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">144 500 000 <span style="font-size:12px; color:#9AA3AE; font-weight:700;">UZS</span></div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; padding-top:15px; border-top:1px solid #F2F4F6;">
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Naqd</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">45 200 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Karta</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">19 000 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">HUMO</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">28 750 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">UzCard</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">22 100 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Visa</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">6 200 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Mastercard</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">8 500 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Keshbek to'lov</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">2 350 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Qarzga</div><div style="font-size:14.5px; font-weight:800; color:#0E7C88;">12 400 000 UZS</div></div>
+              </div>
+            </div>
+
+            <!-- Mijozlar balansi -->
+            <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                <span style="width:42px; height:42px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+                <div>
+                  <div style="font-size:13px; color:#9AA3AE; font-weight:600;">Mijozlar balansi</div>
+                  <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">0 <span style="font-size:12px; color:#9AA3AE; font-weight:700;">UZS</span></div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; padding-top:15px; border-top:1px solid #F2F4F6;">
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Hisoblangan</div><div style="font-size:15px; font-weight:800; color:#16313A;">0 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Sarflangan</div><div style="font-size:15px; font-weight:800; color:#16313A;">0 UZS</div></div>
+              </div>
+            </div>
+
+            <!-- Sovg'a sertifikatlari -->
+            <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                <span style="width:42px; height:42px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7S9 2 6.5 4.5 12 7 12 7M12 7s3-5 5.5-2.5S12 7 12 7"/></svg></span>
+                <div>
+                  <div style="font-size:13px; color:#9AA3AE; font-weight:600;">Sovg'a sertifikatlari</div>
+                  <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">0 <span style="font-size:12px; color:#9AA3AE; font-weight:700;">ta</span></div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; padding-top:15px; border-top:1px solid #F2F4F6;">
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Sotilgan</div><div style="font-size:15px; font-weight:800; color:#16313A;">0 ta</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Sotuv summasi</div><div style="font-size:15px; font-weight:800; color:#16313A;">0 UZS</div></div>
+              </div>
+            </div>
+
+            <!-- Qarzlarni qoplash -->
+            <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                <span style="width:42px; height:42px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.5 7.5 12 3 3.5 7.5 12 12l8.5-4.5Z"/><path d="M3.5 7.5v9L12 21l8.5-4.5v-9"/><path d="M12 12v9"/></svg></span>
+                <div>
+                  <div style="font-size:13px; color:#9AA3AE; font-weight:600;">Qarzlarni qoplash</div>
+                  <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">1 115 000 <span style="font-size:12px; color:#9AA3AE; font-weight:700;">UZS</span></div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; padding-top:15px; border-top:1px solid #F2F4F6;">
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">HUMO</div><div style="font-size:15px; font-weight:800; color:#0E7C88;">15 000 UZS</div></div>
+                <div><div style="font-size:12.5px; color:#9AA3AE; margin-bottom:4px;">Naqd</div><div style="font-size:15px; font-weight:800; color:#0E7C88;">1 100 000 UZS</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DETAIL DRAWER ============ -->
+        <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ closeDrawer }}" style="position:fixed; inset:0; background:rgba(16,24,40,0.34); z-index:60; display:flex; justify-content:flex-end;">
+            <div onClick="{{ stopProp }}" style="width:600px; max-width:94vw; height:100%; background:#fff; display:flex; flex-direction:column; box-shadow:-14px 0 44px rgba(16,24,40,0.18);">
+              <!-- header -->
+              <div style="display:flex; align-items:center; gap:12px; padding:22px 24px; border-bottom:1px solid #F2F4F6;">
+                <div style="font-size:18px; font-weight:800; color:#16313A;"># {{ drNo }}</div>
+                <span style="{{ drStatusStyle }}">{{ drStatusText }}</span>
+                <div style="flex:1;"></div>
+                <button onClick="{{ closeDrawer }}" style="width:38px; height:38px; border-radius:10px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+                </button>
+              </div>
+              <!-- kassa -->
+              <div style="display:flex; align-items:center; gap:13px; padding:18px 24px;">
+                <span style="width:46px; height:46px; border-radius:12px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/><rect x="8" y="13" width="8" height="8"/></svg></span>
+                <div>
+                  <div style="font-size:15.5px; font-weight:800; color:#16313A;">Kassa: ICAN</div>
+                  <div style="font-size:13px; color:#9AA3AE; font-weight:500; margin-top:1px;">Sotuv uchun</div>
+                </div>
+              </div>
+              <!-- items -->
+              <div style="flex:1; overflow-y:auto; padding:4px 24px;">
+                <sc-for list="{{ drItems }}" as="it" hint-placeholder-count="2">
+                  <div style="display:flex; align-items:center; gap:14px; padding:14px 0; border-top:1px solid #F2F4F6;">
+                    <span style="font-size:13px; color:#AEB6C0; font-weight:700; width:14px; flex-shrink:0;">{{ it.idx }}</span>
+                    <span style="width:46px; height:46px; border-radius:11px; background:#EEF1F4; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
+                    <div style="flex:1; min-width:0;">
+                      <div style="font-size:14px; font-weight:700; color:#16313A;">{{ it.name }}</div>
+                      <div style="font-size:12.5px; color:#9AA3AE; margin-top:2px;">{{ it.cat }}</div>
+                    </div>
+                    <div style="text-align:right; flex-shrink:0;">
+                      <div style="font-size:14px; font-weight:800; color:#16313A; white-space:nowrap;">{{ it.price }} <span style="font-size:11px; color:#AEB6C0;">UZS</span></div>
+                      <div style="font-size:12px; color:#9AA3AE; margin-top:2px;">Sotuvdagi miqdor: {{ it.qty }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+              <!-- footer -->
+              <div style="padding:18px 24px; border-top:1px solid #F2F4F6;">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px;">
+                  <div>
+                    <div style="font-size:15px; font-weight:800; color:#16313A;">Daromad</div>
+                    <div style="font-size:12.5px; color:#9AA3AE; margin-top:3px;">{{ drDate }}</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="font-size:19px; font-weight:800; color:{{ drIncomeColor }}; letter-spacing:-0.01em;">{{ drIncome }}</div>
+                    <div style="font-size:12.5px; color:#9AA3AE; margin-top:3px;">{{ drAccount }}</div>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 0 16px; border-top:1px solid #F2F4F6;">
+                  <span style="font-size:13.5px; color:#9AA3AE; font-weight:600;">Yaratuvchi</span>
+                  <span style="font-size:13.5px; color:#16313A; font-weight:800;">{{ drCreator }}</span>
+                </div>
+                <div style="display:flex; gap:12px;">
+                  <button style="flex:1; padding:13px; border:1px solid #E7EAEE; border-radius:12px; background:#fff; color:#46535F; font-size:14px; font-weight:700; cursor:pointer;">Qaytarishni rasmiylashtirish</button>
+                  <button style="flex:1; padding:13px; border:none; border-radius:12px; background:#14A0AE; color:#fff; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.26);">Chekni chop etish</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- =================================================== -->
+      <!-- SCREEN 3: SOTILGAN MAHSULOTLAR                       -->
+      <!-- =================================================== -->
+      <sc-if value="{{ isSold }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Sotilgan mahsulotlar">
+        <!-- tabs -->
+        <div style="display:flex; gap:6px; background:#fff; border:1px solid #EDEFF2; border-radius:14px; padding:6px; margin-bottom:14px; width:fit-content; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+          <button onClick="{{ setSoldAll }}" style="{{ soldAllStyle }}">Hammasi</button>
+          <button onClick="{{ setSoldRet }}" style="{{ soldRetStyle }}">Возвращенные</button>
+        </div>
+
+        <!-- filter row -->
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:4px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:5px;">
+            <button onClick="{{ pBarchasi }}" style="{{ sBarchasi }}">Barchasi</button>
+            <button onClick="{{ pYil }}" style="{{ sYil }}">Joriy yil</button>
+            <button onClick="{{ pOy }}" style="{{ sOy }}">Joriy oy</button>
+            <button onClick="{{ pHafta }}" style="{{ sHafta }}">Joriy hafta</button>
+            <button onClick="{{ pBugun }}" style="{{ sBugun }}">Bugun</button>
+            <button style="width:38px;height:34px;border:none;border-radius:9px;background:#E3F3F5;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+            </button>
+          </div>
+          <div style="display:flex; align-items:center; gap:11px; flex:1; min-width:200px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:0 15px; height:46px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input placeholder="Mahsulot" style="border:none; outline:none; flex:1; min-width:0; font-size:13.5px; color:#16313A; background:transparent;" />
+          </div>
+          <button style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #EDEFF2; border-radius:12px; padding:11px 18px; font-size:13.5px; font-weight:600; color:#46535F; cursor:pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5Z"/></svg>
+            Filtr
+          </button>
+        </div>
+
+        <!-- table -->
+        <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 22px; border-bottom:1px solid #F2F4F6;">
+            <span style="font-size:13.5px; font-weight:700; color:#16313A;">89 <span style="color:#9AA3AE; font-weight:600;">topildi</span></span>
+            <div style="display:flex; gap:8px;">
+              <button style="width:34px; height:34px; border-radius:9px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><path d="M12 3v12M7 11l5 4 5-4M5 21h14"/></svg></button>
+              <button style="width:34px; height:34px; border-radius:9px; border:1px solid #EDEFF2; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82M4.6 9a1.65 1.65 0 0 0-.33-1.82"/></svg></button>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 2.2fr 0.9fr 1.3fr 1.3fr 1.1fr 1.2fr 1.2fr 1.4fr; gap:14px; padding:13px 22px; background:#FAFBFC; border-bottom:1px solid #F2F4F6; font-size:12px; color:#9AA3AE; font-weight:700; text-transform:uppercase; letter-spacing:0.3px;">
+            <div>№</div><div>Mahsulot</div><div>Brend</div><div>Sotib olish</div><div>Narxi</div><div>Chegirma</div><div>Sotuv miqdori</div><div>Qaytarilgan</div><div>Yaratilgan</div>
+          </div>
+          <sc-for list="{{ soldRows }}" as="r" hint-placeholder-count="8">
+            <div style="display:grid; grid-template-columns:40px 2.2fr 0.9fr 1.3fr 1.3fr 1.1fr 1.2fr 1.2fr 1.4fr; gap:14px; padding:14px 22px; border-bottom:1px solid #F4F6F8; align-items:center;">
+              <div style="font-size:13px; color:#AEB6C0; font-weight:700;">{{ r.no }}</div>
+              <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+                <span style="width:46px; height:46px; border-radius:11px; background:#EEF1F4; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                </span>
+                <div style="min-width:0;">
+                  <div style="font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</div>
+                  <div style="font-size:12px; color:#9AA3AE; margin-top:2px;">{{ r.cat }}</div>
+                </div>
+              </div>
+              <div style="font-size:13px; color:#46535F; font-weight:600;">{{ r.brand }}</div>
+              <div style="font-size:13px; font-weight:700; color:#16313A; white-space:nowrap;">{{ r.buy }} <span style="font-size:10.5px; color:#AEB6C0;">uzs</span></div>
+              <div style="font-size:13px; font-weight:800; color:#16313A; white-space:nowrap;">{{ r.price }} <span style="font-size:10.5px; color:#AEB6C0;">uzs</span></div>
+              <div style="font-size:13px; font-weight:700; color:{{ r.discColor }}; white-space:nowrap;">{{ r.disc }}</div>
+              <div><span style="font-size:13px; font-weight:800; color:#0E7C88; background:#E3F3F5; border-radius:8px; padding:3px 10px;">{{ r.soldQty }}</span></div>
+              <div style="font-size:13px; font-weight:700; color:{{ r.retColor }};">{{ r.retQty }}</div>
+              <div style="font-size:12px; color:#9AA3AE; font-weight:600; white-space:nowrap;">{{ r.date }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- KUNLIK HISOBOT (print)                                        -->
+<!-- ============================================================ -->
+<sc-if value="{{ showReport }}" hint-placeholder-val="{{ false }}">
+<div class="report-overlay" style="position:fixed; inset:0; z-index:80; background:rgba(16,24,40,0.42); overflow-y:auto; padding:28px 20px;">
+
+  <div class="no-print" style="max-width:840px; margin:0 auto 14px; display:flex; align-items:center; gap:12px;">
+    <div style="color:#fff; font-size:14px; font-weight:700; opacity:0.9;">Kunlik hisobot · oldindan ko'rish</div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ closeReport }}" style="display:flex; align-items:center; gap:8px; background:#fff; border:none; border-radius:11px; padding:11px 18px; font-size:13.5px; font-weight:700; color:#46535F; cursor:pointer;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2.2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      Yopish
+    </button>
+    <button onClick="{{ printReport }}" style="display:flex; align-items:center; gap:9px; background:#14A0AE; border:none; border-radius:11px; padding:11px 20px; font-size:13.5px; font-weight:700; color:#fff; cursor:pointer; box-shadow:0 8px 18px rgba(20,160,174,0.3);">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg>
+      Chop etish
+    </button>
+  </div>
+
+  <div class="report-sheet" style="max-width:840px; margin:0 auto; background:#fff; border-radius:14px; box-shadow:0 24px 60px rgba(16,24,40,0.28); padding:44px 48px 36px; color:#16313A;">
+
+    <!-- header -->
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:22px; border-bottom:2px solid #16313A;">
+      <div>
+        <img src="assets/wasyt-logo-new.png" alt="WASYT" style="height:30px; width:auto; display:block; margin-bottom:12px;" />
+        <div style="font-size:14px; font-weight:700; color:#16313A;">MCHJ "SODIQJON"</div>
+        <div style="font-size:12.5px; color:#6B7785; margin-top:3px;">Markaziy ombor · Kassa 1</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:22px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">Kunlik savdo hisoboti</div>
+        <div style="font-size:13.5px; color:#6B7785; margin-top:6px;">Hisobot sanasi: <b style="color:#16313A;">16.06.2026</b></div>
+        <div style="font-size:13.5px; color:#6B7785; margin-top:2px;">Davr: 16.06.2026 · 00:00 — 18:42</div>
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px;">
+      <div style="border:1px solid #E7EAEE; border-radius:12px; padding:15px 16px;">
+        <div style="font-size:12px; color:#6B7785; font-weight:600; margin-bottom:8px;">Sof tushum</div>
+        <div style="font-size:18px; font-weight:800; color:#0E7C88; letter-spacing:-0.01em;">144 500 000</div>
+        <div style="font-size:11px; color:#9AA3AE; margin-top:2px;">UZS</div>
+      </div>
+      <div style="border:1px solid #E7EAEE; border-radius:12px; padding:15px 16px;">
+        <div style="font-size:12px; color:#6B7785; font-weight:600; margin-bottom:8px;">Cheklar soni</div>
+        <div style="font-size:18px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">23</div>
+        <div style="font-size:11px; color:#9AA3AE; margin-top:2px;">ta</div>
+      </div>
+      <div style="border:1px solid #E7EAEE; border-radius:12px; padding:15px 16px;">
+        <div style="font-size:12px; color:#6B7785; font-weight:600; margin-bottom:8px;">O'rtacha chek</div>
+        <div style="font-size:18px; font-weight:800; color:#16313A; letter-spacing:-0.01em;">6 282 608</div>
+        <div style="font-size:11px; color:#9AA3AE; margin-top:2px;">UZS</div>
+      </div>
+      <div style="border:1px solid #E7EAEE; border-radius:12px; padding:15px 16px;">
+        <div style="font-size:12px; color:#6B7785; font-weight:600; margin-bottom:8px;">Sof foyda</div>
+        <div style="font-size:18px; font-weight:800; color:#1AA565; letter-spacing:-0.01em;">28 900 000</div>
+        <div style="font-size:11px; color:#9AA3AE; margin-top:2px;">UZS · marja 20%</div>
+      </div>
+    </div>
+
+    <!-- operatsiyalar -->
+    <div style="font-size:12.5px; font-weight:800; color:#0E7C88; text-transform:uppercase; letter-spacing:0.6px; margin:30px 0 12px;">Operatsiyalar yakuni</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+      <div style="background:#F6FBFB; border:1px solid #E1EFEF; border-radius:12px; padding:14px 16px;">
+        <div style="font-size:12.5px; color:#6B7785; margin-bottom:6px;">Sotuvlar · 23 ta</div>
+        <div style="font-size:16px; font-weight:800; color:#0E7C88;">+ 147 204 000</div>
+      </div>
+      <div style="background:#FDF4F3; border:1px solid #F6DAD7; border-radius:12px; padding:14px 16px;">
+        <div style="font-size:12.5px; color:#6B7785; margin-bottom:6px;">Qaytarishlar · 1 ta</div>
+        <div style="font-size:16px; font-weight:800; color:#E5544E;">− 1 500 000</div>
+      </div>
+      <div style="background:#FDF4F3; border:1px solid #F6DAD7; border-radius:12px; padding:14px 16px;">
+        <div style="font-size:12.5px; color:#6B7785; margin-bottom:6px;">Almashtirishlar · 1 ta</div>
+        <div style="font-size:16px; font-weight:800; color:#E5544E;">− 1 204 000</div>
+      </div>
+    </div>
+
+    <!-- to'lov usullari -->
+    <div style="font-size:12.5px; font-weight:800; color:#0E7C88; text-transform:uppercase; letter-spacing:0.6px; margin:30px 0 10px;">To'lov usullari kesimida</div>
+    <div style="border:1px solid #E7EAEE; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0;">
+        <div style="display:flex; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #F0F2F4; border-right:1px solid #F0F2F4;"><span style="font-size:13px; color:#46535F;">Naqd pul</span><span style="font-size:13px; font-weight:800; color:#16313A;">45 200 000</span></div>
+        <div style="display:flex; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #F0F2F4;"><span style="font-size:13px; color:#46535F;">Bank kartasi</span><span style="font-size:13px; font-weight:800; color:#16313A;">19 000 000</span></div>
+        <div style="display:flex; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #F0F2F4; border-right:1px solid #F0F2F4;"><span style="font-size:13px; color:#46535F;">HUMO</span><span style="font-size:13px; font-weight:800; color:#16313A;">28 750 000</span></div>
+        <div style="display:flex; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #F0F2F4;"><span style="font-size:13px; color:#46535F;">UzCard</span><span style="font-size:13px; font-weight:800; color:#16313A;">22 100 000</span></div>
+        <div style="display:flex; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #F0F2F4; border-right:1px solid #F0F2F4;"><span style="font-size:13px; color:#46535F;">Visa</span><span style="font-size:13px; font-weight:800; color:#16313A;">6 200 000</span></div>
+        <div style="display:flex; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #F0F2F4;"><span style="font-size:13px; color:#46535F;">Mastercard</span><span style="font-size:13px; font-weight:800; color:#16313A;">8 500 000</span></div>
+        <div style="display:flex; justify-content:space-between; padding:12px 16px; border-right:1px solid #F0F2F4;"><span style="font-size:13px; color:#46535F;">Keshbek to'lov</span><span style="font-size:13px; font-weight:800; color:#16313A;">2 350 000</span></div>
+        <div style="display:flex; justify-content:space-between; padding:12px 16px;"><span style="font-size:13px; color:#46535F;">Qarzga</span><span style="font-size:13px; font-weight:800; color:#16313A;">12 400 000</span></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; padding:13px 16px; background:#F6FBFB; border-top:1px solid #E1EFEF;"><span style="font-size:13px; font-weight:800; color:#16313A;">Jami to'lovlar</span><span style="font-size:14px; font-weight:800; color:#0E7C88;">144 500 000 UZS</span></div>
+    </div>
+
+    <!-- sotuvchilar -->
+    <div style="font-size:12.5px; font-weight:800; color:#0E7C88; text-transform:uppercase; letter-spacing:0.6px; margin:30px 0 10px;">Sotuvchilar kesimida</div>
+    <div style="border:1px solid #E7EAEE; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:2fr 1fr 1.4fr; gap:10px; padding:11px 16px; background:#FAFBFC; border-bottom:1px solid #EEF0F2; font-size:11.5px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;"><div>Sotuvchi</div><div style="text-align:center;">Cheklar</div><div style="text-align:right;">Savdo summasi</div></div>
+      <div style="display:grid; grid-template-columns:2fr 1fr 1.4fr; gap:10px; padding:12px 16px; border-bottom:1px solid #F4F6F8;"><div style="font-size:13px; font-weight:600; color:#16313A;">Ахмедов Б.</div><div style="font-size:13px; color:#46535F; text-align:center;">11</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">78 400 000</div></div>
+      <div style="display:grid; grid-template-columns:2fr 1fr 1.4fr; gap:10px; padding:12px 16px; border-bottom:1px solid #F4F6F8;"><div style="font-size:13px; font-weight:600; color:#16313A;">Sodiqjon</div><div style="font-size:13px; color:#46535F; text-align:center;">7</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">41 300 000</div></div>
+      <div style="display:grid; grid-template-columns:2fr 1fr 1.4fr; gap:10px; padding:12px 16px; border-bottom:1px solid #F4F6F8;"><div style="font-size:13px; font-weight:600; color:#16313A;">Jaxongir</div><div style="font-size:13px; color:#46535F; text-align:center;">3</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">15 600 000</div></div>
+      <div style="display:grid; grid-template-columns:2fr 1fr 1.4fr; gap:10px; padding:12px 16px;"><div style="font-size:13px; font-weight:600; color:#16313A;">Nurillo</div><div style="font-size:13px; color:#46535F; text-align:center;">2</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">9 200 000</div></div>
+    </div>
+
+    <!-- top mahsulotlar -->
+    <div style="font-size:12.5px; font-weight:800; color:#0E7C88; text-transform:uppercase; letter-spacing:0.6px; margin:30px 0 10px;">Eng ko'p sotilgan mahsulotlar</div>
+    <div style="border:1px solid #E7EAEE; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:2.4fr 1fr 1.4fr; gap:10px; padding:11px 16px; background:#FAFBFC; border-bottom:1px solid #EEF0F2; font-size:11.5px; font-weight:700; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.3px;"><div>Mahsulot</div><div style="text-align:center;">Miqdor</div><div style="text-align:right;">Summa</div></div>
+      <div style="display:grid; grid-template-columns:2.4fr 1fr 1.4fr; gap:10px; padding:12px 16px; border-bottom:1px solid #F4F6F8;"><div style="font-size:13px; font-weight:600; color:#16313A;">Iphone 17 pro max 256 | 1 год</div><div style="font-size:13px; color:#46535F; text-align:center;">3 dona</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">58 968 000</div></div>
+      <div style="display:grid; grid-template-columns:2.4fr 1fr 1.4fr; gap:10px; padding:12px 16px; border-bottom:1px solid #F4F6F8;"><div style="font-size:13px; font-weight:600; color:#16313A;">Redmi 14 Pro 8/128 | Qora</div><div style="font-size:13px; color:#46535F; text-align:center;">7 dona</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">42 336 000</div></div>
+      <div style="display:grid; grid-template-columns:2.4fr 1fr 1.4fr; gap:10px; padding:12px 16px; border-bottom:1px solid #F4F6F8;"><div style="font-size:13px; font-weight:600; color:#16313A;">Lg Smart TV 55 | 1 год</div><div style="font-size:13px; color:#46535F; text-align:center;">4 dona</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">30 240 000</div></div>
+      <div style="display:grid; grid-template-columns:2.4fr 1fr 1.4fr; gap:10px; padding:12px 16px; border-bottom:1px solid #F4F6F8;"><div style="font-size:13px; font-weight:600; color:#16313A;">Xolodilnik | Qora</div><div style="font-size:13px; color:#46535F; text-align:center;">2 dona</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">9 072 000</div></div>
+      <div style="display:grid; grid-template-columns:2.4fr 1fr 1.4fr; gap:10px; padding:12px 16px;"><div style="font-size:13px; font-weight:600; color:#16313A;">редми будс 4 про</div><div style="font-size:13px; color:#46535F; text-align:center;">5 dona</div><div style="font-size:13px; font-weight:800; color:#16313A; text-align:right;">3 780 000</div></div>
+    </div>
+
+    <!-- kassa + qarzdorlik -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:30px; align-items:start;">
+      <div>
+        <div style="font-size:12.5px; font-weight:800; color:#0E7C88; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px;">Kassa harakati</div>
+        <div style="border:1px solid #E7EAEE; border-radius:12px; overflow:hidden;">
+          <div style="display:flex; justify-content:space-between; padding:11px 16px; border-bottom:1px solid #F4F6F8;"><span style="font-size:12.5px; color:#46535F;">Boshlang'ich qoldiq</span><span style="font-size:12.5px; font-weight:700; color:#16313A;">1 025 417 380</span></div>
+          <div style="display:flex; justify-content:space-between; padding:11px 16px; border-bottom:1px solid #F4F6F8;"><span style="font-size:12.5px; color:#46535F;">Naqd tushum</span><span style="font-size:12.5px; font-weight:700; color:#1AA565;">+ 45 200 000</span></div>
+          <div style="display:flex; justify-content:space-between; padding:11px 16px; border-bottom:1px solid #F4F6F8;"><span style="font-size:12.5px; color:#46535F;">Kirim</span><span style="font-size:12.5px; font-weight:700; color:#1AA565;">+ 2 000 000</span></div>
+          <div style="display:flex; justify-content:space-between; padding:11px 16px; border-bottom:1px solid #F4F6F8;"><span style="font-size:12.5px; color:#46535F;">Chiqim (xarajat)</span><span style="font-size:12.5px; font-weight:700; color:#E5544E;">− 1 800 000</span></div>
+          <div style="display:flex; justify-content:space-between; padding:12px 16px; background:#F6FBFB;"><span style="font-size:12.5px; font-weight:800; color:#16313A;">Yakuniy qoldiq</span><span style="font-size:13px; font-weight:800; color:#0E7C88;">1 070 817 380</span></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12.5px; font-weight:800; color:#0E7C88; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:10px;">Qarzdorlik</div>
+        <div style="border:1px solid #E7EAEE; border-radius:12px; overflow:hidden;">
+          <div style="display:flex; justify-content:space-between; padding:11px 16px; border-bottom:1px solid #F4F6F8;"><span style="font-size:12.5px; color:#46535F;">Bugun berilgan qarz</span><span style="font-size:12.5px; font-weight:700; color:#16313A;">12 400 000</span></div>
+          <div style="display:flex; justify-content:space-between; padding:11px 16px; border-bottom:1px solid #F4F6F8;"><span style="font-size:12.5px; color:#46535F;">Qaytarilgan qarz</span><span style="font-size:12.5px; font-weight:700; color:#1AA565;">1 115 000</span></div>
+          <div style="display:flex; justify-content:space-between; padding:12px 16px; background:#FDF8F2;"><span style="font-size:12.5px; font-weight:800; color:#16313A;">Jami qarzdorlik qoldig'i</span><span style="font-size:13px; font-weight:800; color:#EC8A3C;">38 600 000</span></div>
+        </div>
+        <div style="border:1px solid #E7EAEE; border-radius:12px; padding:13px 16px; margin-top:14px;">
+          <div style="font-size:12px; color:#6B7785; margin-bottom:6px;">Mijozlar</div>
+          <div style="display:flex; justify-content:space-between;"><span style="font-size:12.5px; color:#46535F;">Yangi mijozlar</span><span style="font-size:12.5px; font-weight:700; color:#16313A;">2 ta</span></div>
+          <div style="display:flex; justify-content:space-between; margin-top:6px;"><span style="font-size:12.5px; color:#46535F;">Jami xizmat ko'rsatilgan</span><span style="font-size:12.5px; font-weight:700; color:#16313A;">19 ta</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer / signatures -->
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top:34px; padding-top:20px; border-top:1px solid #E7EAEE;">
+      <div>
+        <div style="font-size:12.5px; color:#6B7785; margin-bottom:26px;">Kassir: <b style="color:#16313A;">Ахмедов Б.</b></div>
+        <div style="width:200px; border-top:1px solid #C5CCD3; padding-top:5px; font-size:11.5px; color:#9AA3AE;">Imzo</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:12.5px; color:#6B7785;">Shakllantirildi: 16.06.2026 18:42</div>
+        <div style="font-size:12.5px; color:#9AA3AE; margin-top:6px;">Ishlab chiqilgan <b style="color:#14A0AE;">ICAN BUSINESS</b></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</sc-if></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;pos&quot;,&quot;sotuv&quot;,&quot;sold&quot;],&quot;default&quot;:&quot;pos&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;kassaName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Kassa 1&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;kassaBalance&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;1 070 817 380&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { screen: null, sotuvTab: 0, period: 'barchasi', soldTab: 'all', chek: 1, disc: 'pct', selected: null, salesPeriod: 'bugun', showReport: false };
+
+  get screen() { return this.state.screen || this.props.defaultScreen || 'pos'; }
+
+  _sub(active) {
+    return active
+      ? "display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:2px;border:none;border-radius:11px;background:#E3F3F5;color:#0E7C88;font-size:14px;font-weight:700;cursor:pointer;"
+      : "display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:2px;border:none;border-radius:11px;background:transparent;color:#5A6675;font-size:14px;font-weight:500;cursor:pointer;";
+  }
+  _pill(active) {
+    return active
+      ? "padding:8px 15px;border:none;border-radius:9px;background:#14A0AE;color:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;"
+      : "padding:8px 15px;border:none;border-radius:9px;background:transparent;color:#5A6675;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;";
+  }
+  _tab(active) {
+    return active
+      ? "padding:9px 15px;border:none;border-radius:10px;background:#E3F3F5;color:#0E7C88;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap;"
+      : "padding:9px 15px;border:none;border-radius:10px;background:transparent;color:#5A6675;font-size:13.5px;font-weight:500;cursor:pointer;white-space:nowrap;";
+  }
+  _chek(active) {
+    return active
+      ? "display:flex;align-items:center;gap:7px;padding:9px 16px;border:none;border-radius:10px 10px 0 0;background:#E3F3F5;color:#0E7C88;font-size:13.5px;font-weight:700;cursor:pointer;"
+      : "display:flex;align-items:center;gap:7px;padding:9px 16px;border:none;border-radius:10px 10px 0 0;background:transparent;color:#9AA3AE;font-size:13.5px;font-weight:600;cursor:pointer;";
+  }
+
+  renderVals() {
+    const screen = this.screen;
+    const st = this.state;
+    const setScreen = (s) => () => this.setState({ screen: s });
+    const setP = (p) => () => this.setState({ period: p });
+
+    const catalog = [
+      { name: "редми будс 4 про", cat: "Telefonlar", price: "756 000", qty: "Kol-vo: 6" },
+      { name: "Телефон инои 243", cat: "Telefonlar", price: "1 890 000", qty: "Kol-vo: 43" },
+      { name: "Iphone 17 pro max 256 | 1 год", cat: "Smartfonlar", price: "19 656 000", qty: "Kol-vo: 5.27" },
+      { name: "Xolodilnik | Qora", cat: "Maishiy texnika", price: "4 536 000", qty: "Kol-vo: 10" },
+      { name: "Lg Smart TV 32 | 1 год", cat: "Televizorlar", price: "2 721 600", qty: "Kol-vo: 8" },
+      { name: "Lg Smart TV 55 | 1 год", cat: "Televizorlar", price: "7 560 000", qty: "Kol-vo: 10" },
+      { name: "Айфон 17 про", cat: "Telefonlar", price: "13 608 000", qty: "Kol-vo: 10" },
+      { name: "Телефон Айфон 15 про", cat: "Telefonlar", price: "15 120 000", qty: "Kol-vo: 11" },
+    ];
+
+    const cart = [
+      { name: "Iphone 17 pro max 256 | 1 год", unit: "19 656 000", qty: 1, total: "19 656 000" },
+      { name: "Телефон инои 243", unit: "1 890 000", qty: 2, total: "3 780 000" },
+      { name: "редми будс 4 про", unit: "756 000", qty: 1, total: "756 000" },
+    ];
+
+    // status tabs (Sotuv)
+    const tabDefs = ["Hammasi", "Jarayonda", "Muvaffaqiyatli tugatildi", "Qisman qaytarilgan", "To'liq qaytarilgan", "Bekor qilingan"];
+    const statusTabs = tabDefs.map((label, i) => ({
+      label, style: this._tab(st.sotuvTab === i), on: () => this.setState({ sotuvTab: i }),
+    }));
+
+    const badge = (kind) => {
+      const map = {
+        ok: ["Muvaffaqiyatli tugatildi", "#E7F6EE", "#1AA565"],
+        part: ["Qisman qaytarilgan", "#FBF4EC", "#EC8A3C"],
+        full: ["To'liq qaytarilgan", "#FBF4EC", "#EC8A3C"],
+        proc: ["Jarayonda", "#EFF6F7", "#0E7C88"],
+        cancel: ["Bekor qilingan", "#FBEDEC", "#E5544E"],
+      };
+      const [t, bg, c] = map[kind];
+      return { badge: t, badgeStyle: `display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:${c};background:${bg};border-radius:9px;padding:5px 11px;white-space:nowrap;` };
+    };
+
+    const sotuvData = [
+      { code: "w-2561-16300", kind: "full", sum: "756 000", qty: "1", ret: "756 000", kassaSub: "Kassa 1" },
+      { code: "w-2561-16293", kind: "ok", sum: "16 002 000", qty: "3", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-16277", kind: "ok", sum: "4 498 200", qty: "4", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-16266", kind: "ok", sum: "756 000", qty: "1", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-16264", kind: "ok", sum: "19 651 000", qty: "1", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-16260", kind: "ok", sum: "16 707 600", qty: "1", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-16253", kind: "ok", sum: "19 656 000", qty: "17", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-15951", kind: "ok", sum: "37 800 000", qty: "3", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-15671", kind: "ok", sum: "13 305 600", qty: "3", ret: "—", kassaSub: "Kassa 1" },
+      { code: "w-2561-15517", kind: "ok", sum: "13 305 600", qty: "3", ret: "—", kassaSub: "Kassa 1" },
+    ];
+    const sotuvRows = sotuvData.map((r) => ({
+      code: r.code, sum: r.sum, qty: r.qty, ret: r.ret,
+      retColor: r.ret === "—" ? "#CBD2D9" : "#EC8A3C",
+      kassa: "SOTISH UCHUN", kassaSub: r.kassaSub, ombor: "Ombor 1", who: "+998(97)625-51-00",
+      ...badge(r.kind),
+    }));
+
+    const soldData = [
+      { name: "редми будс 4 про", cat: "Telefonlar", brand: "Artel", buy: "378 000", price: "756 000", disc: "0", soldQty: "1", retQty: "1", date: "Jun 15, 2026 - 14:31" },
+      { name: "Skuter", cat: "Transport", brand: "asdf", buy: "4 158 000", price: "5 418 000", disc: "0", soldQty: "1", retQty: "0", date: "Jun 15, 2026 - 12:19" },
+      { name: "Xolodilnik", cat: "Maishiy texnika", brand: "Artel", buy: "3 780 000", price: "4 536 000", disc: "0", soldQty: "1", retQty: "0", date: "Jun 15, 2026 - 12:19" },
+      { name: "Redmi 14 Pro 8/128", cat: "Telefonlar", brand: "Xiaomi", buy: "5 040 000", price: "6 048 000", disc: "0", soldQty: "1", retQty: "0", date: "Jun 15, 2026 - 12:19" },
+      { name: "Телефон инои 243", cat: "Telefonlar", brand: "Artel", buy: "1 260 000", price: "1 890 000", disc: "283 500", soldQty: "2", retQty: "0", date: "Jun 15, 2026 - 11:55" },
+      { name: "редми будс 4 про", cat: "Telefonlar", brand: "Artel", buy: "378 000", price: "756 000", disc: "113 400", soldQty: "2", retQty: "0", date: "Jun 15, 2026 - 11:55" },
+      { name: "редми будс 4 про", cat: "Telefonlar", brand: "Artel", buy: "378 000", price: "756 000", disc: "0", soldQty: "1", retQty: "0", date: "Jun 15, 2026 - 11:13" },
+      { name: "Iphone 17 pro max 256", cat: "Smartfonlar", brand: "Iphone", buy: "16 380 000", price: "19 656 000", disc: "5 000", soldQty: "1", retQty: "0", date: "Jun 15, 2026 - 10:17" },
+      { name: "Iphone 17 pro max 256", cat: "Smartfonlar", brand: "Iphone", buy: "16 380 000", price: "19 656 000", disc: "2 948 400", soldQty: "1", retQty: "0", date: "Jun 15, 2026 - 10:14" },
+    ];
+    const soldRows = soldData.map((r, i) => ({
+      no: i + 1, name: r.name, cat: r.cat, brand: r.brand, buy: r.buy, price: r.price,
+      disc: r.disc === "0" ? "0 uzs" : r.disc + " uzs",
+      discColor: r.disc === "0" ? "#CBD2D9" : "#EC8A3C",
+      soldQty: r.soldQty + " Dona", retQty: r.retQty + " Dona",
+      retColor: r.retQty === "0" ? "#CBD2D9" : "#EC8A3C", date: r.date,
+    }));
+
+    // ===== Sotuv: timeline feed + detail drawer =====
+    const sp = st.salesPeriod || 'bugun';
+    const setSP = (p) => () => this.setState({ salesPeriod: p });
+
+    const drStatus = (kind) => {
+      if (kind === 'pending') return { drStatusText: "Tasdiqlanishi kutilmoqda", drStatusStyle: "font-size:12px;font-weight:700;color:#EC8A3C;background:#FEF6EE;border:1.5px dashed #EC8A3C;border-radius:8px;padding:5px 11px;white-space:nowrap;" };
+      if (kind === 'return') return { drStatusText: "Qaytarilgan", drStatusStyle: "font-size:12px;font-weight:700;color:#E5544E;background:#FBEDEC;border:1.5px solid #F3C9C5;border-radius:8px;padding:5px 11px;white-space:nowrap;" };
+      return { drStatusText: "Muvaffaqiyatli", drStatusStyle: "font-size:12px;font-weight:700;color:#1AA565;background:#E7F6EE;border:1.5px solid #BFE6CF;border-radius:8px;padding:5px 11px;white-space:nowrap;" };
+    };
+
+    let drno = 174318;
+    const mkTxn = (id, type, amount, kind) => {
+      const isRet = type === 'return';
+      const detail = {
+        no: "3000-" + (drno++),
+        items: [
+          { idx: 1, name: "Apple iPhone 18 Pro Max", cat: "Smartfonlar", price: "2 400 000", qty: "1" },
+          { idx: 2, name: "Apple iPhone 18 Pro Max", cat: "Smartfonlar", price: "2 400 000", qty: "1" },
+        ],
+        income: (isRet ? "− " : "") + amount + " UZS",
+        incomeColor: isRet ? "#E5544E" : "#16313A",
+        date: "02 mar, 2026 - 13:00",
+        account: "Hisob raqami",
+        creator: "Kompaniya direktori",
+        ...drStatus(kind),
+      };
+      return {
+        isDate: false, isTxn: true,
+        id, dateTime: "16.02.2026 - 15:49:29", seller: "Ахмедов Б.", units: "2 dona",
+        amount: (isRet ? "− " : "") + amount + " UZS",
+        amountColor: isRet ? "#E5544E" : "#14A0AE",
+        store: "Store Zarhall",
+        iconBg: isRet ? "#FBEDEC" : "#E7F6EE",
+        iconColor: isRet ? "#E5544E" : "#1AA565",
+        arrowPath: isRet ? "M17 7 7 17M17 17H7V7" : "M7 17 17 7M7 7h10v10",
+        badge: isRet ? "Qaytarish" : "Sotuv",
+        badgeStyle: isRet
+          ? "font-size:11.5px;font-weight:700;color:#E5544E;background:#FBEDEC;border-radius:7px;padding:3px 9px;"
+          : "font-size:11.5px;font-weight:700;color:#0E7C88;background:#E3F3F5;border-radius:7px;padding:3px 9px;",
+        open: () => this.setState({ selected: detail }),
+      };
+    };
+    const dateItem = (date, sub) => ({ isDate: true, isTxn: false, date, sub });
+    const feedItems = [
+      dateItem("18.02.2026", "3 operatsiya · 135.6 mln UZS"),
+      mkTxn("#000201081246", "sale", "45 200 000", "pending"),
+      mkTxn("#000201081247", "sale", "71 400 000", "done"),
+      mkTxn("#000201081248", "sale", "19 000 000", "done"),
+      dateItem("17.02.2026", "4 operatsiya · 92.8 mln UZS"),
+      mkTxn("#000201081240", "sale", "45 200 000", "done"),
+      mkTxn("#000201081239", "return", "45 200 000", "return"),
+      mkTxn("#000201081238", "sale", "28 750 000", "pending"),
+      mkTxn("#000201081237", "sale", "19 656 000", "done"),
+      dateItem("16.02.2026", "3 operatsiya · 110.4 mln UZS"),
+      mkTxn("#000201081230", "sale", "45 200 000", "done"),
+      mkTxn("#000201081229", "sale", "22 100 000", "done"),
+      mkTxn("#000201081228", "sale", "43 100 000", "pending"),
+    ];
+    const sel = st.selected;
+
+    const titles = { pos: "Yangi savdo", sotuv: "Barcha sotuvlar", sold: "Sotilgan mahsulotlar" };
+
+    return {
+      // nav
+      setPos: setScreen('pos'), setSotuv: setScreen('sotuv'), setSold: setScreen('sold'),
+      subPos: this._sub(screen === 'pos'), subSotuv: this._sub(screen === 'sotuv'), subSold: this._sub(screen === 'sold'),
+      isPos: screen === 'pos', isSotuv: screen === 'sotuv', isSold: screen === 'sold',
+      pageTitle: titles[screen],
+      kassaName: this.props.kassaName ?? "Kassa 1",
+      kassaBalance: this.props.kassaBalance ?? "1 070 817 380",
+      // POS
+      catalog, cart, cartCount: cart.length,
+      jamiTxt: "24 192 000", toPayTxt: "24 192 000",
+      setChek1: () => this.setState({ chek: 1 }), setChek2: () => this.setState({ chek: 2 }), setChek3: () => this.setState({ chek: 3 }),
+      chek1: this._chek(st.chek === 1), chek2: this._chek(st.chek === 2), chek3: this._chek(st.chek === 3),
+      setDiscPct: () => this.setState({ disc: 'pct' }), setDiscUzs: () => this.setState({ disc: 'uzs' }),
+      discPctStyle: st.disc === 'pct'
+        ? "width:46px;border:none;border-radius:11px;background:#14A0AE;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;"
+        : "width:46px;border:1px solid #EDEFF2;border-radius:11px;background:#F7F8FA;color:#9AA3AE;display:flex;align-items:center;justify-content:center;cursor:pointer;",
+      discUzsStyle: st.disc === 'uzs'
+        ? "padding:0 16px;border:none;border-radius:11px;background:#14A0AE;color:#fff;font-size:13px;font-weight:700;cursor:pointer;"
+        : "padding:0 16px;border:1px solid #EDEFF2;border-radius:11px;background:#F7F8FA;color:#46535F;font-size:13px;font-weight:700;cursor:pointer;",
+      // Sotuv (timeline + drawer)
+      feedItems,
+      spBugun: setSP('bugun'), spHafta: setSP('hafta'), spOy: setSP('oy'),
+      ssBugun: this._pill(sp === 'bugun'), ssHafta: this._pill(sp === 'hafta'), ssOy: this._pill(sp === 'oy'),
+      drawerOpen: !!sel,
+      drNo: sel ? sel.no : "", drStatusText: sel ? sel.drStatusText : "", drStatusStyle: sel ? sel.drStatusStyle : "",
+      drItems: sel ? sel.items : [],
+      drIncome: sel ? sel.income : "", drIncomeColor: sel ? sel.incomeColor : "#16313A",
+      drDate: sel ? sel.date : "", drAccount: sel ? sel.account : "", drCreator: sel ? sel.creator : "",
+      closeDrawer: () => this.setState({ selected: null }),
+      stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      // Kunlik hisobot
+      showReport: !!st.showReport,
+      openReport: () => this.setState({ showReport: true }),
+      closeReport: () => this.setState({ showReport: false }),
+      printReport: () => { if (typeof window !== 'undefined') window.print(); },
+      // Sold period pills (shared)
+      pBarchasi: setP('barchasi'), pYil: setP('yil'), pOy: setP('oy'), pHafta: setP('hafta'), pBugun: setP('bugun'),
+      sBarchasi: this._pill(st.period === 'barchasi'), sYil: this._pill(st.period === 'yil'), sOy: this._pill(st.period === 'oy'),
+      sHafta: this._pill(st.period === 'hafta'), sBugun: this._pill(st.period === 'bugun'),
+      // Sold
+      soldRows,
+      setSoldAll: () => this.setState({ soldTab: 'all' }), setSoldRet: () => this.setState({ soldTab: 'ret' }),
+      soldAllStyle: this._tab(st.soldTab === 'all'), soldRetStyle: this._tab(st.soldTab === 'ret'),
+    };
+  }
+}
+</script>
+<script>
+(async () => {
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  @page { margin: 0.5cm; }\n  html, body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }\n  section, article, figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

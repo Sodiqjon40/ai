@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body { background: #0F2024; font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #1B1B19; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #CFCDC4; border-radius: 6px; border: 3px solid transparent; background-clip: content-box; }
+  button { font-family: inherit; }
+</style>
+</helmet>
+
+<div style="display: flex; height: 100vh; overflow: hidden; background: #F4F3EF;">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside style="width: 244px; flex-shrink: 0; background: #122A30; display: flex; flex-direction: column; padding: 20px 14px;">
+    <div style="display: flex; align-items: center; gap: 11px; padding: 6px 10px 22px;">
+      <div style="width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg,#1BA2B0,#0E7C8B); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 16px;">W</div>
+      <div><div style="color: #fff; font-weight: 700; font-size: 17px; letter-spacing: 0.5px;">WASYT</div><div style="color: #6E939A; font-size: 10px; letter-spacing: 1.5px; font-family: 'IBM Plex Mono', monospace;">2.0 REDESIGN</div></div>
+    </div>
+
+    <div style="overflow-y: auto; flex: 1; margin: 0 -6px; padding: 0 6px;">
+    <button onClick="{{ goFiliallar }}" style="{{ navFiliallar }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01"/></svg>
+      Filiallar
+      <span style="margin-left:auto; font-size:9px; font-weight:700; letter-spacing:1px; color:#0F2024; background:#34D1A6; padding:2px 6px; border-radius:5px;">YANGI</span>
+    </button>
+    <button onClick="{{ goDash }}" style="{{ navDash }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Bosh sahifa
+    </button>
+    <button onClick="{{ goPos }}" style="{{ navPos }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L22 7H6"/></svg>
+      Savdo / Kassa
+    </button>
+    <button onClick="{{ goSotuv }}" style="{{ navSotuv }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4z"/><path d="M4 11h16M4 15h16M4 19h10"/></svg>
+      Sotuv tarixi
+    </button>
+    <button onClick="{{ goMoliya }}" style="{{ navMoliya }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M16 12h2.5"/><path d="M2.5 9.5h19"/></svg>
+      Moliya
+      <span style="margin-left:auto; font-size:9px; font-weight:700; letter-spacing:1px; color:#0F2024; background:#34D1A6; padding:2px 6px; border-radius:5px;">YANGI</span>
+    </button>
+    <button onClick="{{ goHisobot }}" style="{{ navHisobot }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="0.8"/><rect x="12.5" y="8" width="3" height="10" rx="0.8"/><rect x="18" y="5" width="3" height="13" rx="0.8"/></svg>
+      Hisobotlar
+    </button>
+    <button onClick="{{ goMahsulot }}" style="{{ navMahsulot }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+      Mahsulotlar
+    </button>
+    <button onClick="{{ goKontragent }}" style="{{ navKontragent }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+      Kontragent
+    </button>
+    <button onClick="{{ goOmbor }}" style="{{ navOmbor }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/><rect x="8" y="13" width="8" height="8"/></svg>
+      Ombor
+    </button>
+    <button onClick="{{ goSozlama }}" style="{{ navSozlama }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.81 1.17V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4.5a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 6 9.4l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 11 6.6V4.5a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 2.82 1.17l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 11h.1a2 2 0 1 1 0 4h-.1Z"/></svg>
+      Sozlamalar
+    </button>
+    </div>
+
+    <div style="margin-top: 12px; padding: 13px 12px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+      <div style="color: #6E939A; font-size: 11px; margin-bottom: 4px;">Tarmoq · {{ netCount }} filial</div>
+      <div style="color: #fff; font-weight: 600; font-size: 14px;">{{ branchName }}</div>
+      <div style="color: #34D1A6; font-size: 12.5px; margin-top: 4px; font-family: 'IBM Plex Mono', monospace;">{{ kassaBalance }}</div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+    <!-- topbar -->
+    <header style="height: 68px; flex-shrink: 0; background: #FBFAF7; border-bottom: 1px solid #E6E4DC; display: flex; align-items: center; padding: 0 28px; gap: 20px;">
+      <div style="flex: 1; min-width: 0; overflow: hidden;">
+        <h1 style="margin: 0; font-size: 19px; font-weight: 700; color: #16201E; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ screenTitle }}</h1>
+        <div style="font-size: 12.5px; color: #8A887F; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ screenSub2 }}</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 7px; background: #EFEDE6; border-radius: 10px; padding: 4px; flex-shrink: 0;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0E7C8B" stroke-width="2" style="margin-left:6px;"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18"/><rect x="9" y="13" width="6" height="8"/></svg>
+        <button onClick="{{ pickAll }}" style="{{ branchAllStyle }}">Barcha</button>
+        <sc-for list="{{ branchList }}" as="b" hint-placeholder-count="3">
+          <button onClick="{{ b.pick }}" style="{{ b.style }}">{{ b.short }}</button>
+        </sc-for>
+      </div>
+      <div style="display: flex; background: #EFEDE6; border-radius: 9px; padding: 3px;">
+        <button onClick="{{ setUzs }}" style="{{ curUzs }}">UZS</button>
+        <button onClick="{{ setUsd }}" style="{{ curUsd }}">USD</button>
+      </div>
+      <div style="width: 1px; height: 28px; background: #E2E0D8;"></div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: #122A30; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px;">SP</div>
+        <div><div style="font-size: 13.5px; font-weight: 600; color: #16201E;">Sodiqjon</div><div style="font-size: 11.5px; color: #8A887F;">Administrator</div></div>
+      </div>
+    </header>
+
+    <!-- scroll content -->
+    <div style="flex: 1; overflow-y: auto; padding: 26px 28px 60px;">
+
+      <!-- ===== FILIALLAR (konsolidatsiya) ===== -->
+      <sc-if value="{{ isFiliallar }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px;">
+          <sc-for list="{{ filKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 18px 20px;">
+              <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 12px;"><div style="width: 30px; height: 30px; border-radius: 8px; background: {{ k.iconBg }}; color: {{ k.iconColor }}; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;">{{ k.icon }}</div><div style="font-size: 13px; color: #8A887F;">{{ k.label }}</div></div>
+              <div style="font-size: 21px; font-weight: 700; color: #16201E; letter-spacing: -0.01em; font-family: 'IBM Plex Mono', monospace; white-space: nowrap;">{{ k.value }}</div>
+              <div style="font-size: 12px; color: #9A988E; margin-top: 5px;">{{ k.sub }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 22px 14px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E;">Filiallar bo'yicha solishtirma</div>
+            <div style="font-size: 12px; color: #8A887F;">Oylik savdo · ulush · sof foyda</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 2.2fr 1.3fr 1.1fr 1.2fr 1.2fr 1fr 1fr; gap: 12px; padding: 12px 22px; background: #FBFAF7; border-top: 1px solid #ECEAE2; border-bottom: 1px solid #ECEAE2; font-size: 11.5px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px;">
+            <div>Filial</div><div>Oylik savdo</div><div style="text-align:right;">Ulush</div><div style="text-align:right;">Kassa</div><div style="text-align:right;">Sof foyda</div><div style="text-align:right;">Ombor</div><div style="text-align:right;"></div>
+          </div>
+          <sc-for list="{{ filRows }}" as="b" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: 2.2fr 1.3fr 1.1fr 1.2fr 1.2fr 1fr 1fr; gap: 12px; padding: 15px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 38px; height: 38px; border-radius: 10px; background: #122A30; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 15px; flex-shrink: 0;">{{ b.mono }}</div>
+                <div style="min-width: 0;">
+                  <div style="font-size: 14px; font-weight: 600; color: #16201E;">{{ b.name }}</div>
+                  <div style="font-size: 11.5px; color: #9A988E;">{{ b.addr }} · {{ b.checks }}</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size: 13.5px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ b.monthTxt }}</div>
+                <div style="height: 5px; background: #F1EFE8; border-radius: 4px; overflow: hidden; margin-top: 6px;"><div style="height: 100%; width: {{ b.barW }}; background: linear-gradient(90deg,#1BA2B0,#0E7C8B); border-radius: 4px;"></div></div>
+              </div>
+              <div style="text-align: right; font-size: 13.5px; font-weight: 600; color: #0B5F6B; font-family: 'IBM Plex Mono', monospace;">{{ b.share }}</div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ b.cashTxt }}</div>
+              <div style="text-align: right; font-size: 13px; font-weight: 600; color: #1E8A5B; font-family: 'IBM Plex Mono', monospace;">{{ b.profitTxt }}</div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ b.stockTxt }}</div>
+              <div style="text-align: right;"><button onClick="{{ b.open }}" style="border:1px solid #D6E6E8; background:#F2F9F9; color:#0B5F6B; cursor:pointer; padding:7px 12px; border-radius:8px; font-size:12.5px; font-weight:600;" style-hover="background:#0E7C8B; color:#fff; border-color:#0E7C8B;">Ko'rish →</button></div>
+            </div>
+          </sc-for>
+          <div style="padding: 14px 22px; background: #FBFAF7; display: flex; align-items: center; gap: 8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A887F" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+            <span style="font-size: 12.5px; color: #8A887F;">«Ko'rish» tugmasi yoki yuqoridagi filial tanlagich orqali bitta filial kesimiga o'ting. «Barcha» — butun tarmoq konsolidatsiyasi.</span>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ===== DASHBOARD ===== -->
+      <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px;">
+          <sc-for list="{{ dashKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 18px 20px;">
+              <div style="font-size: 13px; color: #8A887F; margin-bottom: 10px;">{{ k.label }}</div>
+              <div style="font-size: 22px; font-weight: 700; color: #16201E; letter-spacing: -0.01em; white-space: nowrap;">{{ k.value }}</div>
+              <div style="font-size: 12.5px; color: {{ k.deltaColor }}; margin-top: 6px; font-weight: 500;">{{ k.delta }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 24px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E;">Savdo dinamikasi · joriy hafta</div>
+            <div style="font-size: 12px; color: #8A887F; font-family: 'IBM Plex Mono', monospace;">mln so'm</div>
+          </div>
+          {{ chart }}
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E; margin-bottom: 14px;">Top mahsulotlar</div>
+            <sc-for list="{{ topProducts }}" as="p" hint-placeholder-count="4">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid #F1EFE8;">
+                <div style="width: 34px; height: 34px; border-radius: 9px; background: #E6F1F2; color: #0B5F6B; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0;">{{ p.mono }}</div>
+                <div style="flex: 1; min-width: 0;"><div style="font-size: 14px; font-weight: 500; color: #16201E; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ p.name }}</div><div style="font-size: 12px; color: #9A988E;">{{ p.soldTxt }}</div></div>
+                <div style="font-size: 14px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ p.sumTxt }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E; margin-bottom: 14px;">Top sotuvchilar</div>
+            <sc-for list="{{ sellers }}" as="s" hint-placeholder-count="4">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid #F1EFE8;">
+                <div style="width: 34px; height: 34px; border-radius: 50%; background: #122A30; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; flex-shrink: 0;">{{ s.mono }}</div>
+                <div style="flex: 1; min-width: 0;"><div style="font-size: 14px; font-weight: 500; color: #16201E;">{{ s.name }}</div><div style="font-size: 12px; color: #9A988E;">{{ s.countTxt }}</div></div>
+                <div style="font-size: 14px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ s.sumTxt }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;"><div style="font-size: 15px; font-weight: 600; color: #16201E;">Qarzdorlar</div><div style="font-size: 13px; font-weight: 600; color: #C0392B; font-family: 'IBM Plex Mono', monospace;">{{ debtTotal }}</div></div>
+            <sc-for list="{{ debtors }}" as="d" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid #F1EFE8;">
+                <div style="flex: 1; min-width: 0;"><div style="font-size: 14px; font-weight: 500; color: #16201E;">{{ d.name }}</div><div style="font-size: 12px; color: {{ d.dueColor }};">{{ d.dueTxt }}</div></div>
+                <div style="font-size: 14px; font-weight: 600; color: #C0392B; font-family: 'IBM Plex Mono', monospace;">{{ d.amtTxt }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E; margin-bottom: 14px;">Ombor holati</div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #F1EFE8;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #1E8A5B;"></div><div style="flex: 1; font-size: 14px; color: #16201E;">Mavjud mahsulotlar</div><div style="font-weight: 700; font-size: 16px; color: #16201E;">48 <span style="font-size:12px;color:#9A988E;font-weight:400;">dona</span></div></div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #F1EFE8;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #C77A1A;"></div><div style="flex: 1; font-size: 14px; color: #16201E;">Kam qolgan</div><div style="font-weight: 700; font-size: 16px; color: #C77A1A;">2 <span style="font-size:12px;color:#9A988E;font-weight:400;">dona</span></div></div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #F1EFE8;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #C0392B;"></div><div style="flex: 1; font-size: 14px; color: #16201E;">Tugagan</div><div style="font-weight: 700; font-size: 16px; color: #C0392B;">1 <span style="font-size:12px;color:#9A988E;font-weight:400;">tur</span></div></div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ===== POS ===== -->
+      <sc-if value="{{ isPos }}" hint-placeholder-val="{{ false }}">
+      <div style="display: grid; grid-template-columns: 1.05fr 1.15fr 290px; gap: 18px; align-items: start;">
+        <!-- catalog -->
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 18px;">
+          <div style="position: relative; margin-bottom: 14px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A988E" stroke-width="2" style="position:absolute; left:13px; top:12px;"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input placeholder="Mahsulot nomi yoki shtrix-kod bo'yicha qidirish" style="width: 100%; border: 1px solid #E2E0D8; border-radius: 10px; padding: 11px 12px 11px 38px; font-size: 13.5px; background: #FBFAF7; outline: none; color: #16201E;" />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+              <button onClick="{{ p.add }}" style="text-align: left; border: 1px solid #ECEAE2; border-radius: 11px; padding: 11px; background: #fff; cursor: pointer; display: flex; gap: 10px; align-items: center;" style-hover="border-color:#0E7C8B; background:#F6FAFA;">
+                <div style="width: 38px; height: 38px; border-radius: 9px; background: #E6F1F2; color: #0B5F6B; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 15px; flex-shrink: 0;">{{ p.mono }}</div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 13px; font-weight: 500; color: #16201E; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ p.name }}</div>
+                  <div style="font-size: 13px; font-weight: 600; color: #0B5F6B; margin-top: 2px; font-family: 'IBM Plex Mono', monospace;">{{ p.priceTxt }}</div>
+                  <div style="font-size: 11px; color: #9A988E; margin-top: 1px;">Qoldiq: {{ p.qtyTxt }}</div>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- cart -->
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 18px; min-height: 440px; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E; white-space: nowrap;">Savat <span style="color:#9A988E; font-weight:400;">· {{ cartCount }}</span></div>
+            <button onClick="{{ clearCart }}" style="border: none; background: none; color: #C0392B; font-size: 12.5px; cursor: pointer;">Tozalash</button>
+          </div>
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #B6B4AA;">
+              <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.2L22 7H6"/></svg>
+              <div style="margin-top: 12px; font-size: 14px; color: #9A988E;">Savat bo'sh — chapdan mahsulot tanlang</div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ cartHas }}" hint-placeholder-val="{{ true }}">
+          <div style="flex: 1;">
+            <sc-for list="{{ cart }}" as="c" hint-placeholder-count="2">
+              <div style="display: flex; align-items: center; gap: 11px; padding: 11px 0; border-top: 1px solid #F1EFE8;">
+                <div style="flex: 1; min-width: 0;"><div style="font-size: 13.5px; font-weight: 500; color: #16201E; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ c.name }}</div><div style="font-size: 12px; color: #9A988E; font-family: 'IBM Plex Mono', monospace; white-space: nowrap;">{{ c.priceTxt }}</div></div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <button onClick="{{ c.dec }}" style="width: 26px; height: 26px; border-radius: 7px; border: 1px solid #E2E0D8; background: #fff; cursor: pointer; font-size: 16px; color: #6E6D67; line-height: 1;">−</button>
+                  <div style="width: 26px; text-align: center; font-weight: 600; font-size: 14px;">{{ c.qty }}</div>
+                  <button onClick="{{ c.inc }}" style="width: 26px; height: 26px; border-radius: 7px; border: 1px solid #E2E0D8; background: #fff; cursor: pointer; font-size: 16px; color: #6E6D67; line-height: 1;">+</button>
+                </div>
+                <div style="width: 80px; text-align: right; font-size: 12.5px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace; white-space: nowrap;">{{ c.lineTxt }}</div>
+              </div>
+            </sc-for>
+          </div>
+          </sc-if>
+        </div>
+
+        <!-- summary -->
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 18px;">
+          <div style="font-size: 13px; color: #8A887F; margin-bottom: 7px;">Mijoz</div>
+          <input placeholder="Ism yoki telefon raqam" style="width: 100%; border: 1px solid #E2E0D8; border-radius: 10px; padding: 10px 12px; font-size: 13.5px; background: #FBFAF7; outline: none; margin-bottom: 16px;" />
+
+          <div style="font-size: 13px; color: #8A887F; margin-bottom: 7px;">Chegirma</div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 18px;">
+            <sc-for list="{{ discounts }}" as="d" hint-placeholder-count="4">
+              <button onClick="{{ d.set }}" style="{{ d.style }}">{{ d.label }}</button>
+            </sc-for>
+          </div>
+
+          <div style="border-top: 1px solid #ECEAE2; padding-top: 14px;">
+            <div style="display: flex; justify-content: space-between; font-size: 13.5px; color: #6E6D67; margin-bottom: 8px;"><span>Jami</span><span style="font-family:'IBM Plex Mono',monospace;">{{ subtotalTxt }}</span></div>
+            <div style="display: flex; justify-content: space-between; font-size: 13.5px; color: #6E6D67; margin-bottom: 8px;"><span>Chegirma {{ discountLabel }}</span><span style="font-family:'IBM Plex Mono',monospace; color:#C0392B;">{{ discountTxt }}</span></div>
+            <div style="display: flex; justify-content: space-between; font-size: 17px; font-weight: 700; color: #16201E; margin-top: 12px;"><span>To'lov</span><span style="font-family:'IBM Plex Mono',monospace;">{{ totalTxt }}</span></div>
+          </div>
+          <button style="width: 100%; margin-top: 16px; background: #0E7C8B; color: #fff; border: none; border-radius: 11px; padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer;" style-hover="background:#0B5F6B;">To'lash · {{ totalShort }}</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ===== MOLIYA ===== -->
+      <sc-if value="{{ isMoliya }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px;">
+          <sc-for list="{{ moliyaKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 18px 20px;">
+              <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 12px;"><div style="width: 30px; height: 30px; border-radius: 8px; background: {{ k.iconBg }}; color: {{ k.iconColor }}; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;">{{ k.icon }}</div><div style="font-size: 13px; color: #8A887F;">{{ k.label }}</div></div>
+              <div style="font-size: 21px; font-weight: 700; color: {{ k.valColor }}; letter-spacing: -0.01em; font-family: 'IBM Plex Mono', monospace;">{{ k.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px;">
+          <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E; margin-bottom: 14px;">Pul harakati jurnali · bugun</div>
+            <sc-for list="{{ movements }}" as="m" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 13px; padding: 12px 0; border-top: 1px solid #F1EFE8;">
+                <div style="width: 32px; height: 32px; border-radius: 9px; background: {{ m.bg }}; color: {{ m.color }}; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">{{ m.arrow }}</div>
+                <div style="flex: 1; min-width: 0;"><div style="font-size: 14px; font-weight: 500; color: #16201E;">{{ m.note }}</div><div style="font-size: 12px; color: #9A988E;">{{ m.cat }} · {{ m.time }}</div></div>
+                <div style="font-size: 14.5px; font-weight: 600; color: {{ m.color }}; font-family: 'IBM Plex Mono', monospace;">{{ m.amtTxt }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;"><div style="font-size: 15px; font-weight: 600; color: #16201E;">Qarzdorlik</div><span style="font-size: 12px; color: #C0392B; background: #FBEAE7; padding: 3px 9px; border-radius: 6px; font-weight: 500;">{{ debtTotal }}</span></div>
+              <sc-for list="{{ debtors }}" as="d" hint-placeholder-count="3">
+                <div style="display: flex; align-items: center; gap: 11px; padding: 9px 0; border-top: 1px solid #F1EFE8;">
+                  <div style="flex: 1; min-width: 0;"><div style="font-size: 13.5px; font-weight: 500; color: #16201E;">{{ d.name }}</div><div style="font-size: 11.5px; color: {{ d.dueColor }};">{{ d.dueTxt }}</div></div>
+                  <div style="font-size: 13.5px; font-weight: 600; color: #C0392B; font-family: 'IBM Plex Mono', monospace;">{{ d.amtTxt }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+              <div style="font-size: 15px; font-weight: 600; color: #16201E; margin-bottom: 14px;">Xarajatlar · oy</div>
+              <sc-for list="{{ expenses }}" as="e" hint-placeholder-count="3">
+                <div style="padding: 8px 0; border-top: 1px solid #F1EFE8;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 6px;"><span style="font-size: 13.5px; color: #16201E;">{{ e.cat }}</span><span style="font-size: 13.5px; font-weight: 600; font-family: 'IBM Plex Mono', monospace;">{{ e.amtTxt }}</span></div>
+                  <div style="height: 6px; background: #F1EFE8; border-radius: 4px; overflow: hidden;"><div style="height: 100%; width: {{ e.pct }}; background: #0E7C8B; border-radius: 4px;"></div></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ===== HISOBOT (RENTABELLIK) ===== -->
+      <sc-if value="{{ isHisobot }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; background: #E6F4EC; border: 1px solid #C5E5D2; border-radius: 11px; padding: 12px 16px; margin-bottom: 18px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E8A5B" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+          <div style="font-size: 13.5px; color: #1E5E40;">Barcha summalar yagona bazaviy valyutada (so'm) hisoblangan. Valyuta aralashuvi va manfiy marja avtomatik aniqlanadi.</div>
+        </div>
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1.3fr 1.3fr 1.3fr 1.1fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+            <div>Mahsulot</div><div style="text-align:right;">Sotildi</div><div style="text-align:right;">Tannarx</div><div style="text-align:right;">Sotuv summa</div><div style="text-align:right;">Foyda</div><div style="text-align:right;">Marja</div>
+          </div>
+          <sc-for list="{{ reportRows }}" as="r" hint-placeholder-count="6">
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1.3fr 1.3fr 1.3fr 1.1fr; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 11px;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: #E6F1F2; color: #0B5F6B; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; flex-shrink: 0;">{{ r.mono }}</div>
+                <div style="min-width: 0; flex: 1;"><div style="font-size: 13.5px; font-weight: 500; color: #16201E; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ r.name }}</div><div style="font-size: 11.5px; color: #9A988E; line-height: 1.3;">{{ r.cat }}</div></div>
+              </div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ r.qtyTxt }}</div>
+              <div style="text-align: right; font-size: 13px; color: #6E6D67; font-family: 'IBM Plex Mono', monospace;">{{ r.costTxt }}</div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ r.saleTxt }}</div>
+              <div style="text-align: right; font-size: 13px; font-weight: 600; color: {{ r.profitColor }}; font-family: 'IBM Plex Mono', monospace;">{{ r.profitTxt }}</div>
+              <div style="text-align: right;">
+                <span style="display: inline-flex; align-items: center; gap: 5px; justify-content: flex-end; font-size: 12.5px; font-weight: 600; color: {{ r.marginColor }}; background: {{ r.marginBg }}; padding: 4px 9px; border-radius: 7px; font-family: 'IBM Plex Mono', monospace;">{{ r.marginTxt }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ===== MAHSULOTLAR ===== -->
+      <sc-if value="{{ isMahsulot }}" hint-placeholder-val="{{ false }}">
+      <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+        <div style="display: grid; grid-template-columns: 2.4fr 1fr 1fr 1fr 1.2fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+          <div>Mahsulot</div><div>Brend</div><div>O'lchov</div><div style="text-align:right;">Qoldiq</div><div style="text-align:right;">Sotuv narxi</div>
+        </div>
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+          <div style="display: grid; grid-template-columns: 2.4fr 1fr 1fr 1fr 1.2fr; gap: 12px; padding: 13px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 38px; height: 38px; border-radius: 9px; background: #E6F1F2; color: #0B5F6B; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 15px; flex-shrink: 0;">{{ p.mono }}</div>
+              <div style="min-width: 0; flex: 1;"><div style="font-size: 14px; font-weight: 500; color: #16201E; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ p.name }}</div><div style="font-size: 11.5px; color: #9A988E; line-height: 1.3;">{{ p.cat }}</div></div>
+            </div>
+            <div style="font-size: 13.5px; color: #6E6D67;">{{ p.br }}</div>
+            <div style="font-size: 13.5px; color: #6E6D67;">Dona</div>
+            <div style="text-align: right;">
+              <sc-if value="{{ p.low }}" hint-placeholder-val="{{ false }}"><span style="font-size: 12.5px; font-weight: 600; color: #C77A1A; background: #FBF1E2; padding: 4px 10px; border-radius: 7px;">{{ p.qtyTxt }}</span></sc-if>
+              <sc-if value="{{ p.okStock }}" hint-placeholder-val="{{ true }}"><span style="font-size: 12.5px; font-weight: 600; color: #1E8A5B; background: #E6F4EC; padding: 4px 10px; border-radius: 7px;">{{ p.qtyTxt }}</span></sc-if>
+            </div>
+            <div style="text-align: right; font-size: 14px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ p.priceTxt }}</div>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <!-- ===== SOTUV TARIXI ===== -->
+      <sc-if value="{{ isSotuv }}" hint-placeholder-val="{{ false }}">
+      <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+        <div style="display: grid; grid-template-columns: 1.3fr 1.4fr 1fr 1.2fr 1.1fr 1.1fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+          <div>Kod</div><div>Holat</div><div style="text-align:right;">Miqdor</div><div style="text-align:right;">Summa</div><div>Filial / Kassa</div><div style="text-align:right;">Sana</div>
+        </div>
+        <sc-for list="{{ sales }}" as="s" hint-placeholder-count="7">
+          <div style="display: grid; grid-template-columns: 1.3fr 1.4fr 1fr 1.2fr 1.1fr 1.1fr; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+            <div style="font-size: 13px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ s.code }}</div>
+            <div><span style="font-size: 12.5px; font-weight: 600; color: {{ s.stC }}; background: {{ s.stB }}; padding: 4px 10px; border-radius: 7px;">{{ s.stTxt }}</span></div>
+            <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ s.qtyTxt }}</div>
+            <div style="text-align: right; font-size: 13.5px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ s.sumTxt }}</div>
+            <div style="min-width: 0;"><div style="font-size: 13px; color: #16201E;">{{ s.ombor }}</div><div style="font-size: 11.5px; color: #9A988E;">{{ s.kassa }} · {{ s.who }}</div></div>
+            <div style="text-align: right; font-size: 12.5px; color: #6E6D67;">{{ s.date }}</div>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <!-- ===== KONTRAGENT ===== -->
+      <sc-if value="{{ isKontragent }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="display: flex; gap: 6px; background: #fff; border: 1px solid #E8E6DF; border-radius: 11px; padding: 5px; margin-bottom: 18px; width: fit-content;">
+          <button onClick="{{ setMijoz }}" style="{{ konMijozStyle }}">Mijozlar</button>
+          <button onClick="{{ setYetkaz }}" style="{{ konYetkazStyle }}">Yetkazib beruvchilar</button>
+        </div>
+
+        <sc-if value="{{ isMijoz }}" hint-placeholder-val="{{ true }}">
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 2fr 1.4fr 1.4fr 1.1fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+            <div>Mijoz</div><div>Telefon</div><div style="text-align:right;">Balans</div><div style="text-align:right;">Oxirgi xarid</div>
+          </div>
+          <sc-for list="{{ clients }}" as="c" hint-placeholder-count="4">
+            <div style="display: grid; grid-template-columns: 2fr 1.4fr 1.4fr 1.1fr; gap: 12px; padding: 13px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 36px; height: 36px; border-radius: 50%; background: #E6F1F2; color: #0B5F6B; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0;">{{ c.mono }}</div>
+                <div style="font-size: 14px; font-weight: 500; color: #16201E;">{{ c.name }}</div>
+              </div>
+              <div style="font-size: 13px; color: #6E6D67; font-family: 'IBM Plex Mono', monospace;">{{ c.phone }}</div>
+              <div style="text-align: right;"><div style="font-size: 13.5px; font-weight: 600; color: {{ c.balC }}; font-family: 'IBM Plex Mono', monospace;">{{ c.balTxt }}</div><div style="font-size: 11px; color: #9A988E;">{{ c.balLabel }}</div></div>
+              <div style="text-align: right; font-size: 12.5px; color: #6E6D67;">{{ c.lastTxt }}</div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isYetkaz }}" hint-placeholder-val="{{ false }}">
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 1.8fr 1.4fr 1.4fr 1.1fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+            <div>Yetkazib beruvchi</div><div>Mas'ul shaxs</div><div style="text-align:right;">Balans</div><div style="text-align:right;">Qo'shilgan</div>
+          </div>
+          <sc-for list="{{ suppliers }}" as="s" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: 1.8fr 1.4fr 1.4fr 1.1fr; gap: 12px; padding: 13px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 36px; height: 36px; border-radius: 9px; background: #122A30; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0;">{{ s.mono }}</div>
+                <div style="min-width: 0;"><div style="font-size: 14px; font-weight: 500; color: #16201E;">{{ s.name }}</div><div style="font-size: 11.5px; color: #9A988E;">{{ s.legal }}</div></div>
+              </div>
+              <div style="font-size: 13px; color: #6E6D67;">{{ s.fish }}</div>
+              <div style="text-align: right;"><div style="font-size: 13.5px; font-weight: 600; color: {{ s.balC }}; font-family: 'IBM Plex Mono', monospace;">{{ s.balTxt }}</div><div style="font-size: 11px; color: #9A988E;">{{ s.balLabel }}</div></div>
+              <div style="text-align: right; font-size: 12.5px; color: #6E6D67;">{{ s.date }}</div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ===== OMBOR ===== -->
+      <sc-if value="{{ isOmbor }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="display: flex; gap: 6px; background: #fff; border: 1px solid #E8E6DF; border-radius: 11px; padding: 5px; margin-bottom: 18px; width: fit-content;">
+          <button onClick="{{ setOQoldiq }}" style="{{ oQoldiqStyle }}">Ombordagi mahsulotlar</button>
+          <button onClick="{{ setOOmbor }}" style="{{ oOmborStyle }}">Omborlar</button>
+          <button onClick="{{ setOKochirish }}" style="{{ oKochirishStyle }}">Ko'chirish</button>
+          <button onClick="{{ setOInv }}" style="{{ oInvStyle }}">Inventarizatsiya</button>
+        </div>
+
+        <sc-if value="{{ isOQoldiq }}" hint-placeholder-val="{{ true }}">
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 2.2fr 1.1fr 1.2fr 1.2fr 1fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+            <div>Mahsulot</div><div>Ombor</div><div style="text-align:right;">Tannarx</div><div style="text-align:right;">Sotuv narxi</div><div style="text-align:right;">Qoldiq</div>
+          </div>
+          <sc-for list="{{ omborStock }}" as="p" hint-placeholder-count="8">
+            <div style="display: grid; grid-template-columns: 2.2fr 1.1fr 1.2fr 1.2fr 1fr; gap: 12px; padding: 13px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 36px; height: 36px; border-radius: 9px; background: #E6F1F2; color: #0B5F6B; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0;">{{ p.mono }}</div>
+                <div style="min-width: 0; flex: 1;"><div style="font-size: 14px; font-weight: 500; color: #16201E; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ p.name }}</div><div style="font-size: 11.5px; color: #9A988E;">{{ p.cat }}</div></div>
+              </div>
+              <div style="font-size: 13px; color: #6E6D67;">{{ p.whse }}</div>
+              <div style="text-align: right; font-size: 13px; color: #6E6D67; font-family: 'IBM Plex Mono', monospace;">{{ p.costTxt }}</div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ p.priceTxt }}</div>
+              <div style="text-align: right;">
+                <sc-if value="{{ p.low }}" hint-placeholder-val="{{ false }}"><span style="font-size: 12.5px; font-weight: 600; color: #C77A1A; background: #FBF1E2; padding: 4px 10px; border-radius: 7px;">{{ p.qtyTxt }}</span></sc-if>
+                <sc-if value="{{ p.okStock }}" hint-placeholder-val="{{ true }}"><span style="font-size: 12.5px; font-weight: 600; color: #1E8A5B; background: #E6F4EC; padding: 4px 10px; border-radius: 7px;">{{ p.qtyTxt }}</span></sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isOOmbor }}" hint-placeholder-val="{{ false }}">
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 2fr 2fr 1fr 1.3fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+            <div>Ombor</div><div>Kompaniya</div><div style="text-align:right;">Tovarlar</div><div style="text-align:right;">Qiymati</div>
+          </div>
+          <sc-for list="{{ warehouses }}" as="w" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: 2fr 2fr 1fr 1.3fr; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 36px; height: 36px; border-radius: 9px; background: #F1ECFA; color: #8A5AC2; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0;">{{ w.mono }}</div>
+                <div style="font-size: 14px; font-weight: 500; color: #16201E;">{{ w.name }}</div>
+              </div>
+              <div style="font-size: 13px; color: #6E6D67;">{{ w.company }}</div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ w.itemsTxt }}</div>
+              <div style="text-align: right; font-size: 13.5px; font-weight: 600; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ w.valTxt }}</div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isOKochirish }}" hint-placeholder-val="{{ false }}">
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 1.4fr 1.3fr 1.3fr 1fr 1.2fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 12px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+            <div>Holat</div><div>Ombordan</div><div>Omborga</div><div style="text-align:right;">Miqdor</div><div style="text-align:right;">Sana</div>
+          </div>
+          <sc-for list="{{ transfers }}" as="x" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: 1.4fr 1.3fr 1.3fr 1fr 1.2fr; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div><span style="font-size: 12.5px; font-weight: 600; color: {{ x.stC }}; background: {{ x.stB }}; padding: 4px 10px; border-radius: 7px;">{{ x.stTxt }}</span></div>
+              <div style="font-size: 13.5px; color: #16201E;">{{ x.from }}</div>
+              <div style="font-size: 13.5px; color: #16201E;">{{ x.to }}</div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ x.items }}</div>
+              <div style="text-align: right; font-size: 12.5px; color: #6E6D67;">{{ x.date }}</div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isOInv }}" hint-placeholder-val="{{ false }}">
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: 1.4fr 1fr 1.3fr 0.9fr 1fr 1fr 1.1fr; gap: 12px; padding: 14px 22px; background: #FBFAF7; border-bottom: 1px solid #ECEAE2; font-size: 11.5px; color: #8A887F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px;">
+            <div>Ombor</div><div>Turi</div><div>Holat</div><div style="text-align:right;">Jami</div><div style="text-align:right;">Kamomad</div><div style="text-align:right;">Ortiqcha</div><div style="text-align:right;">Sana</div>
+          </div>
+          <sc-for list="{{ inventories }}" as="x" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: 1.4fr 1fr 1.3fr 0.9fr 1fr 1fr 1.1fr; gap: 12px; padding: 14px 22px; border-bottom: 1px solid #F4F2EB; align-items: center;">
+              <div style="font-size: 13.5px; font-weight: 500; color: #16201E;">{{ x.whse }}</div>
+              <div style="font-size: 13px; color: #6E6D67;">{{ x.type }}</div>
+              <div><span style="font-size: 12px; font-weight: 600; color: {{ x.stC }}; background: {{ x.stB }}; padding: 4px 9px; border-radius: 7px;">{{ x.stTxt }}</span></div>
+              <div style="text-align: right; font-size: 13px; color: #16201E; font-family: 'IBM Plex Mono', monospace;">{{ x.total }}</div>
+              <div style="text-align: right; font-size: 13px; color: #C0392B; font-family: 'IBM Plex Mono', monospace;">{{ x.short }}</div>
+              <div style="text-align: right; font-size: 13px; color: #C77A1A; font-family: 'IBM Plex Mono', monospace;">{{ x.over }}</div>
+              <div style="text-align: right; font-size: 12px; color: #6E6D67;">{{ x.date }}</div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ===== SOZLAMALAR ===== -->
+      <sc-if value="{{ isSozlama }}" hint-placeholder-val="{{ false }}">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+        <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+          <div style="font-size: 15px; font-weight: 600; color: #16201E; margin-bottom: 14px;">Kategoriyalar</div>
+          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="5">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #F1EFE8;">
+              <div style="width: 34px; height: 34px; border-radius: 9px; background: {{ c.bg }}; color: {{ c.color }}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></div>
+              <div style="flex: 1; font-size: 14px; color: #16201E;">{{ c.name }}</div>
+              <div style="font-size: 12.5px; color: #9A988E; font-family: 'IBM Plex Mono', monospace;">{{ c.count }} mahsulot</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+            <div style="font-size: 15px; font-weight: 600; color: #16201E; margin-bottom: 12px;">Brendlar</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ brands }}" as="b" hint-placeholder-count="5">
+                <div style="display: flex; align-items: center; gap: 7px; background: #F6F5F1; border: 1px solid #ECEAE2; border-radius: 9px; padding: 7px 12px;">
+                  <span style="font-size: 13.5px; font-weight: 500; color: #16201E;">{{ b.name }}</span>
+                  <span style="font-size: 11px; color: #fff; background: #0E7C8B; padding: 1px 7px; border-radius: 20px; font-family: 'IBM Plex Mono', monospace;">{{ b.count }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background: #fff; border: 1px solid #E8E6DF; border-radius: 14px; padding: 20px 22px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;"><div style="font-size: 15px; font-weight: 600; color: #16201E;">O'lchov birliklari</div><span style="font-size: 11.5px; color: #1E5E40; background: #E6F4EC; padding: 3px 9px; border-radius: 6px;">Kasr nazorati</span></div>
+            <sc-for list="{{ units }}" as="u" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid #F1EFE8;">
+                <div style="flex: 1; font-size: 14px; color: #16201E;">{{ u.name }} <span style="color:#9A988E; font-size:12px;">· {{ u.short }}</span></div>
+                <sc-if value="{{ u.frac }}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; font-weight: 600; color: #3A6FD8; background: #EEF4FF; padding: 4px 10px; border-radius: 7px;">Kasr son mumkin</span></sc-if>
+                <sc-if value="{{ u.whole }}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; font-weight: 600; color: #1E8A5B; background: #E6F4EC; padding: 4px 10px; border-radius: 7px;">Faqat butun son</span></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 800}}">
+class Component extends DCLogic {
+  state = {
+    screen: "filiallar",
+    currency: "uzs",
+    discount: 0,
+    branch: "all",
+    konTab: "mijoz",
+    omborTab: "qoldiq",
+    cart: [
+      { key: "p0", qty: 1 },
+      { key: "p4", qty: 1 }
+    ]
+  };
+  RATE = 12600;
+
+  branches() {
+    return [
+      { id: "b1", name: "Markaziy do'kon", addr: "Toshkent, Chilonzor 1", month: 553168480, day: 13305600, cash: 98275000, debt: 18750000, stock: 48, low: 2, out: 1, checks: 412, profit: 92000000 },
+      { id: "b2", name: "Chilonzor filiali", addr: "Toshkent, Chilonzor 19", month: 312400000, day: 8420000, cash: 54200000, debt: 9300000, stock: 32, low: 4, out: 0, checks: 268, profit: 51500000 },
+      { id: "b3", name: "Yunusobod filiali", addr: "Toshkent, Yunusobod 12", month: 198650000, day: 5180000, cash: 31800000, debt: 4100000, stock: 21, low: 1, out: 2, checks: 174, profit: 33800000 }
+    ];
+  }
+  activeBranch() {
+    if (this.state.branch === "all") return null;
+    return this.branches().find(b => b.id === this.state.branch);
+  }
+  // network total or single-branch scope factor for derived screens
+  scope() {
+    const b = this.activeBranch();
+    const all = this.branches();
+    const totalMonth = all.reduce((s, x) => s + x.month, 0);
+    if (!b) return { month: totalMonth, factor: 1, cash: all.reduce((s,x)=>s+x.cash,0), debt: all.reduce((s,x)=>s+x.debt,0) };
+    return { month: b.month, factor: b.month / all[0].month, cash: b.cash, debt: b.debt };
+  }
+
+  fmt(n) { return Math.round(n).toLocaleString("ru-RU").replace(/[\u00A0\u202F]/g, " "); }
+  uzs(n) { return this.fmt(n) + " so'm"; }
+  // currency-aware (for dashboard / reports)
+  cur(n) {
+    if (this.state.currency === "usd") return "$ " + this.fmt(n / this.RATE);
+    return this.fmt(n) + " so'm";
+  }
+  curShort(n) {
+    if (this.state.currency === "usd") return "$ " + this.fmt(n / this.RATE);
+    return this.fmt(n) + " so'm";
+  }
+  curC(n) {
+    if (this.state.currency === "usd") {
+      const u = n / this.RATE;
+      return "$ " + (Math.abs(u) >= 1e6 ? (u / 1e6).toFixed(2) + " mln" : this.fmt(u));
+    }
+    const a = Math.abs(n);
+    let s;
+    if (a >= 1e9) s = (n / 1e9).toFixed(2).replace(/\.?0+$/, "") + " mlrd";
+    else if (a >= 1e6) s = (n / 1e6).toFixed(1).replace(/\.0$/, "") + " mln";
+    else s = this.fmt(n);
+    return s + " so'm";
+  }
+
+  base() {
+    return [
+      { key: "p0", n: "iPhone 17 Pro Max 256", cat: "Telefonlar", br: "Apple", cost: 16380000, price: 19656000, qty: 8 },
+      { key: "p1", n: "iPhone 18", cat: "Telefonlar", br: "Apple", cost: 21168000, price: 24375000, qty: 5 },
+      { key: "p2", n: "Redmi 14 Pro 8/128", cat: "Telefonlar", br: "Xiaomi", cost: 5040000, price: 6048000, qty: 12 },
+      { key: "p3", n: "Xolodilnik", cat: "Maishiy texnika", br: "Artel", cost: 3800000, price: 4536000, qty: 3 },
+      { key: "p4", n: "LG Smart TV 55", cat: "Televizorlar", br: "LG", cost: 6300000, price: 7560000, qty: 10 },
+      { key: "p5", n: "LG Smart TV 32", cat: "Televizorlar", br: "LG", cost: 2268000, price: 2721600, qty: 9 },
+      { key: "p6", n: "Skuter", cat: "Transport", br: "Vespa", cost: 4158000, price: 5418000, qty: 1 },
+      { key: "p7", n: "Aksessuar to'plami", cat: "Aksessuar", br: "Wasyt", cost: 95000, price: 98000, qty: 40 }
+    ];
+  }
+  find(k) { return this.base().find(p => p.key === k); }
+
+  nav(s) { this.setState({ screen: s }); }
+  addToCart(k) {
+    const cart = this.state.cart.slice();
+    const ex = cart.find(c => c.key === k);
+    if (ex) ex.qty += 1; else cart.push({ key: k, qty: 1 });
+    this.setState({ cart });
+  }
+  step(k, d) {
+    let cart = this.state.cart.map(c => c.key === k ? { ...c, qty: c.qty + d } : c).filter(c => c.qty > 0);
+    this.setState({ cart });
+  }
+  navStyle(s) {
+    const a = this.state.screen === s;
+    return "display:flex; align-items:center; gap:12px; width:100%; text-align:left; border:none; cursor:pointer; padding:11px 13px; border-radius:10px; font-size:14.5px; font-weight:500; margin-bottom:3px; background:" + (a ? "rgba(255,255,255,0.13)" : "transparent") + "; color:" + (a ? "#FFFFFF" : "#93B0B5") + ";";
+  }
+  curStyle(c) {
+    const a = this.state.currency === c;
+    return "border:none; cursor:pointer; padding:6px 14px; border-radius:7px; font-size:12.5px; font-weight:600; background:" + (a ? "#fff" : "transparent") + "; color:" + (a ? "#0E7C8B" : "#8A887F") + "; box-shadow:" + (a ? "0 1px 3px rgba(0,0,0,0.08)" : "none") + ";";
+  }
+  discStyle(v) {
+    const a = this.state.discount === v;
+    return "border:1px solid " + (a ? "#0E7C8B" : "#E2E0D8") + "; background:" + (a ? "#E6F1F2" : "#fff") + "; color:" + (a ? "#0B5F6B" : "#6E6D67") + "; cursor:pointer; padding:9px 0; border-radius:9px; font-size:13px; font-weight:600;";
+  }
+  tabStyle(a) {
+    return "border:none; cursor:pointer; padding:8px 16px; border-radius:9px; font-size:13.5px; font-weight:600; background:" + (a ? "#122A30" : "transparent") + "; color:" + (a ? "#fff" : "#6E6D67") + ";";
+  }
+  tabStyleSm(a) {
+    return "border:none; cursor:pointer; padding:6px 12px; border-radius:7px; font-size:12.5px; font-weight:600; white-space:nowrap; background:" + (a ? "#fff" : "transparent") + "; color:" + (a ? "#0E7C8B" : "#7A786F") + "; box-shadow:" + (a ? "0 1px 3px rgba(0,0,0,0.08)" : "none") + ";";
+  }
+
+  renderVals() {
+    const C = (n) => this.cur(n);
+    const titles = {
+      dashboard: ["Bosh sahifa", "Umumiy ko'rsatkichlar va savdo dinamikasi"],
+      pos: ["Savdo / Kassa", "Tezkor sotuv \u2014 Kassa 1, Markaziy ombor"],
+      moliya: ["Moliya", "Kassa pul harakati, qarzdorlik va xarajatlar"],
+      hisobot: ["Hisobotlar \u00b7 Rentabellik", "Mahsulot bo'yicha foyda va marja tahlili"],
+      mahsulot: ["Mahsulotlar", "Katalog va ombor qoldig'i"],
+      filiallar: ["Filiallar", "Barcha do'konlar bitta oynadan \u2014 konsolidatsiya"],
+      sotuv: ["Sotuv tarixi", "Barcha cheklar va sotuvlar ro'yxati"],
+      kontragent: ["Kontragent", "Mijozlar va yetkazib beruvchilar"],
+      ombor: ["Ombor", "Omborlar, ko'chirish va inventarizatsiya"],
+      sozlama: ["Sozlamalar", "Kategoriya, brend, o'lchov va valyuta"]
+    };
+    const t = titles[this.state.screen];
+    const bSel = this.activeBranch();
+    const sub2 = bSel ? bSel.name : "Barcha filiallar (konsolidatsiya)";
+
+    // products derived
+    const products = this.base().map(p => ({
+      key: p.key, name: p.n, cat: p.cat, br: p.br, mono: p.n[0],
+      priceTxt: this.uzs(p.price), qtyTxt: p.qty + " dona",
+      low: p.qty <= 2, okStock: p.qty > 2,
+      add: () => this.addToCart(p.key)
+    }));
+
+    // cart derived
+    const cart = this.state.cart.map(c => {
+      const p = this.find(c.key);
+      return {
+        key: c.key, name: p.n, qty: c.qty, priceTxt: this.uzs(p.price),
+        lineTxt: this.uzs(p.price * c.qty),
+        inc: () => this.step(c.key, 1), dec: () => this.step(c.key, -1)
+      };
+    });
+    const subtotal = this.state.cart.reduce((s, c) => s + this.find(c.key).price * c.qty, 0);
+    const discAmt = subtotal * this.state.discount / 100;
+    const total = subtotal - discAmt;
+
+    const discounts = [0, 5, 10, 15].map(v => ({
+      label: v === 0 ? "Yo'q" : v + "%", set: () => this.setState({ discount: v }), style: this.discStyle(v)
+    }));
+
+    // dashboard kpis (currency + branch aware)
+    const CC = (n) => this.curC(n);
+    const _ab = this.activeBranch();
+    const _all = this.branches();
+    const _day = _ab ? _ab.day : _all.reduce((s, x) => s + x.day, 0);
+    const _mon = _ab ? _ab.month : _all.reduce((s, x) => s + x.month, 0);
+    const _cash = _ab ? _ab.cash : _all.reduce((s, x) => s + x.cash, 0);
+    const _checks = _ab ? _ab.checks : _all.reduce((s, x) => s + x.checks, 0);
+    const _scopeLabel = _ab ? _ab.name : "Tarmoq (3 filial)";
+    const dashKpis = [
+      { label: "Bugungi savdo · " + _scopeLabel, value: CC(_day), delta: "+12% kechagidan", deltaColor: "#1E8A5B" },
+      { label: "Oylik savdo", value: CC(_mon), delta: "+8% o'tgan oydan", deltaColor: "#1E8A5B" },
+      { label: "Kassa qoldig'i", value: CC(_cash), delta: "Naqd + karta", deltaColor: "#8A887F" },
+      { label: "O'rtacha chek", value: CC(Math.round(_mon / _checks)), delta: _checks + " ta chek", deltaColor: "#8A887F" }
+    ];
+
+    const topProducts = [
+      { mono: "i", name: "iPhone 17 Pro Max 256", soldTxt: "3 dona sotilgan", sumTxt: C(58968000) },
+      { mono: "R", name: "Redmi 14 Pro 8/128", soldTxt: "7 dona sotilgan", sumTxt: C(42336000) },
+      { mono: "i", name: "iPhone 18", soldTxt: "1 dona sotilgan", sumTxt: C(24375000) },
+      { mono: "L", name: "LG Smart TV 55", soldTxt: "2 dona sotilgan", sumTxt: C(15120000) }
+    ];
+    const sellers = [
+      { mono: "SP", name: "Sodiqjon Pulatov", countTxt: "44 ta chek", sumTxt: C(238770000) },
+      { mono: "JX", name: "Jaxongir Salimov", countTxt: "31 ta chek", sumTxt: C(164200000) },
+      { mono: "NU", name: "Nurillo Umarov", countTxt: "18 ta chek", sumTxt: C(89500000) }
+    ];
+    const debtors = [
+      { name: "Samandar Pulatov", dueTxt: "Muddati o'tgan \u00b7 5 kun", dueColor: "#C0392B", amtTxt: C(12600000) },
+      { name: "Laziz Karimov", dueTxt: "3 kundan keyin", dueColor: "#8A887F", amtTxt: C(4300000) },
+      { name: "Anvar To'rayev", dueTxt: "12 kundan keyin", dueColor: "#8A887F", amtTxt: C(1850000) }
+    ];
+
+    // moliya
+    const moliyaKpis = [
+      { label: "Kassa qoldig'i", value: CC(98275000), valColor: "#16201E", icon: "\u20ae", iconBg: "#E6F1F2", iconColor: "#0B5F6B" },
+      { label: "Bugungi kirim", value: "+" + CC(13305600), valColor: "#1E8A5B", icon: "\u2193", iconBg: "#E6F4EC", iconColor: "#1E8A5B" },
+      { label: "Bugungi chiqim", value: "\u2212" + CC(2400000), valColor: "#C0392B", icon: "\u2191", iconBg: "#FBEAE7", iconColor: "#C0392B" },
+      { label: "Jami qarzdorlik", value: CC(18750000), valColor: "#C77A1A", icon: "!", iconBg: "#FBF1E2", iconColor: "#C77A1A" }
+    ];
+    const movements = [
+      { arrow: "\u2193", bg: "#E6F4EC", color: "#1E8A5B", note: "Sotuv \u2014 chek w-15517", cat: "Savdo", time: "14:32", amtTxt: "+" + this.uzs(13305600) },
+      { arrow: "\u2191", bg: "#FBEAE7", color: "#C0392B", note: "Ijaraga to'lov", cat: "Xarajat", time: "12:10", amtTxt: "\u2212" + this.uzs(1800000) },
+      { arrow: "\u2193", bg: "#E6F4EC", color: "#1E8A5B", note: "Qarz qaytarildi \u2014 L. Karimov", cat: "Qarzdorlik", time: "11:48", amtTxt: "+" + this.uzs(2000000) },
+      { arrow: "\u2191", bg: "#FBEAE7", color: "#C0392B", note: "Kuryer xizmati", cat: "Xarajat", time: "10:25", amtTxt: "\u2212" + this.uzs(600000) },
+      { arrow: "\u2193", bg: "#E6F4EC", color: "#1E8A5B", note: "Sotuv \u2014 chek w-15507", cat: "Savdo", time: "09:50", amtTxt: "+" + this.uzs(6048000) }
+    ];
+    const expenses = [
+      { cat: "Ijara", amtTxt: this.uzs(1800000), pct: "72%" },
+      { cat: "Oylik maosh", amtTxt: this.uzs(1200000), pct: "48%" },
+      { cat: "Kommunal", amtTxt: this.uzs(450000), pct: "18%" }
+    ];
+
+    // hisobot rows (correct currency, margin flags)
+    const repBase = [
+      { mono: "i", name: "iPhone 17 Pro Max 256", cat: "Telefonlar", sold: 3, cost: 16380000, price: 19656000 },
+      { mono: "i", name: "iPhone 18", cat: "Telefonlar", sold: 1, cost: 21168000, price: 24375000 },
+      { mono: "R", name: "Redmi 14 Pro 8/128", cat: "Telefonlar", sold: 7, cost: 5040000, price: 6048000 },
+      { mono: "X", name: "Xolodilnik", cat: "Maishiy texnika", sold: 2, cost: 3800000, price: 4536000 },
+      { mono: "S", name: "Skuter", cat: "Transport", sold: 1, cost: 4158000, price: 5418000 },
+      { mono: "A", name: "Aksessuar to'plami", cat: "Aksessuar", sold: 12, cost: 95000, price: 98000 }
+    ];
+    const reportRows = repBase.map(r => {
+      const sale = r.price * r.sold, tann = r.cost * r.sold, profit = sale - tann;
+      const m = (r.price - r.cost) / r.price * 100;
+      let mc = "#1E8A5B", mb = "#E6F4EC";
+      if (m < 0) { mc = "#C0392B"; mb = "#FBEAE7"; }
+      else if (m < 10) { mc = "#C77A1A"; mb = "#FBF1E2"; }
+      return {
+        mono: r.mono, name: r.name, cat: r.cat, qtyTxt: r.sold + " dona",
+        costTxt: C(tann), saleTxt: C(sale), profitTxt: (profit >= 0 ? "+" : "\u2212") + C(Math.abs(profit)),
+        profitColor: profit >= 0 ? "#1E8A5B" : "#C0392B",
+        marginTxt: m.toFixed(1) + "%", marginColor: mc, marginBg: mb
+      };
+    });
+
+    // chart
+    const bars = [
+      { d: "Du", v: 32 }, { d: "Se", v: 54 }, { d: "Cho", v: 0 }, { d: "Pa", v: 26 },
+      { d: "Ju", v: 41 }, { d: "Sha", v: 18 }, { d: "Ya", v: 0 }
+    ];
+    const mx = 54;
+    const chart = React.createElement("div",
+      { style: { display: "flex", alignItems: "flex-end", gap: "14px", height: "168px", padding: "10px 4px 0" } },
+      bars.map((b, i) => React.createElement("div",
+        { key: i, style: { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", height: "100%", justifyContent: "flex-end" } },
+        [
+          React.createElement("div", { key: "v", style: { fontSize: "11px", color: "#9A988E", fontFamily: "'IBM Plex Mono', monospace", height: "14px" } }, b.v ? b.v + "M" : ""),
+          React.createElement("div", { key: "bar", style: { width: "100%", maxWidth: "48px", height: (b.v / mx * 120 + 3) + "px", background: b.v ? "linear-gradient(180deg,#1BA2B0,#0E7C8B)" : "#ECEAE2", borderRadius: "7px 7px 3px 3px" } }),
+          React.createElement("div", { key: "d", style: { fontSize: "12px", color: "#8A887F" } }, b.d)
+        ]
+      ))
+    );
+
+    // ===== FILIALLAR (branches consolidation) =====
+    const allB = this.branches();
+    const netMonth = allB.reduce((s, x) => s + x.month, 0);
+    const netCash = allB.reduce((s, x) => s + x.cash, 0);
+    const netDebt = allB.reduce((s, x) => s + x.debt, 0);
+    const netStock = allB.reduce((s, x) => s + x.stock, 0);
+    const netProfit = allB.reduce((s, x) => s + x.profit, 0);
+    const filKpis = [
+      { label: "Tarmoq oylik savdosi", value: CC(netMonth), sub: allB.length + " ta filial", icon: "\u2211", iconBg: "#E6F1F2", iconColor: "#0B5F6B" },
+      { label: "Jami kassa qoldig'i", value: CC(netCash), sub: "Naqd + karta", icon: "\u20ae", iconBg: "#E6F4EC", iconColor: "#1E8A5B" },
+      { label: "Sof foyda (oy)", value: CC(netProfit), sub: ((netProfit / netMonth) * 100).toFixed(1) + "% marja", icon: "\u2197", iconBg: "#EEF4FF", iconColor: "#3A6FD8" },
+      { label: "Jami qarzdorlik", value: CC(netDebt), sub: "Barcha filiallar", icon: "!", iconBg: "#FBF1E2", iconColor: "#C77A1A" }
+    ];
+    const maxMonth = Math.max(...allB.map(b => b.month));
+    const filRows = allB.map((b, i) => ({
+      id: b.id, name: b.name, addr: b.addr, mono: b.name[0],
+      monthTxt: this.curC(b.month), dayTxt: this.curC(b.day), cashTxt: this.curC(b.cash),
+      profitTxt: this.curC(b.profit), debtTxt: b.debt ? this.curC(b.debt) : "—",
+      checks: b.checks + " chek", stockTxt: b.stock + " dona", low: b.low, out: b.out,
+      barW: (b.month / maxMonth * 100) + "%",
+      share: ((b.month / netMonth) * 100).toFixed(0) + "%",
+      rank: i + 1,
+      open: () => { this.setState({ branch: b.id, screen: "dashboard" }); }
+    }));
+
+    // ===== SOTUV (sales history) =====
+    const salesBase = [
+      { code: "w-2561-15517", status: "ok", sum: 13305600, qty: 3, kassa: "Kassa 1", ombor: "Markaziy", who: "Sodiqjon", date: "Bugun 14:32" },
+      { code: "w-2561-15507", status: "ok", sum: 62279280, qty: 8, kassa: "Kassa 1", ombor: "Markaziy", who: "Sodiqjon", date: "Bugun 09:50" },
+      { code: "w-2561-15478", status: "part", sum: 9828000, qty: 1, kassa: "Kassa 2", ombor: "Chilonzor", who: "Jaxongir", date: "Kecha 17:21" },
+      { code: "w-2561-15440", status: "ok", sum: 35985600, qty: 4, kassa: "Kassa 1", ombor: "Markaziy", who: "Sodiqjon", date: "Kecha 12:05" },
+      { code: "w-2561-15433", status: "ok", sum: 238770000, qty: 15, kassa: "Kassa 3", ombor: "Yunusobod", who: "Nurillo", date: "11-iyun 18:40" },
+      { code: "w-2561-15344", status: "cancel", sum: 5418000, qty: 1, kassa: "Kassa 2", ombor: "Chilonzor", who: "Jaxongir", date: "11-iyun 10:15" },
+      { code: "w-2561-15317", status: "ok", sum: 48510000, qty: 8, kassa: "Kassa 1", ombor: "Markaziy", who: "Sodiqjon", date: "10-iyun 16:02" }
+    ];
+    const statusMap = {
+      ok: { t: "Yakunlandi", c: "#1E8A5B", b: "#E6F4EC" },
+      part: { t: "Qisman qaytarilgan", c: "#C77A1A", b: "#FBF1E2" },
+      cancel: { t: "Bekor qilingan", c: "#C0392B", b: "#FBEAE7" }
+    };
+    const sales = salesBase.map(s => ({
+      code: s.code, sumTxt: this.uzs(s.sum), qtyTxt: s.qty + " dona", kassa: s.kassa, ombor: s.ombor, who: s.who, date: s.date,
+      stTxt: statusMap[s.status].t, stC: statusMap[s.status].c, stB: statusMap[s.status].b
+    }));
+
+    // ===== KONTRAGENT =====
+    const isMijoz = this.state.konTab === "mijoz";
+    const clients = [
+      { name: "LazizXon", phone: "+998 94 440-03-48", balance: -4300000, last: "2 kun oldin" },
+      { name: "Samandar Pulatov", phone: "+998 97 625-51-00", balance: -12600000, last: "5 kun oldin" },
+      { name: "Anvar To'rayev", phone: "+998 90 123-45-67", balance: -1850000, last: "12 kun oldin" },
+      { name: "Dilshod Rahimov", phone: "+998 93 555-12-34", balance: 0, last: "Bugun" }
+    ].map(c => ({
+      name: c.name, phone: c.phone, lastTxt: c.last, mono: c.name[0],
+      balTxt: c.balance === 0 ? "0 so'm" : this.uzs(Math.abs(c.balance)),
+      balC: c.balance < 0 ? "#C0392B" : "#1E8A5B",
+      balLabel: c.balance < 0 ? "Mijoz qarzi" : "Qarz yo'q"
+    }));
+    const suppliers = [
+      { name: "BM Electronics", legal: "Yuridik shaxs", balance: -442000000, fish: "Salimov Jaxongir", date: "30-mar 2026" },
+      { name: "Samandar", legal: "Yuridik shaxs", balance: 41580000, fish: "Samandar Pulatov", date: "05-iyun 2026" },
+      { name: "Artel Baza", legal: "Yuridik shaxs", balance: 185000000, fish: "Nurillo", date: "26-mar 2026" }
+    ].map(s => ({
+      name: s.name, legal: s.legal, fish: s.fish, date: s.date, mono: s.name[0],
+      balTxt: this.uzs(Math.abs(s.balance)),
+      balC: s.balance < 0 ? "#C0392B" : "#1E8A5B",
+      balLabel: s.balance < 0 ? "Bizning qarz" : "Bizga qarzi"
+    }));
+
+    // ===== OMBOR =====
+    const omborTab = this.state.omborTab;
+    const omborStock = this.base().map(p => ({
+      name: p.n, cat: p.cat, br: p.br, mono: p.n[0],
+      whse: p.qty > 5 ? "Markaziy" : "Chilonzor",
+      costTxt: this.uzs(p.cost), priceTxt: this.uzs(p.price), qtyTxt: p.qty + " dona",
+      low: p.qty <= 2, okStock: p.qty > 2
+    }));
+    const transfers = [
+      { status: "wait", from: "Markaziy", to: "Chilonzor", who: "Sodiqjon", date: "Bugun 12:16", items: "4 dona" },
+      { status: "ok", from: "Chilonzor", to: "Yunusobod", who: "Jaxongir", date: "Kecha 15:02", items: "12 dona" },
+      { status: "ok", from: "Markaziy", to: "Yunusobod", who: "Sodiqjon", date: "10-iyun", items: "6 dona" }
+    ].map(x => ({
+      from: x.from, to: x.to, who: x.who, date: x.date, items: x.items,
+      stTxt: x.status === "ok" ? "Yakunlandi" : "Tasdiqlash kutilmoqda",
+      stC: x.status === "ok" ? "#1E8A5B" : "#C77A1A",
+      stB: x.status === "ok" ? "#E6F4EC" : "#FBF1E2"
+    }));
+    const inventories = [
+      { whse: "Markaziy", type: "Qisman", status: "proc", total: 0, short: 0, over: 0, who: "Sodiqjon", date: "Bugun 14:10" },
+      { whse: "Chilonzor", type: "Qisman", status: "ok", total: 7, short: 0, over: 1, who: "Jaxongir", date: "29-may 15:02" },
+      { whse: "Yunusobod", type: "To'liq", status: "cancel", total: 0, short: 0, over: 0, who: "Nurillo", date: "24-apr 21:38" }
+    ].map(x => ({
+      whse: x.whse, type: x.type, total: x.total, short: x.short, over: x.over, who: x.who, date: x.date,
+      stTxt: x.status === "ok" ? "Yakunlandi" : (x.status === "proc" ? "Jarayonda" : "Bekor qilingan"),
+      stC: x.status === "ok" ? "#1E8A5B" : (x.status === "proc" ? "#C77A1A" : "#C0392B"),
+      stB: x.status === "ok" ? "#E6F4EC" : (x.status === "proc" ? "#FBF1E2" : "#FBEAE7")
+    }));
+    const warehouses = [
+      { name: "Markaziy ombor", company: "MCHJ \"SODIQJON\"", items: 48, val: 612000000 },
+      { name: "Chilonzor ombor", company: "MCHJ \"SODIQJON\"", items: 32, val: 388000000 },
+      { name: "Yunusobod ombor", company: "MCHJ \"SODIQJON\"", items: 21, val: 241000000 }
+    ].map(w => ({ name: w.name, company: w.company, itemsTxt: w.items + " dona", valTxt: this.curC(w.val), mono: w.name[0] }));
+
+    // ===== SOZLAMA =====
+    const categories = [
+      { name: "Telefonlar", count: 4, color: "#0B5F6B", bg: "#E6F1F2" },
+      { name: "Televizorlar", count: 2, color: "#3A6FD8", bg: "#EEF4FF" },
+      { name: "Maishiy texnika", count: 1, color: "#1E8A5B", bg: "#E6F4EC" },
+      { name: "Transport", count: 1, color: "#C77A1A", bg: "#FBF1E2" },
+      { name: "Aksessuar", count: 1, color: "#8A5AC2", bg: "#F1ECFA" }
+    ];
+    const brands = [
+      { name: "Apple", count: 2 }, { name: "Xiaomi", count: 1 }, { name: "LG", count: 2 },
+      { name: "Artel", count: 1 }, { name: "Vespa", count: 1 }
+    ];
+    const units = [
+      { name: "Dona", short: "dona", frac: false, whole: true },
+      { name: "Komplekt", short: "kompl", frac: false, whole: true },
+      { name: "Kilogramm", short: "kg", frac: true, whole: false },
+      { name: "Litr", short: "l", frac: true, whole: false },
+      { name: "Metr", short: "m", frac: true, whole: false }
+    ];
+
+    return {
+      // branch selector
+      branchAll: this.state.branch === "all", branchName: bSel ? bSel.name : "Barcha filiallar",
+      branchAllStyle: this.tabStyleSm(this.state.branch === "all"),
+      branchList: allB.map(b => ({ id: b.id, name: b.name, short: b.name.split(" ")[0], style: this.tabStyleSm(this.state.branch === b.id), pick: () => this.setState({ branch: b.id }) })),
+      pickAll: () => this.setState({ branch: "all" }),
+      isAllBranch: this.state.branch === "all",
+      goFiliallar: () => this.nav("filiallar"), goSotuv: () => this.nav("sotuv"),
+      goKontragent: () => this.nav("kontragent"), goOmbor: () => this.nav("ombor"), goSozlama: () => this.nav("sozlama"),
+      navFiliallar: this.navStyle("filiallar"), navSotuv: this.navStyle("sotuv"),
+      navKontragent: this.navStyle("kontragent"), navOmbor: this.navStyle("ombor"), navSozlama: this.navStyle("sozlama"),
+      isFiliallar: this.state.screen === "filiallar", isSotuv: this.state.screen === "sotuv",
+      isKontragent: this.state.screen === "kontragent", isOmbor: this.state.screen === "ombor", isSozlama: this.state.screen === "sozlama",
+      screenSub2: sub2,
+      filKpis, filRows, netCount: allB.length,
+      sales,
+      isMijoz, isYetkaz: !isMijoz, clients, suppliers,
+      setMijoz: () => this.setState({ konTab: "mijoz" }), setYetkaz: () => this.setState({ konTab: "yetkaz" }),
+      konMijozStyle: this.tabStyle(isMijoz), konYetkazStyle: this.tabStyle(!isMijoz),
+      omborStock, transfers, inventories, warehouses,
+      isOQoldiq: omborTab === "qoldiq", isOKochirish: omborTab === "kochirish", isOInv: omborTab === "inv", isOOmbor: omborTab === "ombor",
+      setOQoldiq: () => this.setState({ omborTab: "qoldiq" }), setOKochirish: () => this.setState({ omborTab: "kochirish" }),
+      setOInv: () => this.setState({ omborTab: "inv" }), setOOmbor: () => this.setState({ omborTab: "ombor" }),
+      oQoldiqStyle: this.tabStyle(omborTab === "qoldiq"), oKochirishStyle: this.tabStyle(omborTab === "kochirish"),
+      oInvStyle: this.tabStyle(omborTab === "inv"), oOmborStyle: this.tabStyle(omborTab === "ombor"),
+      categories, brands, units,
+      goDash: () => this.nav("dashboard"), goPos: () => this.nav("pos"),
+      goMoliya: () => this.nav("moliya"), goHisobot: () => this.nav("hisobot"),
+      goMahsulot: () => this.nav("mahsulot"),
+      navDash: this.navStyle("dashboard"), navPos: this.navStyle("pos"),
+      navMoliya: this.navStyle("moliya"), navHisobot: this.navStyle("hisobot"),
+      navMahsulot: this.navStyle("mahsulot"),
+      setUzs: () => this.setState({ currency: "uzs" }), setUsd: () => this.setState({ currency: "usd" }),
+      curUzs: this.curStyle("uzs"), curUsd: this.curStyle("usd"),
+      screenTitle: t[0], screenSub: t[1],
+      kassaBalance: this.curC(_cash),
+      isDashboard: this.state.screen === "dashboard", isPos: this.state.screen === "pos",
+      isMoliya: this.state.screen === "moliya", isHisobot: this.state.screen === "hisobot",
+      isMahsulot: this.state.screen === "mahsulot",
+      dashKpis, chart, topProducts, sellers, debtors, debtTotal: C(18750000),
+      products, cart, cartCount: cart.length + " ta",
+      cartEmpty: cart.length === 0, cartHas: cart.length > 0,
+      clearCart: () => this.setState({ cart: [] }),
+      discounts, discountLabel: this.state.discount ? this.state.discount + "%" : "",
+      subtotalTxt: this.uzs(subtotal), discountTxt: discAmt ? "\u2212" + this.uzs(discAmt) : this.uzs(0),
+      totalTxt: this.uzs(total), totalShort: this.uzs(total),
+      moliyaKpis, movements, expenses, reportRows
+    };
+  }
+}
+</script>
+</body>
+</html>

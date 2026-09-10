@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ECEAE3; font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #0E7C8B; text-decoration: none; }
+  a:hover { color: #14272B; text-decoration: underline; }
+  ::selection { background: #B9E0E4; }
+  @media print {
+    body { background: #fff; }
+    .doc-page { box-shadow: none !important; margin: 0 !important; }
+    .pbreak { page-break-before: always; }
+    .nobreak { page-break-inside: avoid; }
+  }
+</style>
+</helmet>
+
+<div style="max-width: 900px; margin: 0 auto; padding: 32px 16px 80px;">
+
+  <div class="doc-page nobreak" style="background:#14272B; color:#EDEAE2; border-radius:18px; padding:58px 54px; box-shadow:0 24px 60px -28px rgba(20,39,43,0.5); position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-80px; right:-60px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle at 30% 30%, rgba(14,124,139,0.55), rgba(14,124,139,0)); pointer-events:none;"></div>
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:44px;">
+      <div style="width:30px; height:30px; border-radius:8px; background:#0E7C8B; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; color:#fff;">W</div>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:2px; color:#8FB6BB; text-transform:uppercase;">WASYT · Product Analysis</span>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:3px; color:#6F9BA0; text-transform:uppercase; margin-bottom:18px;">Bo'lim tahlili · 02</div>
+    <h1 style="font-size:44px; line-height:1.06; font-weight:700; margin:0 0 20px; letter-spacing:-0.02em; max-width:20ch; text-wrap:pretty;">«Moliyaviy tranzaksiyalar» hisoboti: kamchiliklar va taklif</h1>
+    <p style="font-size:17px; line-height:1.6; color:#B9C7C9; margin:0 0 38px; max-width:58ch; text-wrap:pretty;">Hisobotlar → Moliya → Moliyaviy tranzaksiyalar ekranining chuqur tahlili, uning Moliya moduli bilan bog'liqligi va butun tizim bo'ylab moliyaviy kontur bo'yicha tavsiyalar.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:30px; padding-top:26px; border-top:1px solid rgba(143,182,187,0.25);">
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; color:#6F9BA0; text-transform:uppercase; margin-bottom:6px;">Qamrov</div><div style="font-size:15px;">Hisobot ekrani · Moliya moduli · Mobil</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; color:#6F9BA0; text-transform:uppercase; margin-bottom:6px;">Topilgan</div><div style="font-size:15px;">18 ta kamchilik · 3 P0</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.5px; color:#6F9BA0; text-transform:uppercase; margin-bottom:6px;">Sana</div><div style="font-size:15px;">27.07.2026</div></div>
+    </div>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#FBFAF7; border:1px solid #E5E3DC; border-radius:18px; padding:42px 46px; margin-top:24px; box-shadow:0 16px 40px -30px rgba(20,39,43,0.35);">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; color:#0E7C8B; text-transform:uppercase; margin-bottom:14px;">01 · Qisqacha xulosa</div>
+    <h2 style="font-size:27px; font-weight:700; margin:0 0 16px; color:#1C1C1A; letter-spacing:-0.01em;">Hozirgi holat</h2>
+    <p style="font-size:16px; line-height:1.7; color:#3A3A36; margin:0 0 13px; text-wrap:pretty;">Ekran vizual jihatdan toza: davr chiplar, 3 ta yakuniy karta, 7 ustunli jadval va «Jami» satri bor. Lekin bu <b>hisobot emas — jurnalning qisqartmasi</b>. Buxgalter yoki do'kon egasi shu ekrandan pul oqimini yopib chiqa olmaydi: qoldiqlar yo'q, valyuta yo'q, ko'chirish/konvertatsiya yo'q, eksport yo'q.</p>
+    <p style="font-size:16px; line-height:1.7; color:#3A3A36; margin:0 0 26px; text-wrap:pretty;">Eng og'ir muammo — <b>raqamlar bir-biriga to'g'ri kelmaydi</b>: yuqoridagi kartalarda yakuniy oqim <b>+124 600 000</b>, jadval oxirida esa <b style="color:#C0392B;">−34 400 000</b>. Ikki xil raqamni bir ekranda ko'rgan foydalanuvchi ikkalasiga ham ishonmaydi.</p>
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:13px;">
+      <div style="background:#FBEAE7; border:1px solid #F0CFC9; border-radius:12px; padding:17px 15px;"><div style="font-size:32px; font-weight:700; color:#C0392B; line-height:1;">3</div><div style="font-size:13px; color:#8A4338; margin-top:7px; font-weight:500;">Kritik (P0)</div></div>
+      <div style="background:#FBF1E2; border:1px solid #EDD9B6; border-radius:12px; padding:17px 15px;"><div style="font-size:32px; font-weight:700; color:#B5781A; line-height:1;">7</div><div style="font-size:13px; color:#8A6420; margin-top:7px; font-weight:500;">Yuqori (P1)</div></div>
+      <div style="background:#E7F0F4; border:1px solid #CADEE6; border-radius:12px; padding:17px 15px;"><div style="font-size:32px; font-weight:700; color:#2A6F86; line-height:1;">6</div><div style="font-size:13px; color:#2A6F86; margin-top:7px; font-weight:500;">O'rta (P2)</div></div>
+      <div style="background:#EFEEEA; border:1px solid #DEDCD4; border-radius:12px; padding:17px 15px;"><div style="font-size:32px; font-weight:700; color:#6B6A65; line-height:1;">2</div><div style="font-size:13px; color:#6B6A65; margin-top:7px; font-weight:500;">Past (P3)</div></div>
+    </div>
+    <div style="margin-top:26px; padding-top:22px; border-top:1px solid #E5E3DC;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#0E7C8B; text-transform:uppercase; margin-bottom:10px;">Nimasi yaxshi — saqlab qolinsin</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 22px; font-size:14.5px; line-height:1.6; color:#3A3A36;">
+        <div>· Davr chiplari (Bugun / hafta / oy / yil / Davr) — to'g'ri patternda</div>
+        <div>· «Jami» satri va o'ng tomonga tekislangan summalar</div>
+        <div>· Kirim/chiqim rang kodlash mantiqi izchil</div>
+        <div>· Chop etish uchun alohida letterhead qilingani</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pbreak" style="margin-top:38px; margin-bottom:16px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; color:#C0392B; text-transform:uppercase; margin-bottom:8px;">02 · Kritik</div>
+    <h2 style="font-size:26px; font-weight:700; margin:0; color:#1C1C1A; letter-spacing:-0.01em;">Ishonchni buzadigan uchta nuqta (P0)</h2>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #C0392B; border-radius:12px; padding:26px 30px; margin-bottom:15px; box-shadow:0 10px 28px -24px rgba(20,39,43,0.4);">
+    <div style="display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-bottom:13px;">
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:#fff; background:#C0392B; padding:4px 10px; border-radius:6px;">P0-1</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#9A8F7E; background:#F1EFE9; padding:4px 10px; border-radius:6px;">Kartalar ↔ jadval</span>
+      <h3 style="font-size:19px; font-weight:700; margin:0; color:#1C1C1A; flex:1 1 100%; text-wrap:pretty;">Yuqoridagi kartalar va jadval «Jami»si turli davrni ko'rsatadi</h3>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:13px;">
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#C0392B; text-transform:uppercase; margin-bottom:5px;">Muammo</div><p style="margin:0; font-size:15px; line-height:1.65; color:#3A3A36;">Kartalar: kirim 312,8 mln, chiqim 188,2 mln, yakuniy oqim +124,6 mln. Jadvalda esa 5 ta satr va «JAMI −34 400 000». Bundan tashqari «Joriy oy» tanlangan (bugun 27.07.2026), lekin satrlar 19–23.06.2026 — ya'ni <b>o'tgan oy</b>. Davr chipini bossa ham jadval o'zgarmaydi.</p></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#C0392B; text-transform:uppercase; margin-bottom:5px;">Ta'sir</div><p style="margin:0; font-size:15px; line-height:1.65; color:#3A3A36;">Bir ekranda ikkita qarama-qarshi «haqiqat». Do'kon egasi hisobotni chop etib buxgalterga bersa, birinchi savol shu bo'ladi — «qaysi raqam to'g'ri?». Hisobotning butun qiymati yo'qoladi.</p></div>
+      <div style="background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:13px 15px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#0E7C8B; text-transform:uppercase; margin-bottom:5px;">Tavsiya</div><p style="margin:0; font-size:15px; line-height:1.65; color:#23423F;">① Kartalar ham, jadval ham <b>bitta filtr natijasidan</b> hisoblansin — «Jami» = kartalardagi yakuniy oqim. ② Sarlavha ostida faol davr matn bilan yozilsin: «01–27.07.2026 · 1 038 tranzaksiya». ③ Agar davrda satr bo'lmasa — bo'sh holat ko'rsatilsin, boshqa oyning satrlari emas. ④ Jadval jami satri ikki qatorli bo'lsin: «Kirim 312,8 / Chiqim 188,2 / Sof +124,6».</p></div>
+    </div>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #C0392B; border-radius:12px; padding:26px 30px; margin-bottom:15px; box-shadow:0 10px 28px -24px rgba(20,39,43,0.4);">
+    <div style="display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-bottom:13px;">
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:#fff; background:#C0392B; padding:4px 10px; border-radius:6px;">P0-2</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#9A8F7E; background:#F1EFE9; padding:4px 10px; border-radius:6px;">Tranzaksiya turlari</span>
+      <h3 style="font-size:19px; font-weight:700; margin:0; color:#1C1C1A; flex:1 1 100%; text-wrap:pretty;">Ko'chirish va konvertatsiya hisobotga tushmaydi</h3>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:13px;">
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#C0392B; text-transform:uppercase; margin-bottom:5px;">Muammo</div><p style="margin:0; font-size:15px; line-height:1.65; color:#3A3A36;">Moliya modulida 4 tur bor: <b>Daromad, Xarajat, Ko'chirish, Konvertatsiya</b> (+ smena yopilishi). Hisobotda esa faqat «Kirim» va «Chiqim». Kassadan bankka o'tkazma, dollarni so'mga aylantirish va smena yopilishi ko'rinmaydi — hisoblar qoldig'i o'z-o'zidan «sakraydi» va sabab topilmaydi.</p></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#C0392B; text-transform:uppercase; margin-bottom:5px;">Ta'sir</div><p style="margin:0; font-size:15px; line-height:1.65; color:#3A3A36;">Hisob bo'yicha svodka yopilmaydi: «Naqd kassa»da pul kamaygan, lekin hisobotda chiqim yo'q. Bu kassirni asossiz gumon ostiga qo'yadi va nizoga sabab bo'ladi.</p></div>
+      <div style="background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:13px 15px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#0E7C8B; text-transform:uppercase; margin-bottom:5px;">Tavsiya</div><p style="margin:0; font-size:15px; line-height:1.65; color:#23423F;">① «Turi» ustuniga 5 ta qiymat: Kirim · Chiqim · Ko'chirish · Konvertatsiya · Smena. ② Ko'chirish satri «Naqd kassa → Asosiy bank» ko'rinishida, ikkita hisob bilan. ③ Yuqorida tur bo'yicha filtr chiplari. ④ Kartalarda ko'chirish/konvertatsiya <b>sof oqimga qo'shilmasin</b> (ular ichki harakat) — lekin alohida ko'rsatilsin, aks holda jami buziladi.</p></div>
+    </div>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #C0392B; border-radius:12px; padding:26px 30px; margin-bottom:15px; box-shadow:0 10px 28px -24px rgba(20,39,43,0.4);">
+    <div style="display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-bottom:13px;">
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:#fff; background:#C0392B; padding:4px 10px; border-radius:6px;">P0-3</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#9A8F7E; background:#F1EFE9; padding:4px 10px; border-radius:6px;">Valyuta</span>
+      <h3 style="font-size:19px; font-weight:700; margin:0; color:#1C1C1A; flex:1 1 100%; text-wrap:pretty;">Valyuta ustuni yo'q — USD va UZS bir ustunda qo'shiladi</h3>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:13px;">
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#C0392B; text-transform:uppercase; margin-bottom:5px;">Muammo</div><p style="margin:0; font-size:15px; line-height:1.65; color:#3A3A36;">Tizimda kurs bor (yuqorida 12 780 so'm), Moliya modulida har bir summa «UZS / USD» kesimida ko'rsatiladi. Hisobotda esa faqat «Summa» — valyuta belgisi ham, kurs ham yo'q. USD tranzaksiya kirsa, u so'm sifatida qo'shiladi.</p></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#C0392B; text-transform:uppercase; margin-bottom:5px;">Ta'sir</div><p style="margin:0; font-size:15px; line-height:1.65; color:#3A3A36;">Bu — oldingi auditdagi eng og'ir xatoning aynan takrorlanishi. Bitta 1 000 dollarlik to'lov hisobotni 12,7 mln so'mga yanglishtiradi.</p></div>
+      <div style="background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:13px 15px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1px; color:#0E7C8B; text-transform:uppercase; margin-bottom:5px;">Tavsiya</div><p style="margin:0; font-size:15px; line-height:1.65; color:#23423F;">① «Summa» ustunida valyuta ko'rinsin, yonida qavsda bazaviy valyutadagi qiymati: <code style="font-family:'IBM Plex Mono',monospace; background:#E6F1F2; padding:1px 6px; border-radius:4px;">$ 1 000 (12 780 000 so'm)</code>. ② Hisobot boshida «Kurs: 12 780 so'm/USD · hisobot bazasi UZS» satri. ③ Kartalar bazaviy valyutada, ostida «shundan valyutada: $ 4 200». ④ Valyuta bo'yicha filtr.</p></div>
+    </div>
+  </div>
+
+  <div class="pbreak" style="margin-top:38px; margin-bottom:16px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; color:#B5781A; text-transform:uppercase; margin-bottom:8px;">03 · Yuqori</div>
+    <h2 style="font-size:26px; font-weight:700; margin:0; color:#1C1C1A; letter-spacing:-0.01em;">Hisobotni ishlatib bo'lmaydigan qiladigan bo'shliqlar (P1)</h2>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:13px;">
+    <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #B5781A; border-radius:12px; padding:22px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:9px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#B5781A; padding:3px 9px; border-radius:6px;">P1-1</span>
+        <h3 style="font-size:17.5px; font-weight:700; margin:0; color:#1C1C1A; flex:1;">Hisoblar kesimida boshlang'ich va yakuniy qoldiq yo'q</h3>
+      </div>
+      <p style="margin:0 0 9px; font-size:15px; line-height:1.65; color:#3A3A36;">Pul harakati hisoboti «qoldiq → harakat → qoldiq» mantig'iga qurilishi kerak. Hozir faqat harakat bor. Kassir kunni yopganda «kassada qancha bo'lishi kerak» degan raqamni bu hisobotdan olmaydi.</p>
+      <p style="margin:0; font-size:15px; line-height:1.65; color:#23423F; background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:12px 14px;"><b>Tavsiya:</b> jadval ustiga hisoblar bo'yicha mini-jadval: <i>Hisob · Davr boshiga · Kirim · Chiqim · Davr oxiriga</i> (Naqd kassa, Asosiy bank, Terminal, Filial kassalari). Har bir satrni bosganda pastdagi jadval shu hisob bo'yicha filtrlansin. Jadvalning o'ng chekkasiga «Qoldiq» (running balance) ustuni qo'shilsin.</p>
+    </div>
+
+    <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #B5781A; border-radius:12px; padding:22px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:9px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#B5781A; padding:3px 9px; border-radius:6px;">P1-2</span>
+        <h3 style="font-size:17.5px; font-weight:700; margin:0; color:#1C1C1A; flex:1;">Excel / CSV eksport yo'q — faqat «Chop etish»</h3>
+      </div>
+      <p style="margin:0 0 9px; font-size:15px; line-height:1.65; color:#3A3A36;">Moliya modulida «Yuklab olish» tugmasi bor, hisobotda esa yo'q — bir xil ma'lumot, ikki xil imkoniyat. Buxgalter deyarli har doim Excelda ishlaydi; qog'ozga chiqarilgan jadvalni qayta yozib chiqadi.</p>
+      <p style="margin:0; font-size:15px; line-height:1.65; color:#23423F; background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:12px 14px;"><b>Tavsiya:</b> «Chop etish» yonida <b>Eksport</b> tugmasi (Excel · CSV · PDF). Faylda filtr va davr sarlavhada, «Jami» satri saqlanadi. Barcha hisobotlarda bir xil tugma — bitta komponent.</p>
+    </div>
+
+    <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #B5781A; border-radius:12px; padding:22px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:9px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#B5781A; padding:3px 9px; border-radius:6px;">P1-3</span>
+        <h3 style="font-size:17.5px; font-weight:700; margin:0; color:#1C1C1A; flex:1;">Satrni bosib batafsilga o'tish yo'q — kim kiritgani ko'rinmaydi</h3>
+      </div>
+      <p style="margin:0 0 9px; font-size:15px; line-height:1.65; color:#3A3A36;">Hisobotda ID, foydalanuvchi va izoh ustunlari yo'q (Moliya modulida bor: <i>#006008 · Sardor Aliyev · «Iyun ijara»</i>). Shubhali chiqimni ko'rgan rahbar «kim, qachon, nima uchun kiritdi?» degan savolga javob topa olmaydi va Moliya bo'limiga qaytib, qo'lda qidiradi.</p>
+      <p style="margin:0; font-size:15px; line-height:1.65; color:#23423F; background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:12px 14px;"><b>Tavsiya:</b> satr bosilganda o'ng tomondan <b>drawer</b> ochilsin: ID, kim yaratdi va qachon, izoh, bog'liq hujjat (chek № / kirim hujjati / smena akti) havolasi, o'zgartirish tarixi (audit trail), «Moliyada ochish» tugmasi. Jadvalga ixtiyoriy <i>ID · Foydalanuvchi · Izoh</i> ustunlari (yashirish mumkin).</p>
+    </div>
+
+    <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #B5781A; border-radius:12px; padding:22px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:9px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#B5781A; padding:3px 9px; border-radius:6px;">P1-4</span>
+        <h3 style="font-size:17.5px; font-weight:700; margin:0; color:#1C1C1A; flex:1;">Qidiruv yo'q, saralash yo'q, sahifalash yo'q</h3>
+      </div>
+      <p style="margin:0 0 9px; font-size:15px; line-height:1.65; color:#3A3A36;">Namunada 5 ta satr — chiroyli. Real do'konda bir oyda 800–3 000 tranzaksiya bo'ladi. Hozir: kontragent yoki summa bo'yicha qidirib bo'lmaydi, ustun sarlavhasini bosib saralab bo'lmaydi, «10/25/50 tadan ko'rsatish» yo'q. Moliya modulida qidiruv bor — yana nomuvofiqlik.</p>
+      <p style="margin:0; font-size:15px; line-height:1.65; color:#23423F; background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:12px 14px;"><b>Tavsiya:</b> toolbar: <i>qidiruv (kontragent / modda / izoh / ID) · saralash (sana, summa) · sahifalash · ustunlarni tanlash</i>. Sana bo'yicha default kamayish tartibida. Katta hajmda «Jami» satri <b>butun natija</b> bo'yicha hisoblansin, faqat ko'rinib turgan sahifa bo'yicha emas — bu ko'p tizimda uchraydigan xato.</p>
+    </div>
+
+    <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #B5781A; border-radius:12px; padding:22px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:9px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#B5781A; padding:3px 9px; border-radius:6px;">P1-5</span>
+        <h3 style="font-size:17.5px; font-weight:700; margin:0; color:#1C1C1A; flex:1;">Filtr yopiq qutida — nima qo'llanganini ko'rmaysiz</h3>
+      </div>
+      <p style="margin:0 0 9px; font-size:15px; line-height:1.65; color:#3A3A36;">Filtr panel yopilgandan keyin qanday shart qo'llangani hech qayerda ko'rinmaydi. Foydalanuvchi «nega faqat 3 satr chiqdi?» deb tushunmaydi va noto'g'ri xulosa chiqaradi. Filtrda faqat select'lar bor: summa oralig'i, kontragent, foydalanuvchi, valyuta bo'yicha filtr yo'q.</p>
+      <p style="margin:0; font-size:15px; line-height:1.65; color:#23423F; background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:12px 14px;"><b>Tavsiya:</b> qo'llangan filtrlar toolbar ostida <b>o'chirish belgili chiplar</b> ko'rinishida turadi, yonida «Hammasini tozalash». «Filtr» tugmasida faol filtr soni (<i>Filtr · 2</i>). Filtr to'plamini «Mening hisobotim» sifatida saqlash imkoniyati.</p>
+    </div>
+
+    <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #B5781A; border-radius:12px; padding:22px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:9px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#B5781A; padding:3px 9px; border-radius:6px;">P1-6</span>
+        <h3 style="font-size:17.5px; font-weight:700; margin:0; color:#1C1C1A; flex:1;">Bitta ma'lumot — ikkita turlicha ekran</h3>
+      </div>
+      <p style="margin:0 0 9px; font-size:15px; line-height:1.65; color:#3A3A36;">«Moliyaviy tranzaksiyalar» ham Moliya modulida, ham Hisobotlarda bor, lekin ustunlari, tugmalari va ranglari boshqacha (modulda: ID, Tip, Kategoriya, Foydalanuvchi, Izoh, Amallar; hisobotda: Modda, Kontragent, To'lov turi, Turi). Foydalanuvchi ikkita ekranni bir xil deb o'ylab, farqli natija ko'rganda ishonchi yo'qoladi. Qo'llab-quvvatlashda ham ikki barobar ish.</p>
+      <p style="margin:0; font-size:15px; line-height:1.65; color:#23423F; background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:12px 14px;"><b>Tavsiya:</b> rollarni ajratish. <b>Moliya moduli</b> = ish joyi (yaratish, tahrirlash, o'chirish). <b>Hisobot</b> = tahlil (qoldiqlar, kesimlar, eksport, chop etish, faqat o'qish). Ikkalasi bitta jadval komponentiga va bitta ma'lumot manbasiga tayanadi; modulda «Hisobot sifatida ochish», hisobotda «Moliyada ochish» havolasi.</p>
+    </div>
+
+    <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-left:4px solid #B5781A; border-radius:12px; padding:22px 26px;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:9px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#B5781A; padding:3px 9px; border-radius:6px;">P1-7</span>
+        <h3 style="font-size:17.5px; font-weight:700; margin:0; color:#1C1C1A; flex:1;">Filial / do'kon kesimi yo'q</h3>
+      </div>
+      <p style="margin:0 0 9px; font-size:15px; line-height:1.65; color:#3A3A36;">Tizim ko'p filialli (Filial 1/2/3, Markaziy do'kon, Quva filiali) — boshqa hisobotlarda filial ustuni bor. Pul hisobotida yo'q. Rahbar «qaysi do'kon qancha naqd yig'di» degan eng oddiy savolga javob olmaydi.</p>
+      <p style="margin:0; font-size:15px; line-height:1.65; color:#23423F; background:#F6FAFA; border:1px solid #DCEAEB; border-radius:10px; padding:12px 14px;"><b>Tavsiya:</b> «Filial» ustuni + filiallar bo'yicha filtr; kartalar ostida filiallar bo'yicha kichik taqsimot (bar). Ko'p filialli akkauntda default guruhlash — filial bo'yicha.</p>
+    </div>
+  </div>
+
+  <div class="pbreak" style="margin-top:38px; margin-bottom:16px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; color:#2A6F86; text-transform:uppercase; margin-bottom:8px;">04 · O'rta va past</div>
+    <h2 style="font-size:26px; font-weight:700; margin:0; color:#1C1C1A; letter-spacing:-0.01em;">Aniqlik va qulaylik (P2–P3)</h2>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#FBFAF7; border:1px solid #E5E3DC; border-radius:16px; padding:30px 34px;">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#2A6F86; padding:3px 9px; border-radius:6px; margin-top:2px;">P2</span><div><b style="color:#1C1C1A;">Grafik yo'q.</b> <span style="color:#4A4A45;">Boshqa hisobotlarda bar-diagramma bor, bu yerda yo'q. Kunlar bo'yicha kirim/chiqim ustunli grafigi va sof oqim chizig'i tendensiyani bir qarashda ko'rsatadi — jadvaldan 10 barobar tez.</span></div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#2A6F86; padding:3px 9px; border-radius:6px; margin-top:2px;">P2</span><div><b style="color:#1C1C1A;">Moddalar kesimi yo'q.</b> <span style="color:#4A4A45;">«Xarajatlar strukturasi» ko'rinishi (ijara, ish haqi, ta'minotchi to'lovi…) va o'tgan davr bilan solishtirish — «Foyda va zarar» hisobotida bor, bu yerda yo'q. Kategoriya bo'yicha guruhlash + ochib ko'rish (accordion) qo'shilsin.</span></div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#2A6F86; padding:3px 9px; border-radius:6px; margin-top:2px;">P2</span><div><b style="color:#1C1C1A;">«Turi» — faqat rang bilan farqlanadi.</b> <span style="color:#4A4A45;">Yashil/qizil matn chop etilganda va rangni ajratmaydigan foydalanuvchida yo'qoladi. Badge (fon + belgi ↑/↓) ishlatilsin. Summadagi <i>+ / −</i> saqlanadi.</span></div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#2A6F86; padding:3px 9px; border-radius:6px; margin-top:2px;">P2</span><div><b style="color:#1C1C1A;">Kontragent — jonsiz matn.</b> <span style="color:#4A4A45;">«Tohirov Sardor», «Texno Optom MCHJ» mijoz/ta'minotchi kartochkasiga havola bo'lishi kerak: qarzi, tarixi, aloqasi. Hozir foydalanuvchi ismni qo'lda ko'chirib, Mijozlar bo'limida qidiradi.</span></div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#2A6F86; padding:3px 9px; border-radius:6px; margin-top:2px;">P2</span><div><b style="color:#1C1C1A;">Atamalar aniq emas.</b> <span style="color:#4A4A45;">«Yakuniy oqim» → <i>«Sof pul oqimi (kirim − chiqim)»</i>. «Modda» → <i>«Kategoriya»</i> (Moliya modulida shunday nomlangan — bir atama, bir joyda). Kartalarda «?» tooltip bilan formula ko'rsatilsin.</span></div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#2A6F86; padding:3px 9px; border-radius:6px; margin-top:2px;">P2</span><div><b style="color:#1C1C1A;">Chop etishda davr va imzo yo'q.</b> <span style="color:#4A4A45;">Letterheadda faqat chop sanasi bor; hisobot davri, qo'llangan filtrlar, sahifa raqami va «Rahbar / Buxgalter imzosi» joyi qo'shilsin — aks holda qog'oz hujjat sifatida ishlamaydi.</span></div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#6B6A65; padding:3px 9px; border-radius:6px; margin-top:2px;">P3</span><div><b style="color:#1C1C1A;">Bo'sh holat yo'q.</b> <span style="color:#4A4A45;">Filtr natija bermasa nima ko'rinadi — noma'lum. Moliya modulida chiroyli bo'sh holat bor, hisobotga ham qo'shilsin: «Bu davrda tranzaksiya yo'q · filtrni tozalash».</span></div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; color:#fff; background:#6B6A65; padding:3px 9px; border-radius:6px; margin-top:2px;">P3</span><div><b style="color:#1C1C1A;">Mobilda 7 ustun sig'maydi.</b> <span style="color:#4A4A45;">Mobil ilovada bu hisobot karta ko'rinishida bo'lishi kerak: sana + modda + summa katta, qolgani ochilganda. Gorizontal scroll — telefonda eng noqulay pattern.</span></div></div>
+    </div>
+  </div>
+
+  <div class="pbreak" style="margin-top:38px; margin-bottom:16px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; color:#0E7C8B; text-transform:uppercase; margin-bottom:8px;">05 · Taklif</div>
+    <h2 style="font-size:26px; font-weight:700; margin:0; color:#1C1C1A; letter-spacing:-0.01em;">Ekran qanday ko'rinishi kerak</h2>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#14272B; color:#DDE8E9; border-radius:16px; padding:32px 34px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:1.5px; color:#7FAFB5; text-transform:uppercase; margin-bottom:16px;">Yangi struktura — yuqoridan pastga</div>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:#0E7C8B; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">1</span><div style="font-size:15px; line-height:1.6;"><b style="color:#fff;">Sarlavha satri</b> — davr matn bilan («01–27.07.2026»), tranzaksiya soni, o'ngda: Eksport · Chop etish.</div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:#0E7C8B; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">2</span><div style="font-size:15px; line-height:1.6;"><b style="color:#fff;">4 ta karta</b> — Kirim · Chiqim · Sof oqim · Davr oxiridagi qoldiq. Har birida o'tgan davrga nisbatan o'zgarish (%).</div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:#0E7C8B; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">3</span><div style="font-size:15px; line-height:1.6;"><b style="color:#fff;">Hisoblar bloki</b> — Naqd kassa / Bank / Terminal / filial kassalari: boshiga → kirim → chiqim → oxiriga. Bosilganda pastdagi jadval filtrlanadi.</div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:#0E7C8B; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">4</span><div style="font-size:15px; line-height:1.6;"><b style="color:#fff;">Kunlik oqim grafigi</b> — kirim/chiqim ustunlari + sof oqim chizig'i; ustunni bosish shu kunga filtr.</div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:#0E7C8B; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">5</span><div style="font-size:15px; line-height:1.6;"><b style="color:#fff;">Toolbar</b> — qidiruv · tur chiplari (Kirim/Chiqim/Ko'chirish/Konvertatsiya) · faol filtr chiplari · ustunlarni tanlash · guruhlash (yo'q / kun / kategoriya / hisob / filial).</div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:#0E7C8B; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">6</span><div style="font-size:15px; line-height:1.6;"><b style="color:#fff;">Jadval</b> — Sana · ID · Turi (badge) · Kategoriya · Kontragent (havola) · Hisob · To'lov turi · Valyuta · Summa · Qoldiq. Sarlavhada saralash, tepada «yopishqoq» sarlavha, pastda butun natija bo'yicha «Jami» + sahifalash.</div></div>
+      <div style="display:flex; gap:14px; align-items:flex-start;"><span style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:#0E7C8B; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">7</span><div style="font-size:15px; line-height:1.6;"><b style="color:#fff;">Satr → drawer</b> — to'liq ma'lumot, bog'liq hujjat, o'zgartirish tarixi, «Moliyada ochish».</div></div>
+    </div>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#FBFAF7; border:1px solid #E5E3DC; border-radius:16px; padding:30px 34px; margin-top:15px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:1.5px; color:#0E7C8B; text-transform:uppercase; margin-bottom:14px;">Qo'shimcha g'oyalar — raqobatchilarda kam uchraydi</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div style="background:#fff; border:1px solid #E9E7E0; border-radius:12px; padding:16px 18px;"><b style="color:#1C1C1A; font-size:15px;">Kassa sverkasi</b><div style="font-size:14px; line-height:1.6; color:#4A4A45; margin-top:6px;">«Tizim bo'yicha qoldiq» va «kassirning haqiqiy sanog'i» ustunlari; farq bo'lsa qizil bilan va sababi majburiy izoh.</div></div>
+      <div style="background:#fff; border:1px solid #E9E7E0; border-radius:12px; padding:16px 18px;"><b style="color:#1C1C1A; font-size:15px;">Anomaliya belgisi</b><div style="font-size:14px; line-height:1.6; color:#4A4A45; margin-top:6px;">O'rtachadan keskin farq qiladigan yoki kech kirgan tranzaksiya AI tomonidan belgilanadi — «tekshirish tavsiya etiladi».</div></div>
+      <div style="background:#fff; border:1px solid #E9E7E0; border-radius:12px; padding:16px 18px;"><b style="color:#1C1C1A; font-size:15px;">Ertaga nima bo'ladi</b><div style="font-size:14px; line-height:1.6; color:#4A4A45; margin-top:6px;">Qarzlar va rejalashtirilgan to'lovlar asosida 7/30 kunlik pul oqimi prognozi — «15-avgustga naqd yetmaydi» ogohlantirishi.</div></div>
+      <div style="background:#fff; border:1px solid #E9E7E0; border-radius:12px; padding:16px 18px;"><b style="color:#1C1C1A; font-size:15px;">Telegramga kunlik xulosa</b><div style="font-size:14px; line-height:1.6; color:#4A4A45; margin-top:6px;">Kun yopilganda egaga avtomatik: kirim, chiqim, sof oqim, eng katta 3 chiqim. Tizimga kirmasdan nazorat.</div></div>
+    </div>
+  </div>
+
+  <div class="pbreak" style="margin-top:38px; margin-bottom:16px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; color:#0E7C8B; text-transform:uppercase; margin-bottom:8px;">06 · Butun tizim</div>
+    <h2 style="font-size:26px; font-weight:700; margin:0; color:#1C1C1A; letter-spacing:-0.01em;">Programmani o'rganib chiqqanda ko'zga tashlangan umumiy kamchiliklar</h2>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#fff; border:1px solid #E5E3DC; border-radius:16px; padding:30px 34px;">
+    <div style="display:flex; flex-direction:column; gap:15px;">
+      <div><b style="color:#1C1C1A; font-size:15.5px;">1 · Modullar orasida bir xil narsa turlicha nomlanadi.</b><div style="font-size:15px; line-height:1.65; color:#4A4A45; margin-top:4px;">«Modda» / «Kategoriya», «Kirim–Chiqim» / «Daromad–Xarajat», «Hisob» / «Kassa». Bitta atamalar lug'ati (glossary) tuzilsin va barcha ekranda, ikki tilda ham bir xil ishlatilsin.</div></div>
+      <div><b style="color:#1C1C1A; font-size:15.5px;">2 · Jadval komponenti har ekranda qaytadan yozilgan.</b><div style="font-size:15px; line-height:1.65; color:#4A4A45; margin-top:4px;">Qidiruv, saralash, sahifalash, ustun tanlash, eksport — qaysi ekranda bor, qaysida yo'q: bashorat qilib bo'lmaydi. Yagona «DataTable» patterni butun tizimni bir zumda kuchaytiradi.</div></div>
+      <div><b style="color:#1C1C1A; font-size:15.5px;">3 · Savdo → Moliya bog'lanishi ko'rinmaydi.</b><div style="font-size:15px; line-height:1.65; color:#4A4A45; margin-top:4px;">Sotuv, vozvrat, qarz to'lovi, ta'minotchiga to'lov avtomatik tranzaksiya yaratishi va har bir tranzaksiyadan asl hujjatga o'tish mumkinligi ko'rsatilishi kerak. Aks holda «Moliya» qo'lda yuritiladigan ikkinchi daftarga aylanadi.</div></div>
+      <div><b style="color:#1C1C1A; font-size:15.5px;">4 · Qarzdorlik (debitor/kreditor) yaxlit ko'rinmaydi.</b><div style="font-size:15px; line-height:1.65; color:#4A4A45; margin-top:4px;">Mijoz qarzi, ta'minotchi qarzi, muddati o'tganlar — bitta reestrda, muddat bo'yicha guruhlab (0–30 / 31–60 / 60+) va SMS eslatma tugmasi bilan. Hozir ma'lumot bo'laklarga bo'lingan.</div></div>
+      <div><b style="color:#1C1C1A; font-size:15.5px;">5 · Audit trail (kim nima o'zgartirdi) yo'q.</b><div style="font-size:15px; line-height:1.65; color:#4A4A45; margin-top:4px;">Pul va qoldiqqa ta'sir qiladigan har bir o'zgarish yozilib borilsin: kim, qachon, eski → yangi qiymat. Rollar bo'lgan tizimda bu majburiy — nizolarning 90% shu jurnal bilan yopiladi.</div></div>
+      <div><b style="color:#1C1C1A; font-size:15.5px;">6 · Xatoni oldini olish emas, xatoni ko'rsatish kerak.</b><div style="font-size:15px; line-height:1.65; color:#4A4A45; margin-top:4px;">Katta summa, noodatiy kurs, minus qoldiq, kelasi sanaga tranzaksiya — kiritish paytida ogohlantirilsin. Valyuta har bir summa maydonida majburiy va ko'rinib turishi shart.</div></div>
+      <div><b style="color:#1C1C1A; font-size:15.5px;">7 · Hisobotlar ro'yxati o'sib ketmoqda.</b><div style="font-size:15px; line-height:1.65; color:#4A4A45; margin-top:4px;">20+ hisobot kartochkasi orasidan kerakligini topish qiyinlashadi. Qidiruv, «oxirgi ochilganlar» va har hisobot ustida «nima uchun kerak» degan bir qatorli izoh yordam beradi (ABC'da bor — hammasiga qo'yilsin).</div></div>
+    </div>
+  </div>
+
+  <div class="pbreak" style="margin-top:38px; margin-bottom:16px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:2px; color:#0E7C8B; text-transform:uppercase; margin-bottom:8px;">07 · Yo'l xaritasi</div>
+    <h2 style="font-size:26px; font-weight:700; margin:0; color:#1C1C1A; letter-spacing:-0.01em;">Nimadan boshlash kerak</h2>
+  </div>
+
+  <div class="doc-page nobreak" style="background:#FBFAF7; border:1px solid #E5E3DC; border-radius:16px; padding:8px 34px 30px;">
+    <div style="display:grid; grid-template-columns:120px 1fr; gap:0 20px; align-items:start;">
+      <div style="padding:22px 0 0; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1px; color:#C0392B; text-transform:uppercase;">1–2 hafta</div>
+      <div style="padding:22px 0 18px; border-bottom:1px solid #E5E3DC; font-size:15px; line-height:1.7; color:#3A3A36;">Kartalar bilan «Jami»ni bitta manbadan hisoblash · davr filtri jadvalga ham ta'sir qilishi · valyuta ustuni va kurs satri · ko'chirish/konvertatsiya turlarini qo'shish · Excel eksport.</div>
+      <div style="padding:20px 0 0; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1px; color:#B5781A; text-transform:uppercase;">1 oy</div>
+      <div style="padding:20px 0 18px; border-bottom:1px solid #E5E3DC; font-size:15px; line-height:1.7; color:#3A3A36;">Hisoblar bo'yicha qoldiq bloki va «Qoldiq» ustuni · qidiruv, saralash, sahifalash · faol filtr chiplari · satr → drawer (ID, foydalanuvchi, izoh, bog'liq hujjat) · filial ustuni va kesimi.</div>
+      <div style="padding:20px 0 0; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1px; color:#2A6F86; text-transform:uppercase;">Kvartal</div>
+      <div style="padding:20px 0 0; font-size:15px; line-height:1.7; color:#3A3A36;">Yagona DataTable komponenti barcha hisobotlarga · kunlik oqim grafigi va kategoriya kesimi · audit trail · kassa sverkasi · pul oqimi prognozi va Telegram xulosasi · mobil karta ko'rinishi.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:34px; padding:22px 8px; text-align:center;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1px; color:#9A988E;">WASYT · MOLIYA TRANZAKSIYALAR AUDIT · 27.07.2026</div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

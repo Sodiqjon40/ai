@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #E6EAEE; }
+  a { color: #14A0AE; } a:hover { color: #0E7C88; }
+  .wm-scroll { scrollbar-width: none; }
+  .wm-scroll::-webkit-scrollbar { width: 0; height: 0; }
+  @keyframes wmToast { from { opacity: 0; transform: translate(-50%, -8px); } to { opacity: 1; transform: translate(-50%, 0); } }
+</style>
+<script src="i18n.js" data-i18n-skip></script>
+</helmet>
+
+<div style="min-height:100vh; display:flex; justify-content:center; align-items:flex-start; padding:36px 20px 60px; font-family:'Manrope',system-ui,sans-serif;">
+
+  <!-- PHONE BEZEL -->
+  <div style="width:390px; flex-shrink:0; background:#0B1215; border-radius:56px; padding:11px; box-shadow:0 40px 90px rgba(11,18,21,0.4), 0 6px 18px rgba(11,18,21,0.25);">
+    <div style="position:relative; height:822px; border-radius:46px; background:#EEF1F4; overflow:hidden; display:flex; flex-direction:column;">
+
+      <!-- notch -->
+      <div style="position:absolute; top:10px; left:50%; transform:translateX(-50%); width:118px; height:28px; border-radius:16px; background:#0B1215; z-index:60;"></div>
+
+      <!-- STATUS BAR -->
+      <div style="height:46px; flex-shrink:0; display:flex; align-items:center; justify-content:space-between; padding:6px 28px 0; font-size:14px; font-weight:700; color:#16313A;">
+        <span>9:41</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <svg width="17" height="12" viewBox="0 0 18 12" fill="#16313A"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="5" y="4.5" width="3" height="7.5" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity="0.35"></rect></svg>
+          <div style="width:25px; height:12px; border:1.6px solid #16313A; border-radius:3px; padding:1.5px; opacity:0.9;"><div style="width:72%; height:100%; background:#16313A; border-radius:1px;"></div></div>
+        </div>
+      </div>
+
+      <!-- ============ SCREEN: BOSH ============ -->
+      <sc-if value="{{ scrHome }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Mobil · Bosh" style="flex:1; min-height:0; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 18px 12px;">
+          <div style="min-width:0;">
+            <div style="font-size:22px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">Salom, Aziz</div>
+            <div style="font-size:12.5px; font-weight:600; color:#9AA3AE; margin-top:2px;">Markaziy do'kon · Bugun</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+            <button onClick="{{ openNotifs }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6675" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.5 21a2 2 0 0 1-3 0"></path></svg>
+              <span style="position:absolute; top:-4px; right:-4px; min-width:16px; height:16px; border-radius:8px; background:#E5544E; color:#fff; font-size:9.5px; font-weight:800; display:flex; align-items:center; justify-content:center; padding:0 4px;">{{ notifCount }}</span>
+            </button>
+            <span style="width:40px; height:40px; border-radius:50%; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800;">A</span>
+          </div>
+        </div>
+
+        <div style="flex:1; overflow-y:auto; padding:2px 18px 110px;" class="wm-scroll">
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <div style="font-size:13.5px; font-weight:600; color:#5A6675;">Bugungi umumiy savdo</div>
+            <div style="display:flex; align-items:baseline; gap:8px; margin-top:6px;">
+              <span style="font-size:32px; font-weight:800; color:#16313A; letter-spacing:-0.03em;">{{ todayTotal }}</span>
+              <span style="font-size:14px; font-weight:700; color:#9AA3AE;">so'm</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:7px; margin-top:10px;">
+              <span style="display:inline-flex; align-items:center; gap:4px; font-size:12.5px; font-weight:800; color:#1AA565; background:#E6F7EE; border-radius:8px; padding:3px 8px;">▲ 12%</span>
+              <span style="font-size:12.5px; font-weight:600; color:#9AA3AE;">kechagiga nisbatan</span>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px;">
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:13px 14px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+              <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Oylik savdo</div>
+              <div style="font-size:16px; font-weight:800; color:#16313A; margin-top:5px;">681.5M</div>
+            </div>
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:13px 14px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+              <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Foyda</div>
+              <div style="font-size:16px; font-weight:800; color:#1AA565; margin-top:5px;">8.1M</div>
+            </div>
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:13px 14px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+              <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; white-space:nowrap;">Cheklar</div>
+              <div style="font-size:16px; font-weight:800; color:#16313A; margin-top:5px;">{{ chekCountText }}</div>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:18px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">Savdo dinamikasi</span>
+              <span style="font-size:12px; font-weight:700; color:#14A0AE;">Bu hafta</span>
+            </div>
+            <div style="display:flex; align-items:flex-end; gap:9px; height:120px;">
+              <sc-for list="{{ chartDays }}" as="d" hint-placeholder-count="7">
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;">
+                  <div style="{{ d.bar }}"></div>
+                  <span style="font-size:11px; font-weight:600; color:#9AA3AE;">{{ d.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px 8px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">So'nggi savdolar</span>
+              <span style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#E5544E;">Live <span style="width:7px; height:7px; border-radius:50%; background:#E5544E;"></span></span>
+            </div>
+            <sc-for list="{{ salesFeed }}" as="s" hint-placeholder-count="3">
+              <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-top:1px solid #F2F4F6;">
+                <span style="width:42px; height:42px; border-radius:11px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="m21 15-5-5L5 21"></path></svg>
+                </span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.name }}</div>
+                  <div style="font-size:12px; font-weight:500; color:#9AA3AE;">{{ s.ago }}</div>
+                </div>
+                <span style="font-size:14.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ s.sum }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- to'lov usullari -->
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px 8px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">To'lov usullari</span>
+              <span style="font-size:12px; font-weight:700; color:#14A0AE;">Bugun</span>
+            </div>
+            <sc-for list="{{ payRows }}" as="r" hint-placeholder-count="4">
+              <div style="padding:11px 0; border-top:1px solid #F2F4F6;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <span style="{{ r.dot }}"></span>
+                  <span style="flex:1; font-size:13.5px; font-weight:700; color:#16313A;">{{ r.label }}</span>
+                  <span style="font-size:12px; font-weight:600; color:#9AA3AE;">{{ r.cnt }} chek</span>
+                  <span style="font-size:13.5px; font-weight:800; color:#16313A; min-width:86px; text-align:right;">{{ r.amt }}</span>
+                </div>
+                <div style="height:5px; border-radius:3px; background:#F0F2F5; overflow:hidden; margin-top:8px;"><div style="{{ r.barStyle }}"></div></div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- ombor holati -->
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">Ombor holati</span>
+              <button onClick="{{ goStock }}" style="border:none; background:none; font-size:12px; font-weight:700; color:#14A0AE; cursor:pointer; font-family:inherit; padding:0;">Barchasi →</button>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+              <div style="background:#E6F7EE; border-radius:14px; padding:12px 13px;"><div style="font-size:11.5px; font-weight:700; color:#1AA565;">Mavjud</div><div style="font-size:19px; font-weight:800; color:#16313A; margin-top:3px;">18</div></div>
+              <div style="background:#FBF1DA; border-radius:14px; padding:12px 13px;"><div style="font-size:11.5px; font-weight:700; color:#C98A12;">Kam qoldiq</div><div style="font-size:19px; font-weight:800; color:#16313A; margin-top:3px;">4</div></div>
+              <div style="background:#FBEDEC; border-radius:14px; padding:12px 13px;"><div style="font-size:11.5px; font-weight:700; color:#E5544E;">Tugagan</div><div style="font-size:19px; font-weight:800; color:#16313A; margin-top:3px;">2</div></div>
+            </div>
+          </div>
+
+          <!-- top mahsulotlar -->
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px 8px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">Top mahsulotlar</span>
+              <span style="font-size:12px; font-weight:700; color:#14A0AE;">Bu oy</span>
+            </div>
+            <sc-for list="{{ homeTops }}" as="t" hint-placeholder-count="4">
+              <div style="display:flex; align-items:center; gap:11px; padding:12px 0; border-top:1px solid #F2F4F6;">
+                <span style="{{ t.medal }}">{{ t.rank }}</span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ t.name }}</div>
+                  <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:1px;">{{ t.qty }} dona sotildi</div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:13.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ t.sum }}</div>
+                  <div style="font-size:11.5px; font-weight:700; color:#1AA565; margin-top:1px;">+{{ t.profit }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- sotuvchilar reytingi -->
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px 8px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">Sotuvchilar reytingi</span>
+              <span style="font-size:12px; font-weight:700; color:#14A0AE;">Bu oy</span>
+            </div>
+            <sc-for list="{{ sellerRank }}" as="s" hint-placeholder-count="4">
+              <div style="display:flex; align-items:center; gap:11px; padding:12px 0; border-top:1px solid #F2F4F6;">
+                <span style="{{ s.medal }}">{{ s.rank }}</span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13.5px; font-weight:700; color:#16313A;">{{ s.name }}</div>
+                  <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:1px;">{{ s.cnt }} ta savdo</div>
+                </div>
+                <span style="font-size:13.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ s.sum }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- qarzdorlar -->
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px 8px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">Qarzdorlar</span>
+              <span style="font-size:12px; font-weight:800; color:#E5544E; background:#FBEDEC; border-radius:8px; padding:3px 9px;">{{ debtTotal }}</span>
+            </div>
+            <sc-for list="{{ debtRows }}" as="d" hint-placeholder-count="3">
+              <button onClick="{{ d.open }}" style="width:100%; display:flex; align-items:center; gap:11px; padding:12px 0; border:none; border-top:1px solid #F2F4F6; background:none; cursor:pointer; text-align:left; font-family:inherit;">
+                <span style="width:38px; height:38px; border-radius:50%; background:#FBEDEC; color:#E5544E; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex-shrink:0;">{{ d.initial }}</span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13.5px; font-weight:700; color:#16313A;">{{ d.name }}</div>
+                  <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:1px;">{{ d.phone }}</div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:13.5px; font-weight:800; color:#E5544E; white-space:nowrap;">{{ d.sum }}</div>
+                  <div style="{{ d.dueStyle }}">{{ d.due }}</div>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SCREEN: SAVDO (POS) ============ -->
+      <sc-if value="{{ scrPos }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Savdo" style="flex:1; min-height:0; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; padding:14px 18px 0;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div style="font-size:22px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">Yangi savdo</div>
+            <span style="font-family:monospace; font-size:12px; font-weight:700; color:#9AA3AE; background:#fff; border:1px solid #EAEDF1; border-radius:8px; padding:5px 10px;">{{ chekId }}</span>
+          </div>
+          <button onClick="{{ openSeller }}" style="display:flex; align-items:center; gap:8px; background:#14A0AE; border:none; border-radius:22px; padding:8px 15px; cursor:pointer; margin-top:12px;">
+            <span style="width:20px; height:20px; border-radius:50%; background:rgba(255,255,255,0.22); color:#fff; display:flex; align-items:center; justify-content:center; font-size:10.5px; font-weight:800;">{{ sellerInitials }}</span>
+            <span style="font-size:13px; font-weight:700; color:#fff; white-space:nowrap; max-width:200px; overflow:hidden; text-overflow:ellipsis;">{{ sellerName }}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div style="display:flex; background:#E3E8ED; border-radius:12px; padding:4px; gap:4px; margin-top:12px;">
+            <button onClick="{{ posTovPick }}" style="{{ posTovStyle }}">Tovarlar</button>
+            <button onClick="{{ posXizPick }}" style="{{ posXizStyle }}">Xizmatlar</button>
+            <button onClick="{{ posKomPick }}" style="{{ posKomStyle }}">Komplektlar</button>
+          </div>
+          <div style="display:flex; align-items:center; gap:9px; background:#fff; border:1px solid #EAEDF1; border-radius:13px; padding:0 14px; margin-top:10px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <input value="{{ posQ }}" onInput="{{ setPosQ }}" placeholder="Mahsulot nomi yoki shtrix-kod" style="flex:1; min-width:0; border:none; background:transparent; padding:12px 0; font-size:13.5px; font-weight:600; color:#16313A; outline:none; font-family:inherit;" />
+          </div>
+        </div>
+
+        <div style="flex:1; overflow-y:auto; padding:10px 18px 190px;" class="wm-scroll">
+          <sc-for list="{{ posList }}" as="p" hint-placeholder-count="6">
+            <button onClick="{{ p.add }}" style="width:100%; display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid #EAEDF1; border-radius:16px; background:#fff; cursor:pointer; text-align:left; margin-bottom:9px; box-shadow:0 1px 3px rgba(16,24,40,0.04); font-family:inherit;">
+              <span style="width:44px; height:44px; border-radius:12px; background:#EEF1F4; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="m21 15-5-5L5 21"></path></svg>
+              </span>
+              <span style="flex:1; min-width:0;">
+                <span style="display:block; font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.name }}</span>
+                <span style="{{ p.subStyle }}">{{ p.sub }}</span>
+              </span>
+              <span style="text-align:right; flex-shrink:0;">
+                <span style="display:block; font-size:13.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ p.price }}</span>
+                <span style="{{ p.qtyStyle }}">{{ p.qtyText }}</span>
+              </span>
+              <sc-if value="{{ p.inCart }}" hint-placeholder-val="{{ false }}">
+                <span style="min-width:24px; height:24px; border-radius:12px; background:#14A0AE; color:#fff; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; padding:0 7px; flex-shrink:0;">{{ p.cartQty }}</span>
+              </sc-if>
+            </button>
+          </sc-for>
+        </div>
+
+        <!-- floating cart bar -->
+        <sc-if value="{{ cartBarShown }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; left:16px; right:16px; bottom:96px; z-index:25;">
+            <button onClick="{{ openCart }}" style="width:100%; display:flex; align-items:center; gap:12px; background:#0E7C88; border:none; border-radius:18px; padding:15px 18px; cursor:pointer; box-shadow:0 14px 30px rgba(14,124,136,0.4); font-family:inherit;">
+              <span style="min-width:26px; height:26px; border-radius:13px; background:rgba(255,255,255,0.22); color:#fff; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; padding:0 8px;">{{ cartCount }}</span>
+              <span style="flex:1; text-align:left; font-size:15px; font-weight:800; color:#fff;">Savat</span>
+              <span style="font-size:15.5px; font-weight:800; color:#fff; white-space:nowrap;">{{ cartTotalFmt }}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="m9 6 6 6-6 6"></path></svg>
+            </button>
+          </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ============ SCREEN: MAHSULOTLAR ============ -->
+      <sc-if value="{{ scrProd }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Mahsulotlar" style="flex:1; min-height:0; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; padding:14px 18px 0;">
+          <div style="font-size:22px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">Mahsulotlar</div>
+          <div style="display:flex; align-items:center; gap:9px; background:#fff; border:1px solid #EAEDF1; border-radius:13px; padding:0 14px; margin-top:12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <input value="{{ prodQ }}" onInput="{{ setProdQ }}" placeholder="Qidirish" style="flex:1; min-width:0; border:none; background:transparent; padding:12px 0; font-size:13.5px; font-weight:600; color:#16313A; outline:none; font-family:inherit;" />
+          </div>
+          <div style="display:flex; gap:7px; margin-top:10px; overflow-x:auto; padding-bottom:2px;" class="wm-scroll">
+            <sc-for list="{{ prodCats }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:10px 18px 110px;" class="wm-scroll">
+          <sc-for list="{{ prodList }}" as="p" hint-placeholder-count="6">
+            <button onClick="{{ p.openDet }}" style="width:100%; display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid #EAEDF1; border-radius:16px; background:#fff; cursor:pointer; text-align:left; margin-bottom:9px; box-shadow:0 1px 3px rgba(16,24,40,0.04); font-family:inherit;">
+              <span style="width:44px; height:44px; border-radius:12px; background:#EEF1F4; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="m21 15-5-5L5 21"></path></svg>
+              </span>
+              <span style="flex:1; min-width:0;">
+                <span style="display:block; font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ p.name }}</span>
+                <span style="display:block; font-size:12px; font-weight:500; color:#9AA3AE; margin-top:2px;">{{ p.cat }}</span>
+              </span>
+              <span style="text-align:right; flex-shrink:0;">
+                <span style="display:block; font-size:13.5px; font-weight:800; color:#16313A; white-space:nowrap;">{{ p.price }}</span>
+                <span style="{{ p.stockStyle }}">{{ p.stockText }}</span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SCREEN: MIJOZLAR ============ -->
+      <sc-if value="{{ scrCust }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Mijozlar" style="flex:1; min-height:0; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; padding:14px 18px 0;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div style="font-size:22px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">Mijozlar</div>
+            <span style="font-size:12.5px; font-weight:700; color:#9AA3AE;">{{ custCountText }}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:9px; background:#fff; border:1px solid #EAEDF1; border-radius:13px; padding:0 14px; margin-top:12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <input value="{{ custQ }}" onInput="{{ setCustQ }}" placeholder="Ism yoki telefon" style="flex:1; min-width:0; border:none; background:transparent; padding:12px 0; font-size:13.5px; font-weight:600; color:#16313A; outline:none; font-family:inherit;" />
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:10px 18px 110px;" class="wm-scroll">
+          <sc-for list="{{ custList }}" as="cst" hint-placeholder-count="5">
+            <button onClick="{{ cst.openDet }}" style="width:100%; display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid #EAEDF1; border-radius:16px; background:#fff; cursor:pointer; text-align:left; margin-bottom:9px; box-shadow:0 1px 3px rgba(16,24,40,0.04); font-family:inherit;">
+              <span style="{{ cst.avaStyle }}">{{ cst.initial }}</span>
+              <span style="flex:1; min-width:0;">
+                <span style="display:block; font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ cst.name }}</span>
+                <span style="display:block; font-size:12px; font-weight:500; color:#9AA3AE; margin-top:2px;">{{ cst.phone }}</span>
+              </span>
+              <span style="{{ cst.badgeStyle }}">{{ cst.badgeText }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SCREEN: YANA ============ -->
+      <sc-if value="{{ scrMore }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Yana" style="flex:1; min-height:0; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; padding:14px 18px 0;">
+          <div style="font-size:22px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">Yana</div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:12px 18px 110px;" class="wm-scroll">
+
+          <div style="display:flex; align-items:center; gap:14px; background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <span style="width:52px; height:52px; border-radius:50%; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; flex-shrink:0;">A</span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:16px; font-weight:800; color:#16313A;">Aziz Karimov</div>
+              <div style="font-size:12.5px; font-weight:600; color:#9AA3AE; margin-top:2px;">Administrator · Markaziy do'kon</div>
+            </div>
+          </div>
+
+          <!-- kassa smena card -->
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; gap:11px;">
+              <span style="{{ shiftDotStyle }}"></span>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:15px; font-weight:800; color:#16313A;">Kassa smenasi</div>
+                <div style="font-size:12.5px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ shiftSub }}</div>
+              </div>
+              <button onClick="{{ shiftAction }}" style="{{ shiftBtnStyle }}">{{ shiftBtnText }}</button>
+            </div>
+            <sc-if value="{{ shiftOn }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; padding-top:14px; border-top:1px solid #F2F4F6;">
+                <div><div style="font-size:11.5px; font-weight:600; color:#9AA3AE;">Naqd kassada</div><div style="font-size:16px; font-weight:800; color:#16313A; margin-top:4px;">{{ shiftCashFmt }}</div></div>
+                <div><div style="font-size:11.5px; font-weight:600; color:#9AA3AE;">Cheklar</div><div style="font-size:16px; font-weight:800; color:#16313A; margin-top:4px;">{{ chekCountText }}</div></div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="font-size:13px; font-weight:800; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.04em; margin:16px 4px 8px;">Bo'limlar</div>
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:4px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <sc-for list="{{ moreItems }}" as="m" hint-placeholder-count="5">
+              <button onClick="{{ m.open }}" style="width:100%; display:flex; align-items:center; gap:13px; padding:14px 0; border:none; background:none; border-top:{{ m.divider }}; cursor:pointer; text-align:left; font-family:inherit;">
+                <span style="width:38px; height:38px; border-radius:11px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="{{ m.icon }}"></path></svg>
+                </span>
+                <span style="flex:1; font-size:14.5px; font-weight:700; color:#16313A;">{{ m.label }}</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AE" stroke-width="2.2"><path d="m9 6 6 6-6 6"></path></svg>
+              </button>
+            </sc-for>
+          </div>
+
+          <button style="width:100%; display:flex; align-items:center; justify-content:center; gap:9px; margin-top:14px; background:#FBEDEC; border:1px solid #F1D2CF; border-radius:16px; padding:14px; font-size:14.5px; font-weight:800; color:#C7473F; cursor:pointer; font-family:inherit;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><path d="m16 17 5-5-5-5M21 12H9"></path></svg>
+            Chiqish
+          </button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ BOTTOM NAV ============ -->
+      <div style="position:absolute; left:0; right:0; bottom:0; z-index:20; background:rgba(255,255,255,0.94); backdrop-filter:blur(10px); border-top:1px solid #EAEDF1; display:flex; padding:10px 8px 24px;">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <button onClick="{{ n.go }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; border:none; background:none; cursor:pointer; padding:2px 0; position:relative; font-family:inherit;">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ n.color }}" stroke-width="2"><path d="{{ n.icon }}"></path></svg>
+            <span style="font-size:10.5px; font-weight:800; color:{{ n.color }};">{{ n.label }}</span>
+            <sc-if value="{{ n.badge }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute; top:-3px; right:calc(50% - 20px); min-width:15px; height:15px; border-radius:8px; background:#E5544E; color:#fff; font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center; padding:0 4px;">{{ n.badgeText }}</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <!-- ============ SHEET: SAVAT ============ -->
+      <sc-if value="{{ shCart }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Savat" style="position:absolute; inset:0; z-index:30; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; gap:12px; padding:56px 18px 12px;">
+          <button onClick="{{ closeSheet }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg></button>
+          <div style="flex:1;">
+            <div style="font-size:19px; font-weight:800; color:#16313A;">Savat</div>
+            <div style="font-size:12.5px; font-weight:600; color:#9AA3AE;">{{ cartCount }} mahsulot · {{ sellerName }}</div>
+          </div>
+          <button onClick="{{ clearCart }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #F1D2CF; background:#FBEDEC; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E5544E" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"></path></svg></button>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:4px 18px 24px;" class="wm-scroll">
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:4px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="3">
+              <div style="display:flex; align-items:center; gap:12px; padding:13px 0; border-top:{{ l.divider }};">
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:14px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ l.name }}</div>
+                  <div style="font-size:12px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ l.price }} so'm</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+                  <button onClick="{{ l.dec }}" style="width:30px; height:30px; border-radius:9px; border:1px solid #EAEDF1; background:#fff; color:#16313A; font-size:18px; font-weight:700; cursor:pointer; line-height:1;">−</button>
+                  <span style="min-width:20px; text-align:center; font-size:15px; font-weight:800; color:#16313A;">{{ l.qty }}</span>
+                  <button onClick="{{ l.inc }}" style="width:30px; height:30px; border-radius:9px; border:none; background:#14A0AE; color:#fff; font-size:18px; font-weight:700; cursor:pointer; line-height:1;">+</button>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:13.5px; font-weight:700; color:#5A6675;">Chegirma</span>
+              <div style="display:flex; gap:6px;">
+                <sc-for list="{{ discOpts }}" as="o" hint-placeholder-count="4">
+                  <button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:13.5px; font-weight:600; color:#9AA3AE; margin-top:14px;"><span>Jami summa</span><span>{{ cartTotalFmt }}</span></div>
+            <sc-if value="{{ discShown }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; justify-content:space-between; font-size:13.5px; font-weight:600; color:#E5544E; margin-top:8px;"><span>Chegirma ({{ discPct }}%)</span><span>− {{ discAmtFmt }}</span></div>
+            </sc-if>
+            <div style="display:flex; justify-content:space-between; font-size:18px; font-weight:800; color:#16313A; margin-top:12px; padding-top:12px; border-top:1px solid #F2F4F6;"><span>To'lov</span><span>{{ payTotalFmt }}</span></div>
+          </div>
+        </div>
+        <div style="flex-shrink:0; padding:12px 18px 30px; background:#EEF1F4;">
+          <button onClick="{{ goPay }}" style="width:100%; border:none; border-radius:16px; background:#14A0AE; color:#fff; font-size:16px; font-weight:800; padding:16px; cursor:pointer; box-shadow:0 10px 22px rgba(20,160,174,0.3); font-family:inherit;">To'lovga o'tish</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: TO'LOV ============ -->
+      <sc-if value="{{ shPay }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · To'lov" style="position:absolute; inset:0; z-index:31; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; gap:12px; padding:56px 18px 12px;">
+          <button onClick="{{ backToCart }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg></button>
+          <div style="font-size:19px; font-weight:800; color:#16313A;">To'lov</div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:4px 18px 24px;" class="wm-scroll">
+          <div style="background:linear-gradient(135deg,#0E7C88,#14A0AE); border-radius:20px; padding:20px; box-shadow:0 12px 26px rgba(14,124,136,0.3);">
+            <div style="font-size:13px; font-weight:600; color:rgba(255,255,255,0.75);">To'lanadigan summa</div>
+            <div style="display:flex; align-items:baseline; gap:7px; margin-top:5px;">
+              <span style="font-size:30px; font-weight:800; color:#fff; letter-spacing:-0.02em;">{{ payTotalFmt }}</span>
+              <span style="font-size:14px; font-weight:700; color:rgba(255,255,255,0.75);">so'm</span>
+            </div>
+          </div>
+
+          <div style="font-size:13px; font-weight:800; color:#9AA3AE; text-transform:uppercase; letter-spacing:0.04em; margin:16px 4px 8px;">To'lov turi</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <sc-for list="{{ payTypes }}" as="t" hint-placeholder-count="4">
+              <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ payIsCash }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:16px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:14px;">
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Qabul qilingan summa</div>
+              <div style="display:flex; align-items:center; border:1.5px solid #14A0AE; border-radius:13px; background:#F7F9FA; overflow:hidden;">
+                <input value="{{ receivedFmt }}" onInput="{{ setReceived }}" placeholder="0" style="flex:1; min-width:0; border:none; background:transparent; padding:13px 15px; font-size:16px; font-weight:800; color:#16313A; outline:none; font-family:inherit;" />
+                <span style="padding:0 14px; font-size:12px; font-weight:800; color:#9AA3AE;">UZS</span>
+              </div>
+              <div style="display:flex; gap:7px; margin-top:10px;">
+                <sc-for list="{{ quickCash }}" as="qc" hint-placeholder-count="3">
+                  <button onClick="{{ qc.pick }}" style="flex:1; border:1px solid #EAEDF1; border-radius:10px; background:#F7F9FA; color:#46535F; font-size:12px; font-weight:700; padding:9px 4px; cursor:pointer; white-space:nowrap; font-family:inherit;">{{ qc.label }}</button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ changeShown }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding:12px 14px; border-radius:12px; background:#E6F7EE;">
+                  <span style="font-size:13.5px; font-weight:700; color:#1AA565;">Qaytim</span>
+                  <span style="font-size:16px; font-weight:800; color:#1AA565;">{{ changeFmt }}</span>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+        </div>
+        <div style="flex-shrink:0; padding:12px 18px 30px; background:#EEF1F4;">
+          <button onClick="{{ finishPay }}" style="{{ finishStyle }}">To'lovni yakunlash</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: CHEK ============ -->
+      <sc-if value="{{ shReceipt }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Chek" style="position:absolute; inset:0; z-index:32; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex:1; overflow-y:auto; padding:64px 18px 24px;" class="wm-scroll">
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:22px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:10px; padding-bottom:18px; border-bottom:1px dashed #D6DCE1; margin-bottom:14px;">
+              <span style="width:56px; height:56px; border-radius:50%; background:#E6F7EE; display:flex; align-items:center; justify-content:center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1AA565" stroke-width="2.6"><path d="M20 6 9 17l-5-5"></path></svg></span>
+              <div style="font-size:17px; font-weight:800; color:#16313A;">Savdo muvaffaqiyatli</div>
+              <div style="font-size:12.5px; font-weight:600; color:#9AA3AE;">Chek {{ chekId }} · Markaziy do'kon</div>
+            </div>
+            <sc-for list="{{ receiptLines }}" as="l" hint-placeholder-count="3">
+              <div style="display:flex; justify-content:space-between; gap:10px; padding:7px 0;">
+                <span style="font-size:13.5px; font-weight:600; color:#5A6675; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ l.label }}</span>
+                <span style="font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap;">{{ l.sum }}</span>
+              </div>
+            </sc-for>
+            <sc-if value="{{ discShown }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; justify-content:space-between; gap:10px; padding:7px 0;">
+                <span style="font-size:13.5px; font-weight:600; color:#E5544E;">Chegirma ({{ discPct }}%)</span>
+                <span style="font-size:13.5px; font-weight:700; color:#E5544E;">− {{ discAmtFmt }}</span>
+              </div>
+            </sc-if>
+            <div style="display:flex; justify-content:space-between; margin-top:12px; padding-top:14px; border-top:1px dashed #D6DCE1; font-size:18px; font-weight:800; color:#16313A;"><span>Jami</span><span>{{ payTotalFmt }}</span></div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:12.5px; font-weight:600; color:#9AA3AE;"><span>To'lov turi</span><span>{{ payTypeLabel }}</span></div>
+            <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:12.5px; font-weight:600; color:#9AA3AE;"><span>Sotuvchi</span><span>{{ sellerName }}</span></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; background:#E3F3F5; border-radius:14px; padding:13px 16px; margin-top:14px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#14A0AE"><path d="M21.9 4.3 18.7 19.5c-.24 1.06-.87 1.32-1.76.82l-4.86-3.58-2.35 2.26c-.26.26-.48.48-.98.48l.35-4.96 9.02-8.15c.39-.35-.09-.55-.6-.2L6.43 13.1l-4.8-1.5c-1.04-.33-1.06-1.04.22-1.54l18.77-7.23c.87-.32 1.63.2 1.35 1.47Z"></path></svg>
+            <span style="font-size:13px; font-weight:700; color:#0E7C88;">Chek mijozga Telegram orqali yuborildi</span>
+          </div>
+        </div>
+        <div style="flex-shrink:0; padding:12px 18px 30px; display:flex; gap:10px;">
+          <button onClick="{{ printChek }}" style="flex:1; border:1px solid #EAEDF1; border-radius:16px; background:#fff; color:#16313A; font-size:14.5px; font-weight:800; padding:15px; cursor:pointer; font-family:inherit;">Chop etish</button>
+          <button onClick="{{ newSale }}" style="flex:1.4; border:none; border-radius:16px; background:#14A0AE; color:#fff; font-size:14.5px; font-weight:800; padding:15px; cursor:pointer; box-shadow:0 10px 22px rgba(20,160,174,0.3); font-family:inherit;">Yangi savdo</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: SOTUVCHI ============ -->
+      <sc-if value="{{ shSeller }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Sotuvchi tanlash" style="position:absolute; inset:0; z-index:33; background:rgba(16,24,40,0.45); display:flex; flex-direction:column; justify-content:flex-end;" onClick="{{ closeSheet }}">
+        <div style="background:#EEF1F4; border-radius:26px 26px 0 0; padding:18px 18px 34px; max-height:70%; display:flex; flex-direction:column;" onClick="{{ stop }}">
+          <div style="width:44px; height:5px; border-radius:3px; background:#D6DCE1; margin:0 auto 14px;"></div>
+          <div style="font-size:17px; font-weight:800; color:#16313A; margin-bottom:12px;">Sotuvchini tanlang</div>
+          <div style="display:flex; align-items:center; gap:10px; border:1.5px dashed #C9D2D9; border-radius:12px; padding:11px 13px; background:#FAFBFC; margin-bottom:10px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="1.8" stroke-linecap="round"><path d="M3 5v14M7 5v14M10 5v14M14 5v14M17 5v14M21 5v14"></path></svg>
+            <span style="font-size:12.5px; font-weight:600; color:#9AA3AE;">Sotuvchi kartasini skanerlang</span>
+          </div>
+          <div style="flex:1; overflow-y:auto;" class="wm-scroll">
+            <sc-for list="{{ sellers }}" as="s" hint-placeholder-count="5">
+              <button onClick="{{ s.pick }}" style="{{ s.rowStyle }}">
+                <span style="width:34px; height:34px; border-radius:10px; background:#E3F3F5; color:#14A0AE; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:800; flex-shrink:0;">{{ s.initials }}</span>
+                <span style="flex:1; min-width:0; font-size:14.5px; font-weight:700; color:#16313A; text-align:left;">{{ s.name }}</span>
+                <sc-if value="{{ s.active }}" hint-placeholder-val="{{ false }}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="2.6"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: MAHSULOT DETAIL ============ -->
+      <sc-if value="{{ shProdDet }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Mahsulot tafsiloti" style="position:absolute; inset:0; z-index:33; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; gap:12px; padding:56px 18px 12px;">
+          <button onClick="{{ closeSheet }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg></button>
+          <div>
+            <div style="font-size:19px; font-weight:800; color:#16313A;">Mahsulot</div>
+            <div style="font-size:12.5px; font-weight:600; color:#9AA3AE;">{{ pdSku }}</div>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:4px 18px 28px;" class="wm-scroll">
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <div style="height:140px; border-radius:14px; background:#E3F3F5; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#14A0AE" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="m21 15-5-5L5 21"></path></svg>
+            </div>
+            <div style="font-size:19px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">{{ pdName }}</div>
+            <div style="font-size:13px; font-weight:600; color:#9AA3AE; margin-top:3px;">{{ pdCat }}</div>
+            <div style="display:flex; align-items:baseline; gap:6px; margin-top:14px;">
+              <span style="font-size:27px; font-weight:800; color:#16313A; letter-spacing:-0.02em;">{{ pdPrice }}</span>
+              <span style="font-size:14px; font-weight:700; color:#9AA3AE;">so'm</span>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:15px 16px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+              <div style="font-size:12px; font-weight:600; color:#9AA3AE;">Qoldiq</div>
+              <div style="{{ pdStockStyle }}">{{ pdStockText }}</div>
+            </div>
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:15px 16px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+              <div style="font-size:12px; font-weight:600; color:#9AA3AE;">Foyda / dona</div>
+              <div style="font-size:19px; font-weight:800; color:#1AA565; margin-top:4px;">{{ pdMargin }}</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex-shrink:0; padding:12px 18px 30px;">
+          <button onClick="{{ pdAdd }}" style="{{ pdAddStyle }}">{{ pdAddText }}</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: MIJOZ DETAIL ============ -->
+      <sc-if value="{{ shCustDet }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Mijoz tafsiloti" style="position:absolute; inset:0; z-index:33; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; gap:12px; padding:56px 18px 12px;">
+          <button onClick="{{ closeSheet }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg></button>
+          <div>
+            <div style="font-size:19px; font-weight:800; color:#16313A;">Mijoz</div>
+            <div style="font-size:12.5px; font-weight:600; color:#9AA3AE;">{{ cdPhone }}</div>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:4px 18px 28px;" class="wm-scroll">
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <div style="display:flex; align-items:center; gap:14px;">
+              <span style="{{ cdAvaStyle }}">{{ cdInitial }}</span>
+              <div style="min-width:0;">
+                <div style="font-size:18px; font-weight:800; color:#16313A;">{{ cdName }}</div>
+                <div style="font-size:13px; font-weight:600; color:#9AA3AE; margin-top:2px;">{{ cdPhone }}</div>
+              </div>
+            </div>
+            <div style="{{ cdDebtBoxStyle }}">
+              <div style="{{ cdDebtLabelStyle }}">{{ cdDebtLabel }}</div>
+              <sc-if value="{{ cdHasDebt }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:23px; font-weight:800; color:#E5544E; letter-spacing:-0.02em; margin-top:3px;">{{ cdDebtFmt }}</div>
+              </sc-if>
+            </div>
+          </div>
+          <div style="font-size:14px; font-weight:800; color:#16313A; margin:14px 4px 8px;">Hisob tarixi</div>
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:4px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <sc-for list="{{ cdHistory }}" as="hst" hint-placeholder-count="3">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0; border-top:{{ hst.divider }};">
+                <div style="min-width:0;">
+                  <div style="font-size:14px; font-weight:700; color:#16313A;">{{ hst.title }}</div>
+                  <div style="font-size:12px; font-weight:500; color:#9AA3AE;">{{ hst.date }}</div>
+                </div>
+                <span style="{{ hst.sumStyle }}">{{ hst.sum }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <sc-if value="{{ cdHasDebt }}" hint-placeholder-val="{{ false }}">
+          <div style="flex-shrink:0; padding:12px 18px 30px;">
+            <button onClick="{{ cdPayDebt }}" style="width:100%; border:none; border-radius:16px; background:#14A0AE; color:#fff; font-size:15.5px; font-weight:800; padding:16px; cursor:pointer; box-shadow:0 10px 22px rgba(20,160,174,0.3); font-family:inherit;">To'lov qabul qilish</button>
+          </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: BILDIRISHNOMALAR ============ -->
+      <sc-if value="{{ shNotifs }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Bildirishnomalar" style="position:absolute; inset:0; z-index:33; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; gap:12px; padding:56px 18px 12px;">
+          <button onClick="{{ closeSheet }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg></button>
+          <div>
+            <div style="font-size:19px; font-weight:800; color:#16313A;">Bildirishnomalar</div>
+            <div style="font-size:12.5px; font-weight:600; color:#9AA3AE;">Telegram bot</div>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:4px 18px 28px;" class="wm-scroll">
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:4px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <sc-for list="{{ notifs }}" as="n" hint-placeholder-count="4">
+              <div style="display:flex; gap:13px; padding:14px 0; border-top:{{ n.divider }};">
+                <span style="{{ n.iconBox }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ n.iconColor }}" stroke-width="2"><path d="{{ n.icon }}"></path></svg></span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:14px; font-weight:800; color:#16313A;">{{ n.title }}</div>
+                  <div style="font-size:12.5px; font-weight:500; color:#5A6675; margin-top:2px; line-height:1.4;">{{ n.body }}</div>
+                  <div style="font-size:11.5px; font-weight:600; color:#9AA3AE; margin-top:4px;">{{ n.time }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: HISOBOTLAR ============ -->
+      <sc-if value="{{ shReports }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Hisobotlar" style="position:absolute; inset:0; z-index:33; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; gap:12px; padding:56px 18px 12px;">
+          <button onClick="{{ closeSheet }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg></button>
+          <div>
+            <div style="font-size:19px; font-weight:800; color:#16313A;">Hisobotlar</div>
+            <div style="font-size:12.5px; font-weight:600; color:#9AA3AE;">Bu hafta</div>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:4px 18px 28px;" class="wm-scroll">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:15px 16px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+              <div style="font-size:12px; font-weight:600; color:#9AA3AE;">Haftalik savdo</div>
+              <div style="font-size:20px; font-weight:800; color:#16313A; margin-top:5px; letter-spacing:-0.02em;">681.5M</div>
+            </div>
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:15px 16px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+              <div style="font-size:12px; font-weight:600; color:#9AA3AE;">Sof foyda</div>
+              <div style="font-size:20px; font-weight:800; color:#1AA565; margin-top:5px; letter-spacing:-0.02em;">58.2M</div>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:18px; box-shadow:0 1px 3px rgba(16,24,40,0.05); margin-top:12px;">
+            <div style="font-size:15px; font-weight:800; color:#16313A; margin-bottom:16px;">Kunlik savdo</div>
+            <div style="display:flex; align-items:flex-end; gap:9px; height:130px;">
+              <sc-for list="{{ chartDays }}" as="d" hint-placeholder-count="7">
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:7px; height:100%; justify-content:flex-end;">
+                  <div style="{{ d.bar }}"></div>
+                  <span style="font-size:11px; font-weight:600; color:#9AA3AE;">{{ d.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="font-size:14px; font-weight:800; color:#16313A; margin:14px 4px 8px;">Eng ko'p sotilgan</div>
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:6px 18px 12px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <sc-for list="{{ topProds }}" as="t" hint-placeholder-count="4">
+              <div style="padding:11px 0; border-top:{{ t.divider }};">
+                <div style="display:flex; justify-content:space-between; margin-bottom:7px;">
+                  <span style="font-size:13.5px; font-weight:700; color:#16313A;">{{ t.name }}</span>
+                  <span style="font-size:13px; font-weight:800; color:#16313A;">{{ t.sum }}</span>
+                </div>
+                <div style="height:6px; border-radius:3px; background:#E3F3F5; overflow:hidden;"><div style="{{ t.barStyle }}"></div></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: OMBOR ============ -->
+      <sc-if value="{{ shStock }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Ombor" style="position:absolute; inset:0; z-index:33; background:#EEF1F4; display:flex; flex-direction:column;">
+        <div style="flex-shrink:0; display:flex; align-items:center; gap:12px; padding:56px 18px 12px;">
+          <button onClick="{{ closeSheet }}" style="width:40px; height:40px; border-radius:12px; border:1px solid #EAEDF1; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16313A" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg></button>
+          <div>
+            <div style="font-size:19px; font-weight:800; color:#16313A;">Ombor qoldiqlari</div>
+            <div style="font-size:12.5px; font-weight:600; color:#9AA3AE;">Markaziy ombor</div>
+          </div>
+        </div>
+        <div style="flex:1; overflow-y:auto; padding:4px 18px 28px;" class="wm-scroll">
+          <div style="background:#fff; border:1px solid #EAEDF1; border-radius:20px; padding:4px 18px; box-shadow:0 1px 3px rgba(16,24,40,0.05);">
+            <sc-for list="{{ stockRows }}" as="r" hint-placeholder-count="6">
+              <div style="display:flex; align-items:center; gap:12px; padding:13px 0; border-top:{{ r.divider }};">
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</div>
+                  <div style="font-size:12px; font-weight:500; color:#9AA3AE; margin-top:2px;">{{ r.cat }}</div>
+                </div>
+                <span style="{{ r.badgeStyle }}">{{ r.qty }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ SHEET: KASSA YOPISH/OCHISH ============ -->
+      <sc-if value="{{ shShift }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Mobil · Kassa smenasi" style="position:absolute; inset:0; z-index:34; background:rgba(16,24,40,0.45); display:flex; flex-direction:column; justify-content:flex-end;" onClick="{{ closeSheet }}">
+        <div style="background:#EEF1F4; border-radius:26px 26px 0 0; padding:18px 18px 34px;" onClick="{{ stop }}">
+          <div style="width:44px; height:5px; border-radius:3px; background:#D6DCE1; margin:0 auto 14px;"></div>
+          <div style="font-size:17px; font-weight:800; color:#16313A;">{{ shiftSheetTitle }}</div>
+          <div style="font-size:12.5px; font-weight:600; color:#9AA3AE; margin-top:3px;">Kassa 1 · Markaziy do'kon</div>
+          <sc-if value="{{ shiftOn }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:15px 16px; margin-top:14px;">
+              <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; color:#9AA3AE;"><span>Naqd kassada</span><span style="color:#16313A; font-weight:800;">{{ shiftCashFmt }}</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; color:#9AA3AE; margin-top:8px;"><span>Cheklar</span><span style="color:#16313A; font-weight:800;">{{ chekCountText }}</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; color:#9AA3AE; margin-top:8px;"><span>Amal</span><span style="color:#16313A; font-weight:800;">Summa kompaniya hisobiga o'tkaziladi</span></div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ shiftOff }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#fff; border:1px solid #EAEDF1; border-radius:16px; padding:15px 16px; margin-top:14px;">
+              <div style="font-size:13px; font-weight:700; color:#16313A; margin-bottom:8px;">Ochilish summasi</div>
+              <div style="display:flex; align-items:center; border:1.5px solid #14A0AE; border-radius:12px; background:#F7F9FA; overflow:hidden;">
+                <input value="{{ openSumFmt }}" onInput="{{ setOpenSum }}" placeholder="0" style="flex:1; min-width:0; border:none; background:transparent; padding:12px 14px; font-size:15px; font-weight:800; color:#16313A; outline:none; font-family:inherit;" />
+                <span style="padding:0 13px; font-size:11.5px; font-weight:800; color:#9AA3AE;">UZS</span>
+              </div>
+            </div>
+          </sc-if>
+          <button onClick="{{ shiftConfirm }}" style="{{ shiftConfirmStyle }}">{{ shiftConfirmText }}</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ============ TOAST ============ -->
+      <sc-if value="{{ toastShown }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; top:58px; left:50%; transform:translateX(-50%); z-index:70; display:flex; align-items:center; gap:9px; background:#16313A; border-radius:14px; padding:11px 17px; box-shadow:0 14px 30px rgba(16,24,40,0.35); animation:wmToast .18s ease; max-width:86%;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3ED3C4" stroke-width="2.8"><path d="M20 6 9 17l-5-5"></path></svg>
+          <span style="font-size:13px; font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ toast }}</span>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:470,&quot;height&quot;:940},&quot;bildirishnoma&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:0,&quot;max&quot;:9,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Interfeys&quot;}}">
+class Component extends DCLogic {
+  state = {
+    scr: 'home', posTab: 'tov', posQ: '', prodQ: '', prodCat: 0, custQ: '',
+    cart: {}, disc: 0, payType: 'cash', received: '',
+    sheet: null, selProd: null, selCust: null, seller: 0,
+    paidDebts: {}, shiftOpen: true, openSum: '', chekNo: 1024, chekCount: 7,
+    shiftCash: 11309000, toast: '',
+  };
+
+  flash(msg) { this.setState({ toast: msg }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: '' }), 2200); }
+
+  renderVals() {
+    const st = this.state;
+    const fmt = (n) => Math.round(Math.abs(n)).toLocaleString('ru-RU').replace(/\u00A0/g, ' ');
+    const fmtM = (n) => (n >= 1000000 ? (Math.round(n / 100000) / 10) + 'M' : fmt(n));
+
+    // ---------- data ----------
+    const products = [
+      { id: 't1', name: 'Redmi Buds 4 Pro', cat: 'Aksessuarlar', price: 756000, cost: 590000, stock: 6, sku: 'WS-10241' },
+      { id: 't2', name: 'Telefon Inoi 243', cat: 'Telefonlar', price: 1890000, cost: 1520000, stock: 43, sku: 'WS-10242' },
+      { id: 't3', name: 'iPhone 17 Pro Max 256', cat: 'Smartfonlar', price: 19656000, cost: 17100000, stock: 5, sku: 'WS-10243' },
+      { id: 't4', name: 'Xolodilnik Artel | Qora', cat: 'Maishiy texnika', price: 4536000, cost: 3780000, stock: 10, sku: 'WS-10244' },
+      { id: 't5', name: 'LG Smart TV 32', cat: 'Televizorlar', price: 2721600, cost: 2260000, stock: 8, sku: 'WS-10245' },
+      { id: 't6', name: 'LG Smart TV 55', cat: 'Televizorlar', price: 7560000, cost: 6350000, stock: 10, sku: 'WS-10246' },
+      { id: 't7', name: 'iPhone 17 Pro', cat: 'Smartfonlar', price: 13608000, cost: 11900000, stock: 10, sku: 'WS-10247' },
+      { id: 't8', name: 'iPhone 15 Pro', cat: 'Smartfonlar', price: 15120000, cost: 13200000, stock: 0, sku: 'WS-10248' },
+    ];
+    const services = [
+      { id: 'x1', name: 'Ekran almashtirish', cat: "Ta'mirlash", price: 450000 },
+      { id: 'x2', name: "Dasturiy ta'minot o'rnatish", cat: 'Sozlash', price: 150000 },
+      { id: 'x3', name: 'Yetkazib berish (shahar ichida)', cat: 'Logistika', price: 80000 },
+      { id: 'x4', name: "O'rnatish va ishga tushirish", cat: 'Servis', price: 200000 },
+      { id: 'x5', name: "Qo'shimcha kafolat | 1 yil", cat: 'Kafolat', price: 550000 },
+    ];
+    const bundles = [
+      { id: 'k1', name: "Smartfon starter to'plami", kom: 'Komplekt · 3 mahsulot', price: 14990000, stock: 4 },
+      { id: 'k2', name: "Oshxona to'plami", kom: 'Komplekt · 2 mahsulot', price: 7150000, stock: 2 },
+      { id: 'k3', name: "TV + kronshteyn to'plami", kom: 'Komplekt · 2 mahsulot', price: 7990000, stock: 5 },
+    ];
+    const allItems = products.concat(services).concat(bundles);
+    const byId = {}; allItems.forEach(p => { byId[p.id] = p; });
+
+    const customers = [
+      { id: 'c1', name: 'Alisher Zokirov', phone: '+998 90 123 45 67', debt: 2450000, history: [['Savdo · iPhone 15 128GB', '12.07.2026', 19600000], ['Qarzga berildi', '12.07.2026', 2450000], ["To'lov qabul qilindi", '28.06.2026', -3000000]] },
+      { id: 'c2', name: 'Madina Karimova', phone: '+998 93 555 21 08', debt: 0, history: [['Savdo · Redmi Note 13 Pro', '10.07.2026', 15300000], ["To'lov qabul qilindi", '10.07.2026', -15300000]] },
+      { id: 'c3', name: 'Jasur Umarov', phone: '+998 97 700 14 22', debt: 5100000, history: [['Savdo · LG Smart TV 55', '05.07.2026', 7560000], ['Qarzga berildi', '05.07.2026', 5100000]] },
+      { id: 'c4', name: 'Nilufar Rashidova', phone: '+998 88 302 77 90', debt: 0, history: [['Savdo · Xolodilnik Artel', '01.07.2026', 4536000]] },
+      { id: 'c5', name: 'Bekzod Toshmatov', phone: '+998 91 210 33 45', debt: 0, history: [['Savdo · Redmi Buds 4 Pro', '24.06.2026', 756000]] },
+    ];
+
+    const sellerNames = ['Barcha sotuvchilar', 'Sotuvchisiz', 'Axmedov B.', 'Karimova N.', 'Yusupov S.', "Toshpo'latova D."];
+
+    // ---------- POS list ----------
+    const q = (st.posQ || '').trim().toLowerCase();
+    const srcList = st.posTab === 'xiz' ? services : (st.posTab === 'kom' ? bundles : products);
+    const posList = srcList.filter(p => !q || p.name.toLowerCase().includes(q)).map(p => {
+      const out = p.stock === 0;
+      return {
+        name: p.name,
+        sub: p.kom || p.cat,
+        subStyle: p.kom
+          ? 'display:inline-block; font-size:10.5px; font-weight:800; color:#0E7C88; background:#E3F3F5; border-radius:6px; padding:2px 8px; margin-top:3px; white-space:nowrap;'
+          : 'display:block; font-size:12px; font-weight:500; color:#9AA3AE; margin-top:2px;',
+        price: fmt(p.price),
+        qtyText: p.stock === undefined ? 'Xizmat' : (out ? 'Tugagan' : p.stock + ' dona'),
+        qtyStyle: 'display:block; font-size:11.5px; font-weight:600; margin-top:2px; color:' + (out ? '#E5544E' : '#AEB6C0') + ';',
+        inCart: !!st.cart[p.id],
+        cartQty: st.cart[p.id] || 0,
+        add: () => {
+          if (out) { this.flash('Mahsulot tugagan'); return; }
+          this.setState(s => ({ cart: { ...s.cart, [p.id]: (s.cart[p.id] || 0) + 1 } }));
+        },
+      };
+    });
+
+    // ---------- cart ----------
+    const cartIds = Object.keys(st.cart);
+    const cartCount = cartIds.reduce((a, id) => a + st.cart[id], 0);
+    const cartTotal = cartIds.reduce((a, id) => a + (byId[id] ? byId[id].price * st.cart[id] : 0), 0);
+    const discAmt = Math.round(cartTotal * (st.disc || 0) / 100);
+    const payTotal = cartTotal - discAmt;
+    const cartLines = cartIds.map((id, i) => {
+      const p = byId[id];
+      return {
+        name: p.name, price: fmt(p.price), qty: st.cart[id],
+        divider: i ? '1px solid #F2F4F6' : 'none',
+        inc: () => this.setState(s => ({ cart: { ...s.cart, [id]: s.cart[id] + 1 } })),
+        dec: () => this.setState(s => { const n = s.cart[id] - 1; const cart = { ...s.cart }; if (n <= 0) delete cart[id]; else cart[id] = n; return { cart }; }),
+      };
+    });
+    const receivedN = parseInt(st.received || '0', 10) || 0;
+    const change = receivedN - payTotal;
+
+    // ---------- nav ----------
+    const navDefs = [
+      { key: 'home', label: 'Bosh', icon: 'M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5' },
+      { key: 'pos', label: 'Savdo', icon: 'M6 6h15l-1.5 9h-12zM6 6 5 3H2m7 18a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
+      { key: 'prod', label: 'Mahsulot', icon: 'M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5m0 0 9-5m-9 5v8' },
+      { key: 'cust', label: 'Mijozlar', icon: 'M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm10.5 10v-2a4 4 0 0 0-3-3.85M16 3.13a4 4 0 0 1 0 7.75' },
+      { key: 'more', label: 'Yana', icon: 'M4 6h16M4 12h16M4 18h16' },
+    ];
+    const navItems = navDefs.map(n => ({
+      label: n.label, icon: n.icon,
+      color: st.scr === n.key ? '#14A0AE' : '#9AA3AE',
+      badge: n.key === 'pos' && cartCount > 0,
+      badgeText: cartCount,
+      go: () => this.setState({ scr: n.key, sheet: null }),
+    }));
+
+    // ---------- prod screen ----------
+    const catNames = ['Barchasi', 'Smartfonlar', 'Telefonlar', 'Televizorlar', 'Maishiy texnika', 'Aksessuarlar'];
+    const pq = (st.prodQ || '').trim().toLowerCase();
+    const prodList = products
+      .filter(p => (st.prodCat === 0 || p.cat === catNames[st.prodCat]) && (!pq || p.name.toLowerCase().includes(pq)))
+      .map(p => ({
+        name: p.name, cat: p.cat, price: fmt(p.price),
+        stockText: p.stock === 0 ? 'Tugagan' : p.stock + ' dona',
+        stockStyle: 'display:inline-block; font-size:11px; font-weight:800; border-radius:7px; padding:2px 8px; margin-top:3px;' + (p.stock === 0 ? 'color:#E5544E; background:#FBEDEC;' : (p.stock <= 5 ? 'color:#C98A12; background:#FBF1DA;' : 'color:#1AA565; background:#E6F7EE;')),
+        openDet: () => this.setState({ selProd: p.id, sheet: 'prodDet' }),
+      }));
+    const prodCats = catNames.map((c, i) => ({
+      label: c,
+      pick: () => this.setState({ prodCat: i }),
+      style: 'flex-shrink:0; border:none; border-radius:10px; padding:8px 13px; font-size:12.5px; font-weight:700; cursor:pointer; white-space:nowrap; font-family:inherit;' + (st.prodCat === i ? 'background:#14A0AE; color:#fff;' : 'background:#fff; color:#46535F; border:1px solid #EAEDF1;'),
+    }));
+
+    // ---------- prod detail ----------
+    const pd = byId[st.selProd] || products[0];
+    const pdOut = pd.stock === 0;
+
+    // ---------- customers ----------
+    const cq = (st.custQ || '').trim().toLowerCase();
+    const custList = customers
+      .map(c => ({ ...c, debtNow: st.paidDebts[c.id] ? 0 : c.debt }))
+      .filter(c => !cq || c.name.toLowerCase().includes(cq) || c.phone.replace(/\s/g, '').includes(cq.replace(/\s/g, '')))
+      .map(c => ({
+        name: c.name, phone: c.phone, initial: c.name[0],
+        avaStyle: 'width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; flex-shrink:0;' + (c.debtNow > 0 ? 'background:#FBEDEC; color:#E5544E;' : 'background:#E3F3F5; color:#14A0AE;'),
+        badgeText: c.debtNow > 0 ? '− ' + fmtM(c.debtNow) : 'Faol',
+        badgeStyle: 'flex-shrink:0; font-size:11.5px; font-weight:800; border-radius:8px; padding:4px 9px; white-space:nowrap;' + (c.debtNow > 0 ? 'color:#E5544E; background:#FBEDEC;' : 'color:#1AA565; background:#E6F7EE;'),
+        openDet: () => this.setState({ selCust: c.id, sheet: 'custDet' }),
+      }));
+
+    const cd = customers.find(c => c.id === st.selCust) || customers[0];
+    const cdDebtNow = st.paidDebts[cd.id] ? 0 : cd.debt;
+    const cdHasDebt = cdDebtNow > 0;
+    const cdHistory = (st.paidDebts[cd.id] ? [["To'lov qabul qilindi", 'Hozirgina', -cd.debt]] : []).concat(cd.history).map((r, i) => ({
+      title: r[0], date: r[1],
+      sum: (r[2] < 0 ? '+ ' : '') + fmt(Math.abs(r[2])),
+      sumStyle: 'font-size:14px; font-weight:800; white-space:nowrap; color:' + (r[2] < 0 ? '#1AA565' : '#16313A') + ';',
+      divider: i ? '1px solid #F2F4F6' : 'none',
+    }));
+
+    // ---------- sellers ----------
+    const sellers = sellerNames.map((name, i) => ({
+      name,
+      initials: i === 0 ? '\u2605' : (i === 1 ? '\u2014' : name.split(' ').map(w => w[0]).join('').slice(0, 2)),
+      active: i === (st.seller || 0),
+      rowStyle: 'width:100%; display:flex; align-items:center; gap:12px; padding:11px 12px; border:none; border-radius:12px; cursor:pointer; font-family:inherit; margin-bottom:2px; background:' + (i === (st.seller || 0) ? '#E3F3F5' : 'transparent') + ';',
+      pick: (e) => { if (e) e.stopPropagation(); this.setState({ seller: i, sheet: null }); },
+    }));
+
+    // ---------- pay ----------
+    const payDefs = [['cash', 'Naqd'], ['card', 'Karta'], ['uzcard', 'UzCard'], ['humo', 'HUMO']];
+    const payTypes = payDefs.map(([key, label]) => ({
+      label,
+      pick: () => this.setState({ payType: key }),
+      style: 'padding:14px; border-radius:14px; font-size:14px; font-weight:800; cursor:pointer; font-family:inherit;' + (st.payType === key ? 'border:2px solid #14A0AE; background:#E3F3F5; color:#0E7C88;' : 'border:1px solid #EAEDF1; background:#fff; color:#5A6675;'),
+    }));
+    const canFinish = cartCount > 0 && (st.payType !== 'cash' || receivedN >= payTotal);
+    const quickCash = [payTotal, Math.ceil(payTotal / 1000000) * 1000000, Math.ceil(payTotal / 1000000) * 1000000 + 1000000]
+      .filter((v, i, a) => a.indexOf(v) === i && v > 0)
+      .slice(0, 3)
+      .map(v => ({ label: fmtM(v), pick: () => this.setState({ received: String(v) }) }));
+
+    // ---------- receipt ----------
+    const receiptLines = cartIds.map(id => {
+      const p = byId[id];
+      return { label: p.name + ' × ' + st.cart[id], sum: fmt(p.price * st.cart[id]) };
+    });
+    const payTypeLabels = { cash: 'Naqd', card: 'Karta', uzcard: 'UzCard', humo: 'HUMO' };
+
+    // ---------- more ----------
+    const moreDefs = [
+      ['stock', 'Ombor qoldiqlari', 'M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5m0 0 9-5m-9 5v8'],
+      ['reports', 'Hisobotlar', 'M3 17l5-5 4 4 8-9M15 7h5v5'],
+      ['notifs', 'Bildirishnomalar', 'M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.5 21a2 2 0 0 1-3 0'],
+      ['sozlama', 'Sozlamalar', 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM19 12a7 7 0 0 1-.1 1.2l2 1.6-2 3.4-2.4-1a7 7 0 0 1-2 1.2L14 21h-4l-.4-2.6a7 7 0 0 1-2-1.2l-2.4 1-2-3.4 2-1.6A7 7 0 0 1 5 12a7 7 0 0 1 .1-1.2l-2-1.6 2-3.4 2.4 1a7 7 0 0 1 2-1.2L10 3h4l.4 2.6a7 7 0 0 1 2 1.2l2.4-1 2 3.4-2 1.6c.1.4.1.8.1 1.2Z'],
+      ['video', 'Video darslik', 'M23 7 16 12l7 5V7zM14 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z'],
+    ];
+    const moreItems = moreDefs.map(([key, label, icon], i) => ({
+      label, icon,
+      divider: i ? '1px solid #F2F4F6' : 'none',
+      open: () => {
+        if (key === 'sozlama' || key === 'video') { this.flash("Bu bo'lim asosiy dasturda to'liq mavjud"); return; }
+        this.setState({ sheet: key });
+      },
+    }));
+
+    // ---------- home data ----------
+    const chartVals = [[46, 'Du'], [62, 'Se'], [54, 'Ch'], [78, 'Pa'], [92, 'Ju'], [70, 'Sh'], [58, 'Ya']];
+    const chartDays = chartVals.map(([v, l], i) => ({
+      label: l,
+      bar: 'width:100%; max-width:26px; border-radius:7px; height:' + Math.round(v / 100 * 100) + 'px; background:' + (i === 4 ? '#14A0AE' : '#D9EDEF') + ';',
+    }));
+    const salesFeed = [
+      { name: 'Redmi Note 13 Pro', ago: '2 daqiqa oldin · Axmedov B.', sum: '15.3M' },
+      { name: 'iPhone 15 128GB', ago: '14 daqiqa oldin · Karimova N.', sum: '19.6M' },
+      { name: 'Samsung Galaxy A55', ago: '32 daqiqa oldin · Yusupov S.', sum: '6.0M' },
+    ];
+    const _medal = (i) => 'width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; flex-shrink:0;' +
+      (i === 0 ? 'background:#FDF4DE; color:#F3B229;' : (i === 1 ? 'background:#EEF1F4; color:#9AA8B5;' : (i === 2 ? 'background:#F9EEE4; color:#C98A5E;' : 'background:#F7F9FA; color:#AEB6C0;')));
+    const payRowDefs = [
+      ['Naqd', '681 544 880', 21, 100, '#14A0AE'],
+      ['Bank kartasi', '0', 0, 0, '#7A5AF8'],
+      ['UzCard', '0', 0, 0, '#2A6FDB'],
+      ['HUMO', '0', 0, 0, '#C98A12'],
+    ];
+    const payRows = payRowDefs.map(([label, amt, cnt, pct, color]) => ({
+      label, amt, cnt,
+      dot: 'width:10px; height:10px; border-radius:50%; flex-shrink:0; background:' + color + ';',
+      barStyle: 'height:100%; border-radius:3px; background:' + color + '; width:' + pct + '%;',
+    }));
+    const homeTops = [
+      ['iphone 18 | Qora', 11, '232.7M', '38.8M'],
+      ['iPhone 17 Pro Max 256', 6.7, '129.2M', '21.5M'],
+      ['Telefon Ayfon 15 pro', 6.5, '98.3M', '16.4M'],
+      ['Redmi 14 Pro 8/128', 7.5, '45.4M', '7.6M'],
+    ].map(([name, qty, sum, profit], i) => ({ name, qty, sum, profit, rank: i + 1, medal: _medal(i) }));
+    const sellerRank = [
+      ['Axmedov B.', 12, '232.4M'],
+      ['Karimova N.', 9, '189.7M'],
+      ['Yusupov S.', 11, '141.2M'],
+      ["Toshpo'latova D.", 8, '118.2M'],
+    ].map(([name, cnt, sum], i) => ({ name, cnt, sum, rank: i + 1, medal: _medal(i).replace('border-radius:9px', 'border-radius:50%') }));
+    const debtRowDefs = [
+      ['c1', 'Alisher Zokirov', '+998 90 123 45 67', '2 450 000', 'Ertaga', true],
+      ['c3', 'Jasur Umarov', '+998 97 700 14 22', '5 100 000', '5 kun', false],
+      ['x0', 'Saidova Malika', '+998 91 567 89 01', '960 000', '2 kun', false],
+    ];
+    const debtRows = debtRowDefs.filter(([id]) => !st.paidDebts[id]).map(([id, name, phone, sum, due, urgent]) => ({
+      name, phone, sum, due,
+      initial: name[0],
+      dueStyle: 'display:inline-block; font-size:10.5px; font-weight:800; border-radius:6px; padding:2px 7px; margin-top:2px;' + (urgent ? 'color:#E5544E; background:#FBEDEC;' : 'color:#9AA3AE; background:#F2F4F6;'),
+      open: () => { if (id === 'c1' || id === 'c3') this.setState({ selCust: id, sheet: 'custDet', scr: 'cust' }); },
+    }));
+    const debtTotal = debtRows.length ? '\u2212 ' + fmtM(debtRows.reduce((a, d) => a + parseInt(String(d.sum).replace(/\s/g, ''), 10), 0)) : 'Yo\u2019q';
+    const notifDefs = [
+      ['sale', 'Yangi savdo', "Redmi Note 13 Pro · 15 300 000 so'm · Axmedov B.", '2 daqiqa oldin', '#1AA565', '#E6F7EE', 'M6 6h15l-1.6 9H7.5z'],
+      ['debt', 'Qarz muddati yaqin', "Alisher Zokirov · 2 450 000 so'm · ertaga", '1 soat oldin', '#E5544E', '#FBEDEC', 'M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z'],
+      ['stock', 'Qoldiq kam', 'iPhone 17 Pro Max 256 · 5 dona qoldi', '3 soat oldin', '#C98A12', '#FBF1DA', 'M3 21V8l9-5 9 5v13'],
+      ['pay', "Qarz to'lovi", "Madina Karimova · 15 300 000 so'm to'ladi", 'Kecha', '#14A0AE', '#E3F3F5', 'M20 6 9 17l-5-5'],
+    ];
+    const notifs = notifDefs.map(([k, title, body, time, color, bg, icon], i) => ({
+      title, body, time, icon, iconColor: color,
+      iconBox: 'width:42px; height:42px; border-radius:11px; background:' + bg + '; display:flex; align-items:center; justify-content:center; flex-shrink:0;',
+      divider: i ? '1px solid #F2F4F6' : 'none',
+    }));
+    const topDefs = [['iPhone 15 128GB', 19600000], ['Redmi Note 13 Pro', 15300000], ['Samsung Galaxy A55', 6000000], ['AirPods Pro 2', 3450000]];
+    const topProds = topDefs.map(([name, v], i) => ({
+      name, sum: fmtM(v),
+      barStyle: 'height:100%; border-radius:3px; background:#14A0AE; width:' + Math.round(v / topDefs[0][1] * 100) + '%;',
+      divider: i ? '1px solid #F2F4F6' : 'none',
+    }));
+    const stockRows = products.map((p, i) => ({
+      name: p.name, cat: p.cat,
+      qty: p.stock === 0 ? 'Tugagan' : p.stock + ' dona',
+      badgeStyle: 'flex-shrink:0; font-size:11.5px; font-weight:800; border-radius:8px; padding:4px 9px; white-space:nowrap;' + (p.stock === 0 ? 'color:#E5544E; background:#FBEDEC;' : (p.stock <= 5 ? 'color:#C98A12; background:#FBF1DA;' : 'color:#1AA565; background:#E6F7EE;')),
+      divider: i ? '1px solid #F2F4F6' : 'none',
+    }));
+
+    // ---------- shift ----------
+    const shiftOn = st.shiftOpen;
+    const openSumN = parseInt(st.openSum || '0', 10) || 0;
+
+    const notifCount = this.props.bildirishnoma ?? 3;
+
+    return {
+      // screens
+      scrHome: st.scr === 'home' && !st.sheet, scrPos: st.scr === 'pos' && (!st.sheet || st.sheet === 'cart' || st.sheet === 'pay' || st.sheet === 'receipt' || st.sheet === 'seller'),
+      scrProd: st.scr === 'prod' && !st.sheet, scrCust: st.scr === 'cust' && !st.sheet, scrMore: st.scr === 'more' && !st.sheet,
+      navItems, toast: st.toast, toastShown: !!st.toast, notifCount,
+      closeSheet: (e) => { if (e) e.stopPropagation(); this.setState({ sheet: null }); },
+      stop: (e) => { if (e) e.stopPropagation(); },
+
+      // home
+      todayTotal: '115 070 800', chekCountText: st.chekCount + ' ta',
+      chartDays, salesFeed, notifs,
+      payRows, homeTops, sellerRank, debtRows, debtTotal,
+      goStock: () => this.setState({ scr: 'more', sheet: 'stock' }),
+      openNotifs: () => this.setState({ sheet: 'notifs' }),
+
+      // pos
+      chekId: '#' + (1000 + st.chekNo),
+      posTovPick: () => this.setState({ posTab: 'tov' }),
+      posXizPick: () => this.setState({ posTab: 'xiz' }),
+      posKomPick: () => this.setState({ posTab: 'kom' }),
+      posTovStyle: this._tabBtn(st.posTab === 'tov'),
+      posXizStyle: this._tabBtn(st.posTab === 'xiz'),
+      posKomStyle: this._tabBtn(st.posTab === 'kom'),
+      posQ: st.posQ || '', setPosQ: (e) => this.setState({ posQ: e.target.value }),
+      posList,
+      cartBarShown: cartCount > 0 && !st.sheet,
+      cartCount, cartTotalFmt: fmt(cartTotal),
+      openCart: () => this.setState({ sheet: 'cart' }),
+
+      // seller
+      sellerName: sellerNames[st.seller || 0],
+      sellerInitials: sellers[0] && sellerNames[st.seller || 0] === 'Barcha sotuvchilar' ? '\u2605' : (sellerNames[st.seller || 0] === 'Sotuvchisiz' ? '\u2014' : sellerNames[st.seller || 0].split(' ').map(w => w[0]).join('').slice(0, 2)),
+      openSeller: () => this.setState({ sheet: 'seller' }),
+      sellers,
+      shSeller: st.sheet === 'seller',
+
+      // cart sheet
+      shCart: st.sheet === 'cart',
+      cartLines,
+      clearCart: () => { this.setState({ cart: {}, disc: 0, sheet: null }); this.flash('Savat tozalandi'); },
+      discOpts: [0, 3, 5, 10].map(d => ({
+        label: d === 0 ? '0%' : d + '%',
+        pick: () => this.setState({ disc: d }),
+        style: 'border:none; border-radius:9px; padding:7px 12px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;' + ((st.disc || 0) === d ? 'background:#14A0AE; color:#fff;' : 'background:#F0F2F5; color:#46535F;'),
+      })),
+      discShown: (st.disc || 0) > 0, discPct: st.disc || 0, discAmtFmt: fmt(discAmt),
+      payTotalFmt: fmt(payTotal),
+      goPay: () => { if (cartCount === 0) { this.flash("Savat bo'sh"); return; } this.setState({ sheet: 'pay', received: '' }); },
+
+      // pay sheet
+      shPay: st.sheet === 'pay',
+      backToCart: () => this.setState({ sheet: 'cart' }),
+      payTypes, payIsCash: st.payType === 'cash',
+      receivedFmt: st.received ? fmt(parseInt(st.received, 10)) : '',
+      setReceived: (e) => this.setState({ received: e.target.value.replace(/\D/g, '') }),
+      quickCash,
+      changeShown: st.payType === 'cash' && change > 0,
+      changeFmt: fmt(change) + " so'm",
+      finishStyle: 'width:100%; border:none; border-radius:16px; font-size:16px; font-weight:800; padding:16px; font-family:inherit;' + (canFinish ? 'background:#14A0AE; color:#fff; cursor:pointer; box-shadow:0 10px 22px rgba(20,160,174,0.3);' : 'background:#E3E8ED; color:#AEB6C0; cursor:not-allowed;'),
+      finishPay: () => {
+        if (!canFinish) { this.flash(st.payType === 'cash' ? 'Qabul qilingan summa yetarli emas' : "Savat bo'sh"); return; }
+        this.setState(s => ({ sheet: 'receipt', shiftCash: s.payType === 'cash' ? s.shiftCash + payTotal : s.shiftCash, chekCount: s.chekCount + 1 }));
+      },
+
+      // receipt
+      shReceipt: st.sheet === 'receipt',
+      receiptLines, payTypeLabel: payTypeLabels[st.payType],
+      printChek: () => this.flash('Chek printerga yuborildi'),
+      newSale: () => { this.setState(s => ({ cart: {}, disc: 0, received: '', sheet: null, chekNo: s.chekNo + 1 })); this.flash('Savdo yakunlandi · chek saqlandi'); },
+
+      // prod screen
+      prodQ: st.prodQ || '', setProdQ: (e) => this.setState({ prodQ: e.target.value }),
+      prodCats, prodList,
+
+      // prod detail
+      shProdDet: st.sheet === 'prodDet',
+      pdName: pd.name, pdCat: pd.cat, pdSku: pd.sku || '', pdPrice: fmt(pd.price),
+      pdStockText: pdOut ? 'Tugagan' : pd.stock + ' dona',
+      pdStockStyle: 'font-size:19px; font-weight:800; margin-top:4px; color:' + (pdOut ? '#E5544E' : '#16313A') + ';',
+      pdMargin: fmtM(pd.price - (pd.cost || Math.round(pd.price * 0.82))),
+      pdAddText: pdOut ? 'Mahsulot tugagan' : 'Savatga qo\u2019shish',
+      pdAddStyle: 'width:100%; border:none; border-radius:16px; font-size:15.5px; font-weight:800; padding:16px; font-family:inherit;' + (pdOut ? 'background:#E3E8ED; color:#AEB6C0; cursor:not-allowed;' : 'background:#14A0AE; color:#fff; cursor:pointer; box-shadow:0 10px 22px rgba(20,160,174,0.3);'),
+      pdAdd: () => {
+        if (pdOut) { this.flash('Mahsulot tugagan'); return; }
+        this.setState(s => ({ cart: { ...s.cart, [pd.id]: (s.cart[pd.id] || 0) + 1 }, scr: 'pos', sheet: null }));
+        this.flash("Savatga qo'shildi");
+      },
+
+      // customers
+      custQ: st.custQ || '', setCustQ: (e) => this.setState({ custQ: e.target.value }),
+      custList, custCountText: customers.length + ' ta mijoz',
+
+      // cust detail
+      shCustDet: st.sheet === 'custDet',
+      cdName: cd.name, cdPhone: cd.phone, cdInitial: cd.name[0],
+      cdAvaStyle: 'width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:21px; font-weight:800; flex-shrink:0;' + (cdHasDebt ? 'background:#FBEDEC; color:#E5544E;' : 'background:#E3F3F5; color:#14A0AE;'),
+      cdHasDebt,
+      cdDebtBoxStyle: 'margin-top:16px; padding:14px 16px; border-radius:14px; background:' + (cdHasDebt ? '#FFF4F3' : '#E6F7EE') + ';',
+      cdDebtLabelStyle: 'font-size:12.5px; font-weight:700; color:' + (cdHasDebt ? '#C97A72' : '#1AA565') + ';',
+      cdDebtLabel: cdHasDebt ? "Qarz qoldig'i" : 'Qarzdorlik yo\u2019q',
+      cdDebtFmt: fmt(cdDebtNow) + " so'm",
+      cdHistory,
+      cdPayDebt: () => { this.setState(s => ({ paidDebts: { ...s.paidDebts, [cd.id]: true } })); this.flash("To'lov qabul qilindi"); },
+
+      // notifs / reports / stock sheets
+      shNotifs: st.sheet === 'notifs',
+      shReports: st.sheet === 'reports',
+      shStock: st.sheet === 'stock',
+      topProds, stockRows,
+
+      // more
+      moreItems,
+      shiftOn, shiftOff: !shiftOn,
+      shiftDotStyle: 'width:12px; height:12px; border-radius:50%; flex-shrink:0; background:' + (shiftOn ? '#1AA565' : '#E5544E') + ';',
+      shiftSub: shiftOn ? 'Ochiq — 08:54 dan beri · Kassa 1' : 'Yopiq · Kassa 1',
+      shiftBtnText: shiftOn ? 'Yopish' : 'Ochish',
+      shiftBtnStyle: 'flex-shrink:0; border:none; border-radius:11px; padding:10px 16px; font-size:13px; font-weight:800; cursor:pointer; font-family:inherit;' + (shiftOn ? 'background:#FBEDEC; color:#C7473F;' : 'background:#14A0AE; color:#fff;'),
+      shiftAction: () => this.setState({ sheet: 'shift', openSum: '' }),
+      shiftCashFmt: fmt(st.shiftCash),
+
+      // shift sheet
+      shShift: st.sheet === 'shift',
+      shiftSheetTitle: shiftOn ? 'Kassani yopish' : 'Kassani ochish',
+      openSumFmt: st.openSum ? fmt(parseInt(st.openSum, 10)) : '',
+      setOpenSum: (e) => this.setState({ openSum: e.target.value.replace(/\D/g, '') }),
+      shiftConfirmText: shiftOn ? 'Kassani yopish' : 'Kassani ochish',
+      shiftConfirmStyle: 'width:100%; margin-top:16px; border:none; border-radius:14px; font-size:15px; font-weight:800; padding:15px; cursor:pointer; font-family:inherit;' + (shiftOn ? 'background:#E5544E; color:#fff; box-shadow:0 10px 22px rgba(229,84,78,0.3);' : 'background:#14A0AE; color:#fff; box-shadow:0 10px 22px rgba(20,160,174,0.3);'),
+      shiftConfirm: () => {
+        if (shiftOn) {
+          this.setState({ shiftOpen: false, sheet: null, shiftCash: 0, chekCount: 0 });
+          this.flash("Kassa yopildi · hisobot chop etildi");
+        } else {
+          this.setState({ shiftOpen: true, sheet: null, shiftCash: openSumN });
+          this.flash('Kassa ochildi');
+        }
+      },
+    };
+  }
+
+  _tabBtn(on) {
+    return 'flex:1; border:none; border-radius:9px; padding:9px 6px; font-size:12.5px; font-weight:800; cursor:pointer; white-space:nowrap; font-family:inherit;' + (on ? 'background:#fff; color:#0E7C88; box-shadow:0 1px 3px rgba(16,24,40,0.08);' : 'background:transparent; color:#5A6675;');
+  }
+}
+</script>
+</body>
+</html>

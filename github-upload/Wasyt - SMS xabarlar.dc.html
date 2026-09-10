@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body { background: #EEF1F4; font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #16313A; overflow-x: auto; }
+  .app-root { min-width: 1440px; }
+  /* the flex-column wrapper around .app-root clips horizontally; let it scroll */
+  :has(> .app-root) { overflow-x: auto !important; min-height: 0; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-thumb { background: #D4D8DD; border-radius: 6px; border: 2px solid transparent; background-clip: content-box; }
+  button { font-family: inherit; }
+  input, textarea, select { font-family: inherit; }
+  a { color: #0E7C88; }
+  a:hover { color: #14A0AE; }
+  .navbar { transition: width .2s ease; }
+  html.nav-collapsed .navbar { width: 76px !important; min-width: 76px !important; padding-left: 12px !important; padding-right: 12px !important; overflow-x: hidden !important; }
+  html.nav-collapsed .navbar .navscroll a, html.nav-collapsed .navbar .navscroll button { font-size: 0 !important; justify-content: center !important; gap: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+  html.nav-collapsed .navbar .navscroll svg ~ svg, html.nav-collapsed .navbar .navscroll span ~ svg, html.nav-collapsed .navbar .navchev { display: none !important; }
+  html.nav-collapsed .navbar .navscroll > div { display: none !important; }
+  html.nav-collapsed .navbar .navlogo { display: none !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) { justify-content: center !important; }
+  html.nav-collapsed .navbar > div:not(.navlogo-row):not(.navscroll) > div { display: none !important; }
+  html.nav-collapsed .navbar .navlogo-row { justify-content: center !important; }
+  .navtoggle svg { transition: transform .2s ease; }
+  .navbar button, .navbar a { outline: none !important; -webkit-tap-highlight-color: transparent; }
+  .navbar button:focus, .navbar button:focus-visible, .navbar a:focus, .navbar a:focus-visible { outline: none !important; box-shadow: none !important; }
+  html.nav-collapsed .navtoggle svg { transform: rotate(180deg); }
+</style>
+<script src="i18n.js" data-i18n-skip></script>
+<script src="theme.js" data-i18n-skip></script>
+<script src="nav-collapse.js" data-i18n-skip></script>
+<script src="support-widget.js" data-i18n-skip></script>
+</helmet>
+
+<div class="app-root" style="display: flex; height: 100vh; min-width: 1440px; overflow: hidden; background: #EEF1F4;" data-screen-label="SMS xabarlar">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="navbar" style="width: 256px; flex-shrink: 0; background: #FFFFFF; border-right: 1px solid #E7EAEE; display: flex; flex-direction: column; padding: 22px 16px 16px;">
+    <div class="navlogo-row" style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding: 4px 6px 24px;">
+      <img class="navlogo" src="assets/wasyt-logo-new.png" alt="WASYT" style="height: 28px; width: auto; display: block;" />
+      <button class="navtoggle" type="button" title="Menyuni yig'ish" style="width:30px; height:30px; flex-shrink:0; border:none; border-radius:9px; background:#F2F4F6; color:#7C8794; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m13 6-6 6 6 6M19 6l-6 6 6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="navscroll" style="overflow-y: auto; flex: 1; margin: 0 -6px; padding: 0 6px;">
+      <a href="Wasyt - Bosh sahifa.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        Bosh sahifa
+      </a>
+
+      <a href="Wasyt - Savdo.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+        Savdo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <a href="Wasyt - Konsultant.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M9 4h9a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H9"/><path d="M4 8h8M4 12h8M4 16h5"/></svg>
+        Sotuvchi
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a href="Wasyt - Mahsulotlar.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+        Mahsulotlar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+      <button style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:#E3F3F5;color:#0E7C88;font-size:14.5px;font-weight:700;cursor:pointer;text-align:left;">
+        <span style="width:30px;height:30px;border-radius:9px;background:#14A0AE;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.5a3.2 3.2 0 0 1 0 7M22 21a6.5 6.5 0 0 0-4-6"/></svg>
+        </span>
+        Mijozlar
+      </button>
+
+      <a href="Wasyt - Ta'minotchilar.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M1 3h12v11H1zM13 7h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        Ta'minotchilar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a href="Wasyt - Moliya.dc.html" style="width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;text-decoration:none;" style-hover="background:#F2F4F6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M21 11h-5a2 2 0 0 0 0 4h5z"/></svg>
+        Moliya
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AEB6C0" stroke-width="2.4" style="margin-left:auto;"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+
+
+      <a href="Wasyt - Hisobotlar.dc.html" style="text-decoration:none;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;margin-bottom:4px;border:none;border-radius:13px;background:transparent;color:#46535F;font-size:14.5px;font-weight:500;cursor:pointer;text-align:left;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        Hisobotlar
+      </a>
+
+      
+
+    </div>
+
+    <div style="display:flex; align-items:center; gap:13px; padding: 14px 8px 4px; border-top: 1px solid #EEF1F4; margin-top: 8px;">
+      <span style="width:42px;height:42px;border-radius:50%;background:#E3F3F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#14A0AE"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z"/></svg>
+      </span>
+      <div>
+        <div style="font-size:11.5px;color:#9AA3AE;">Call Center</div>
+        <div style="font-size:15px;font-weight:700;color:#16313A;">+998 (55) 055-51-00</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <!-- topbar -->
+    <header style="height: 76px; flex-shrink: 0; background: #FFFFFF; border-bottom: 1px solid #E7EAEE; display: flex; align-items: center; padding: 0 26px; gap: 16px;">
+      <div style="font-size:20px; font-weight:800; color:#16313A; letter-spacing:-0.01em; white-space:nowrap;">SMS xabarlar</div>
+      <div style="font-size:13px; color:#9AA3AE; font-weight:600; background:#EEF1F4; padding:5px 11px; border-radius:8px; white-space:nowrap;">Tezkor yuborish va balans</div>
+      <div style="flex: 1;"></div>
+      <button style="position:relative;width:44px;height:44px;border-radius:50%;border:1px solid #ECEEF1;background:#F4F6F8;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="background:#EAF5F5;border-color:#BFE6E9;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7C8794" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span style="position:absolute;top:-2px;right:-3px;min-width:18px;height:18px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:#14A0AE;color:#fff;font-size:10px;font-weight:800;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">0</span></button>
+    </header>
+
+    <!-- scroll content -->
+    <div style="flex: 1; overflow-y: auto; padding: 22px 26px 36px;">
+      <div style="display:grid; grid-template-columns:1.55fr 1fr; gap:20px; align-items:start;">
+
+        <!-- ============ LEFT ============ -->
+        <div style="display:flex; flex-direction:column; gap:18px; min-width:0;">
+
+          <!-- COMPOSE -->
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+            <div style="display:flex; align-items:center; gap:12px; padding:20px 24px; border-bottom:1px solid #F2F4F6;">
+              <span style="width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#0E7C88,#14A0AE);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+              <div>
+                <div style="font-size:17px; font-weight:800; color:#16313A;">Yangi SMS yuborish</div>
+                <div style="font-size:12.5px; color:#9AA3AE; font-weight:600; margin-top:2px;">Mijozlar guruhiga yoki bitta raqamga</div>
+              </div>
+            </div>
+
+            <div style="padding:20px 24px 22px;">
+              <div style="font-size:11px; font-weight:700; color:#8A96A3; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:8px;">Kimga</div>
+              <select value="{{ group }}" onChange="{{ setGroup }}" style="width:100%; border:1px solid #DDE3E8; border-radius:11px; padding:12px 13px; font-size:13.5px; font-weight:600; color:#16313A; background:#fff; outline:none; cursor:pointer;">
+                <option value="all">Barcha mijozlar · 1 284 ta</option>
+                <option value="debt">Qarzdor mijozlar · 96 ta</option>
+                <option value="vip">VIP mijozlar · 40 ta</option>
+                <option value="one">Bitta raqamga</option>
+              </select>
+
+              <sc-if value="{{ oneMode }}" hint-placeholder-val="{{ false }}">
+                <input value="{{ oneNum }}" onChange="{{ setOneNum }}" type="tel" placeholder="+998 __ ___-__-__" style="width:100%; margin-top:10px; border:1px solid #DDE3E8; border-radius:11px; padding:12px 13px; font-size:13.5px; font-weight:600; color:#16313A; outline:none;" />
+              </sc-if>
+
+              <sc-if value="{{ bannerOn }}" hint-placeholder-val="{{ false }}">
+                <div style="{{ bannerStyle }}">
+                  <span style="{{ bannerIconStyle }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="{{ bannerTitleStyle }}">{{ bannerTitle }}</div>
+                    <div style="{{ bannerSubStyle }}">{{ bannerSub }}</div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:16px 0 14px;">
+                <sc-for list="{{ quickTpls }}" as="q" hint-placeholder-count="3">
+                  <button onClick="{{ q.pick }}" type="button" style="border:1px solid #DDE3E8; background:#fff; border-radius:20px; padding:8px 14px; font-size:12px; font-weight:700; color:#5A6675; cursor:pointer;" style-hover="border-color:#14A0AE; color:#0E7C88; background:#E3F3F5;">{{ q.label }}</button>
+                </sc-for>
+              </div>
+
+              <div style="font-size:11px; font-weight:700; color:#8A96A3; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:8px;">Xabar matni</div>
+              <textarea value="{{ text }}" onChange="{{ setText }}" rows="4" placeholder="Xabar matnini kiriting..." style="width:100%; border:1px solid #DDE3E8; border-radius:11px; padding:12px 13px; font-size:13.5px; font-weight:600; color:#16313A; outline:none; resize:vertical; line-height:1.5;"></textarea>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-top:7px; gap:10px; flex-wrap:wrap;">
+                <span style="font-size:11.5px; font-weight:600; color:#AEB6C0;">{{ counterTxt }}</span>
+                <span style="font-size:11.5px; font-weight:600; color:#C4CBD3;">{ism} · {summa} · {sana} — avtomatik almashtiriladi</span>
+              </div>
+
+              <div style="{{ costStyle }}">
+                <div style="min-width:0;">
+                  <div style="{{ costLabelStyle }}">Taxminiy xarajat</div>
+                  <div style="{{ costTotalStyle }}">{{ costTotal }} <span style="font-size:12px; font-weight:700; opacity:0.6;">so'm</span></div>
+                  <sc-if value="{{ overOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="font-size:11px; font-weight:700; color:#D63B40; margin-top:5px;">Balans yetarli emas — {{ overTxt }}</div>
+                  </sc-if>
+                </div>
+                <div style="text-align:right; flex-shrink:0;">
+                  <div style="font-size:12.5px; font-weight:700; color:#16313A;">{{ costRecipsLine }}</div>
+                  <div style="font-size:11px; font-weight:600; color:#9AA3AE; margin-top:3px;">{{ costSmsLine }}</div>
+                </div>
+              </div>
+
+              <button onClick="{{ send }}" type="button" style="{{ sendBtnStyle }}">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                {{ sendLabel }}
+              </button>
+            </div>
+          </div>
+
+          <!-- RECENT -->
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; box-shadow:0 1px 3px rgba(16,24,40,0.03); overflow:hidden;">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:18px 24px; border-bottom:1px solid #F2F4F6;">
+              <span style="font-size:16px; font-weight:800; color:#16313A;">Oxirgi yuborilganlar</span>
+              <span style="font-size:12.5px; font-weight:700; color:#14A0AE; background:#E3F3F5; border-radius:7px; padding:4px 11px;">3 ta</span>
+            </div>
+            <sc-for list="{{ recent }}" as="r" hint-placeholder-count="3">
+              <div style="display:flex; align-items:center; gap:13px; padding:14px 24px; border-bottom:1px solid #F4F6F8;">
+                <span style="width:36px; height:36px; border-radius:10px; background:#E3F3F5; color:#0E7C88; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-2.5 2.5H9.5l-4 3.5V17H5a2.5 2.5 0 0 1-2.5-2.5v-8A2.5 2.5 0 0 1 5 4z"/><path d="M7.5 9h9M7.5 12.5h6"/></svg></span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13.5px; font-weight:700; color:#16313A;">{{ r.to }}</div>
+                  <div style="font-size:11.5px; color:#9AA3AE; font-weight:600; margin-top:2px;">{{ r.when }} · {{ r.cnt }} ta qabul qiluvchi</div>
+                </div>
+                <span style="display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:700; color:#1AA565; background:#E7F6EE; border-radius:7px; padding:4px 10px; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Yuborildi</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- ============ RIGHT ============ -->
+        <div style="display:flex; flex-direction:column; gap:18px; min-width:0;">
+
+          <!-- BALANCE -->
+          <div style="background:linear-gradient(135deg,#0E7C88,#14A0AE); border-radius:18px; padding:20px 22px; color:#fff; box-shadow:0 8px 24px rgba(20,160,174,0.24);">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+              <div>
+                <div style="font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; opacity:0.85;">SMS balans</div>
+                <div style="display:flex; align-items:baseline; gap:7px; margin-top:6px;">
+                  <span style="font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; white-space:nowrap;">{{ balance }}</span>
+                  <span style="font-size:13px; font-weight:700; opacity:0.8;">SMS</span>
+                </div>
+                <div style="font-size:12px; font-weight:600; opacity:0.8; margin-top:5px;">1 SMS = {{ price }} so'm</div>
+              </div>
+              <button type="button" style="border:none; background:rgba(255,255,255,0.18); color:#fff; border-radius:11px; padding:11px 16px; font-size:12.5px; font-weight:800; cursor:pointer; flex-shrink:0;" style-hover="background:rgba(255,255,255,0.28);">To'ldirish</button>
+            </div>
+          </div>
+
+          <!-- CALENDAR -->
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">Bayram kalendari</span>
+              <span style="display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; color:#AEB6C0;"><span style="width:9px; height:9px; border-radius:50%; background:#E5484D;"></span>bayram kunlari</span>
+            </div>
+            <div style="border:1px solid #EAEDF0; border-radius:14px; padding:12px 12px 10px; background:#FCFDFE;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                <button onClick="{{ calPrev }}" type="button" style="width:28px; height:28px; border:1px solid #E3E7EB; border-radius:8px; background:#fff; color:#5A6675; cursor:pointer; display:flex; align-items:center; justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+                <span style="font-size:13.5px; font-weight:800; color:#16313A;">{{ calTitle }}</span>
+                <button onClick="{{ calNext }}" type="button" style="width:28px; height:28px; border:1px solid #E3E7EB; border-radius:8px; background:#fff; color:#5A6675; cursor:pointer; display:flex; align-items:center; justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:3px; margin-bottom:4px;">
+                <div style="text-align:center; font-size:10.5px; font-weight:700; color:#AEB6C0; padding:2px 0;">Du</div>
+                <div style="text-align:center; font-size:10.5px; font-weight:700; color:#AEB6C0; padding:2px 0;">Se</div>
+                <div style="text-align:center; font-size:10.5px; font-weight:700; color:#AEB6C0; padding:2px 0;">Ch</div>
+                <div style="text-align:center; font-size:10.5px; font-weight:700; color:#AEB6C0; padding:2px 0;">Pa</div>
+                <div style="text-align:center; font-size:10.5px; font-weight:700; color:#AEB6C0; padding:2px 0;">Ju</div>
+                <div style="text-align:center; font-size:10.5px; font-weight:700; color:#E58A8C; padding:2px 0;">Sh</div>
+                <div style="text-align:center; font-size:10.5px; font-weight:700; color:#E58A8C; padding:2px 0;">Ya</div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:3px;">
+                <sc-for list="{{ calCells }}" as="c" hint-placeholder-count="35">
+                  <div onClick="{{ c.pick }}" title="{{ c.title }}" style="{{ c.style }}">{{ c.txt }}</div>
+                </sc-for>
+              </div>
+              <sc-if value="{{ monthHolsOn }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:10px; border-top:1px solid #EEF1F4; padding-top:9px; display:flex; flex-direction:column; gap:5px;">
+                  <sc-for list="{{ monthHols }}" as="h" hint-placeholder-count="1">
+                    <button onClick="{{ h.pick }}" type="button" style="{{ h.rowStyle }}">
+                      <span style="width:26px; height:26px; border-radius:7px; background:#FDECEC; color:#D63B40; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0;">{{ h.dd }}</span>
+                      <span style="flex:1; min-width:0; font-size:12.5px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:left;">{{ h.name }}</span>
+                      <span style="font-size:11px; font-weight:700; color:#0E7C88; flex-shrink:0; display:inline-flex; align-items:center; gap:3px;">Tabrik<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+
+          <!-- BIRTHDAYS -->
+          <div style="background:#fff; border:1px solid #EDEFF2; border-radius:18px; padding:18px 20px; box-shadow:0 1px 3px rgba(16,24,40,0.03);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+              <span style="font-size:15px; font-weight:800; color:#16313A;">Yaqin tug'ilgan kunlar</span>
+              <span style="font-size:11px; font-weight:600; color:#AEB6C0;">Mijozga tabrik yuboring</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <sc-for list="{{ bdays }}" as="b" hint-placeholder-count="4">
+                <button onClick="{{ b.pick }}" type="button" style="{{ b.rowStyle }}">
+                  <span style="width:30px; height:30px; border-radius:50%; background:#E3F3F5; color:#0E7C88; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0;">{{ b.ini }}</span>
+                  <div style="flex:1; min-width:0; text-align:left;">
+                    <div style="font-size:13px; font-weight:700; color:#16313A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ b.name }}</div>
+                    <div style="{{ b.metaStyle }}">{{ b.meta }}</div>
+                  </div>
+                  <span style="font-size:11px; font-weight:700; color:#0E7C88; flex-shrink:0; display:inline-flex; align-items:center; gap:3px;">Tabrik<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<dc-import name="AI Konsultant" hint-size="0,0"></dc-import>
+
+<template id="__bundler_thumbnail" data-bg-color="#14A0AE">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect x="360" y="250" width="480" height="300" rx="34" fill="#ffffff" opacity="0.16"/>
+    <rect x="420" y="320" width="340" height="32" rx="16" fill="#ffffff"/>
+    <rect x="420" y="386" width="240" height="32" rx="16" fill="#ffffff" opacity="0.65"/>
+    <rect x="420" y="452" width="290" height="32" rx="16" fill="#ffffff" opacity="0.4"/>
+  </svg>
+</template>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;smsBalance&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8450,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:100000,&quot;section&quot;:&quot;SMS&quot;},&quot;smsPrice&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:200,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:50,&quot;max&quot;:1000,&quot;unit&quot;:&quot;so'm&quot;,&quot;section&quot;:&quot;SMS&quot;}}">
+class Component extends DCLogic {
+  state = { group: 'all', oneNum: '', text: '', calY: null, calM: null, selKey: null, selBday: null, sent: false };
+
+  HOLIDAYS = {
+    '1-1':  { name: "Yangi yil",                     text: "Hurmatli {ism}, Yangi yilingiz muborak bo'lsin! Yangi yil sizga sog'lik, farovonlik va omad keltirsin. WASYT jamoasi." },
+    '1-14': { name: "Vatan himoyachilari kuni",      text: "Hurmatli {ism}, Vatan himoyachilari kuni muborak bo'lsin! Tinch va farovon kunlar tilaymiz. WASYT jamoasi." },
+    '3-8':  { name: "Xalqaro xotin-qizlar kuni",     text: "Hurmatli {ism}, 8-mart — Xalqaro xotin-qizlar kuni muborak bo'lsin! Baxt va quvonch sizga hamroh bo'lsin. WASYT jamoasi." },
+    '3-20': { name: "Ramazon hayiti",                text: "Hurmatli {ism}, Ramazon hayiti muborak bo'lsin! Duolaringiz ijobat bo'lsin. WASYT jamoasi." },
+    '3-21': { name: "Navro'z bayrami",               text: "Hurmatli {ism}, Navro'z bayrami muborak bo'lsin! Yangi kun sizga farovonlik va yangi rejalar keltirsin. WASYT jamoasi." },
+    '5-9':  { name: "Xotira va qadrlash kuni",       text: "Hurmatli {ism}, Xotira va qadrlash kuni muborak bo'lsin! WASYT jamoasi." },
+    '5-27': { name: "Qurbon hayiti",                 text: "Hurmatli {ism}, Qurbon hayiti muborak bo'lsin! Xayrli va baraka topgan kunlar tilaymiz. WASYT jamoasi." },
+    '9-1':  { name: "Mustaqillik kuni",              text: "Hurmatli {ism}, Mustaqillik kuni muborak bo'lsin! Yurtimizga tinchlik va ravnaq tilaymiz. WASYT jamoasi." },
+    '10-1': { name: "O'qituvchi va murabbiylar kuni",text: "Hurmatli {ism}, O'qituvchi va murabbiylar kuni muborak bo'lsin! WASYT jamoasi." },
+    '12-8': { name: "Konstitutsiya kuni",            text: "Hurmatli {ism}, Konstitutsiya kuni muborak bo'lsin! WASYT jamoasi." }
+  };
+  MONTHS = ["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentabr","Oktabr","Noyabr","Dekabr"];
+  BDAYS = [
+    { name: "Aziz To'rayev",   phone: "+998 97 625 51 00", bd: "15.06" },
+    { name: "Jamshid Aliyev",  phone: "+998 90 234 76 55", bd: "09.08" },
+    { name: "Dilshod Karimov", phone: "+998 90 111 22 33", bd: "03.02" },
+    { name: "Nigora Saidova",  phone: "+998 93 501 44 18", bd: "27.11" },
+    { name: "Sardor Odilov",   phone: "+998 88 320 65 87", bd: "12.12" },
+    { name: "Kamola Nazarova", phone: "+998 99 512 66 88", bd: "21.03" }
+  ];
+  GROUPS = { all: 1284, debt: 96, vip: 40, one: 1 };
+
+  _fmt(x) { return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+  _nearestMonth() {
+    const today = new Date();
+    let best = null, bestDelta = Infinity;
+    Object.keys(this.HOLIDAYS).forEach((k) => {
+      const p = k.split('-');
+      const d = new Date(today.getFullYear(), +p[0] - 1, +p[1]);
+      let delta = (d - today) / 86400000;
+      if (delta < -1) delta += 365;
+      if (delta < bestDelta) { bestDelta = delta; best = +p[0] - 1; }
+    });
+    return best == null ? today.getMonth() : best;
+  }
+
+  _upcomingBdays() {
+    const now = new Date(); now.setHours(0, 0, 0, 0);
+    const yr = now.getFullYear();
+    return this.BDAYS.map((b, idx) => {
+      const p = b.bd.split('.');
+      let d = new Date(yr, +p[1] - 1, +p[0]); d.setHours(0, 0, 0, 0);
+      let diff = Math.round((d - now) / 86400000);
+      if (diff < 0) { d = new Date(yr + 1, +p[1] - 1, +p[0]); d.setHours(0, 0, 0, 0); diff = Math.round((d - now) / 86400000); }
+      return { idx, name: b.name, phone: b.phone, date: d, days: diff };
+    }).sort((a, b) => a.days - b.days);
+  }
+
+  renderVals() {
+    const st = this.state;
+    const today = new Date();
+    const price = this.props.smsPrice ?? 200;
+    const balN = this.props.smsBalance ?? 8450;
+
+    const calY = st.calY == null ? today.getFullYear() : st.calY;
+    const calM = st.calM == null ? this._nearestMonth() : st.calM;
+
+    // ---- counter & cost ----
+    const n = st.text.length;
+    const parts = Math.max(1, Math.ceil(n / 160));
+    const recips = this.GROUPS[st.group] || 0;
+    const needed = recips * parts;
+    const total = needed * price;
+    const over = needed > balN;
+
+    // ---- calendar cells ----
+    const first = new Date(calY, calM, 1);
+    const offset = (first.getDay() + 6) % 7;
+    const daysIn = new Date(calY, calM + 1, 0).getDate();
+    const todayKey = (today.getMonth() + 1) + '-' + today.getDate();
+    const calCells = [];
+    for (let b = 0; b < offset; b++) calCells.push({ txt: "", title: "", style: "height:32px;", pick: () => {} });
+    for (let d = 1; d <= daysIn; d++) {
+      const key = (calM + 1) + '-' + d;
+      const hol = this.HOLIDAYS[key];
+      const isToday = (calY === today.getFullYear() && key === todayKey);
+      const isSel = (key === st.selKey);
+      let s = "height:32px;display:flex;align-items:center;justify-content:center;border-radius:9px;font-size:12.5px;";
+      if (hol) s += "cursor:pointer;font-weight:800;background:" + (isSel ? "#E5484D" : "#FDECEC") + ";color:" + (isSel ? "#fff" : "#D63B40") + ";border:1px solid " + (isSel ? "#E5484D" : "#F6C9CB") + ";";
+      else s += "color:#5A6675;font-weight:600;border:1px solid transparent;";
+      if (isToday && !hol) s += "box-shadow:inset 0 0 0 1.5px #14A0AE;color:#0E7C88;font-weight:800;";
+      calCells.push({ txt: String(d), title: hol ? hol.name : "", style: s, pick: hol ? (() => this._pickHoliday(key)) : (() => {}) });
+    }
+
+    const monthHols = Object.keys(this.HOLIDAYS).filter(k => +k.split('-')[0] === calM + 1).map(k => {
+      const sel = (k === st.selKey);
+      return {
+        dd: k.split('-')[1],
+        name: this.HOLIDAYS[k].name,
+        pick: () => this._pickHoliday(k),
+        rowStyle: "display:flex;align-items:center;gap:9px;width:100%;border:1px solid " + (sel ? "#F0B7B9" : "#EEF1F4") + ";background:" + (sel ? "#FDECEC" : "#fff") + ";border-radius:10px;padding:8px 10px;cursor:pointer;",
+      };
+    });
+
+    // ---- birthdays ----
+    const up = this._upcomingBdays().slice(0, 4);
+    const bdays = up.map((b, i) => {
+      const sel = (st.selBday === b.idx);
+      const soon = b.days <= 7;
+      const dstr = b.date.getDate() + '-' + this.MONTHS[b.date.getMonth()].toLowerCase();
+      const days = b.days === 0 ? 'Bugun' : (b.days === 1 ? 'Ertaga' : (b.days + ' kun qoldi'));
+      return {
+        name: b.name,
+        ini: b.name.trim().split(/\s+/).map(w => w[0] || '').slice(0, 2).join('').toUpperCase(),
+        meta: dstr + ' · ' + days,
+        metaStyle: "font-size:11px;font-weight:600;margin-top:1px;color:" + (soon ? "#C6791B" : "#9AA3AE") + ";",
+        rowStyle: "display:flex;align-items:center;gap:10px;width:100%;border:1px solid " + (sel ? "#BFE3E7" : "#EEF1F4") + ";background:" + (sel ? "#EAF6F7" : "#fff") + ";border-radius:11px;padding:8px 10px;cursor:pointer;",
+        pick: () => this._pickBday(b),
+      };
+    });
+
+    // ---- banner ----
+    let bannerOn = false, bannerTitle = "", bannerSub = "", red = false;
+    if (st.selKey && this.HOLIDAYS[st.selKey]) {
+      bannerOn = true; red = true;
+      bannerTitle = this.HOLIDAYS[st.selKey].name + " tabrigi tayyor";
+      bannerSub = "Matn quyida — barcha mijozlarga yuboring";
+    } else if (st.selBday != null) {
+      const b = this.BDAYS[st.selBday];
+      if (b) { bannerOn = true; bannerTitle = b.name + " — tug'ilgan kun tabrigi tayyor"; bannerSub = "Raqam to'ldirildi — matnni ko'rib, yuboring"; }
+    }
+
+    const quickTpls = [
+      { label: "Qarz eslatmasi", text: "Hurmatli {ism}, qarz to'lovi muddati yaqinlashdi. Qoldiq: {summa} so'm." },
+      { label: "Bayram tabrigi", text: "Hurmatli {ism}, bayramingiz muborak bo'lsin! WASYT jamoasi." },
+      { label: "Aksiya", text: "{ism}, bugun WASYT'da maxsus chegirmalar! Batafsil: wasyt.uz" },
+    ].map(q => ({ ...q, pick: () => this.setState({ text: q.text, selKey: null, selBday: null, sent: false }) }));
+
+    return {
+      balance: this._fmt(balN),
+      price: this._fmt(price),
+      group: st.group,
+      setGroup: (e) => this.setState({ group: e.target.value, selKey: null, selBday: null }),
+      oneMode: st.group === 'one',
+      oneNum: st.oneNum,
+      setOneNum: (e) => this.setState({ oneNum: e.target.value }),
+      text: st.text,
+      setText: (e) => this.setState({ text: e.target.value, sent: false }),
+      counterTxt: n + " belgi · " + parts + " SMS",
+      quickTpls,
+
+      costStyle: "display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:12px 14px;border-radius:12px;background:" + (over ? "#FDECEC" : "#F3FAFB") + ";border:1px solid " + (over ? "#F6C9CB" : "#DCEEF0") + ";",
+      costLabelStyle: "font-size:10.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:" + (over ? "#C05055" : "#5E8F95") + ";",
+      costTotalStyle: "margin-top:4px;font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;color:" + (over ? "#D63B40" : "#0E7C88") + ";",
+      costTotal: this._fmt(total),
+      costRecipsLine: this._fmt(recips) + " ta × " + parts + " SMS",
+      costSmsLine: this._fmt(needed) + " SMS × " + price + " so'm",
+      overOn: over,
+      overTxt: this._fmt(needed) + " / " + this._fmt(balN) + " SMS",
+
+      bannerOn,
+      bannerStyle: "display:flex;align-items:center;gap:10px;margin-top:12px;padding:11px 13px;border-radius:12px;background:" + (red ? "#FDECEC" : "#EAF6F7") + ";border:1px solid " + (red ? "#F6C9CB" : "#BFE3E7") + ";",
+      bannerIconStyle: "width:30px;height:30px;border-radius:9px;background:" + (red ? "#E5484D" : "#14A0AE") + ";display:flex;align-items:center;justify-content:center;flex-shrink:0;",
+      bannerTitleStyle: "font-size:13px;font-weight:800;line-height:1.2;color:" + (red ? "#B4262A" : "#0E7C88") + ";",
+      bannerSubStyle: "font-size:11.5px;font-weight:600;margin-top:2px;color:" + (red ? "#C56D6F" : "#5A9AA1") + ";",
+      bannerTitle, bannerSub,
+
+      sendBtnStyle: "width:100%;margin-top:14px;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;background:" + (st.sent ? "#1AA565" : "linear-gradient(135deg,#0E7C88,#14A0AE)") + ";",
+      sendLabel: st.sent ? "Yuborildi" : "SMS yuborish",
+      send: () => {
+        if (!this.state.text.trim()) return;
+        this.setState({ sent: true });
+        setTimeout(() => this.setState({ sent: false, text: '', selKey: null, selBday: null }), 1600);
+      },
+
+      calTitle: this.MONTHS[calM] + " " + calY,
+      calPrev: () => { let m = calM - 1, y = calY; if (m < 0) { m = 11; y--; } this.setState({ calM: m, calY: y }); },
+      calNext: () => { let m = calM + 1, y = calY; if (m > 11) { m = 0; y++; } this.setState({ calM: m, calY: y }); },
+      calCells,
+      monthHols,
+      monthHolsOn: monthHols.length > 0,
+      bdays,
+      recent: [
+        { to: "Qarzdor mijozlar", cnt: "96", when: "Bugun 09:14" },
+        { to: "Barcha mijozlar", cnt: "1 284", when: "Kecha 18:02" },
+        { to: "VIP mijozlar", cnt: "40", when: "18-iyun 12:40" },
+      ],
+    };
+  }
+
+  _pickHoliday(key) {
+    const h = this.HOLIDAYS[key];
+    if (!h) return;
+    this.setState({ selKey: key, selBday: null, group: 'all', text: h.text, sent: false });
+  }
+
+  _pickBday(b) {
+    this.setState({
+      selBday: b.idx, selKey: null, group: 'one', oneNum: b.phone,
+      text: "Hurmatli " + b.name + ", tug'ilgan kuningiz muborak bo'lsin! Sizga sog'lik, baxt va farovonlik tilaymiz. WASYT jamoasi.",
+      sent: false,
+    });
+  }
+}
+</script>
+</body>
+</html>
